@@ -17,5 +17,3 @@ VALUES (1,8,(SELECT id FROM theatres WHERE name = "Stora Visaren")),
 (4,10,(SELECT id FROM theatres WHERE name = "Lilla Visaren")),
 (5,10,(SELECT id FROM theatres WHERE name = "Lilla Visaren")),
 (6,12,(SELECT id FROM theatres WHERE name = "Lilla Visaren"));
-
-
