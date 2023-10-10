@@ -7,10 +7,8 @@ import { getMovies } from "../controllers/movieController.js";
 const router = express.Router();
 
 router.get("/takenseats/:screeningid", checkScreeningId, getTakenseats);
-export default router;
 
 router.get("/moviescreenings/:movieid", getScreeningInfo)
-export default router;
 
 router.get("/movies", getMovies);
 export default router;
