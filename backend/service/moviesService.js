@@ -4,7 +4,8 @@ async function getMovies() {
   const sql = `SELECT 
   title, 
   CONVERT(image USING utf8mb4) AS image, 
-  durationinminutes, agelimit, 
+  durationinminutes, 
+  agelimit, 
   GROUP_CONCAT(category) AS categories 
   FROM movies 
   INNER JOIN moviecategories 
