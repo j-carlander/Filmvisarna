@@ -8,7 +8,7 @@ export function bookingTickets(
   bookingid
 ) {
   const ticketQuery =
-    "INSERT INTO tickets(seatrow, seatnumber,tickettypeid, screeningid, bookingid) VALUES(?, ?, ?, ?)";
+    "INSERT INTO tickets(seatrow, seatnumber,tickettypeid, screeningid, bookingid) VALUES(?, ?, ?, ?, ?)";
 
   runQuery(ticketQuery, [
     seatrow,
