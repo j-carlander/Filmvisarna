@@ -1,6 +1,6 @@
-import { runQuery } from "../db";
+import { runQuery } from "../db.js";
 
-export function bookingTickets(
+export async function bookingTickets(
   seatrow,
   seatnumber,
   tickettypeid,
@@ -10,7 +10,7 @@ export function bookingTickets(
   const ticketQuery =
     "INSERT INTO tickets(seatrow, seatnumber,tickettypeid, screeningid, bookingid) VALUES(?, ?, ?, ?, ?)";
 
-  runQuery(ticketQuery, [
+  return await runQuery(ticketQuery, [
     seatrow,
     seatnumber,
     tickettypeid,
