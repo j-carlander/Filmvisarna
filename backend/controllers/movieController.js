@@ -1,15 +1,11 @@
 import moviesService from "../service/MoviesService.js";
 
 export async function getMovies(req, res) {
-  const { date } = req.query;
+  const { date, age } = req.query;
 
-  let result;
+  const filters = { date, age };
 
-  if (date) {
-    result = await moviesService.getMoviesByDate(date);
-  } else {
-    result = await moviesService.getMovies();
-  }
+  const result = await moviesService.getMovies(filters);
 
   res.send(result);
 }
