@@ -14,5 +14,3 @@ export function generateBookingNumber() {
 
   return string;
 }
-
-console.log(generateBookingNumber());
