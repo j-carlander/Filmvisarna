@@ -9,7 +9,7 @@ export async function addBooking (req, res) {
     const bookResult = await bookingservice(bookingNumber, screeningid, guestEmail, guestPhone)
     console.log(bookResult.insertId)
 
-    const ticketresult = await seats.map(async seat => {
+    const ticketresult = await seats.forEach(async seat => {
         await bookingTickets (
             seat.seatRow,
             seat.seatNumber,

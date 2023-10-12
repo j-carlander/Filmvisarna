@@ -8,6 +8,7 @@ import { checkBookingDetails } from "../middleware/checkBooking.js";
 import { addBooking } from "../controllers/book.js";
 import { getMovieDetailsController } from "../controllers/moviedetailsController.js";
 import { checkMovieFilterQueries } from "../middleware/checkMoviesFilter.js";
+import { checkSeatsTaken } from "../middleware/checkTakenSeats.js";
 
 const router = express.Router();
 
@@ -20,6 +21,7 @@ router.get("/movies", checkMovieFilterQueries, getMovies);
 router.post(
   "/booking/:screeningid",
   checkScreeningId,
+  checkSeatsTaken,
   checkBookingDetails,
   addBooking
 );
