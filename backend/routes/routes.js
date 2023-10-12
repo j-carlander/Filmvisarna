@@ -8,6 +8,9 @@ import { checkBookingDetails } from "../middleware/checkBooking.js";
 import { addBooking } from "../controllers/book.js";
 import { getMovieDetailsController } from "../controllers/moviedetailsController.js";
 import { checkMovieFilterQueries } from "../middleware/checkMoviesFilter.js";
+// import { runQuery } from "../db.js";
+import { loginhandler } from "../controllers/loginUser.js";
+import { registerHandler } from "../controllers/registerUser.js";
 
 const router = express.Router();
 
@@ -29,5 +32,11 @@ router.get(
   checkMovieDetails,
   getMovieDetailsController
 );
+
+//Login route
+router.post("/login", loginhandler);
+
+//Register route
+router.post("/regiser", registerHandler);
 
 export default router;
