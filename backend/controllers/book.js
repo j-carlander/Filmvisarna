@@ -1,6 +1,10 @@
 import { bookingNumberService } from "../service/bookingNumberService.js";
 import { bookingTickets } from "../service/bookingTicketsService.js";
-import { bookingservice } from "../service/bookingservice.js";
+import { tickettypeService } from "../service/tickettypeService.js";
+import {
+  bookingservice,
+  getBookingsByUserId,
+} from "../service/bookingservice.js";
 
 export async function addBooking(req, res) {
   const { seats, guestEmail, guestPhone } = req.body;
@@ -8,13 +12,6 @@ export async function addBooking(req, res) {
   const bookingNumber = await bookingNumberService();
 
   const userid = req.user ? req.user.id : null;
-
-  const bookResult = await bookingservice (
-    bookingNumber, 
-    screeningid, 
-    guestEmail, 
-    guestPhone, 
-    userid);
 
   const ticketPromises = seats.map(async (seat) => {
     await bookingTickets (
@@ -26,6 +23,27 @@ export async function addBooking(req, res) {
   });
 
   await Promise.all(ticketPromises);
+  const ticketType = await tickettypeService();
+  const bookResult = await bookingservice(
+    bookingNumber,
+    screeningid,
+    guestEmail,
+    guestPhone,
+    userid,
+  );
+  console.log(bookResult.insertId);
+
+  const ticketresult = await seats.map(async (seat) => {
+    await bookingTickets(
+      seat.seatRow,
+      seat.seatNumber,
+      ticketType.find(({ id }) => id === seat.ticketType).id,
+      screeningid,
+      bookResult.insertId
+    );
+  });
+
+  console.log(ticketresult);
 
   const bookingDetails = {
     seats: seats,
@@ -36,4 +54,12 @@ export async function addBooking(req, res) {
   };
 
   res.status(201).json(bookingDetails);
+}
+
+export async function getBookings(req, res) {
+  const { jwtPayload } = res.locals;
+
+  const bookings = await getBookingsByUserId(jwtPayload.id);
+
+  res.send(bookings);
 }
