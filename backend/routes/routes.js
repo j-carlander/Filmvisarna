@@ -10,12 +10,10 @@ import { getMovieDetailsController } from "../controllers/moviedetailsController
 import { validateBookingSearch } from "../middleware/searchbooking.js";
 import { findBooking } from "../controllers/findBooking.js";
 import { checkMovieFilterQueries } from "../middleware/checkMoviesFilter.js";
-
 import { loginhandler } from "../controllers/loginUser.js";
 import { registerHandler } from "../controllers/registerUser.js";
 
 import { checkSeatsTaken } from "../middleware/checkTakenSeats.js";
-
 
 const router = express.Router();
 
@@ -45,6 +43,6 @@ router.get(
 router.post("/login", loginhandler);
 
 //Register route
-router.post("/regiser", registerHandler);
+router.post("/register", registerHandler);
 
 export default router;

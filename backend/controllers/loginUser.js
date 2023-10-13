@@ -1,5 +1,6 @@
 import bcrypt from "bcrypt";
-import { runQuery } from "../db";
+import { runQuery } from "../db.js";
+import jwtUtil from "../utils/jwtUtil.js";
 
 export async function loginhandler(req, res) {
   const { email, password } = req.body;
@@ -22,7 +23,11 @@ export async function loginhandler(req, res) {
       }
 
       if (result) {
-        res.status(200).json({ message: "Login successful" });
+        const token = jwtUtil.createToken({
+          id: foundUser[0].id,
+          email: foundUser[0].email,
+        });
+        res.status(200).json({ message: "Login successful", token });
       } else {
         res.status(401).json({ message: "Incorrect password" });
       }
