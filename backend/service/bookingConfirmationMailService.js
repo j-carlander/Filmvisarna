@@ -1,3 +1,4 @@
+import { formatDateTimeSwe } from "../utils/formatDateTime.js";
 import { formatSeatInfo } from "../utils/formatSeatsInfoForEmail.js";
 import { mailTransporter } from "../utils/mailtransporter.js";
 
@@ -25,7 +26,7 @@ Hej!
 Tack för din bokning!
 Du har bokat
 ${title},
-Den: ${screeningDate}
+${formatDateTimeSwe(screeningDate)}
 Platser: ${formatSeatInfo(seats)},
 Bokningsnummer: ${bookingNumber}
 
