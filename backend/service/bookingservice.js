@@ -11,7 +11,7 @@ export async function bookingservice(
 
   const currentDate = new Date();
   return await runQuery(query, [
-    currentDate.toLocaleString(),
+    currentDate.toLocaleString("se-SE"),
     bookingNumber,
     screeningid,
     guestemail,

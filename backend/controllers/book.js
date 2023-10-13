@@ -1,5 +1,6 @@
 import { bookingNumberService } from "../service/bookingNumberService.js";
 import { bookingTickets } from "../service/bookingTicketsService.js";
+import { tickettypeService } from "../service/tickettypeService.js";
 import {
   bookingservice,
   getBookingsByUserId,
@@ -9,6 +10,7 @@ export async function addBooking(req, res) {
   const { seats, guestEmail, guestPhone } = req.body;
   const screeningid = req.params.screeningid;
   const bookingNumber = await bookingNumberService();
+  const ticketType = await tickettypeService();
   const bookResult = await bookingservice(
     bookingNumber,
     screeningid,
@@ -17,25 +19,17 @@ export async function addBooking(req, res) {
   );
   console.log(bookResult.insertId);
 
-  const ticketresult = await seats.forEach(async (seat) => {
+  const ticketresult = await seats.map(async (seat) => {
     await bookingTickets(
       seat.seatRow,
       seat.seatNumber,
-      1,
+      ticketType.find(({ id }) => id === seat.ticketType).id,
       screeningid,
       bookResult.insertId
     );
   });
 
   console.log(ticketresult);
-
-  // bookingTickets(
-  //     seatrow,
-  //     seatnumber,
-  //     tickettypeid,
-  //     screeningid,
-  //     bookingid
-  // )
 
   const bookingDetails = {
     seats: seats,
