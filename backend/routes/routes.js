@@ -7,10 +7,13 @@ import { getMovies } from "../controllers/movieController.js";
 import { checkBookingDetails } from "../middleware/checkBooking.js";
 import { addBooking } from "../controllers/book.js";
 import { getMovieDetailsController } from "../controllers/moviedetailsController.js";
+import { validateBookingSearch } from "../middleware/searchbooking.js";
+import { findBooking } from "../controllers/findBooking.js";
 import { checkMovieFilterQueries } from "../middleware/checkMoviesFilter.js";
 // import { runQuery } from "../db.js";
 import { loginhandler } from "../controllers/loginUser.js";
 import { registerHandler } from "../controllers/registerUser.js";
+import { checkSeatsTaken } from "../middleware/checkTakenSeats.js";
 
 const router = express.Router();
 
@@ -18,11 +21,14 @@ router.get("/takenseats/:screeningid", checkScreeningId, getTakenseats);
 
 router.get("/moviescreenings/:movieid", getScreeningInfo);
 
+router.get("/bookinginfo", validateBookingSearch, findBooking);
+
 router.get("/movies", checkMovieFilterQueries, getMovies);
 
 router.post(
   "/booking/:screeningid",
   checkScreeningId,
+  checkSeatsTaken,
   checkBookingDetails,
   addBooking
 );
