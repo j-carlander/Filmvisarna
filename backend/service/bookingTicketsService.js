@@ -8,7 +8,7 @@ export async function bookingTickets(
   bookingid
 ) {
   const ticketQuery =
-    "INSERT INTO tickets(seatrow, seatnumber,tickettypeid, screeningid, bookingid) VALUES(?, ?, ?, ?, ?)";
+    "INSERT INTO tickets(seatrow, seatnumber,tickettypeid, screeningid, bookingid) VALUES(?, ?, ?, ?, ? )";
 
   return await runQuery(ticketQuery, [
     seatrow,
