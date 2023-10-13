@@ -4,10 +4,11 @@ export async function bookingservice(
   bookingNumber,
   screeningid,
   guestemail,
-  guestphone
+  guestphone,
+  userid,
 ) {
   const query =
-    "INSERT INTO bookings(bookedat, bookingNumber, screeningid, guestemail, guestphone) VALUES(?, ?, ?, ?, ?)";
+    "INSERT INTO bookings(bookedat, bookingNumber, screeningid, guestemail, guestphone, userid) VALUES(?, ?, ?, ?, ?, ?)";
 
   const currentDate = new Date();
   return await runQuery(query, [
@@ -16,6 +17,7 @@ export async function bookingservice(
     screeningid,
     guestemail,
     guestphone,
+    userid,
   ]);
 }
 

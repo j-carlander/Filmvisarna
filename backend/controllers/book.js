@@ -1,42 +1,37 @@
-import { bookingNumberService } from "../service/bookingNumberService.js"
+import { bookingNumberService } from "../service/bookingNumberService.js";
 import { bookingTickets } from "../service/bookingTicketsService.js";
 import { bookingservice } from "../service/bookingservice.js";
 
-export async function addBooking (req, res) {
-    const {seats, guestEmail, guestPhone} = req.body;
-    const screeningid = req.params.screeningid
-    const bookingNumber = await bookingNumberService();
-    const bookResult = await bookingservice(bookingNumber, screeningid, guestEmail, guestPhone)
-    console.log(bookResult.insertId)
+export async function addBooking(req, res) {
+  const { seats, guestEmail, guestPhone } = req.body;
+  const screeningid = req.params.screeningid;
+  const bookingNumber = await bookingNumberService();
 
-    const ticketresult = await seats.forEach(async seat => {
-        await bookingTickets (
-            seat.seatRow,
-            seat.seatNumber,
-            1,
-            screeningid,
-            bookResult.insertId,
-        )
-    });
-    
-    console.log(ticketresult)
+  // Check if a user is logged in and get their user ID from req.user
+  const userid = req.user ? req.user.id : null;
 
-    // bookingTickets(
-    //     seatrow,
-    //     seatnumber,
-    //     tickettypeid,
-    //     screeningid,
-    //     bookingid
-    // )
+  // Create the booking in the database
+  const bookResult = await bookingservice(bookingNumber, screeningid, guestEmail, guestPhone, userid);
 
-    const bookingDetails = {
-        seats: seats,
-        guestEmail: guestEmail,
-        guestPhone: guestPhone,
-        bookingNumber: bookingNumber,
-    };
+  // Insert tickets for the booking
+  const ticketPromises = seats.map(async (seat) => {
+    await bookingTickets (
+        seat.seatRow, 
+        seat.seatNumber, 
+        1, 
+        screeningid,
+        bookResult.insertId);
+  });
 
-    
+  // Wait for all ticket insertions to complete
+  await Promise.all(ticketPromises);
 
-    res.status(201).json(bookingDetails);
+  const bookingDetails = {
+    seats: seats,
+    guestEmail: guestEmail,
+    guestPhone: guestPhone,
+    bookingNumber: bookingNumber,
+  };
+
+  res.status(201).json(bookingDetails);
 }
