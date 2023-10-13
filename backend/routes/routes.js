@@ -17,6 +17,7 @@ import { loginhandler } from "../controllers/loginUser.js";
 import { registerHandler } from "../controllers/registerUser.js";
 
 import { checkSeatsTaken } from "../middleware/checkTakenSeats.js";
+import { getUserInfo } from "../controllers/getUser.js";
 
 
 const router = express.Router();
@@ -29,10 +30,7 @@ router.get("/bookinginfo", validateBookingSearch, findBooking);
 
 router.get("/movies", checkMovieFilterQueries, getMovies);
 
-router.get("/currentUser", checkToken, (req, res) => {
-  const currentUserInfo = res.locals.jwtPayLoad;
-  res.status(200).json(currentUserInfo)
-})
+router.get("/currentUser", checkToken, getUserInfo)
 
 router.post(
   "/booking/:screeningid",
@@ -52,6 +50,6 @@ router.get(
 router.post("/login", loginhandler);
 
 //Register route
-router.post("/regiser", registerHandler);
+router.post("/register", registerHandler);
 
 export default router;
