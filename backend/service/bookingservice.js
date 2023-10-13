@@ -11,7 +11,7 @@ export async function bookingservice(
 
   const currentDate = new Date();
   return await runQuery(query, [
-    currentDate.toLocaleString(),
+    currentDate.toLocaleString("se-SE"),
     bookingNumber,
     screeningid,
     guestemail,
@@ -19,15 +19,12 @@ export async function bookingservice(
   ]);
 }
 
-export async function findBookingByBookingNumber (
-  bookingNumber
-) {
-  const query =
-  `SELECT bookingNumber, GROUP_CONCAT(tickets.seatrow, ":", tickets.seatnumber, " ", tickettypes.name) AS tickets
+export async function findBookingByBookingNumber(bookingNumber) {
+  const query = `SELECT bookingNumber, GROUP_CONCAT(tickets.seatrow, ":", tickets.seatnumber, " ", tickettypes.name) AS tickets
 	FROM tickets INNER JOIN tickettypes, bookings 
     WHERE tickets.bookingid = bookings.id AND tickettypes.id = tickets.tickettypeid AND bookings.bookingnumber = ?
-    GROUP BY bookings.id`
+    GROUP BY bookings.id`;
 
-    const result = await runQuery(query, [bookingNumber]) 
-    return result;
+  const result = await runQuery(query, [bookingNumber]);
+  return result;
 }
