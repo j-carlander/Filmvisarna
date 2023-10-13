@@ -10,10 +10,14 @@ import { getMovieDetailsController } from "../controllers/moviedetailsController
 import { validateBookingSearch } from "../middleware/searchbooking.js";
 import { findBooking } from "../controllers/findBooking.js";
 import { checkMovieFilterQueries } from "../middleware/checkMoviesFilter.js";
+import { checkToken } from "../middleware/checkToken.js";
+
+
 import { loginhandler } from "../controllers/loginUser.js";
 import { registerHandler } from "../controllers/registerUser.js";
 
 import { checkSeatsTaken } from "../middleware/checkTakenSeats.js";
+
 
 const router = express.Router();
 
@@ -24,6 +28,11 @@ router.get("/moviescreenings/:movieid", getScreeningInfo);
 router.get("/bookinginfo", validateBookingSearch, findBooking);
 
 router.get("/movies", checkMovieFilterQueries, getMovies);
+
+router.get("/currentUser", checkToken, (req, res) => {
+  const currentUserInfo = res.locals.jwtPayLoad;
+  res.status(200).json(currentUserInfo)
+})
 
 router.post(
   "/booking/:screeningid",
@@ -43,6 +52,6 @@ router.get(
 router.post("/login", loginhandler);
 
 //Register route
-router.post("/register", registerHandler);
+router.post("/regiser", registerHandler);
 
 export default router;
