@@ -1,20 +1,33 @@
 import { runQuery } from "../db.js";
 
-export function bookingservice(
+export async function bookingservice(
   bookingNumber,
   screeningid,
   guestemail,
   guestphone
 ) {
   const query =
-    "INSERT INTO bookings(bookedat, bookingNumber, screeningid, guesemail, guestphone) VALUES(?, ?, ?, ?, ?)";
+    "INSERT INTO bookings(bookedat, bookingNumber, screeningid, guestemail, guestphone) VALUES(?, ?, ?, ?, ?)";
 
   const currentDate = new Date();
-  runQuery(query, [
+  return await runQuery(query, [
     currentDate.toLocaleString(),
     bookingNumber,
     screeningid,
     guestemail,
     guestphone,
   ]);
+}
+
+export async function findBookingByBookingNumber (
+  bookingNumber
+) {
+  const query =
+  `SELECT bookingNumber, GROUP_CONCAT(tickets.seatrow, ":", tickets.seatnumber, " ", tickettypes.name) AS tickets
+	FROM tickets INNER JOIN tickettypes, bookings 
+    WHERE tickets.bookingid = bookings.id AND tickettypes.id = tickets.tickettypeid AND bookings.bookingnumber = ?
+    GROUP BY bookings.id`
+
+    const result = await runQuery(query, [bookingNumber]) 
+    return result;
 }
