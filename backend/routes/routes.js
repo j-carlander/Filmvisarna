@@ -11,6 +11,7 @@ import { validateBookingSearch } from "../middleware/searchbooking.js";
 import { findBooking } from "../controllers/findBooking.js";
 import { checkMovieFilterQueries } from "../middleware/checkMoviesFilter.js";
 import { checkToken } from "../middleware/checkToken.js";
+import { deleteBooking } from "../controllers/deleteBooking.js";
 
 import { loginhandler } from "../controllers/loginUser.js";
 import { registerHandler } from "../controllers/registerUser.js";
@@ -44,6 +45,8 @@ router.get(
   checkMovieDetails,
   getMovieDetailsController
 );
+
+router.delete("/booking", checkToken, deleteBooking);
 
 router.get("/currentUser/bookings", checkToken, getBookings);
 
