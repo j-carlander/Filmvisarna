@@ -20,40 +20,50 @@ import { getUserInfo } from "../controllers/getUser.js";
 
 const router = express.Router();
 
+// Route to check which seats are taken on a specific screening
 router.get("/takenseats/:screeningid", checkScreeningId, getTakenseats);
 
+// Route to get all screening for a specific movie
 router.get("/moviescreenings/:movieid", getScreeningInfo);
 
+// Route to search for a booking by query
 router.get("/bookinginfo", validateBookingSearch, findBooking);
+
+// Route to get a list of all movies
 router.get("/movies", checkMovieFilterQueries, getMovies);
 
-router.get("/currentUser", checkToken, getUserInfo);
-
-router.post(
-  "/booking/:screeningid",
-  checkScreeningId,
-  checkToken,
-  checkSeatsTaken,
-  checkBookingDetails,
-  addBooking
-);
-
-router.get("/movies", checkMovieFilterQueries, getMovies);
-
+// Route to get the details about a movie
 router.get(
   "/moviedetails/:movieid",
   checkMovieDetails,
   getMovieDetailsController
 );
 
-router.delete("/booking", checkToken, deleteBooking);
-
-router.get("/currentUser/bookings", checkToken, getBookings);
-
 //Login route
 router.post("/login", loginhandler);
 
 //Register route
 router.post("/register", registerHandler);
+
+// All routes below uses the middleware checkToken
+router.use(checkToken);
+
+// Route to get info about current user
+router.get("/currentUser", getUserInfo);
+
+// Route to post a booking
+router.post(
+  "/booking/:screeningid",
+  checkScreeningId,
+  checkSeatsTaken,
+  checkBookingDetails,
+  addBooking
+);
+
+// Route to delete a booking
+router.delete("/booking", deleteBooking);
+
+// Route to get current logged in users bookings
+router.get("/currentUser/bookings", getBookings);
 
 export default router;
