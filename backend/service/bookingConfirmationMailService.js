@@ -7,19 +7,20 @@ export async function bookingConfirmationMailService(
   title,
   screeningDate,
   seats,
-  bookingNumber
+  bookingNumber,
+  cost
 ) {
   const msg = {
     from: "filmvisarna.grupp1@gmail.com",
     to: email,
     subject: "Här är din bokning",
-    text: textBody(title, screeningDate, seats, bookingNumber),
+    text: textBody(title, screeningDate, seats, bookingNumber, cost),
   };
 
   return mailTransporter.sendMail(msg);
 }
 
-function textBody(title, screeningDate, seats, bookingNumber) {
+function textBody(title, screeningDate, seats, bookingNumber, cost) {
   return `
 Hej!
 
@@ -28,7 +29,8 @@ Du har bokat
 ${title},
 ${formatDateTimeSwe(screeningDate)}
 Platser: ${formatSeatInfo(seats)},
-Bokningsnummer: ${bookingNumber}
+Bokningsnummer: ${bookingNumber},
+Att betala: ${cost}
 
 För att avboka dina biljetter, gå in på http://www.filmvisarna.se/avboka
 
