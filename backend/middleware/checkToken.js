@@ -5,7 +5,7 @@ export function checkToken(req, res, next) {
 
   if (token) {
     try {
-      const payload = jwtUtil.validateToken(token);
+      const payload = jwtUtil.validateToken(token.replace("Bearer ", ""));
 
       if (payload) {
         res.locals.jwtPayload = payload;
