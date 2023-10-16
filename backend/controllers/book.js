@@ -8,6 +8,8 @@ import {
 import { bookingConfirmationMailService } from "../service/bookingConfirmationMailService.js";
 import { screeningsService } from "../service/screeningsService.js";
 import { getMovieDetails } from "../service/moviedetailsService.js";
+import { formatDateTimeSwe } from "../utils/formatDateTime.js";
+import { formatSeatInfo } from "../utils/formatSeatsInfoForEmail.js";
 
 export async function addBooking(req, res) {
   const { seats, guestEmail, guestPhone } = req.body;
@@ -38,8 +40,16 @@ export async function addBooking(req, res) {
 
   await Promise.all(ticketPromises);
 
+  const screening = await screeningsService(screeningid);
+  const { date, movieid } = screening[0];
+
+  const movie = await getMovieDetails(movieid);
+  const { title } = movie[0];
+
   let bookingDetails = {
-    seats: seats,
+    title,
+    date: formatDateTimeSwe(date),
+    seats: formatSeatInfo(seats),
     bookingNumber: bookingNumber,
   };
 
@@ -50,12 +60,6 @@ export async function addBooking(req, res) {
       guestPhone: guestPhone,
     };
   }
-
-  const screening = await screeningsService(screeningid);
-  const { date, movieid } = screening[0];
-
-  const movie = await getMovieDetails(movieid);
-  const { title } = movie[0];
 
   const email = guestEmail ? guestEmail : res.locals.jwtPayload.email;
 
