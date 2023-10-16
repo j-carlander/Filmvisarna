@@ -69,7 +69,8 @@ export async function addBooking(req, res) {
     title,
     date,
     seats,
-    bookingNumber
+    bookingNumber,
+    calculateCost(seats, ticketType)
   );
 
   res.status(201).json(bookingDetails);
