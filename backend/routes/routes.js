@@ -14,7 +14,7 @@ import { checkMovieFilterQueries } from "../middleware/checkMoviesFilter.js";
 import { loginhandler } from "../controllers/loginUser.js";
 import { registerHandler } from "../controllers/registerUser.js";
 import { checkSeatsTaken } from "../middleware/checkTakenSeats.js";
-
+import { validateData } from "../middleware/checkSentData.js";
 const router = express.Router();
 
 router.get("/takenseats/:screeningid", checkScreeningId, getTakenseats);
@@ -40,9 +40,9 @@ router.get(
 );
 
 //Login route
-router.post("/login", loginhandler);
+router.post("/login", loginhandler, validateData);
 
 //Register route
-router.post("/regiser", registerHandler);
+router.post("/regiser", registerHandler, validateData);
 
 export default router;
