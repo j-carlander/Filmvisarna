@@ -1,39 +1,40 @@
 import { runQuery } from "../db.js";
 
-async function getMovies() {
+async function getMovies(filters) {
+  const checkConditions = [],
+    values = [];
+
+  for (let key of Object.keys(filters)) {
+    if (!filters[key]) continue;
+
+    if (key === "date") {
+      values.push(...getDateQueryArray(filters.date));
+      checkConditions.push(
+        "screenings.date > ? AND screenings.date < ? AND screenings.movieid = movies.id"
+      );
+    } else if (key === "age") {
+      values.push(filters[key]);
+      checkConditions.push("movies.agelimit = ?");
+    }
+  }
+
   const sql = `SELECT 
   title, 
-  CONVERT(image USING utf8mb4) AS image, 
+  CONVERT(image USING utf8mb4) AS image,
   durationinminutes, 
   agelimit, 
   GROUP_CONCAT(category) AS categories 
   FROM movies 
   INNER JOIN moviecategories 
+  ${filters.date ? "INNER JOIN screenings" : ""} 
   LEFT JOIN categories 
-  ON moviecategories.categoryid = categories.id AND moviecategories.movieid = movies.id
+  ON moviecategories.categoryid = categories.id AND moviecategories.movieid = movies.id ${
+    checkConditions.length > 0 ? "WHERE" : ""
+  } 
+  ${checkConditions.join(" AND ")} 
   GROUP BY movies.id;`;
 
-  const res = await runQuery(sql);
-
-  return res;
-}
-
-async function getMoviesByDate(date) {
-  const sql = `SELECT 
-  title, 
-  CONVERT(image USING utf8mb4) AS image, 
-  durationinminutes, 
-  agelimit, 
-  GROUP_CONCAT(category) AS categories 
-  FROM movies 
-  INNER JOIN moviecategories 
-  INNER JOIN screenings 
-  LEFT JOIN categories 
-  ON moviecategories.categoryid = categories.id AND moviecategories.movieid = movies.id WHERE 
-  screenings.date > ? AND screenings.date < ? AND screenings.movieid = movies.id 
-  GROUP BY movies.id;`;
-
-  const result = await runQuery(sql, getDateQueryArray(date));
+  const result = await runQuery(sql, values);
 
   return result;
 }
@@ -50,4 +51,4 @@ function getDateQueryArray(date) {
   return [startDateString, nextDayString];
 }
 
-export default { getMovies, getMoviesByDate };
+export default { getMovies };

@@ -1,11 +1,10 @@
-import { checkBookingNumberExist } from "../utils/checkBookingNumberExist";
-import { generateBookingNumber } from "../utils/generateBookingNumber";
+import { checkBookingNumberExist } from "../utils/checkBookingNumberExist.js";
+import { generateBookingNumber } from "../utils/generateBookingNumber.js";
 
-export function bookingNumberService() {
+export async function bookingNumberService() {
   let bookingNumber = generateBookingNumber();
 
-  if (checkBookingNumberExist(bookingNumber))
+  if (await checkBookingNumberExist(bookingNumber))
     bookingNumber = bookingNumberService();
-
   return bookingNumber;
 }
