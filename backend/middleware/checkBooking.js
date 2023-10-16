@@ -23,11 +23,13 @@ export function checkBookingDetails(req, res, next) {
     }
   }
 
-  if (!guestEmail || !guestEmail.toLowerCase().match(/@/)) {
-    return res.status(400).send("email not supplied");
-  }
-  if (!guestPhone || isNaN(Number(guestPhone))) {
-    return res.status(400).send("phone number not supplied");
+  if (!res.locals.jwtPayload) {
+    if (!guestEmail || !guestEmail.toLowerCase().match(/@/)) {
+      return res.status(400).send("email not supplied");
+    }
+    if (!guestPhone || isNaN(Number(guestPhone))) {
+      return res.status(400).send("phone number not supplied");
+    }
   }
 
   next();

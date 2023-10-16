@@ -5,6 +5,9 @@ import {
   bookingservice,
   getBookingsByUserId,
 } from "../service/bookingservice.js";
+import { bookingConfirmationMailService } from "../service/bookingConfirmationMailService.js";
+import { screeningsService } from "../service/screeningsService.js";
+import { getMovieDetails } from "../service/moviedetailsService.js";
 
 export async function addBooking(req, res) {
   const { seats, guestEmail, guestPhone } = req.body;
@@ -47,6 +50,22 @@ export async function addBooking(req, res) {
       guestPhone: guestPhone,
     };
   }
+
+  const screening = await screeningsService(screeningid);
+  const { date, movieid } = screening[0];
+
+  const movie = await getMovieDetails(movieid);
+  const { title } = movie[0];
+
+  const email = guestEmail ? guestEmail : res.locals.jwtPayload.email;
+
+  await bookingConfirmationMailService(
+    email,
+    title,
+    date,
+    seats,
+    bookingNumber
+  );
 
   res.status(201).json(bookingDetails);
 }
