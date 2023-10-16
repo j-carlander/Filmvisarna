@@ -8,6 +8,7 @@ import {
 import { bookingConfirmationMailService } from "../service/bookingConfirmationMailService.js";
 import { screeningsService } from "../service/screeningsService.js";
 import { getMovieDetails } from "../service/moviedetailsService.js";
+import { formatDateTimeSwe } from "../utils/formatDateTime.js";
 
 export async function addBooking(req, res) {
   const { seats, guestEmail, guestPhone } = req.body;
@@ -76,6 +77,10 @@ export async function getBookings(req, res) {
   if (!payload) return res.status(400).send("Token not provided!");
 
   const bookings = await getBookingsByUserId(payload.id);
+
+  for (let booking of bookings) {
+    booking.date = formatDateTimeSwe(booking.date);
+  }
 
   res.send(bookings);
 }
