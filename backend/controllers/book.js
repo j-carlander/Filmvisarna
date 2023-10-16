@@ -83,5 +83,9 @@ export async function getBookings(req, res) {
 
   const bookings = await getBookingsByUserId(payload.id);
 
+  for (let booking of bookings) {
+    booking.date = formatDateTimeSwe(booking.date);
+  }
+
   res.send(bookings);
 }
