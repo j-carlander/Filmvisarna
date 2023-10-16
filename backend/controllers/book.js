@@ -8,6 +8,9 @@ import {
 import { bookingConfirmationMailService } from "../service/bookingConfirmationMailService.js";
 import { screeningsService } from "../service/screeningsService.js";
 import { getMovieDetails } from "../service/moviedetailsService.js";
+import { formatDateTimeSwe } from "../utils/formatDateTime.js";
+import { formatSeatInfo } from "../utils/formatSeatsInfoForEmail.js";
+import { calculateCost } from "../utils/calculateCost.js";
 
 export async function addBooking(req, res) {
   const { seats, guestEmail, guestPhone } = req.body;
@@ -24,7 +27,6 @@ export async function addBooking(req, res) {
     guestPhone,
     userid
   );
-  console.log(bookResult.insertId);
 
   const ticketPromises = seats.map((seat) =>
     bookingTickets(
@@ -38,9 +40,18 @@ export async function addBooking(req, res) {
 
   await Promise.all(ticketPromises);
 
+  const screening = await screeningsService(screeningid);
+  const { date, movieid } = screening[0];
+
+  const movie = await getMovieDetails(movieid);
+  const { title } = movie[0];
+
   let bookingDetails = {
-    seats: seats,
+    title,
+    date: formatDateTimeSwe(date),
+    seats: formatSeatInfo(seats),
     bookingNumber: bookingNumber,
+    totalPrice: calculateCost(seats, ticketType),
   };
 
   if (guestEmail) {
@@ -51,12 +62,6 @@ export async function addBooking(req, res) {
     };
   }
 
-  const screening = await screeningsService(screeningid);
-  const { date, movieid } = screening[0];
-
-  const movie = await getMovieDetails(movieid);
-  const { title } = movie[0];
-
   const email = guestEmail ? guestEmail : res.locals.jwtPayload.email;
 
   await bookingConfirmationMailService(
@@ -64,7 +69,8 @@ export async function addBooking(req, res) {
     title,
     date,
     seats,
-    bookingNumber
+    bookingNumber,
+    calculateCost(seats, ticketType)
   );
 
   res.status(201).json(bookingDetails);
@@ -76,6 +82,10 @@ export async function getBookings(req, res) {
   if (!payload) return res.status(400).send("Token not provided!");
 
   const bookings = await getBookingsByUserId(payload.id);
+
+  for (let booking of bookings) {
+    booking.date = formatDateTimeSwe(booking.date);
+  }
 
   res.send(bookings);
 }

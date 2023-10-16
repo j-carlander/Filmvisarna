@@ -5,7 +5,7 @@ export async function bookingservice(
   screeningid,
   guestemail,
   guestphone,
-  userid,
+  userid
 ) {
   const query =
     "INSERT INTO bookings(bookedat, bookingNumber, screeningid, guestemail, guestphone, userid) VALUES(?, ?, ?, ?, ?, ?)";
@@ -33,7 +33,9 @@ export async function findBookingByBookingNumber(bookingNumber) {
 
 export function getBookingsByUserId(userid) {
   const query = `
-  SELECT m.title, b.bookingnumber, GROUP_CONCAT(t.seatrow, ":", t.seatnumber, " ", tt.name SEPARATOR ", ") AS tickets
+  SELECT m.title, s.date, b.bookingnumber, 
+  GROUP_CONCAT(t.seatrow, ":", t.seatnumber, " ", tt.name SEPARATOR ", ") AS tickets, 
+  (SELECT SUM(tt.price) FROM tickets t, tickettypes tt WHERE t.tickettypeid = tt.id AND t.bookingid = b.id) AS price 
 	  FROM bookings b
     INNER JOIN movies m
     INNER JOIN screenings s
