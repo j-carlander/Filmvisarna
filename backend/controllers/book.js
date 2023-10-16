@@ -10,6 +10,7 @@ import { screeningsService } from "../service/screeningsService.js";
 import { getMovieDetails } from "../service/moviedetailsService.js";
 import { formatDateTimeSwe } from "../utils/formatDateTime.js";
 import { formatSeatInfo } from "../utils/formatSeatsInfoForEmail.js";
+import { calculateCost } from "../utils/calculateCost.js";
 
 export async function addBooking(req, res) {
   const { seats, guestEmail, guestPhone } = req.body;
@@ -26,7 +27,6 @@ export async function addBooking(req, res) {
     guestPhone,
     userid
   );
-  console.log(bookResult.insertId);
 
   const ticketPromises = seats.map((seat) =>
     bookingTickets(
@@ -51,6 +51,7 @@ export async function addBooking(req, res) {
     date: formatDateTimeSwe(date),
     seats: formatSeatInfo(seats),
     bookingNumber: bookingNumber,
+    totalPrice: calculateCost(seats, ticketType),
   };
 
   if (guestEmail) {
