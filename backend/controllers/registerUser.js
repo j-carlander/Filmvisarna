@@ -4,6 +4,18 @@ import { runQuery } from "../db.js";
 export async function registerHandler(req, res) {
   const { fname, lname, phone, email, password, repassword } = req.body;
 
+  if (!fname || !lname) {
+    return res
+      .status(403)
+      .json({ err: "Firstname and/or Lastname is missing" });
+  }
+  if (!phone || !email) {
+    return res.status(403).json({ err: "Phone and/or email is missing" });
+  }
+  if (!password || !repassword) {
+    return res.status(403).json({ err: "Password is missing" });
+  }
+
   //Om lösen1 inte matchar med lösen2
   if (password !== repassword) {
     return res.status(400).json({ message: "Passwords do not match" });

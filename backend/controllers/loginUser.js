@@ -5,6 +5,10 @@ import jwtUtil from "../utils/jwtUtil.js";
 export async function loginhandler(req, res) {
   const { email, password } = req.body;
 
+  if (!email || !password) {
+    return res.status(403).json({ err: "email or password is missing" });
+  }
+
   // Retrieve the user based on their email from our users table.
   const foundUser = await runQuery("SELECT * FROM users WHERE email = ?", [
     email,
