@@ -16,6 +16,7 @@ import { loginhandler } from "../controllers/loginUser.js";
 import { registerHandler } from "../controllers/registerUser.js";
 import { checkSeatsTaken } from "../middleware/checkTakenSeats.js";
 import { getUserInfo } from "../controllers/getUser.js";
+import { checkSeatExists } from "../middleware/checkSeatExists.js";
 
 const router = express.Router();
 
@@ -33,6 +34,7 @@ router.post(
   checkScreeningId,
   checkToken,
   checkSeatsTaken,
+  checkSeatExists,
   checkBookingDetails,
   addBooking
 );
