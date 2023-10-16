@@ -23,7 +23,7 @@ router.get("/takenseats/:screeningid", checkScreeningId, getTakenseats);
 
 router.get("/moviescreenings/:movieid", getScreeningInfo);
 
-router.get("/bookinginfo", validateBookingSearch, findBooking)
+router.get("/bookinginfo", validateBookingSearch, findBooking);
 router.get("/movies", checkMovieFilterQueries, getMovies);
 
 router.get("/currentUser", checkToken, getUserInfo);
@@ -31,9 +31,9 @@ router.get("/currentUser", checkToken, getUserInfo);
 router.post(
   "/booking/:screeningid",
   checkScreeningId,
+  checkToken,
   checkSeatsTaken,
   checkBookingDetails,
-  checkToken,
   addBooking
 );
 
