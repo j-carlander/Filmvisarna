@@ -1,6 +1,7 @@
 //fields är en array som containar all inputs så vi kan loopa genom alla.
-export async function validateData(req, res, fields) {
+export async function validateData(req, res, next) {
   const errors = {};
+  const fields = req.body;
 
   for (const field of fields) {
     if (typeof req.body[field] !== "string" || req.body[field].trim() === "") {
@@ -12,4 +13,5 @@ export async function validateData(req, res, fields) {
   if (Object.keys(errors).length > 0) {
     return res.status(400).json({ errors });
   }
+  next();
 }
