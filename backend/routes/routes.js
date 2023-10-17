@@ -18,6 +18,8 @@ import { registerHandler } from "../controllers/registerUser.js";
 import { checkSeatsTaken } from "../middleware/checkTakenSeats.js";
 import { getUserInfo } from "../controllers/getUser.js";
 import { checkSeatExists } from "../middleware/checkSeatExists.js";
+import { searchMovieController } from "../controllers/searchMovieController.js";
+import { checkSearchQuery } from "../middleware/checkSearchQuery.js";
 
 const router = express.Router();
 
@@ -32,6 +34,9 @@ router.get("/bookinginfo", validateBookingSearch, findBooking);
 
 // Route to get a list of all movies
 router.get("/movies", checkMovieFilterQueries, getMovies);
+
+// Route for searching for a movie
+router.get("/movies/search", checkSearchQuery, searchMovieController);
 
 // Route to get the details about a movie
 router.get(
