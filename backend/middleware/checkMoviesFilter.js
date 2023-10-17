@@ -3,7 +3,7 @@ const dateErrorMessage =
 const ageErrorMessage = "Age value is not valid!";
 
 export function checkMovieFilterQueries(req, res, next) {
-  const { date, age } = req.query;
+  const { date, age, upcoming } = req.query;
 
   if (date) {
     if (typeof date !== "string" || !date.includes("-"))
@@ -26,6 +26,13 @@ export function checkMovieFilterQueries(req, res, next) {
 
   if (age) {
     if (isNaN(Number(age))) return res.status(400).send(ageErrorMessage);
+  }
+
+  if (upcoming) {
+    if (upcoming !== "true" && upcoming !== "false")
+      return res
+        .status(400)
+        .send("Incorrect upcoming format! Should be true or false!");
   }
 
   next();

@@ -15,6 +15,13 @@ async function getMovies(filters) {
     } else if (key === "age") {
       values.push(filters[key]);
       checkConditions.push("movies.agelimit = ?");
+    } else if (key === "upcoming") {
+      values.push(new Date().toLocaleDateString("se-SE"));
+      const upQuery =
+        filters.upcoming === "true"
+          ? "? < movies.releasedate"
+          : "? >= movies.releasedate";
+      checkConditions.push(upQuery);
     }
   }
 

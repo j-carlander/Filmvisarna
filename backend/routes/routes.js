@@ -12,6 +12,7 @@ import { findBooking } from "../controllers/findBooking.js";
 import { checkMovieFilterQueries } from "../middleware/checkMoviesFilter.js";
 import { checkToken } from "../middleware/checkToken.js";
 import { deleteBooking } from "../controllers/deleteBooking.js";
+import { theatreLayout } from "../controllers/theatrelayout.js";
 
 import { loginhandler } from "../controllers/loginUser.js";
 import { registerHandler } from "../controllers/registerUser.js";
@@ -20,6 +21,7 @@ import { getUserInfo } from "../controllers/getUser.js";
 import { checkSeatExists } from "../middleware/checkSeatExists.js";
 import { searchMovieController } from "../controllers/searchMovieController.js";
 import { checkSearchQuery } from "../middleware/checkSearchQuery.js";
+import { getTicketTypes } from "../controllers/getTicketTypes.js";
 
 const router = express.Router();
 
@@ -44,6 +46,12 @@ router.get(
   checkMovieDetails,
   getMovieDetailsController
 );
+
+// Route to get all tickettypes
+router.get("/tickettypes", getTicketTypes);
+
+// Route to get theatre layout
+router.get("/theatrerows/:theatreid", theatreLayout);
 
 //Login route
 router.post("/login", loginhandler);
