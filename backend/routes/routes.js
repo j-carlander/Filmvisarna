@@ -18,6 +18,7 @@ import { registerHandler } from "../controllers/registerUser.js";
 import { checkSeatsTaken } from "../middleware/checkTakenSeats.js";
 import { getUserInfo } from "../controllers/getUser.js";
 import { checkSeatExists } from "../middleware/checkSeatExists.js";
+import { getTicketTypes } from "../controllers/getTicketTypes.js";
 
 const router = express.Router();
 
@@ -67,5 +68,8 @@ router.delete("/booking", deleteBooking);
 
 // Route to get current logged in users bookings
 router.get("/currentUser/bookings", getBookings);
+
+// ROute to get all tickettypes
+router.get("/tickettypes", getTicketTypes)
 
 export default router;
