@@ -1,4 +1,5 @@
 import { searchMovieService } from "../service/searchMovieService.js";
+import { formatSearchResult } from "../utils/formatSearchResult.js";
 
 export async function searchMovieController(req, res) {
   const { q } = req.query;
@@ -10,9 +11,11 @@ export async function searchMovieController(req, res) {
       .status(204)
       .json({ message: `Sorry, we have nothing that match your query` });
 
+  const formatetResult = formatSearchResult(result);
+
   const jsonResponse = {
     query: q,
-    result,
+    result: formatetResult,
   };
 
   res.status(200).json(jsonResponse);
