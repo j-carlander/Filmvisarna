@@ -5,8 +5,15 @@ export async function searchMovieController(req, res) {
 
   const result = await searchMovieService(q);
 
-  if (!result)
-    return res.status(204).json({ message: `Sorry, we don't have that movie` });
+  if (result.length === 0)
+    return res
+      .status(204)
+      .json({ message: `Sorry, we have nothing that match your query` });
 
-  res.status(200).json(result);
+  const jsonResponse = {
+    query: q,
+    result,
+  };
+
+  res.status(200).json(jsonResponse);
 }
