@@ -12,6 +12,7 @@ import { findBooking } from "../controllers/findBooking.js";
 import { checkMovieFilterQueries } from "../middleware/checkMoviesFilter.js";
 import { checkToken } from "../middleware/checkToken.js";
 import { deleteBooking } from "../controllers/deleteBooking.js";
+import { theatreLayout } from "../controllers/theatrelayout.js";
 
 import { loginhandler } from "../controllers/loginUser.js";
 import { registerHandler } from "../controllers/registerUser.js";
@@ -61,6 +62,9 @@ router.post(
   checkBookingDetails,
   addBooking
 );
+
+// Route to get theatre layout
+router.get("/theatrerows/:theatreid", theatreLayout);
 
 // Route to delete a booking
 router.delete("/booking", deleteBooking);
