@@ -5,44 +5,81 @@ import { checkScreeningId } from "../middleware/checkScreeningId.js";
 import { checkMovieDetails } from "../middleware/checkMovieDetails.js";
 import { getMovies } from "../controllers/movieController.js";
 import { checkBookingDetails } from "../middleware/checkBooking.js";
-import { addBooking } from "../controllers/book.js";
+import { addBooking, getBookings } from "../controllers/book.js";
 import { getMovieDetailsController } from "../controllers/moviedetailsController.js";
 import { validateBookingSearch } from "../middleware/searchbooking.js";
 import { findBooking } from "../controllers/findBooking.js";
 import { checkMovieFilterQueries } from "../middleware/checkMoviesFilter.js";
-// import { runQuery } from "../db.js";
+import { checkToken } from "../middleware/checkToken.js";
+import { deleteBooking } from "../controllers/deleteBooking.js";
+import { theatreLayout } from "../controllers/theatrelayout.js";
+
 import { loginhandler } from "../controllers/loginUser.js";
 import { registerHandler } from "../controllers/registerUser.js";
 import { checkSeatsTaken } from "../middleware/checkTakenSeats.js";
+import { getUserInfo } from "../controllers/getUser.js";
+import { checkSeatExists } from "../middleware/checkSeatExists.js";
+import { searchMovieController } from "../controllers/searchMovieController.js";
+import { checkSearchQuery } from "../middleware/checkSearchQuery.js";
+import { getTicketTypes } from "../controllers/getTicketTypes.js";
 import { validateData } from "../middleware/checkSentData.js";
+
 const router = express.Router();
 
+// Route to check which seats are taken on a specific screening
 router.get("/takenseats/:screeningid", checkScreeningId, getTakenseats);
 
+// Route to get all screening for a specific movie
 router.get("/moviescreenings/:movieid", getScreeningInfo);
 
+// Route to search for a booking by query
 router.get("/bookinginfo", validateBookingSearch, findBooking);
 
+// Route to get a list of all movies
 router.get("/movies", checkMovieFilterQueries, getMovies);
 
-router.post(
-  "/booking/:screeningid",
-  checkScreeningId,
-  checkSeatsTaken,
-  checkBookingDetails,
-  addBooking
-);
+// Route for searching for a movie
+router.get("/movies/search", checkSearchQuery, searchMovieController);
 
+// Route to get the details about a movie
 router.get(
   "/moviedetails/:movieid",
   checkMovieDetails,
   getMovieDetailsController
 );
 
+// Route to get all tickettypes
+router.get("/tickettypes", getTicketTypes);
+
+// Route to get theatre layout
+router.get("/theatrerows/:theatreid", theatreLayout);
+
 //Login route
-router.post("/login", loginhandler, validateData);
+router.post("/login", validateData, loginhandler);
 
 //Register route
-router.post("/regiser", registerHandler, validateData);
+router.post("/register", validateData, registerHandler);
+
+// All routes below uses the middleware checkToken
+router.use(checkToken);
+
+// Route to get info about current user
+router.get("/currentUser", getUserInfo);
+
+// Route to post a booking
+router.post(
+  "/booking/:screeningid",
+  checkScreeningId,
+  checkSeatsTaken,
+  checkSeatExists,
+  checkBookingDetails,
+  addBooking
+);
+
+// Route to delete a booking
+router.delete("/booking", deleteBooking);
+
+// Route to get current logged in users bookings
+router.get("/currentUser/bookings", getBookings);
 
 export default router;

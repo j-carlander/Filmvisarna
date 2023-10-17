@@ -1,8 +1,20 @@
 import bcrypt from "bcrypt";
-import { runQuery } from "../db";
+import { runQuery } from "../db.js";
 
 export async function registerHandler(req, res) {
-  const { fname, lastname, phone, email, password, repassword } = req.body;
+  const { fname, lname, phone, email, password, repassword } = req.body;
+
+  if (!fname || !lname) {
+    return res
+      .status(403)
+      .json({ err: "Firstname and/or Lastname is missing" });
+  }
+  if (!phone || !email) {
+    return res.status(403).json({ err: "Phone and/or email is missing" });
+  }
+  if (!password || !repassword) {
+    return res.status(403).json({ err: "Password is missing" });
+  }
 
   //Om lösen1 inte matchar med lösen2
   if (password !== repassword) {
@@ -16,12 +28,12 @@ export async function registerHandler(req, res) {
     }
 
     const insertRegisterQuery =
-      "INSERT INTO users (fname, lastname, phone, email, password) VALUES (?, ?, ?, ?, ?)";
+      "INSERT INTO users (fname, lname, phone, email, password) VALUES (?, ?, ?, ?, ?)";
 
     try {
       const result = await runQuery(insertRegisterQuery, [
         fname,
-        lastname,
+        lname,
         phone,
         email,
         hashedPassword,
