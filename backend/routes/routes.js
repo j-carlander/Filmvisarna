@@ -22,6 +22,7 @@ import { checkSeatExists } from "../middleware/checkSeatExists.js";
 import { searchMovieController } from "../controllers/searchMovieController.js";
 import { checkSearchQuery } from "../middleware/checkSearchQuery.js";
 import { getTicketTypes } from "../controllers/getTicketTypes.js";
+import { validateData } from "../middleware/checkSentData.js";
 
 const router = express.Router();
 
@@ -54,10 +55,10 @@ router.get("/tickettypes", getTicketTypes);
 router.get("/theatrerows/:theatreid", theatreLayout);
 
 //Login route
-router.post("/login", loginhandler);
+router.post("/login", validateData, loginhandler);
 
 //Register route
-router.post("/register", registerHandler);
+router.post("/register", validateData, registerHandler);
 
 // All routes below uses the middleware checkToken
 router.use(checkToken);
