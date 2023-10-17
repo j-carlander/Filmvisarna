@@ -3,7 +3,8 @@ import { runQuery } from "../db.js";
 export async function searchMovieService(q) {
   const query = `%${q}%`;
   const sql = `
-select m.title,
+select m.id, 
+m.title,
 group_concat(distinct nact.name separator ', ') as actors,
 group_concat(distinct ndir.name separator ', ') as director,
 group_concat(distinct c.category separator ', ') as categories
@@ -22,7 +23,7 @@ where m.title like ?
 or nact.name like ?
 or ndir.name like ?
 or c.category like ?
-group by m.title;
+group by m.title, m.id;
 `;
 
   const result = await runQuery(sql, [query, query, query, query]);
