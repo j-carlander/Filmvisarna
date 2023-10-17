@@ -1,9 +1,9 @@
 import moviesService from "../service/MoviesService.js";
 
 export async function getMovies(req, res) {
-  const { date, age } = req.query;
+  const { date, age, upcoming } = req.query;
 
-  const filters = { date, age };
+  const filters = { date, age, upcoming };
 
   const result = await moviesService.getMovies(filters);
 
