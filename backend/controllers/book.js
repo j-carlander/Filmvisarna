@@ -26,7 +26,7 @@ export async function addBooking(req, res) {
   const screeningTime = new Date(date);
   const currentTime = new Date();
 
-  if (screeningTime <= currentTime) {
+  if (screeningTime < currentTime) {
     return res.status(400).json({ error: "Screening is outdated" });
   }
   
