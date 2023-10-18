@@ -3,7 +3,7 @@ import { getDateQueryArray } from "./MoviesService.js";
 
 export async function getMovieDetails(movieid) {
   const sql = `SELECT 
-  id,
+  movies.id,
   title, 
   description, 
   trailerlink, 
