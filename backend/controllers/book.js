@@ -42,6 +42,13 @@ export async function addBooking(req, res) {
 
   const screening = await screeningsService(screeningid);
   const { date, movieid } = screening[0];
+  
+  const screeningTime = new Date(date);
+  const currentTime = new Date();
+
+  if (screeningTime <= currentTime) {
+    return res.status(400).json({ error: "Screening is outdated" });
+  }
 
   const movie = await getMovieDetails(movieid);
   const { title } = movie[0];
