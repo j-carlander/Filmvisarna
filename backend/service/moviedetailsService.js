@@ -1,5 +1,5 @@
 import { runQuery } from "../db.js";
-import { getDateQueryArray } from "./MoviesService.js";
+import { getDateQueryArray } from "./moviesService.js";
 
 export async function getMovieDetails(movieid) {
   const sql = `SELECT 
