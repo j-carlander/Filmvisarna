@@ -6,13 +6,17 @@ import { checkMovieDetails } from "../middleware/checkMovieDetails.js";
 import { getMovies } from "../controllers/movieController.js";
 import { checkBookingDetails } from "../middleware/checkBooking.js";
 import { addBooking, getBookings } from "../controllers/book.js";
-import { getMovieDetailsController } from "../controllers/moviedetailsController.js";
+import {
+  getMovieDetailsController,
+  getScreeningsByDate,
+} from "../controllers/moviedetailsController.js";
 import { validateBookingSearch } from "../middleware/searchbooking.js";
 import { findBooking } from "../controllers/findBooking.js";
 import { checkMovieFilterQueries } from "../middleware/checkMoviesFilter.js";
 import { checkToken } from "../middleware/checkToken.js";
 import { deleteBooking } from "../controllers/deleteBooking.js";
 import { theatreLayout } from "../controllers/theatrelayout.js";
+import { checkScreeningFilter } from "../middleware/checkScreeningsFilter.js";
 
 import { loginhandler } from "../controllers/loginUser.js";
 import { registerHandler } from "../controllers/registerUser.js";
@@ -46,6 +50,12 @@ router.get(
   "/moviedetails/:movieid",
   checkMovieDetails,
   getMovieDetailsController
+);
+
+router.get(
+  "/screenings/:movieid/:date",
+  checkScreeningFilter,
+  getScreeningsByDate
 );
 
 // Route to get all tickettypes
