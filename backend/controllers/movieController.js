@@ -1,4 +1,4 @@
-import moviesService from "../service/MoviesService.js";
+import moviesService from "../service/moviesService.js";
 
 export async function getMovies(req, res) {
   const { date, age, upcoming } = req.query;

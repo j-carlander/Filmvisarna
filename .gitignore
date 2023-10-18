@@ -12,6 +12,8 @@ dist
 dist-ssr
 *.local
 backend/config/
+public/images/
+
 
 # Editor directories and files
 .vscode/*
