@@ -3,7 +3,7 @@ export async function validateData(req, res, next) {
   const errors = {};
   const fields = req.body;
 
-  for (const field of fields) {
+  for (const field of Object.keys(fields)) {
     if (typeof req.body[field] !== "string" || req.body[field].trim() === "") {
       errors[field] = `${field} is invalid`;
     }
