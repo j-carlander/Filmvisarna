@@ -1,7 +1,7 @@
 import { runQuery } from "../db.js";
 
 export async function screeninginfoService(movieid) {
-  const currentDate = new Date().toLocaleDateString("se-SE");
+  const currentDate = new Date();
   const sql = `
   SELECT scr.id,
   scr.date AS screeningDate,
