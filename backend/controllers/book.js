@@ -11,6 +11,7 @@ import { getMovieDetails } from "../service/moviedetailsService.js";
 import { formatDateTimeSwe } from "../utils/formatDateTime.js";
 import { formatSeatInfo } from "../utils/formatSeatsInfoForEmail.js";
 import { calculateCost } from "../utils/calculateCost.js";
+import { updateSubscribers } from "../controllers/polling.js";
 
 export async function addBooking(req, res) {
   const { seats, guestEmail, guestPhone } = req.body;
@@ -81,6 +82,7 @@ export async function addBooking(req, res) {
   );
 
   res.status(201).json(bookingDetails);
+  updateSubscribers(screeningid, seats);
 }
 
 export async function getBookings(req, res) {

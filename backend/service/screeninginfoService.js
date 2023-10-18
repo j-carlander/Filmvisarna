@@ -15,10 +15,9 @@ export async function screeninginfoService(movieid) {
   WHERE scr.languageid = lang.id
   AND scr.subtitleid = sub.id
   AND scr.theatreid = the.id
-  AND scr.movieid = ?
-  AND scr.date > ?
+  AND scr.movieid = ? 
+  AND scr.date >= ? 
   ORDER BY screeningDate;`;
-
   const res = await runQuery(sql, [movieid, currentDate]);
   return res;
 }
