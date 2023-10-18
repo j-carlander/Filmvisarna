@@ -1,6 +1,9 @@
 const subscription = {};
 
 export function updateSubscribers(screeningid, seats) {
+  if (subscription[screeningid] === undefined) {
+    return;
+  }
   for (let res of subscription[screeningid]) {
     res.json(seats);
   }
