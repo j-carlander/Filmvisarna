@@ -26,7 +26,7 @@ async function getMovies(filters) {
   }
 
   const sql = `SELECT 
-  id,
+  movies.id,
   title, 
   durationinminutes, 
   agelimit, 
