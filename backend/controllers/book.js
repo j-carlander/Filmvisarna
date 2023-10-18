@@ -20,6 +20,16 @@ export async function addBooking(req, res) {
 
   const userid = res.locals.jwtPayload ? res.locals.jwtPayload.id : null;
 
+  const screening = await screeningsService(screeningid);
+  const { date, movieid } = screening[0];
+  
+  const screeningTime = new Date(date);
+  const currentTime = new Date();
+
+  if (screeningTime <= currentTime) {
+    return res.status(400).json({ error: "Screening is outdated" });
+  }
+  
   const ticketType = await tickettypeService();
   const bookResult = await bookingservice(
     bookingNumber,
@@ -39,17 +49,7 @@ export async function addBooking(req, res) {
     )
   );
 
-  await Promise.all(ticketPromises);
-
-  const screening = await screeningsService(screeningid);
-  const { date, movieid } = screening[0];
-  
-  const screeningTime = new Date(date);
-  const currentTime = new Date();
-
-  if (screeningTime <= currentTime) {
-    return res.status(400).json({ error: "Screening is outdated" });
-  }
+  await Promise.all(ticketPromises)
 
   const movie = await getMovieDetails(movieid);
   const { title } = movie[0];
