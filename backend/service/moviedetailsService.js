@@ -2,9 +2,9 @@ import { runQuery } from "../db.js";
 
 export async function getMovieDetails(movieid) {
   const sql = `SELECT 
+  id,
   title, 
   description, 
-  CONVERT(image USING utf8mb4) AS image,
   trailerlink, 
   durationinminutes, 
   agelimit, 

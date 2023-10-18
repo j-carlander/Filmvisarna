@@ -26,8 +26,8 @@ async function getMovies(filters) {
   }
 
   const sql = `SELECT 
+  id,
   title, 
-  CONVERT(image USING utf8mb4) AS image,
   durationinminutes, 
   agelimit, 
   GROUP_CONCAT(category) AS categories 
