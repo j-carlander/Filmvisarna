@@ -20,7 +20,7 @@ export function subscribe(req, res) {
 
   const timer = setTimeout(() => {
     res.status(204).send();
-  }, 2000);
+  }, 20000);
 
   res.on("close", () => {
     subscription[screeningid].splice(subscription[screeningid].indexOf(res), 1);
