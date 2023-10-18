@@ -46,14 +46,14 @@ async function getMovies(filters) {
   return result;
 }
 
-function getDateQueryArray(date) {
+export function getDateQueryArray(date) {
   const startDate = new Date(date);
   const nextDayTimeIncrease = startDate.getTime() + 24 * 60 * 60 * 1000;
   const nextDayDate = new Date(date);
   nextDayDate.setTime(nextDayTimeIncrease);
 
-  const startDateString = startDate.toLocaleDateString();
-  const nextDayString = nextDayDate.toLocaleDateString();
+  const startDateString = startDate.toLocaleDateString("se-SE");
+  const nextDayString = nextDayDate.toLocaleDateString("se-SE");
 
   return [startDateString, nextDayString];
 }
