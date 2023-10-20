@@ -16,3 +16,12 @@ Medan man bokar ska man kunna välja antal besökare och se totalpriset. Man ska
 Observera! Pensionärer och barn (under 12 år) har lägre biljettpris. Normalt biljettpris är 140 kr, för pensionärer 120 kr och för barn 80 kr.
 
 Salongernas stolar är numrerade från höger till vänster, framifrån och bakåt. (Stolen längst fram till höger har nummer 1. Om salongen har 100 stolar har den längst bak till vänster nummer 100.)
+
+## React + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
