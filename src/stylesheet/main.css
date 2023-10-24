@@ -8,8 +8,8 @@
   top: 2em;
   right: 0;
   padding: 0.3em 0.8em;
-  background-color: #5a8f76;
-  color: #ededed;
+  background-color: #5A8F76;
+  color: #EDEDED;
 }
 .movie-card .card-img {
   width: 100%;
@@ -53,19 +53,19 @@
 .theatre-container {
   border: 2px solid #000;
   border-radius: 0.25em;
-  background-color: #1e2d2f;
+  background-color: #1E2D2F;
   max-width: 450px;
 }
 .theatre-container .theatre-screen {
   width: 80%;
-  fill: #ededed;
-  filter: drop-shadow(0px 0px 10px #ededed);
+  fill: #EDEDED;
+  filter: drop-shadow(0px 0px 10px #EDEDED);
   margin: 0 auto;
 }
 .theatre-container .theatre-wrapper {
   overflow-x: scroll;
   scrollbar-width: thin;
-  scrollbar-color: #1e2d2f;
+  scrollbar-color: #1E2D2F;
   padding: 0 1em;
 }
 .theatre-container .theatre-wrapper .theatre-seats {
@@ -83,11 +83,11 @@
 }
 
 .theatre-wrapper::-webkit-scrollbar-track {
-  background: #1e2d2f;
+  background: #1E2D2F;
 }
 
 .theatre-wrapper::-webkit-scrollbar-thumb {
-  background: #041f1e;
+  background: #041F1E;
   border-radius: 0.5em;
 }
 
@@ -95,7 +95,7 @@
   width: 20px;
   height: 20px;
   flex: 0 0 20px;
-  border: 3.5px solid #f7dba7;
+  border: 3.5px solid #F7DBA7;
   border-top-right-radius: 20em;
   border-top-left-radius: 20em;
   border-bottom-right-radius: 10em;
@@ -112,6 +112,44 @@
        column-gap: 1em;
 }
 
+.screening-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2em;
+}
+
+.details-left {
+  text-align: left;
+}
+
+.details-flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.screening-time {
+  margin-right: 0.5em;
+}
+
+.screening-lang {
+  font-size: 0.75rem;
+}
+
+.screening-book-btn {
+  background-color: #5A8F76;
+  color: #EDEDED;
+  padding: 1em 2.7em;
+  border-radius: 1000px;
+  border: transparent 1px;
+  font-weight: 700;
+}
+
+.screening-seats {
+  font-size: 0.75rem;
+}
+
 *,
 *::before,
 *::after {
@@ -126,12 +164,12 @@
 }
 
 body {
-  background-color: #041f1e;
-  color: #f7dba7;
+  background-color: #041F1E;
+  color: #F7DBA7;
   font-family: "Montserrat", sans-serif;
 }
 
 h1 {
-  color: #ededed;
+  color: #EDEDED;
   padding: 1em 0 2em 0;
 }/*# sourceMappingURL=main.css.map */
