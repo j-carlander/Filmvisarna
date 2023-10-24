@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
-import './index.css'
+import './stylesheet/main.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import { MoviesPage } from './pages/MoviesPage.jsx';
+import { MoviesPage } from './pages/MoviesPage/MoviesPage.jsx';
 
 export const pages = [
   { path: '/', label: 'Start', element: <MoviesPage /> }
