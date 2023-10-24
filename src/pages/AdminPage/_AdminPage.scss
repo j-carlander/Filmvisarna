@@ -1,0 +1,21 @@
+@use "../../Sass/abstract/variables" as *;
+
+.admin-page-header {
+  margin-bottom: 1em;
+}
+
+.admin-page-title {
+  padding: 1em;
+}
+
+.admin-page-search-btn,
+.admin-page-search-input {
+  font-size: 1.2rem;
+  padding: 0.3em;
+  margin-top: 0.3em;
+}
+
+.admin-page-search-btn {
+  background-color: $mediumAccent;
+  color: $whiteAccent;
+}
