@@ -8,8 +8,8 @@
   top: 2em;
   right: 0;
   padding: 0.3em 0.8em;
-  background-color: #5A8F76;
-  color: #EDEDED;
+  background-color: #5a8f76;
+  color: #ededed;
 }
 .movie-card .card-img {
   width: 100%;
@@ -50,6 +50,68 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
+.theatre-container {
+  border: 2px solid #000;
+  border-radius: 0.25em;
+  background-color: #1e2d2f;
+  max-width: 450px;
+}
+.theatre-container .theatre-screen {
+  width: 80%;
+  fill: #ededed;
+  filter: drop-shadow(0px 0px 10px #ededed);
+  margin: 0 auto;
+}
+.theatre-container .theatre-wrapper {
+  overflow-x: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: #1e2d2f;
+  padding: 0 1em;
+}
+.theatre-container .theatre-wrapper .theatre-seats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1em;
+  padding: 2em 0;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.theatre-wrapper::-webkit-scrollbar {
+  height: 10px;
+}
+
+.theatre-wrapper::-webkit-scrollbar-track {
+  background: #1e2d2f;
+}
+
+.theatre-wrapper::-webkit-scrollbar-thumb {
+  background: #041f1e;
+  border-radius: 0.5em;
+}
+
+.seat {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  border: 3.5px solid #f7dba7;
+  border-top-right-radius: 20em;
+  border-top-left-radius: 20em;
+  border-bottom-right-radius: 10em;
+  border-bottom-left-radius: 10em;
+}
+
+.seat-row {
+  flex: 0 0;
+  display: flex;
+  width: -moz-fit-content;
+  width: fit-content;
+  justify-content: center;
+  -moz-column-gap: 1em;
+       column-gap: 1em;
+}
+
 *,
 *::before,
 *::after {
@@ -64,12 +126,12 @@
 }
 
 body {
-  background-color: #041F1E;
-  color: #F7DBA7;
+  background-color: #041f1e;
+  color: #f7dba7;
   font-family: "Montserrat", sans-serif;
 }
 
 h1 {
-  color: #EDEDED;
+  color: #ededed;
   padding: 1em 0 2em 0;
 }/*# sourceMappingURL=main.css.map */
