@@ -50,6 +50,44 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
+.screening-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2em;
+}
+
+.details-left {
+  text-align: left;
+}
+
+.details-flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.screening-time {
+  margin-right: 0.5em;
+}
+
+.screening-lang {
+  font-size: 0.75rem;
+}
+
+.screening-book-btn {
+  background-color: #5A8F76;
+  color: #EDEDED;
+  padding: 1em 2.7em;
+  border-radius: 1000px;
+  border: transparent 1px;
+  font-weight: 700;
+}
+
+.screening-seats {
+  font-size: 0.75rem;
+}
+
 *,
 *::before,
 *::after {
