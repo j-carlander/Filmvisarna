@@ -1,0 +1,36 @@
+@use "../../Sass/abstract/variables" as *;
+
+.movie-card {
+    position: relative;
+    max-width: 250px;
+
+    .card-agelimit {
+       position: absolute;
+       top: 2em;
+       right: 0;
+       padding: .3em .8em;
+       background-color: $mediumAccent;
+       color: $whiteAccent;
+    }
+    .card-img {
+        width: 100%;
+        border-radius: 1.5px;
+    }
+    .card-title {
+        text-align: left;
+        padding: .5em 0;
+        font-size: clamp(.9rem, 10%, 1.25rem);
+    }
+    .card-info {
+        display: flex;
+        justify-content: space-between;
+        font-size: clamp(.8rem, 10%, 1.1rem);
+
+        :first-child {
+            text-align: left;
+        }
+        :last-child {
+            text-align: right;
+        }
+    }
+}
