@@ -154,6 +154,53 @@
   font-size: 0.75rem;
 }
 
+.main-nav-bar {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+.main-nav-bar li {
+  list-style: none;
+}
+.main-nav-bar li a {
+  text-decoration: none;
+  color: #F7DBA7;
+  font-weight: 700;
+}
+.main-nav-bar button {
+  background-color: transparent;
+  border: none;
+  width: 36px;
+}
+.main-nav-bar .burger-menu-backdrop {
+  position: absolute;
+  inset: 0;
+}
+.main-nav-bar .burger-menu-container {
+  position: relative;
+}
+.main-nav-bar .burger-menu-container .burger-menu-modal {
+  position: absolute;
+  top: -0.2em;
+  left: -0.2em;
+  padding: 3em;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #1E2D2F;
+  border: none;
+}
+.main-nav-bar .burger-menu-container .burger-menu-modal .burger-menu-close {
+  position: absolute;
+  top: 0.2em;
+  left: 0.2em;
+}
+.main-nav-bar .burger-menu-container .burger-menu-modal .burger-menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7em;
+}
+
 .cancel-booking-page .cancel-form {
   display: flex;
   flex-direction: column;
