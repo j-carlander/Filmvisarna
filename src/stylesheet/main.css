@@ -154,6 +154,51 @@
   font-size: 0.75rem;
 }
 
+.cancel-booking-page .cancel-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 0.75em;
+  background-color: #1E2D2F;
+  padding: 2em 0;
+  border-radius: 0.25em;
+  max-width: 400px;
+  margin: 0 auto;
+}
+.cancel-booking-page .cancel-form input,
+.cancel-booking-page .cancel-form button {
+  font-family: "Montserrat", sans-serif;
+  border-radius: 0.25em;
+  padding: 0.75em 1.25em;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.cancel-booking-page .cancel-form input {
+  width: 95%;
+  max-width: 300px;
+  background-color: #041F1E;
+  color: #F7DBA7;
+  outline: none;
+}
+.cancel-booking-page .cancel-form button {
+  cursor: pointer;
+  width: 100%;
+  max-width: 10em;
+  text-align: center;
+  background-color: #837771;
+  color: #EDEDED;
+  transition: background-color 0.1s, color 0.1s;
+}
+.cancel-booking-page .cancel-form button:hover {
+  background-color: #041F1E;
+  color: #F7DBA7;
+}
+.cancel-booking-page .cancel-form a {
+  color: #F7DBA7;
+  font-style: italic;
+}
+
 .admin-page-header {
   margin-bottom: 1em;
 }

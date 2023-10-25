@@ -5,6 +5,7 @@ import "./stylesheet/main.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { MoviesPage } from "./pages/MoviesPage/MoviesPage.jsx";
 import { AdminPage } from "./pages/AdminPage/AdminPage.jsx";
+import { CancelBookingPage } from "./pages/CancelBookingPage/CancelBookingPage.jsx";
 
 export const pages = [{ path: "/", label: "Start", element: <MoviesPage /> }];
 
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
     path: "/admin",
     element: <AdminPage />,
   },
+  { path: "/cancel", element: <CancelBookingPage /> },
 ]);
 
 ReactDOM.createRoot(document.querySelector("#root")).render(
