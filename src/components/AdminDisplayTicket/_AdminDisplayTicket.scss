@@ -1,0 +1,14 @@
+@use "../../Sass/abstract/variables" as *;
+
+.admin-display-ticket {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 0.3em;
+
+  width: 20em;
+  height: 5em;
+  padding-left: 0.3em;
+  border: $lightAccent solid 1px;
+}
