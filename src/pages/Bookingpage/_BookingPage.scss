@@ -1,0 +1,9 @@
+@use "../../Sass/abstract/variables" as *;
+
+.Bookingpage-container{
+  background-color: rgb(255, 255, 2);
+
+  .ticket-wrapper{
+    background-color: red;
+  }
+}
