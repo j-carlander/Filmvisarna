@@ -1,0 +1,33 @@
+@use "../../Sass/abstract/variables" as *;
+
+.main-nav-bar {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+
+  ul {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+  }
+  li {
+    list-style: none;
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      font-weight: 700;
+    }
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+    width: 36px;
+  }
+
+  .menu-backdrop {
+    position: absolute;
+    inset: 0;
+  }
+}

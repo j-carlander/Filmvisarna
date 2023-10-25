@@ -154,6 +154,34 @@
   font-size: 0.75rem;
 }
 
+.main-nav-bar {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+.main-nav-bar ul {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+.main-nav-bar li {
+  list-style: none;
+}
+.main-nav-bar li a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 700;
+}
+.main-nav-bar button {
+  background-color: transparent;
+  border: none;
+  width: 36px;
+}
+.main-nav-bar .menu-backdrop {
+  position: absolute;
+  inset: 0;
+}
+
 .admin-page-header {
   margin-bottom: 1em;
 }

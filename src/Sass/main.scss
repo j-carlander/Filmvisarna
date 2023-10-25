@@ -5,6 +5,7 @@
 @use "../components/Seats/Seat/Seat" as *;
 @use "../components/Seats/Seatrow/SeatRow" as *;
 @use "../components/ScreeningDetails/ScreeningDetails" as *;
+@use "../components/NavBar/NavBar" as *;
 
 @use "../pages/AdminPage/AdminPage" as *;
 @use "../components/AdminDisplayTicket/AdminDisplayTicket" as *;
