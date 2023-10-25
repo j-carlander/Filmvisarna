@@ -1,45 +1,18 @@
 import { useState, useEffect } from "react";
 import Seat from "./Seat/Seat";
 import SeatRow from "./Seatrow/SeatRow";
-import { fetchHelper } from "../../utils/fetchHelper"
+import { fetchHelper } from "../../utils/fetchHelper";
 
-const mockSeats = [
-  {
-    rownumber: 1,
-    numberofseats: 6,
-  },
-  {
-    rownumber: 2,
-    numberofseats: 8,
-  },
-  {
-    rownumber: 3,
-    numberofseats: 9,
-  },
-  {
-    rownumber: 4,
-    numberofseats: 10,
-  },
-  {
-    rownumber: 5,
-    numberofseats: 10,
-  },
-  {
-    rownumber: 6,
-    numberofseats: 12,
-  },
-];
-
-export default function Seats({ screeningId }) {
-  const [seats, setSeats] = useState(mockSeats);
+export default function Seats({ theatreId, screeningId }) {
+  const [seats, setSeats] = useState([]);
   const [takenSeats, setTakenSeats] = useState([]);
 
   useEffect(() => {
     async function fetchTakenSeats() {
-      const response = await fetchHelper(`/takenseats/${screeningId}`, 'get');
+      const response = await fetchHelper(`/takenseats/${screeningId}`, "get");
       const data = await response.json();
       setTakenSeats(data);
-      console.log(data)
+      console.log(data);
     }
 
     fetchTakenSeats();
@@ -61,6 +34,16 @@ export default function Seats({ screeningId }) {
 
     return <SeatRow key={`row-${index}`} seats={seats} />;
   }
+
+  useEffect(() => {
+    async function getThetreLayout() {
+      const response = await fetchHelper(`/theatrerows/${theatreId}`, "get");
+      const theatreData = await response.json();
+      setSeats(theatreData);
+    }
+
+    getThetreLayout();
+  }, [theatreId]);
 
   return (
     <div className="theatre-container">
