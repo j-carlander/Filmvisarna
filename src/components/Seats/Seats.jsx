@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Seat from "./Seat/Seat";
 import SeatRow from "./Seatrow/SeatRow";
+import { fetchHelper } from "../../utils/fetchHelper"
 
 const mockSeats = [
   {
@@ -29,24 +30,20 @@ const mockSeats = [
   },
 ];
 
-const mockTakenSeats = [
-  {
-    seatrow: 4,
-    seatnumber: 1,
-  },
-  {
-    seatrow: 4,
-    seatnumber: 2,
-  },
-  {
-    seatrow: 4,
-    seatnumber: 3,
-  },
-];
-
-export default function Seats() {
+export default function Seats({ screeningId }) {
   const [seats, setSeats] = useState(mockSeats);
-  const [takenSeats, setTakenSeats] = useState(mockTakenSeats);
+  const [takenSeats, setTakenSeats] = useState([]);
+
+  useEffect(() => {
+    async function fetchTakenSeats() {
+      const response = await fetchHelper(`/takenseats/${screeningId}`, 'get');
+      const data = await response.json();
+      setTakenSeats(data);
+      console.log(data)
+    }
+
+    fetchTakenSeats();
+  }, [screeningId]);
 
   function getSeatRow(rowInfo, index) {
     const seats = [];
