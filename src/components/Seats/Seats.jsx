@@ -1,36 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Seat from "./Seat/Seat";
 import SeatRow from "./Seatrow/SeatRow";
+import { fetchHelper } from "../../utils/fetchHelper";
 
-const mockSeats = [
-  {
-    rownumber: 1,
-    numberofseats: 6,
-  },
-  {
-    rownumber: 2,
-    numberofseats: 8,
-  },
-  {
-    rownumber: 3,
-    numberofseats: 9,
-  },
-  {
-    rownumber: 4,
-    numberofseats: 10,
-  },
-  {
-    rownumber: 5,
-    numberofseats: 10,
-  },
-  {
-    rownumber: 6,
-    numberofseats: 12,
-  },
-];
-
-export default function Seats() {
-  const [seats, setSeats] = useState(mockSeats);
+export default function Seats({ theatreId }) {
+  const [seats, setSeats] = useState([]);
 
   function getSeatRow(rowInfo, index) {
     const seats = [];
@@ -41,6 +15,16 @@ export default function Seats() {
 
     return <SeatRow key={`row-${index}`} seats={seats} />;
   }
+
+  useEffect(() => {
+    async function getThetreLayout() {
+      const response = await fetchHelper(`/theatrerows/${theatreId}`, "get");
+      const theatreData = await response.json();
+      setSeats(theatreData);
+    }
+
+    getThetreLayout();
+  }, [theatreId]);
 
   return (
     <div className="theatre-container">
