@@ -102,6 +102,10 @@
   border-bottom-left-radius: 10em;
 }
 
+.taken-seat {
+  border-color: #041F1E;
+}
+
 .seat-row {
   flex: 0 0;
   display: flex;

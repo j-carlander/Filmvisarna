@@ -29,15 +29,38 @@ const mockSeats = [
   },
 ];
 
+const mockTakenSeats = [
+  {
+    seatrow: 4,
+    seatnumber: 1,
+  },
+  {
+    seatrow: 4,
+    seatnumber: 2,
+  },
+  {
+    seatrow: 4,
+    seatnumber: 3,
+  },
+];
+
 export default function Seats() {
   const [seats, setSeats] = useState(mockSeats);
+  const [takenSeats, setTakenSeats] = useState(mockTakenSeats);
 
   function getSeatRow(rowInfo, index) {
     const seats = [];
 
     for (let i = 0; i < rowInfo.numberofseats; i++) {
-      seats.push(<Seat key={`row-${index}-seat-${i + 1}`} />);
+      seats.push(
+        <Seat
+          key={`row-${index}-seat-${i + 1}`}
+          {...{ takenSeats, rowNumber: rowInfo.rownumber, seatNumber: i + 1 }}
+        />
+      );
     }
+
+    seats.reverse();
 
     return <SeatRow key={`row-${index}`} seats={seats} />;
   }
