@@ -17,5 +17,3 @@ export function MovieCard ({movie}) {
         </article>
     )
 }
-
-

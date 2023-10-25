@@ -3,15 +3,34 @@ import Seat from "./Seat/Seat";
 import SeatRow from "./Seatrow/SeatRow";
 import { fetchHelper } from "../../utils/fetchHelper";
 
-export default function Seats({ theatreId }) {
+export default function Seats({ theatreId, screeningId }) {
   const [seats, setSeats] = useState([]);
+  const [takenSeats, setTakenSeats] = useState([]);
+
+  useEffect(() => {
+    async function fetchTakenSeats() {
+      const response = await fetchHelper(`/takenseats/${screeningId}`, "get");
+      const data = await response.json();
+      setTakenSeats(data);
+      console.log(data);
+    }
+
+    fetchTakenSeats();
+  }, [screeningId]);
 
   function getSeatRow(rowInfo, index) {
     const seats = [];
 
     for (let i = 0; i < rowInfo.numberofseats; i++) {
-      seats.push(<Seat key={`row-${index}-seat-${i + 1}`} />);
+      seats.push(
+        <Seat
+          key={`row-${index}-seat-${i + 1}`}
+          {...{ takenSeats, rowNumber: rowInfo.rownumber, seatNumber: i + 1 }}
+        />
+      );
     }
+
+    seats.reverse();
 
     return <SeatRow key={`row-${index}`} seats={seats} />;
   }
