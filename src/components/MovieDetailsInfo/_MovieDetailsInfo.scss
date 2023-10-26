@@ -1,12 +1,13 @@
 @use "../../Sass/abstract/variables" as *;
 
 .moviedetail-card {
+  position: relative;
   .moviedetail-img {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1;
+    z-index: -1;
     -webkit-mask-image: -webkit-gradient(
       linear,
       left top,
@@ -17,9 +18,8 @@
     mask-image: linear-gradient(
       to bottom,
       $mainBackground,
-      rgba(0, 0, 0, 0.794),
-      rgba(0, 0, 0, 0.063),
-      rgba(0, 0, 0, 0)
+      rgba(0, 0, 0, 1) 10%,
+      rgba(0, 0, 0, 0) 80%
     );
   }
 
@@ -28,13 +28,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 10em;
+    padding-top: 4em;
 
     .trailer {
+      margin-top: 3em;
       width: 90%;
       max-width: 500px;
-      min-height: 200px;
-      max-height: 450px;
+      aspect-ratio: 560/315;
       background-color: rgba(128, 128, 128, 0.581);
       z-index: 999;
 
@@ -97,7 +97,6 @@
 @media screen and (min-width: 978px) {
   .moviedetail-card {
     .moviedetail-img {
-      height: 90%;
       object-fit: cover;
       object-position: top;
     }
@@ -110,11 +109,13 @@
       flex-direction: row;
 
       .trailer {
+        margin-top: 5em;
         width: 50%;
         height: 300px;
       }
 
       .moviedetail-infobox {
+        margin-top: 8em;
         padding-bottom: 5em;
       }
     }

@@ -1,4 +1,28 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+body {
+  background-color: #041F1E;
+  color: #F7DBA7;
+  font-family: "Montserrat", sans-serif;
+}
+
+h1 {
+  color: #EDEDED;
+  padding: 1em 0 2em 0;
+}
+
 .movie-card {
   position: relative;
   max-width: 250px;
@@ -50,27 +74,30 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
+.moviedetail-card {
+  position: relative;
+}
 .moviedetail-card .moviedetail-img {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1;
-  -webkit-mask-image: linear-gradient(to bottom, #041F1E, rgba(0, 0, 0, 0.794), rgba(0, 0, 0, 0.063), rgba(0, 0, 0, 0));
-          mask-image: linear-gradient(to bottom, #041F1E, rgba(0, 0, 0, 0.794), rgba(0, 0, 0, 0.063), rgba(0, 0, 0, 0));
+  z-index: -1;
+  -webkit-mask-image: linear-gradient(to bottom, #041F1E, rgb(0, 0, 0) 10%, rgba(0, 0, 0, 0) 80%);
+          mask-image: linear-gradient(to bottom, #041F1E, rgb(0, 0, 0) 10%, rgba(0, 0, 0, 0) 80%);
 }
 .moviedetail-card .moviedetail-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 10em;
+  padding-top: 4em;
 }
 .moviedetail-card .moviedetail-wrapper .trailer {
+  margin-top: 3em;
   width: 90%;
   max-width: 500px;
-  min-height: 200px;
-  max-height: 450px;
+  aspect-ratio: 560/315;
   background-color: rgba(128, 128, 128, 0.581);
   z-index: 999;
   position: relative;
@@ -123,7 +150,6 @@
 
 @media screen and (min-width: 978px) {
   .moviedetail-card .moviedetail-img {
-    height: 90%;
     -o-object-fit: cover;
        object-fit: cover;
     -o-object-position: top;
@@ -137,10 +163,12 @@
     flex-direction: row;
   }
   .moviedetail-card .moviedetail-wrapper .trailer {
+    margin-top: 5em;
     width: 50%;
     height: 300px;
   }
   .moviedetail-card .moviedetail-wrapper .moviedetail-infobox {
+    margin-top: 8em;
     padding-bottom: 5em;
   }
 }
@@ -408,28 +436,4 @@
   flex-direction: column;
   align-items: center;
   gap: 0.5em;
-}
-
-*,
-*::before,
-*::after {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-#root {
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-body {
-  background-color: #041F1E;
-  color: #F7DBA7;
-  font-family: "Montserrat", sans-serif;
-}
-
-h1 {
-  color: #EDEDED;
-  padding: 1em 0 2em 0;
 }/*# sourceMappingURL=main.css.map */
