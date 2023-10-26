@@ -6,8 +6,12 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { MoviesPage } from "./pages/MoviesPage/MoviesPage.jsx";
 import { AdminPage } from "./pages/AdminPage/AdminPage.jsx";
 import { CancelBookingPage } from "./pages/CancelBookingPage/CancelBookingPage.jsx";
+import { MovieDetailPage } from "./pages/MovieDetailPage/MovieDetailPage.jsx";
 
-export const pages = [{ path: "/", label: "Start", element: <MoviesPage /> }];
+export const pages = [
+  { path: "/", label: "Start", element: <MoviesPage /> },
+  { path: "/movies/:movieid", element: <MovieDetailPage /> },
+];
 
 const router = createBrowserRouter([
   {
