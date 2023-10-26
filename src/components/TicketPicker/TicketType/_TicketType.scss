@@ -1,0 +1,16 @@
+.ticket-list-item {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  .button-container {
+    display: flex;
+    column-gap: 1em;
+    button {
+      width: 2em;
+      height: 2em;
+    }
+    span {
+      width: 0.75em;
+    }
+  }
+}
