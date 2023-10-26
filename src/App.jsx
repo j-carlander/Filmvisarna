@@ -19,7 +19,7 @@ function App() {
 
   return (
     <>
-      <header>
+      <header style={{ display: "flex", justifyContent: "space-between" }}>
         <NavBar matchDesktop={matchDesktop} />
         <SearchBar matchDesktop={matchDesktop} />
       </header>
