@@ -53,7 +53,14 @@ export default function Seat({
         selected ? " selected-seat" : ""
       }`
     );
-  }, [takenSeats, rowNumber, seatNumber, setClassnames, selectedSeats]);
+  }, [
+    takenSeats,
+    rowNumber,
+    seatNumber,
+    setClassnames,
+    selectedSeats,
+    totalTickets,
+  ]);
 
   return <div className={classNames} onClick={onClick}></div>;
 }
