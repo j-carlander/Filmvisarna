@@ -150,6 +150,80 @@
   font-size: 0.75rem;
 }
 
+.Bookingpage-container {
+  width: 100%;
+  margin: 0 auto;
+}
+.Bookingpage-container .btn-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 1em 0;
+  text-align: center;
+  align-items: center;
+}
+.Bookingpage-container .btn-container button {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.ticket-wrapper {
+  align-items: center;
+  text-align: center;
+}
+
+.seat-section {
+  margin-top: 3rem;
+}
+
+.seat-section h2 {
+  font-size: 1.4em;
+}
+
+.seat-section button {
+  background-color: #5A8F76;
+  color: #fff;
+  font-size: 1em;
+  margin-top: 1.2rem;
+  padding: 1em;
+  width: 15rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.ticket-wrapper h1 {
+  font-size: 1.4em;
+}
+
+.header-content h3 {
+  font-size: 1em;
+}
+.header-content h3 p {
+  font-weight: 400;
+}
+
+.header-content {
+  display: flex;
+  width: 100%;
+  padding: 1em 0;
+  justify-content: flex-start;
+}
+
+.btn-container {
+  align-items: center;
+  text-align: center;
+}
+
+.sum {
+  margin: 2em 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 2;
+}
+
 *,
 *::before,
 *::after {
