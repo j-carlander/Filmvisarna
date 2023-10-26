@@ -1,6 +1,7 @@
 @use "./abstract/variables" as *;
 @use "../components/MovieCard/MovieCard" as *;
 @use "../pages/MoviesPage/MoviePage" as *;
+@use "../components/MovieDetailsInfo/MovieDetailsInfo" as *;
 @use "../components/Seats/Seats" as *;
 @use "../components/Seats/Seat/Seat" as *;
 @use "../components/Seats/Seatrow/SeatRow" as *;

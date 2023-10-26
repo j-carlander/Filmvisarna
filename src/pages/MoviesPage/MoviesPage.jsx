@@ -2,8 +2,10 @@ import { MovieCard } from "../../components/MovieCard/MovieCard"
 import { useEffect, useState } from "react"
 import { fetchHelper } from "../../utils/fetchHelper"
 
+
 export function MoviesPage () {
     const [ movies, setMovies ] = useState ([]);
+
 
     useEffect (
         () => {
