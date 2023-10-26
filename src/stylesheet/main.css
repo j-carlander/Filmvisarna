@@ -201,6 +201,26 @@
   gap: 0.7em;
 }
 
+.search-form {
+  display: flex;
+  align-items: center;
+}
+.search-form .search-btn {
+  background-color: transparent;
+  border: transparent;
+}
+.search-form .search-input {
+  font-size: 1.2rem;
+  padding: 0.3em;
+  margin: 0.3em;
+  border-radius: 0.3em;
+}
+.search-form .search-mobile-input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid;
+}
+
 .cancel-booking-page .cancel-form {
   display: flex;
   flex-direction: column;
