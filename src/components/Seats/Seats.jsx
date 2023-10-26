@@ -3,9 +3,10 @@ import Seat from "./Seat/Seat";
 import SeatRow from "./Seatrow/SeatRow";
 import { fetchHelper } from "../../utils/fetchHelper";
 
-export default function Seats({ theatreId, screeningId }) {
+export function Seats({ theatreId, screeningId, totalTickets }) {
   const [seats, setSeats] = useState([]);
   const [takenSeats, setTakenSeats] = useState([]);
+  const [selectedSeats, setSelectedSeats] = useState([]); // TODO: Move state to booking page and send state through props
 
   useEffect(() => {
     async function fetchTakenSeats() {
@@ -19,20 +20,28 @@ export default function Seats({ theatreId, screeningId }) {
   }, [screeningId]);
 
   function getSeatRow(rowInfo, index) {
-    const seats = [];
+    const seatsArray = [];
 
     for (let i = 0; i < rowInfo.numberofseats; i++) {
-      seats.push(
+      seatsArray.push(
         <Seat
           key={`row-${index}-seat-${i + 1}`}
-          {...{ takenSeats, rowNumber: rowInfo.rownumber, seatNumber: i + 1 }}
+          {...{
+            takenSeats,
+            rowNumber: rowInfo.rownumber,
+            seatNumber: i + 1,
+            setSelectedSeats,
+            selectedSeats,
+            totalTickets,
+            seats,
+          }}
         />
       );
     }
 
-    seats.reverse();
+    seatsArray.reverse();
 
-    return <SeatRow key={`row-${index}`} seats={seats} />;
+    return <SeatRow key={`row-${index}`} seats={seatsArray} />;
   }
 
   useEffect(() => {

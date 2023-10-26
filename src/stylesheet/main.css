@@ -200,6 +200,10 @@
   border-color: #041F1E;
 }
 
+.selected-seat {
+  border-color: #5A8F76;
+}
+
 .seat-row {
   flex: 0 0;
   display: flex;
