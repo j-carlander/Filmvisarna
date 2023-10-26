@@ -6,39 +6,46 @@ const ticketsMock = [
     id: 1,
     name: "Ordinarie",
     price: 140,
-    quantity: 0,
   },
   {
     id: 2,
     name: "Pensionär",
     price: 120,
-    quantity: 0,
   },
   {
     id: 3,
     name: "Barn",
     price: 80,
-    quantity: 0,
   },
 ];
 
-export default function TicketPicker() {
+export function TicketPicker() {
   const [ticketTypes, setTicketTypes] = useState(ticketsMock);
+  const [selectedTickets, setSelectedTickets] = useState([]);
 
   function getTicketComp(ticketType, index) {
     return (
       <TicketType
-        key={`ticket-type-${index}`}
-        ticketType={ticketType}
-        setTicketTypes={setTicketTypes}
+        {...{
+          key: `ticket-type-${index}`,
+          ticketType,
+          selectedTickets,
+          setSelectedTickets,
+        }}
       />
     );
   }
 
   return (
-    <section>
-      <h2>Välj antal biljetter</h2>
-      <ul>{ticketTypes.map(getTicketComp)}</ul>
+    <section className="ticket-picker">
+      <h2 className="picker-title">Välj antal biljetter</h2>
+      <ul className="ticket-list">{ticketTypes.map(getTicketComp)}</ul>
+      <strong className="total-cost-container">
+        <span>Total kostnad:</span>
+        <span>
+          {selectedTickets.reduce((acc, current) => current.price + acc, 0)} kr
+        </span>
+      </strong>
     </section>
   );
 }

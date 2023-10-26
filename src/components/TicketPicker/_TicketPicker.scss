@@ -1,1 +1,23 @@
 @use "../../Sass/abstract/variables" as *;
+@use "./TicketType/TicketType" as *;
+
+.ticket-picker {
+  color: $whiteAccent;
+  max-width: 400px;
+  .picker-title {
+    text-align: left;
+  }
+  .ticket-list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1em;
+    margin: 1em 0;
+  }
+  .total-cost-container {
+    display: flex;
+    justify-content: space-between;
+    span:last-child {
+      margin-right: 2em;
+    }
+  }
+}

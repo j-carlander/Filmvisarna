@@ -1,27 +1,30 @@
-export default function TicketType({ ticketType, setTicketTypes }) {
-  function alterTicketTypesQuantity(change) {
-    console.log(`alter Call(${change})`);
-    setTicketTypes((oldValue) => {
-      oldValue[oldValue.indexOf(ticketType)].quantity += change;
-
-      return JSON.parse(JSON.stringify(oldValue));
-    });
-  }
-
+export default function TicketType({
+  ticketType,
+  selectedTickets,
+  setSelectedTickets,
+}) {
   function increaseQuantity() {
-    alterTicketTypesQuantity(1);
+    setSelectedTickets((oldValue) => [...oldValue, { ...ticketType }]);
   }
 
   function decreaseQuantity() {
-    alterTicketTypesQuantity(-1);
+    setSelectedTickets((oldValue) => {
+      const el = oldValue.find((type) => type.name === ticketType.name);
+
+      return oldValue.filter((type) => type !== el);
+    });
   }
 
   return (
-    <li>
-      <p>{ticketType.name}</p>
-      <div>
+    <li className="ticket-list-item">
+      <p>
+        {ticketType.name} ({ticketType.price} kr)
+      </p>
+      <div className="button-container">
         <button onClick={decreaseQuantity}>-</button>{" "}
-        <span>{ticketType.quantity}</span>{" "}
+        <span>
+          {selectedTickets.filter((el) => el.name === ticketType.name).length}
+        </span>{" "}
         <button onClick={increaseQuantity}>+</button>
       </div>
     </li>

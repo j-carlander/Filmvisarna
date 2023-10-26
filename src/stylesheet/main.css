@@ -312,6 +312,45 @@
   gap: 0.5em;
 }
 
+.ticket-list-item {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+}
+.ticket-list-item .button-container {
+  display: flex;
+  -moz-column-gap: 1em;
+       column-gap: 1em;
+}
+.ticket-list-item .button-container button {
+  width: 2em;
+  height: 2em;
+}
+.ticket-list-item .button-container span {
+  width: 0.75em;
+}
+
+.ticket-picker {
+  color: #EDEDED;
+  max-width: 400px;
+}
+.ticket-picker .picker-title {
+  text-align: left;
+}
+.ticket-picker .ticket-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+  margin: 1em 0;
+}
+.ticket-picker .total-cost-container {
+  display: flex;
+  justify-content: space-between;
+}
+.ticket-picker .total-cost-container span:last-child {
+  margin-right: 2em;
+}
+
 *,
 *::before,
 *::after {
