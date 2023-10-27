@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useSearchMovie } from "../../hooks/useSearchMovie";
+import { SearchResult } from "./SearchResult/SearchResult";
 
 export function SearchBar({ matchDesktop }) {
   const [showMobileSearch, setShowMobileSearch] = useState(false);
@@ -12,10 +13,7 @@ export function SearchBar({ matchDesktop }) {
 
   const searchInputRef = useRef();
 
-  const [isLoading, movieResult] = useSearchMovie(search);
-  console.log("movie result: ", movieResult);
-  console.log("search: ", search ? true : false);
-  console.log("isLoading: ", isLoading);
+  const [isLoading, movieResult, message] = useSearchMovie(search);
 
   useEffect(() => {
     if (showMobileSearch) searchInputRef.current.focus();
@@ -23,6 +21,11 @@ export function SearchBar({ matchDesktop }) {
       ? setSearchParams(undefined)
       : setSearchParams([["search", searchInput]]);
   }, [searchInput, setSearchParams, showMobileSearch]);
+
+  function clearSearch() {
+    setSearchInput("");
+    setSearchParams(undefined);
+  }
 
   return (
     <section className="search-section">
@@ -39,27 +42,45 @@ export function SearchBar({ matchDesktop }) {
             e.preventDefault();
             // setSearchParams([["search", searchInput]]);
           }}>
-          <input
-            ref={searchInputRef}
-            className={`search-input ${
-              !matchDesktop.matches
-                ? "search-input-mobile"
-                : "search-input-desktop"
-            }`}
-            type="text"
-            value={searchInput}
-            placeholder="Sök..."
-            onChange={(e) => setSearchInput(e.target.value)}
-            onBlur={() => setShowMobileSearch(false)}
-          />
+          <div className="search-input-relative-input">
+            <input
+              ref={searchInputRef}
+              className={`search-input ${
+                !matchDesktop.matches
+                  ? "search-input-mobile"
+                  : "search-input-desktop"
+              }`}
+              type="text"
+              value={searchInput}
+              placeholder="Sök..."
+              onChange={(e) => setSearchInput(e.target.value)}
+              onBlur={() => {
+                if (!searchInput) return setShowMobileSearch(false);
+              }}
+            />
+            {searchInput ? (
+              <button
+                className="search-input-clear-btn"
+                type="button"
+                onClick={clearSearch}>
+                &#x2715;
+              </button>
+            ) : null}
+          </div>
           <button className="search-btn">
             <img src="/Search.svg" alt="Sök" />
           </button>
         </form>
       )}
-      {/* <article>
-        <h2>Din sökning på {search} gav följande resultat:</h2>
-      </article> */}
+      <SearchResult
+        {...{
+          isLoading,
+          movieResult,
+          message,
+          clearSearch,
+          setShowMobileSearch,
+        }}
+      />
     </section>
   );
 }

@@ -24,8 +24,87 @@
     border: none;
     border-bottom: 1px solid;
   }
+  .search-input-relative-input {
+    position: relative;
+    width: fit-content;
+    display: inline;
+  }
+  .search-input-clear-btn {
+    position: absolute;
+    right: 0.5em;
+    top: 50%;
+    transform: translateY(-60%);
+    font-size: 1.2rem;
+    padding: 0.3em;
+    margin: 0.3em;
+
+    background: transparent;
+    border: none;
+
+    color: $lightAccent;
+  }
 }
 .search-btn {
   background-color: transparent;
   border: transparent;
+}
+
+.loading {
+  position: relative;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: conic-gradient(transparent 75%, $lightAccent);
+
+  animation: rotateLoading infinite 1s linear;
+
+  .loading-inner {
+    position: absolute;
+    inset: 5px;
+    border-radius: 50%;
+    background-color: $secBackground;
+  }
+}
+
+@keyframes rotateLoading {
+  0% {
+    rotate: 0deg;
+  }
+
+  100% {
+    rotate: 359deg;
+  }
+}
+.search-result-container {
+  position: absolute;
+  z-index: 10;
+  top: 3em;
+  right: 0.5em;
+  width: 90vw;
+  max-width: 800px;
+  background-color: $secBackground;
+  padding: 2em;
+  border-radius: 0.3em;
+}
+.search-result-card {
+  margin-block: 1em;
+  // display: flex;
+  // align-items: center;
+  gap: 1em;
+  padding: 1em;
+  background-color: $mainBackground;
+
+  p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .search-result-img {
+    width: 100px;
+
+    img {
+      width: 100%;
+    }
+  }
 }

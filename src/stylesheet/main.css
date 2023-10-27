@@ -100,7 +100,7 @@ h1 {
   max-width: 500px;
   aspect-ratio: 560/315;
   background-color: rgba(128, 128, 128, 0.581);
-  z-index: 999;
+  z-index: 1;
   position: relative;
   overflow: hidden;
 }
@@ -351,10 +351,81 @@ h1 {
   border: none;
   border-bottom: 1px solid;
 }
+.search-form .search-input-relative-input {
+  position: relative;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: inline;
+}
+.search-form .search-input-clear-btn {
+  position: absolute;
+  right: 0.5em;
+  top: 50%;
+  transform: translateY(-60%);
+  font-size: 1.2rem;
+  padding: 0.3em;
+  margin: 0.3em;
+  background: transparent;
+  border: none;
+  color: #F7DBA7;
+}
 
 .search-btn {
   background-color: transparent;
   border: transparent;
+}
+
+.loading {
+  position: relative;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: conic-gradient(transparent 75%, #F7DBA7);
+  animation: rotateLoading infinite 1s linear;
+}
+.loading .loading-inner {
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  background-color: #1E2D2F;
+}
+
+@keyframes rotateLoading {
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: 359deg;
+  }
+}
+.search-result-container {
+  position: absolute;
+  z-index: 10;
+  top: 3em;
+  right: 0.5em;
+  width: 90vw;
+  max-width: 800px;
+  background-color: #1E2D2F;
+  padding: 2em;
+  border-radius: 0.3em;
+}
+
+.search-result-card {
+  margin-block: 1em;
+  gap: 1em;
+  padding: 1em;
+  background-color: #041F1E;
+}
+.search-result-card p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.search-result-card .search-result-img {
+  width: 100px;
+}
+.search-result-card .search-result-img img {
+  width: 100%;
 }
 
 .cancel-booking-page .cancel-form {
