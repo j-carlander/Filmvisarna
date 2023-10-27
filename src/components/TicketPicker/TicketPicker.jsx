@@ -1,26 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TicketType from "./TicketType/TicketType";
-
-const ticketsMock = [
-  {
-    id: 1,
-    name: "Ordinarie",
-    price: 140,
-  },
-  {
-    id: 2,
-    name: "Pensionär",
-    price: 120,
-  },
-  {
-    id: 3,
-    name: "Barn",
-    price: 80,
-  },
-];
+import { fetchHelper } from "../../utils/fetchHelper";
 
 export function TicketPicker() {
-  const [ticketTypes, setTicketTypes] = useState(ticketsMock);
+  const [ticketTypes, setTicketTypes] = useState([]);
   const [selectedTickets, setSelectedTickets] = useState([]);
 
   function getTicketComp(ticketType, index) {
@@ -35,6 +18,18 @@ export function TicketPicker() {
       />
     );
   }
+
+  useEffect(() => {
+    async function fetchTicketTypes() {
+      const response = await fetchHelper("/tickettypes", "get");
+
+      const json = await response.json();
+
+      setTicketTypes(json);
+    }
+
+    fetchTicketTypes();
+  }, [setTicketTypes]);
 
   return (
     <section className="ticket-picker">

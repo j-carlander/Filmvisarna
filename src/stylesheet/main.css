@@ -13,13 +13,13 @@
 }
 
 body {
-  background-color: #041f1e;
-  color: #f7dba7;
+  background-color: #041F1E;
+  color: #F7DBA7;
   font-family: "Montserrat", sans-serif;
 }
 
 h1 {
-  color: #ededed;
+  color: #EDEDED;
   padding: 1em 0 2em 0;
   text-align: center;
 }
@@ -34,8 +34,8 @@ h1 {
   top: 2em;
   right: 0;
   padding: 0.3em 0.8em;
-  background-color: #5a8f76;
-  color: #ededed;
+  background-color: #5A8F76;
+  color: #EDEDED;
 }
 .movie-card .card-img {
   width: 100%;
@@ -85,18 +85,8 @@ h1 {
   left: 0;
   width: 100%;
   z-index: -1;
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    #041f1e,
-    rgb(0, 0, 0) 10%,
-    rgba(0, 0, 0, 0) 80%
-  );
-  mask-image: linear-gradient(
-    to bottom,
-    #041f1e,
-    rgb(0, 0, 0) 10%,
-    rgba(0, 0, 0, 0) 80%
-  );
+  -webkit-mask-image: linear-gradient(to bottom, #041F1E, rgb(0, 0, 0) 10%, rgba(0, 0, 0, 0) 80%);
+          mask-image: linear-gradient(to bottom, #041F1E, rgb(0, 0, 0) 10%, rgba(0, 0, 0, 0) 80%);
 }
 .moviedetail-card .moviedetail-wrapper {
   display: flex;
@@ -147,25 +137,14 @@ h1 {
   font-size: 1rem;
   line-height: 1.5rem;
 }
-.moviedetail-card
-  .moviedetail-wrapper
-  .moviedetail-infobox
-  .moviedetail-director
-  span,
-.moviedetail-card
-  .moviedetail-wrapper
-  .moviedetail-infobox
-  .moviedetail-actor
-  span {
+.moviedetail-card .moviedetail-wrapper .moviedetail-infobox .moviedetail-director span,
+.moviedetail-card .moviedetail-wrapper .moviedetail-infobox .moviedetail-actor span {
   font-size: 1rem;
   font-weight: bold;
   display: block;
   line-height: 1.8rem;
 }
-.moviedetail-card
-  .moviedetail-wrapper
-  .moviedetail-infobox
-  .moviedetail-director,
+.moviedetail-card .moviedetail-wrapper .moviedetail-infobox .moviedetail-director,
 .moviedetail-card .moviedetail-wrapper .moviedetail-infobox .moviedetail-actor {
   margin-top: 2rem;
   font-size: 1rem;
@@ -174,9 +153,9 @@ h1 {
 @media screen and (min-width: 978px) {
   .moviedetail-card .moviedetail-img {
     -o-object-fit: cover;
-    object-fit: cover;
+       object-fit: cover;
     -o-object-position: top;
-    object-position: top;
+       object-position: top;
   }
   .moviedetail-card .moviedetail-wrapper {
     padding: 8em 3em 1em 3em;
@@ -198,19 +177,19 @@ h1 {
 .theatre-container {
   border: 2px solid #000;
   border-radius: 0.25em;
-  background-color: #1e2d2f;
+  background-color: #1E2D2F;
   max-width: 450px;
 }
 .theatre-container .theatre-screen {
   width: 80%;
-  fill: #ededed;
-  filter: drop-shadow(0px 0px 10px #ededed);
+  fill: #EDEDED;
+  filter: drop-shadow(0px 0px 10px #EDEDED);
   margin: 0 auto;
 }
 .theatre-container .theatre-wrapper {
   overflow-x: scroll;
   scrollbar-width: thin;
-  scrollbar-color: #1e2d2f;
+  scrollbar-color: #1E2D2F;
   padding: 0 1em;
 }
 .theatre-container .theatre-wrapper .theatre-seats {
@@ -228,11 +207,11 @@ h1 {
 }
 
 .theatre-wrapper::-webkit-scrollbar-track {
-  background: #1e2d2f;
+  background: #1E2D2F;
 }
 
 .theatre-wrapper::-webkit-scrollbar-thumb {
-  background: #041f1e;
+  background: #041F1E;
   border-radius: 0.5em;
 }
 
@@ -240,7 +219,7 @@ h1 {
   width: 20px;
   height: 20px;
   flex: 0 0 20px;
-  border: 3.5px solid #f7dba7;
+  border: 3.5px solid #F7DBA7;
   border-top-right-radius: 20em;
   border-top-left-radius: 20em;
   border-bottom-right-radius: 10em;
@@ -248,11 +227,11 @@ h1 {
 }
 
 .taken-seat {
-  border-color: #041f1e;
+  border-color: #041F1E;
 }
 
 .selected-seat {
-  border-color: #5a8f76;
+  border-color: #5A8F76;
 }
 
 .seat-row {
@@ -262,7 +241,7 @@ h1 {
   width: fit-content;
   justify-content: center;
   -moz-column-gap: 1em;
-  column-gap: 1em;
+       column-gap: 1em;
 }
 
 .screening-details {
@@ -291,8 +270,8 @@ h1 {
 }
 
 .screening-book-btn {
-  background-color: #5a8f76;
-  color: #ededed;
+  background-color: #5A8F76;
+  color: #EDEDED;
   padding: 1em 2.7em;
   border-radius: 1000px;
   border: transparent 1px;
@@ -313,7 +292,7 @@ h1 {
 }
 .main-nav-bar li a {
   text-decoration: none;
-  color: #f7dba7;
+  color: #F7DBA7;
   font-weight: 700;
 }
 .main-nav-bar button {
@@ -336,7 +315,7 @@ h1 {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-color: #1e2d2f;
+  background-color: #1E2D2F;
   border: none;
 }
 .main-nav-bar .burger-menu-container .burger-menu-modal .burger-menu-close {
@@ -363,7 +342,7 @@ h1 {
   padding: 0.3em;
   margin: 0.3em;
   border-radius: 0.3em;
-  color: #f7dba7;
+  color: #F7DBA7;
   background-color: transparent;
   border: none;
   border-bottom: 1px solid;
@@ -389,7 +368,7 @@ h1 {
   margin: 0.3em;
   background: transparent;
   border: none;
-  color: #f7dba7;
+  color: #F7DBA7;
 }
 
 .search-btn {
@@ -402,14 +381,14 @@ h1 {
   width: 35px;
   height: 35px;
   border-radius: 50%;
-  background: conic-gradient(transparent 75%, #f7dba7);
+  background: conic-gradient(transparent 75%, #F7DBA7);
   animation: rotateLoading infinite 1s linear;
 }
 .loading .loading-inner {
   position: absolute;
   inset: 5px;
   border-radius: 50%;
-  background-color: #1e2d2f;
+  background-color: #1E2D2F;
 }
 
 @keyframes rotateLoading {
@@ -427,7 +406,7 @@ h1 {
   right: 0.5em;
   width: 90vw;
   max-width: 800px;
-  background-color: #1e2d2f;
+  background-color: #1E2D2F;
   padding: 2em;
   border-radius: 0.3em;
 }
@@ -436,7 +415,7 @@ h1 {
   margin-block: 1em;
   gap: 1em;
   padding: 1em;
-  background-color: #041f1e;
+  background-color: #041F1E;
 }
 .search-result-card p {
   overflow: hidden;
@@ -450,104 +429,25 @@ h1 {
   width: 100%;
 }
 
-.search-section {
+.movieDetailsPage-container {
   position: relative;
 }
-
-.search-form {
-  display: flex;
-  align-items: center;
-}
-.search-form .search-input {
-  font-size: 1.2rem;
-  padding: 0.3em;
-  margin: 0.3em;
-  border-radius: 0.3em;
-  color: #f7dba7;
+.movieDetailsPage-container .imgbox {
   background-color: transparent;
-  border: none;
-  border-bottom: 1px solid;
+  border-style: none;
 }
-.search-form .search-input-mobile {
-  background-color: transparent;
-  border: none;
-  border-bottom: 1px solid;
-}
-.search-form .search-input-relative-input {
-  position: relative;
-  width: -moz-fit-content;
-  width: fit-content;
-  display: inline;
-}
-.search-form .search-input-clear-btn {
+.movieDetailsPage-container .imgbox .back-to-previous {
   position: absolute;
-  right: 0.5em;
-  top: 50%;
-  transform: translateY(-60%);
-  font-size: 1.2rem;
-  padding: 0.3em;
-  margin: 0.3em;
-  background: transparent;
-  border: none;
-  color: #f7dba7;
+  width: 25px;
+  height: 25px;
+  z-index: 50;
+  margin: 1.5em 1em;
+  cursor: pointer;
+  opacity: 0.9;
+  transition: all 0.3s;
 }
-
-.search-btn {
-  background-color: transparent;
-  border: transparent;
-}
-
-.loading {
-  position: relative;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  background: conic-gradient(transparent 75%, #f7dba7);
-  animation: rotateLoading infinite 1s linear;
-}
-.loading .loading-inner {
-  position: absolute;
-  inset: 5px;
-  border-radius: 50%;
-  background-color: #1e2d2f;
-}
-
-@keyframes rotateLoading {
-  0% {
-    rotate: 0deg;
-  }
-  100% {
-    rotate: 359deg;
-  }
-}
-.search-result-container {
-  position: absolute;
-  z-index: 10;
-  top: 3em;
-  right: 0.5em;
-  width: 90vw;
-  max-width: 800px;
-  background-color: #1e2d2f;
-  padding: 2em;
-  border-radius: 0.3em;
-}
-
-.search-result-card {
-  margin-block: 1em;
-  gap: 1em;
-  padding: 1em;
-  background-color: #041f1e;
-}
-.search-result-card p {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.search-result-card .search-result-img {
-  width: 100px;
-}
-.search-result-card .search-result-img img {
-  width: 100%;
+.movieDetailsPage-container .imgbox .back-to-previous:hover {
+  opacity: 1;
 }
 
 .cancel-booking-page .page-title {
@@ -558,7 +458,7 @@ h1 {
   flex-direction: column;
   align-items: center;
   row-gap: 0.75em;
-  background-color: #1e2d2f;
+  background-color: #1E2D2F;
   padding: 2em 0;
   border-radius: 0.25em;
   max-width: 400px;
@@ -576,8 +476,8 @@ h1 {
 .cancel-booking-page .cancel-form input {
   width: 95%;
   max-width: 300px;
-  background-color: #041f1e;
-  color: #f7dba7;
+  background-color: #041F1E;
+  color: #F7DBA7;
   outline: none;
 }
 .cancel-booking-page .cancel-form button {
@@ -586,18 +486,91 @@ h1 {
   max-width: 10em;
   text-align: center;
   background-color: #837771;
-  color: #ededed;
+  color: #EDEDED;
   transition: background-color 0.1s, color 0.1s;
 }
 .cancel-booking-page .cancel-form button:hover {
-  background-color: #041f1e;
-  color: #f7dba7;
+  background-color: #041F1E;
+  color: #F7DBA7;
 }
 .cancel-booking-page .cancel-form a {
-  color: #f7dba7;
+  color: #F7DBA7;
   font-style: italic;
 }
 
+.landingpage-container {
+  min-width: 350px;
+  height: 100vh;
+  background: rgb(131, 119, 113);
+  background: radial-gradient(circle, rgba(131, 119, 113, 0.676) 0%, rgb(4, 31, 30) 100%);
+  padding: 3em 1em;
+}
+.landingpage-container .landingpage-card {
+  max-width: 1000px;
+  margin-top: 1em;
+  margin: 0 auto;
+}
+.landingpage-container .landingpage-card .landingpage-card-info {
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.landingpage-container .landingpage-card .landingpage-card-info h4 {
+  letter-spacing: 0.08rem;
+  transition: all 0.3s;
+}
+.landingpage-container .landingpage-card .landingpage-card-info a {
+  text-decoration: none;
+}
+.landingpage-container .landingpage-card .landingpage-card-info .show-all {
+  color: #F7DBA7;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.landingpage-container .landingpage-card .landingpage-card-info .show-all::after {
+  content: " >";
+}
+.landingpage-container .landingpage-card .carousel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 4rem 1rem;
+  justify-items: center;
+  margin: 0 auto;
+  padding: 1em 0 2em 0;
+  max-height: 300px;
+  min-height: 250px;
+  overflow-y: hidden;
+  transition: all 0.3s;
+}
+.landingpage-container .landingpage-card .carousel .carousel-img {
+  cursor: pointer;
+  width: 100%;
+  border-radius: 1.5px;
+}
+
+@media screen and (min-width: 600px) {
+  .landingpage-container .landingpage-card .carousel {
+    grid-template-columns: 1fr 1fr 1fr;
+    transition: all 0.3s;
+    overflow-y: hidden;
+  }
+}
+@media screen and (min-width: 978px) {
+  .landingpage-container .landingpage-card .landingpage-card-info h4 {
+    font-size: 1.3rem;
+  }
+  .landingpage-container .landingpage-card .landingpage-card-info .show-all, .landingpage-container .landingpage-card .landingpage-card-info .show-all::after {
+    font-size: 1.3rem;
+  }
+  .landingpage-container .landingpage-card .carousel {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    place-items: center;
+    transition: all 0.3s;
+    max-height: 400px;
+    overflow-y: hidden;
+  }
+}
 .admin-page-header {
   margin-bottom: 1em;
 }
@@ -618,15 +591,15 @@ h1 {
 }
 
 .admin-page-search-btn {
-  background-color: #5a8f76;
-  color: #ededed;
+  background-color: #5A8F76;
+  color: #EDEDED;
   padding-inline: 1em;
   border-radius: 1000px;
   border: transparent solid 1px;
   cursor: pointer;
 }
 .admin-page-search-btn:hover {
-  border: #f7dba7 solid 1px;
+  border: #F7DBA7 solid 1px;
 }
 
 .admin-page-relative-input {
@@ -654,7 +627,7 @@ h1 {
   width: 20em;
   height: 5em;
   padding-left: 0.3em;
-  border: #f7dba7 solid 1px;
+  border: #F7DBA7 solid 1px;
 }
 
 .admin-display-flex-container {
@@ -672,7 +645,7 @@ h1 {
 .ticket-list-item .button-container {
   display: flex;
   -moz-column-gap: 1em;
-  column-gap: 1em;
+       column-gap: 1em;
 }
 .ticket-list-item .button-container button {
   width: 2em;
@@ -683,7 +656,7 @@ h1 {
 }
 
 .ticket-picker {
-  color: #ededed;
+  color: #EDEDED;
   max-width: 400px;
 }
 .ticket-picker .picker-title {
@@ -701,4 +674,36 @@ h1 {
 }
 .ticket-picker .total-cost-container span:last-child {
   margin-right: 2em;
-} /*# sourceMappingURL=main.css.map */
+}
+
+.filter-list {
+  margin: 0 auto 3em auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.filter-list .filter-item {
+  list-style-type: none;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0.5em 0;
+}
+.filter-list .filter-item .filter-date-input,
+.filter-list .filter-item .filter-select {
+  font-family: "Montserrat", sans-serif;
+  padding: 0.25em;
+  border-radius: 0.25em;
+  width: 12em;
+  height: 2.25em;
+}
+
+@media screen and (min-width: 900px) {
+  .filter-list {
+    flex-direction: row;
+    justify-content: center;
+  }
+  .filter-list .filter-item {
+    margin: 0 0.25em;
+  }
+}/*# sourceMappingURL=main.css.map */
