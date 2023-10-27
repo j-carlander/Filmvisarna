@@ -406,6 +406,9 @@ h1 {
   right: 0.5em;
   width: 90vw;
   max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: #1E2D2F;
   padding: 2em;
   border-radius: 0.3em;
@@ -413,6 +416,7 @@ h1 {
 
 .search-result-card {
   margin-block: 1em;
+  width: 100%;
   gap: 1em;
   padding: 1em;
   background-color: #041F1E;
