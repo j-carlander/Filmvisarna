@@ -2,13 +2,23 @@ import { useState, useEffect } from "react";
 import { fetchHelper } from "../../utils/fetchHelper";
 
 export default function MovieFilters({ setMovies }) {
-  const [filters, setFilters] = useState({ upcoming: "--" });
+  const [filters, setFilters] = useState({
+    upcoming: "--",
+    age: "Välj ålder",
+    date: "--",
+  });
 
   function onSelectChange(e) {
     const value = e.target.value;
     const key = e.target.name;
 
     setFilters({ ...filters, [key]: value });
+  }
+
+  function onDateInputChange(e) {
+    const value = e.target.value;
+    console.log(value);
+    setFilters({ ...filters, date: value });
   }
 
   useEffect(() => {
@@ -25,7 +35,8 @@ export default function MovieFilters({ setMovies }) {
     }
 
     const searchFilters = Object.entries(filters).filter(
-      (filter) => filter[1] !== "--"
+      (filter) =>
+        filter[1] !== "--" && !filter[1].startsWith("Välj") && filter[1] !== ""
     );
 
     if (searchFilters.length === 0) return;
@@ -38,12 +49,31 @@ export default function MovieFilters({ setMovies }) {
       <li className="filter-item">
         <select
           name="upcoming"
+          defaultValue={false}
+          onChange={onSelectChange}
+          className="filter-select">
+          <option value={false}>På bio nu</option>
+          <option value={true}>Kommande</option>
+        </select>
+      </li>
+      <li className="filter-item">
+        <input
+          className="filter-date-input"
+          type="date"
+          onChange={onDateInputChange}
+        />
+      </li>
+      <li className="filter-item">
+        <select
+          name="age"
           defaultValue={"--"}
           onChange={onSelectChange}
           className="filter-select">
-          <option value={"--"}>--</option>
-          <option value={false}>På bio nu</option>
-          <option value={true}>Kommande</option>
+          <option value={"Välj ålder"}>Välj ålder</option>
+          <option value={0}>alla</option>
+          <option value={7}>7</option>
+          <option value={11}>11</option>
+          <option value={15}>15</option>
         </select>
       </li>
     </ul>
