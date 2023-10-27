@@ -565,10 +565,23 @@ h1 {
   list-style-type: none;
   width: -moz-fit-content;
   width: fit-content;
+  margin: 0.5em 0;
 }
+.filter-list .filter-item .filter-date-input,
 .filter-list .filter-item .filter-select {
   font-family: "Montserrat", sans-serif;
+  padding: 0.25em;
   border-radius: 0.25em;
   width: 12em;
-  height: 2em;
+  height: 2.25em;
+}
+
+@media screen and (min-width: 900px) {
+  .filter-list {
+    flex-direction: row;
+    justify-content: center;
+  }
+  .filter-list .filter-item {
+    margin: 0 0.25em;
+  }
 }/*# sourceMappingURL=main.css.map */
