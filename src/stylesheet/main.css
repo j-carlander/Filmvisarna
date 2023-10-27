@@ -26,6 +26,7 @@ h1 {
 .movie-card {
   position: relative;
   max-width: 250px;
+  cursor: pointer;
 }
 .movie-card .card-agelimit {
   position: absolute;

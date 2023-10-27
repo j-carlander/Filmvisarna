@@ -17,7 +17,7 @@ export function MovieDetailsInfo({ movie }) {
             src={movie.trailerlink}
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen></iframe>
+            allowFullScreen></iframe>
         </div>
         <div className="moviedetail-infobox">
           <h3 className="moviedetail-title">{movie.title}</h3>
