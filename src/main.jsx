@@ -23,7 +23,7 @@ const router = createBrowserRouter([
   {
     path: "/bookingconfirmation/:screeningId",
     element: <BookingConfirmationPage />
-  }
+  },
   { path: "/cancel", element: <CancelBookingPage /> },
 ]);
 

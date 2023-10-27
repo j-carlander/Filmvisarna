@@ -74,7 +74,6 @@
   align-items: center;
   row-gap: 1em;
   padding: 2em 0;
-  width: -moz-fit-content;
   width: fit-content;
 }
 
@@ -109,11 +108,9 @@
 .seat-row {
   flex: 0 0;
   display: flex;
-  width: -moz-fit-content;
   width: fit-content;
   justify-content: center;
-  -moz-column-gap: 1em;
-       column-gap: 1em;
+  column-gap: 1em;
 }
 
 .screening-details {
@@ -279,7 +276,6 @@
 
 .admin-page-relative-input {
   position: relative;
-  width: -moz-fit-content;
   width: fit-content;
   display: inline;
 }
@@ -310,6 +306,38 @@
   flex-direction: column;
   align-items: center;
   gap: 0.5em;
+}
+
+.bookconfirm-wrapper {
+  width: 100%;
+  margin: 0 auto;
+}
+.bookconfirm-wrapper h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.bookconfirm-wrapper .booking-confirmation-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.bookconfirm-wrapper .bookconfirm-screenings {
+  width: 80%;
+}
+.bookconfirm-wrapper .login-signup-group {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+.bookconfirm-wrapper .guest-info-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2em;
+}
+.bookconfirm-wrapper .confirm-button {
+  margin-bottom: 2em;
 }
 
 *,
