@@ -1,0 +1,17 @@
+.filter-list {
+  margin: 0 auto 3em auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .filter-item {
+    list-style-type: none;
+    width: fit-content;
+    .filter-select {
+      font-family: "Montserrat", sans-serif;
+      border-radius: 0.25em;
+      width: 12em;
+      height: 2em;
+    }
+  }
+}
