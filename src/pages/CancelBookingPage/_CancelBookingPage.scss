@@ -1,6 +1,9 @@
 @use "../../Sass/abstract/variables" as *;
 
 .cancel-booking-page {
+  .page-title {
+    text-align: center;
+  }
   .cancel-form {
     display: flex;
     flex-direction: column;
