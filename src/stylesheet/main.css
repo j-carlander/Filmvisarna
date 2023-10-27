@@ -328,6 +328,10 @@ h1 {
   flex-direction: column;
   gap: 0.7em;
 }
+.main-nav-bar .desktop-menu-list {
+  display: flex;
+  gap: 3em;
+}
 
 .search-section {
   position: relative;
