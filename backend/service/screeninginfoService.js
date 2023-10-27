@@ -27,6 +27,7 @@ export async function screeningInfoById(screeningId) {
   const sql = `
   SELECT scr.id,
   movies.title,
+  movies.id AS movieid,
   movies.agelimit,
   movies.durationinminutes,
   scr.date AS screeningDate,
