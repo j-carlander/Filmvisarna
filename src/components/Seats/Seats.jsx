@@ -1,46 +1,58 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Seat from "./Seat/Seat";
 import SeatRow from "./Seatrow/SeatRow";
+import { fetchHelper } from "../../utils/fetchHelper";
 
-const mockSeats = [
-  {
-    rownumber: 1,
-    numberofseats: 6,
-  },
-  {
-    rownumber: 2,
-    numberofseats: 8,
-  },
-  {
-    rownumber: 3,
-    numberofseats: 9,
-  },
-  {
-    rownumber: 4,
-    numberofseats: 10,
-  },
-  {
-    rownumber: 5,
-    numberofseats: 10,
-  },
-  {
-    rownumber: 6,
-    numberofseats: 12,
-  },
-];
+export function Seats({ theatreId = 1, screeningId = 44, totalTickets }) {
+  const [seats, setSeats] = useState([]);
+  const [takenSeats, setTakenSeats] = useState([]);
+  const [selectedSeats, setSelectedSeats] = useState([]); // TODO: Move state to booking page and send state through props
 
-export default function Seats() {
-  const [seats, setSeats] = useState(mockSeats);
-
-  function getSeatRow(rowInfo, index) {
-    const seats = [];
-
-    for (let i = 0; i < rowInfo.numberofseats; i++) {
-      seats.push(<Seat key={`row-${index}-seat-${i + 1}`} />);
+  useEffect(() => {
+    async function fetchTakenSeats() {
+      const response = await fetchHelper(`/takenseats/${screeningId}`, "get");
+      const data = await response.json();
+      setTakenSeats(data);
+      console.log(data);
     }
 
-    return <SeatRow key={`row-${index}`} seats={seats} />;
+    fetchTakenSeats();
+  }, [screeningId]);
+
+  function getSeatRow(rowInfo, index) {
+    const seatsArray = [];
+
+    for (let i = 0; i < rowInfo.numberofseats; i++) {
+      seatsArray.push(
+        <Seat
+          key={`row-${index}-seat-${i + 1}`}
+          {...{
+            takenSeats,
+            rowNumber: rowInfo.rownumber,
+            seatNumber: i + 1,
+            setSelectedSeats,
+            selectedSeats,
+            totalTickets,
+            seats,
+          }}
+        />
+      );
+    }
+
+    seatsArray.reverse();
+
+    return <SeatRow key={`row-${index}`} seats={seatsArray} />;
   }
+
+  useEffect(() => {
+    async function getThetreLayout() {
+      const response = await fetchHelper(`/theatrerows/${theatreId}`, "get");
+      const theatreData = await response.json();
+      setSeats(theatreData);
+    }
+
+    getThetreLayout();
+  }, [theatreId]);
 
   return (
     <div className="theatre-container">

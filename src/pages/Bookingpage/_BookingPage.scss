@@ -1,82 +1,116 @@
 @use "../../Sass/abstract/variables" as *;
 
-@media screen and (min-width: 600) {
-  
-}
+// src= {
+//   `/images/$ {
+//     movie.id
+//   }
 
+//   _w200.webp`
+// }
+// 1025 desktop
 
-.Bookingpage-container{
-  width: 100%;
-  margin: 0 auto;
-
-  .btn-container{
-    display: flex;
-    justify-content: space-around;
-    margin: 1em 0;
-    text-align: center;
-    align-items: center;
-    // background-color: red;
-    // width: 80%;
-    // margin: 0 auto;
-    // margin-bottom: 1em;
-
+@media screen and (min-width: 475px) {
+  .Bookingpage-container{
+    width: 90%;
+    margin: 0 auto;
   }
-  .btn-container button{
-    padding: 0.5rem;
+  
+  .seat-section{
+    margin-top: 3rem;
+  }
+  .seat-section h2{
+    font-size: 1.4em;
+  }
+  .seat-section button{
+    background-color: #5A8F76;
+    color: #fff;
+    font-size: 1em;
+    padding: 1em;
+    width: 15rem;
     border: none;
-    border-radius: 5px;
+    border-radius: 30px;
     cursor: pointer;
-  }
-}
-.ticket-wrapper{
-  align-items: center;
-  text-align: center;
-}
-
-.seat-section{
-  margin-top: 3rem;
-}
-.seat-section h2{
-  font-size: 1.4em;
-}
-.seat-section button{
-  background-color: #5A8F76;
-  color: #fff;
-  font-size: 1em;
-  margin-top: 1.2rem;
-  padding: 1em;
-  width: 15rem;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-
-}
-.ticket-wrapper h1{
-  font-size: 1.4em;
-}
-.header-content h3{
-  font-size: 1em;
-  p{
-    font-weight: 400;
-  }
-}
-.header-content{
-  display: flex;
-  width: 100%;
-  padding: 1em 0;
-  justify-content: space-evenly;
-  background-color: red;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    margin-bottom: 1em;
   
-
-}
-.btn-container{
-  align-items: center;
-  text-align: center;
   
-}
-.sum{
-  margin: 2em 0;
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
+  }
+  .seat-section p{
+    padding: 10px 0;
+    text-align: center;
+    font-weight: 700;
+  }
+  .header-content h3{
+    font-size: 1em;
+    p{
+      font-weight: 400;
+    }
+  }
+  .header-content{
+    display: flex;
+    width: 100%;
+    padding: 2.5em 0;
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+
+  
+}  
+
+
+@media screen and (min-width: 992px){
+  .Bookingpage-container{
+    .header-content{
+      display: flex;
+      justify-content: flex-end;
+      width: 90%;
+      gap: 4em;
+      margin: 1em 0;
+    }
+    .seaction-header{
+      // background-color: red;
+      display: flex;
+      justify-content: flex-end;
+      width: 78%;
+      line-height: 1.5;
+    }
+    .seaction-header2{
+      // background-color: rgb(202, 161, 161);
+      display: flex;
+      justify-content: flex-end;
+      width: 80%;
+      line-height: 1.5;
+    }
+  }
+  .seat-section{
+    // background-color: red;
+      // display: grid;
+      // grid-template-columns: 1fr;
+    display: flex;
+    // align-items: center;
+    // justify-content: center;
+    h2{
+      // background-color: blue;
+      font-weight: 500;
+      padding: 0.5em 0;
+    }
+  }
+  .section-1{
+    // src= {
+    //     `/images/$ {
+    //       movie.id
+    //     }
+    
+    //     _w200.webp`
+    //   }
+    img{
+      border-radius: 50%;
+    }
+  }
+  .section-2{
+    margin: 3em 3.5em;
+  }
+
 }

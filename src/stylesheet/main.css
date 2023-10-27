@@ -1,4 +1,28 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+body {
+  background-color: #041F1E;
+  color: #F7DBA7;
+  font-family: "Montserrat", sans-serif;
+}
+
+h1 {
+  color: #EDEDED;
+  padding: 1em 0 2em 0;
+}
+
 .movie-card {
   position: relative;
   max-width: 250px;
@@ -48,6 +72,104 @@
 @media screen and (min-width: 978px) {
   .moviepage-wrapper {
     grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+.moviedetail-card {
+  position: relative;
+}
+.moviedetail-card .moviedetail-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+  -webkit-mask-image: linear-gradient(to bottom, #041F1E, rgb(0, 0, 0) 10%, rgba(0, 0, 0, 0) 80%);
+          mask-image: linear-gradient(to bottom, #041F1E, rgb(0, 0, 0) 10%, rgba(0, 0, 0, 0) 80%);
+}
+.moviedetail-card .moviedetail-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 4em;
+}
+.moviedetail-card .moviedetail-wrapper .trailer {
+  margin-top: 3em;
+  width: 90%;
+  max-width: 500px;
+  aspect-ratio: 560/315;
+  background-color: rgba(128, 128, 128, 0.581);
+  z-index: 999;
+  position: relative;
+  overflow: hidden;
+}
+.moviedetail-card .moviedetail-wrapper .trailer .trailer-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.moviedetail-card .moviedetail-wrapper .moviedetail-infobox {
+  max-width: 500px;
+  padding: 1.5em;
+  z-index: 999;
+  text-align: left;
+  padding-bottom: 2em;
+}
+.moviedetail-card .moviedetail-wrapper .moviedetail-infobox .moviedetail-title {
+  font-size: 2rem;
+  padding-bottom: 0.1em;
+}
+.moviedetail-card .moviedetail-wrapper .moviedetail-infobox .moviedetail-info {
+  text-shadow: 2px 2px 4px black;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.3rem;
+  padding-bottom: 3em;
+}
+.moviedetail-card .moviedetail-wrapper .moviedetail-infobox .moviedetail-desc {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+.moviedetail-card .moviedetail-wrapper .moviedetail-infobox .moviedetail-director span,
+.moviedetail-card .moviedetail-wrapper .moviedetail-infobox .moviedetail-actor span {
+  font-size: 1rem;
+  font-weight: bold;
+  display: block;
+  line-height: 1.8rem;
+}
+.moviedetail-card .moviedetail-wrapper .moviedetail-infobox .moviedetail-director,
+.moviedetail-card .moviedetail-wrapper .moviedetail-infobox .moviedetail-actor {
+  margin-top: 2rem;
+  font-size: 1rem;
+}
+
+@media screen and (min-width: 978px) {
+  .moviedetail-card .moviedetail-img {
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: top;
+       object-position: top;
+  }
+  .moviedetail-card .moviedetail-wrapper {
+    padding: 8em 3em 1em 3em;
+    justify-content: center;
+    align-items: start;
+    gap: 5em;
+    flex-direction: row;
+  }
+  .moviedetail-card .moviedetail-wrapper .trailer {
+    margin-top: 5em;
+    width: 50%;
+    height: 300px;
+  }
+  .moviedetail-card .moviedetail-wrapper .moviedetail-infobox {
+    margin-top: 8em;
+    padding-bottom: 5em;
   }
 }
 .theatre-container {
@@ -102,6 +224,14 @@
   border-bottom-left-radius: 10em;
 }
 
+.taken-seat {
+  border-color: #041F1E;
+}
+
+.selected-seat {
+  border-color: #5A8F76;
+}
+
 .seat-row {
   flex: 0 0;
   display: flex;
@@ -150,100 +280,277 @@
   font-size: 0.75rem;
 }
 
-.Bookingpage-container {
-  width: 100%;
-  margin: 0 auto;
+@media screen and (min-width: 475px) {
+  .Bookingpage-container {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .seat-section {
+    margin-top: 3rem;
+  }
+  .seat-section h2 {
+    font-size: 1.4em;
+  }
+  .seat-section button {
+    background-color: #5A8F76;
+    color: #fff;
+    font-size: 1em;
+    padding: 1em;
+    width: 15rem;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    margin-bottom: 1em;
+  }
+  .seat-section p {
+    padding: 10px 0;
+    text-align: center;
+    font-weight: 700;
+  }
+  .header-content h3 {
+    font-size: 1em;
+  }
+  .header-content h3 p {
+    font-weight: 400;
+  }
+  .header-content {
+    display: flex;
+    width: 100%;
+    padding: 2.5em 0;
+    justify-content: flex-start;
+    flex-direction: column;
+  }
 }
-.Bookingpage-container .btn-container {
+@media screen and (min-width: 992px) {
+  .Bookingpage-container .header-content {
+    display: flex;
+    justify-content: flex-end;
+    width: 90%;
+    gap: 4em;
+    margin: 1em 0;
+  }
+  .Bookingpage-container .seaction-header {
+    display: flex;
+    justify-content: flex-end;
+    width: 78%;
+    line-height: 1.5;
+  }
+  .Bookingpage-container .seaction-header2 {
+    display: flex;
+    justify-content: flex-end;
+    width: 80%;
+    line-height: 1.5;
+  }
+  .seat-section {
+    display: flex;
+  }
+  .seat-section h2 {
+    font-weight: 500;
+    padding: 0.5em 0;
+  }
+  .section-1 img {
+    border-radius: 50%;
+  }
+  .section-2 {
+    margin: 3em 3.5em;
+  }
+}
+.main-nav-bar {
   display: flex;
-  justify-content: space-around;
-  margin: 1em 0;
-  text-align: center;
   align-items: center;
+  gap: 1em;
 }
-.Bookingpage-container .btn-container button {
-  padding: 0.5rem;
+.main-nav-bar li {
+  list-style: none;
+}
+.main-nav-bar li a {
+  text-decoration: none;
+  color: #F7DBA7;
+  font-weight: 700;
+}
+.main-nav-bar button {
+  background-color: transparent;
   border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  width: 36px;
 }
-
-.ticket-wrapper {
-  align-items: center;
-  text-align: center;
+.main-nav-bar .burger-menu-backdrop {
+  position: absolute;
+  inset: 0;
 }
-
-.seat-section {
-  margin-top: 3rem;
+.main-nav-bar .burger-menu-container {
+  position: relative;
 }
-
-.seat-section h2 {
-  font-size: 1.4em;
-}
-
-.seat-section button {
-  background-color: #5A8F76;
-  color: #fff;
-  font-size: 1em;
-  margin-top: 1.2rem;
-  padding: 1em;
-  width: 15rem;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-}
-
-.ticket-wrapper h1 {
-  font-size: 1.4em;
-}
-
-.header-content h3 {
-  font-size: 1em;
-}
-.header-content h3 p {
-  font-weight: 400;
-}
-
-.header-content {
-  display: flex;
-  width: 100%;
-  padding: 1em 0;
-  justify-content: space-evenly;
-  background-color: red;
-}
-
-.btn-container {
-  align-items: center;
-  text-align: center;
-}
-
-.sum {
-  margin: 2em 0;
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-}
-
-*,
-*::before,
-*::after {
-  padding: 0;
+.main-nav-bar .burger-menu-container .burger-menu-modal {
+  position: absolute;
+  top: -0.2em;
+  left: -0.2em;
+  padding: 3em;
   margin: 0;
-  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  background-color: #1E2D2F;
+  border: none;
+}
+.main-nav-bar .burger-menu-container .burger-menu-modal .burger-menu-close {
+  position: absolute;
+  top: 0.2em;
+  left: 0.2em;
+}
+.main-nav-bar .burger-menu-container .burger-menu-modal .burger-menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7em;
 }
 
-#root {
-  max-width: 1400px;
+.cancel-booking-page .cancel-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 0.75em;
+  background-color: #1E2D2F;
+  padding: 2em 0;
+  border-radius: 0.25em;
+  max-width: 400px;
   margin: 0 auto;
 }
-
-body {
+.cancel-booking-page .cancel-form input,
+.cancel-booking-page .cancel-form button {
+  font-family: "Montserrat", sans-serif;
+  border-radius: 0.25em;
+  padding: 0.75em 1.25em;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.cancel-booking-page .cancel-form input {
+  width: 95%;
+  max-width: 300px;
   background-color: #041F1E;
   color: #F7DBA7;
-  font-family: "Montserrat", sans-serif;
+  outline: none;
+}
+.cancel-booking-page .cancel-form button {
+  cursor: pointer;
+  width: 100%;
+  max-width: 10em;
+  text-align: center;
+  background-color: #837771;
+  color: #EDEDED;
+  transition: background-color 0.1s, color 0.1s;
+}
+.cancel-booking-page .cancel-form button:hover {
+  background-color: #041F1E;
+  color: #F7DBA7;
+}
+.cancel-booking-page .cancel-form a {
+  color: #F7DBA7;
+  font-style: italic;
 }
 
-h1 {
+.admin-page-header {
+  margin-bottom: 1em;
+}
+
+.admin-page-title {
+  padding: 1em;
+}
+
+.admin-page-search-btn,
+.admin-page-search-input {
+  font-size: 1.2rem;
+  padding: 0.3em;
+  margin: 0.3em;
+}
+
+.admin-page-search-input {
+  border-radius: 0.3em;
+}
+
+.admin-page-search-btn {
+  background-color: #5A8F76;
   color: #EDEDED;
-  padding: 1em 0 2em 0;
+  padding-inline: 1em;
+  border-radius: 1000px;
+  border: transparent solid 1px;
+  cursor: pointer;
+}
+.admin-page-search-btn:hover {
+  border: #F7DBA7 solid 1px;
+}
+
+.admin-page-relative-input {
+  position: relative;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: inline;
+}
+
+.admin-page-reset-btn {
+  position: absolute;
+  right: 0.5em;
+  top: 50%;
+  transform: translateY(-60%);
+  background: transparent;
+  border: none;
+}
+
+.admin-display-ticket {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 0.3em;
+  width: 20em;
+  height: 5em;
+  padding-left: 0.3em;
+  border: #F7DBA7 solid 1px;
+}
+
+.admin-display-flex-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.ticket-list-item {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+}
+.ticket-list-item .button-container {
+  display: flex;
+  -moz-column-gap: 1em;
+       column-gap: 1em;
+}
+.ticket-list-item .button-container button {
+  width: 2em;
+  height: 2em;
+}
+.ticket-list-item .button-container span {
+  width: 0.75em;
+}
+
+.ticket-picker {
+  color: #EDEDED;
+  max-width: 400px;
+}
+.ticket-picker .picker-title {
+  text-align: left;
+}
+.ticket-picker .ticket-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+  margin: 1em 0;
+}
+.ticket-picker .total-cost-container {
+  display: flex;
+  justify-content: space-between;
+}
+.ticket-picker .total-cost-container span:last-child {
+  margin-right: 2em;
 }/*# sourceMappingURL=main.css.map */

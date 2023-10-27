@@ -1,34 +1,18 @@
 @use "./abstract/variables" as *;
+@use "./abstract/defaultStyling" as *;
 @use "../components/MovieCard/MovieCard" as *;
 @use "../pages/MoviesPage/MoviePage" as *;
+@use "../components/MovieDetailsInfo/MovieDetailsInfo" as *;
 @use "../components/Seats/Seats" as *;
 @use "../components/Seats/Seat/Seat" as *;
 @use "../components/Seats/Seatrow/SeatRow" as *;
 @use "../components/ScreeningDetails/ScreeningDetails" as *;
 @use "../pages/Bookingpage/BookingPage" as *;
+@use "../components/NavBar/NavBar" as *;
 
+@use "../pages/CancelBookingPage/CancelBookingPage" as *;
+@use "../pages/AdminPage/AdminPage" as *;
+@use "../components/AdminDisplayTicket/AdminDisplayTicket" as *;
+@use "../components/AdminDisplayBooking/AdminDisplayBooking" as *;
+@use "../components/TicketPicker/TicketPicker" as *;
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
-
-*,
-*::before,
-*::after {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-#root {
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-body {
-  background-color: $mainBackground;
-  color: $lightAccent;
-  font-family: "Montserrat", sans-serif;
-}
-
-h1 {
-  color: $whiteAccent;
-  padding: 1em 0 2em 0;
-}

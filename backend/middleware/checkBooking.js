@@ -1,5 +1,5 @@
 export function checkBookingDetails(req, res, next) {
-  const { seats, guestEmail, guestPhone } = req.body;
+  const { seats, guestEmail } = req.body;
 
   if (!seats || !Array.isArray(seats) || seats.length == 0) {
     return res.status(400).send("seats not supplied");
@@ -26,9 +26,6 @@ export function checkBookingDetails(req, res, next) {
   if (!res.locals.jwtPayload) {
     if (!guestEmail || !guestEmail.toLowerCase().match(/@/)) {
       return res.status(400).send("email not supplied");
-    }
-    if (!guestPhone || isNaN(Number(guestPhone))) {
-      return res.status(400).send("phone number not supplied");
     }
   }
 

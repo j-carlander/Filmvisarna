@@ -1,0 +1,123 @@
+@use "../../Sass/abstract/variables" as *;
+
+.moviedetail-card {
+  position: relative;
+  .moviedetail-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+    -webkit-mask-image: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(rgba(0, 0, 0, 1)),
+      to(rgba(0, 0, 0, 0))
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      $mainBackground,
+      rgba(0, 0, 0, 1) 10%,
+      rgba(0, 0, 0, 0) 80%
+    );
+  }
+
+  .moviedetail-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 4em;
+
+    .trailer {
+      margin-top: 3em;
+      width: 90%;
+      max-width: 500px;
+      aspect-ratio: 560/315;
+      background-color: rgba(128, 128, 128, 0.581);
+      z-index: 999;
+
+      position: relative;
+      overflow: hidden;
+
+      .trailer-iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+    }
+
+    .moviedetail-infobox {
+      max-width: 500px;
+      padding: 1.5em;
+      z-index: 999;
+      text-align: left;
+      padding-bottom: 2em;
+
+      .moviedetail-title {
+        font-size: 2rem;
+        padding-bottom: 0.1em;
+      }
+
+      .moviedetail-info {
+        text-shadow: 2px 2px 4px black;
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.3rem;
+        padding-bottom: 3em;
+      }
+      .moviedetail-desc {
+        font-size: 1rem;
+        line-height: 1.5rem;
+      }
+
+      .moviedetail-director span,
+      .moviedetail-actor span {
+        font-size: 1rem;
+        font-weight: bold;
+        display: block;
+        line-height: 1.8rem;
+      }
+
+      .moviedetail-director,
+      .moviedetail-actor {
+        margin-top: 2rem;
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 978px) {
+  .moviedetail-card {
+    .moviedetail-img {
+      object-fit: cover;
+      object-position: top;
+    }
+
+    .moviedetail-wrapper {
+      padding: 8em 3em 1em 3em;
+      justify-content: center;
+      align-items: start;
+      gap: 5em;
+      flex-direction: row;
+
+      .trailer {
+        margin-top: 5em;
+        width: 50%;
+        height: 300px;
+      }
+
+      .moviedetail-infobox {
+        margin-top: 8em;
+        padding-bottom: 5em;
+      }
+    }
+  }
+}

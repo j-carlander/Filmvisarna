@@ -14,3 +14,11 @@ $BottomRadius: 10em;
   border-bottom-right-radius: $BottomRadius;
   border-bottom-left-radius: $BottomRadius;
 }
+
+.taken-seat {
+  border-color: $mainBackground;
+}
+
+.selected-seat {
+  border-color: $mediumAccent;
+}
