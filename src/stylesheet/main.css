@@ -328,24 +328,33 @@ h1 {
   gap: 0.7em;
 }
 
+.search-section {
+  position: relative;
+}
+
 .search-form {
   display: flex;
   align-items: center;
-}
-.search-form .search-btn {
-  background-color: transparent;
-  border: transparent;
 }
 .search-form .search-input {
   font-size: 1.2rem;
   padding: 0.3em;
   margin: 0.3em;
   border-radius: 0.3em;
-}
-.search-form .search-mobile-input {
+  color: #F7DBA7;
   background-color: transparent;
   border: none;
   border-bottom: 1px solid;
+}
+.search-form .search-input-mobile {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid;
+}
+
+.search-btn {
+  background-color: transparent;
+  border: transparent;
 }
 
 .cancel-booking-page .cancel-form {
