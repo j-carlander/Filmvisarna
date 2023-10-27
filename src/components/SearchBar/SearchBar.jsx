@@ -8,8 +8,8 @@ export function SearchBar({ matchDesktop }) {
   const [showMobileSearch, setShowMobileSearch] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const search = searchParams.get("search");
-
-  const [searchInput, setSearchInput] = useState(search);
+  const searchInit = search ? search : "";
+  const [searchInput, setSearchInput] = useState(searchInit);
 
   const searchInputRef = useRef();
 
