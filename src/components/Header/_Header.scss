@@ -1,5 +1,25 @@
+@use "../../Sass/abstract/variables" as *;
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+}
+
+.logo-img {
+  max-width: 300px;
+
+  @media (min-width: 780px) {
+    max-width: 444px;
+  }
+}
+
 .page-header {
+  position: sticky;
+  top: 0;
   display: flex;
   justify-content: space-between;
   padding: 1em;
+  background-color: $secBackground;
+
+  z-index: 9;
 }

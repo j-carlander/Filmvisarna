@@ -458,10 +458,28 @@ h1 {
   opacity: 1;
 }
 
+.logo-container {
+  display: flex;
+  justify-content: center;
+}
+
+.logo-img {
+  max-width: 300px;
+}
+@media (min-width: 780px) {
+  .logo-img {
+    max-width: 444px;
+  }
+}
+
 .page-header {
+  position: sticky;
+  top: 0;
   display: flex;
   justify-content: space-between;
   padding: 1em;
+  background-color: #1E2D2F;
+  z-index: 9;
 }
 
 .cancel-booking-page .page-title {

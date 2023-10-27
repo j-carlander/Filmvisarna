@@ -17,7 +17,7 @@ function App() {
 
   return (
     <>
-      <Header matchDesktop={{ matchDesktop }} />
+      <Header matchDesktop={matchDesktop} />
       <Outlet />
     </>
   );
