@@ -327,6 +327,9 @@ h1 {
   gap: 0.7em;
 }
 
+.cancel-booking-page .page-title {
+  text-align: center;
+}
 .cancel-booking-page .cancel-form {
   display: flex;
   flex-direction: column;
