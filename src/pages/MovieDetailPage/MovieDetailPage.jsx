@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { fetchHelper } from "../../utils/fetchHelper";
 import { MovieDetailsInfo } from "../../components/MovieDetailsInfo/MovieDetailsInfo";
@@ -6,6 +6,7 @@ import { MovieDetailsInfo } from "../../components/MovieDetailsInfo/MovieDetails
 export function MovieDetailPage() {
   const { movieid } = useParams();
   const [movies, setMovies] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function getMoviedetails() {
@@ -17,11 +18,20 @@ export function MovieDetailPage() {
     getMoviedetails();
   }, [movieid]);
 
+  const goBackToPreviousPage = () => {
+    navigate(-1);
+  }
+
   return (
     <>
-      {movies.map((movie, index) => (
-        <MovieDetailsInfo key={index} movie={movie} />
-      ))}
+      <div className="movieDetailsPage-container">
+        <button className="imgbox" onClick={goBackToPreviousPage}>
+          <img className="back-to-previous" src="/back-left-arrow.png" />
+        </button>
+        {movies.map((movie, index) => (
+          <MovieDetailsInfo key={index} movie={movie} />
+        ))}
+      </div>
     </>
   );
 }

@@ -328,6 +328,27 @@ h1 {
   gap: 0.7em;
 }
 
+.movieDetailsPage-container {
+  position: relative;
+}
+.movieDetailsPage-container .imgbox {
+  background-color: transparent;
+  border-style: none;
+}
+.movieDetailsPage-container .imgbox .back-to-previous {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  z-index: 50;
+  margin: 1.5em 1em;
+  cursor: pointer;
+  opacity: 0.9;
+  transition: all 0.3s;
+}
+.movieDetailsPage-container .imgbox .back-to-previous:hover {
+  opacity: 1;
+}
+
 .cancel-booking-page .page-title {
   text-align: center;
 }
