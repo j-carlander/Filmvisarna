@@ -475,4 +475,23 @@ h1 {
 }
 .ticket-picker .total-cost-container span:last-child {
   margin-right: 2em;
+}
+
+.filter-list {
+  margin: 0 auto 3em auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.filter-list .filter-item {
+  list-style-type: none;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.filter-list .filter-item .filter-select {
+  font-family: "Montserrat", sans-serif;
+  border-radius: 0.25em;
+  width: 12em;
+  height: 2em;
 }/*# sourceMappingURL=main.css.map */
