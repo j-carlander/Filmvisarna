@@ -1,6 +1,9 @@
 import express from "express";
 import { getTakenseats } from "../controllers/getTakenseats.js";
-import { getScreeningInfo } from "../controllers/getScreeningInfo.js";
+import {
+  getScreeningInfo,
+  screeningById,
+} from "../controllers/getScreeningInfo.js";
 import { checkScreeningId } from "../middleware/checkScreeningId.js";
 import { checkMovieDetails } from "../middleware/checkMovieDetails.js";
 import { getMovies } from "../controllers/movieController.js";
@@ -65,6 +68,9 @@ router.get("/tickettypes", getTicketTypes);
 router.get("/theatrerows/:theatreid", theatreLayout);
 
 router.get("/subscribeScreenings/:screeningid", subscribe);
+
+// Get info of a screening by id
+router.get("/screening/:screeningid", checkScreeningId, screeningById);
 
 //Login route
 router.post("/login", validateData, loginhandler);

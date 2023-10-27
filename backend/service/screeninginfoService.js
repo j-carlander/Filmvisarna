@@ -21,3 +21,22 @@ export async function screeninginfoService(movieid) {
   const res = await runQuery(sql, [movieid, currentDate]);
   return res;
 }
+
+export async function screeningInfoById(screeningId) {
+  const currentDate = new Date();
+  const sql = `
+  SELECT scr.id,
+  movies.title,
+  movies.agelimit,
+  movies.durationinminutes,
+  scr.date AS screeningDate,
+  the.name AS theatre,
+  the.id AS theatreId
+  FROM screenings AS scr, theatres AS the, movies
+  WHERE scr.theatreid = the.id
+  AND scr.movieid = movies.id 
+  AND scr.id = ?
+  AND scr.date >= ?;`;
+
+  return await runQuery(sql, [screeningId, currentDate]);
+}
