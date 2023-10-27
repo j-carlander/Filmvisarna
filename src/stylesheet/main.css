@@ -458,6 +458,12 @@ h1 {
   opacity: 1;
 }
 
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+}
+
 .cancel-booking-page .page-title {
   text-align: center;
 }

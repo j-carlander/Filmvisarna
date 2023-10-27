@@ -1,8 +1,7 @@
 import { Outlet } from "react-router-dom";
-import { NavBar } from "./components/NavBar/NavBar";
-import { SearchBar } from "./components/SearchBar/SearchBar";
 import { useState } from "react";
 import { useEffect } from "react";
+import { Header } from "./components/Header/Header";
 
 function App() {
   const [matchDesktop, setMatchDesktop] = useState(
@@ -18,10 +17,7 @@ function App() {
 
   return (
     <>
-      <header style={{ display: "flex", justifyContent: "space-between" }}>
-        <NavBar matchDesktop={matchDesktop} />
-        <SearchBar matchDesktop={matchDesktop} />
-      </header>
+      <Header matchDesktop={{ matchDesktop }} />
       <Outlet />
     </>
   );
