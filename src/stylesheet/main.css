@@ -13,13 +13,13 @@
 }
 
 body {
-  background-color: #041F1E;
-  color: #F7DBA7;
+  background-color: #041f1e;
+  color: #f7dba7;
   font-family: "Montserrat", sans-serif;
 }
 
 h1 {
-  color: #EDEDED;
+  color: #ededed;
   padding: 1em 0 2em 0;
   text-align: center;
 }
@@ -27,14 +27,15 @@ h1 {
 .movie-card {
   position: relative;
   max-width: 250px;
+  cursor: pointer;
 }
 .movie-card .card-agelimit {
   position: absolute;
   top: 2em;
   right: 0;
   padding: 0.3em 0.8em;
-  background-color: #5A8F76;
-  color: #EDEDED;
+  background-color: #5a8f76;
+  color: #ededed;
 }
 .movie-card .card-img {
   width: 100%;
@@ -84,8 +85,18 @@ h1 {
   left: 0;
   width: 100%;
   z-index: -1;
-  -webkit-mask-image: linear-gradient(to bottom, #041F1E, rgb(0, 0, 0) 10%, rgba(0, 0, 0, 0) 80%);
-          mask-image: linear-gradient(to bottom, #041F1E, rgb(0, 0, 0) 10%, rgba(0, 0, 0, 0) 80%);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #041f1e,
+    rgb(0, 0, 0) 10%,
+    rgba(0, 0, 0, 0) 80%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #041f1e,
+    rgb(0, 0, 0) 10%,
+    rgba(0, 0, 0, 0) 80%
+  );
 }
 .moviedetail-card .moviedetail-wrapper {
   display: flex;
@@ -136,14 +147,25 @@ h1 {
   font-size: 1rem;
   line-height: 1.5rem;
 }
-.moviedetail-card .moviedetail-wrapper .moviedetail-infobox .moviedetail-director span,
-.moviedetail-card .moviedetail-wrapper .moviedetail-infobox .moviedetail-actor span {
+.moviedetail-card
+  .moviedetail-wrapper
+  .moviedetail-infobox
+  .moviedetail-director
+  span,
+.moviedetail-card
+  .moviedetail-wrapper
+  .moviedetail-infobox
+  .moviedetail-actor
+  span {
   font-size: 1rem;
   font-weight: bold;
   display: block;
   line-height: 1.8rem;
 }
-.moviedetail-card .moviedetail-wrapper .moviedetail-infobox .moviedetail-director,
+.moviedetail-card
+  .moviedetail-wrapper
+  .moviedetail-infobox
+  .moviedetail-director,
 .moviedetail-card .moviedetail-wrapper .moviedetail-infobox .moviedetail-actor {
   margin-top: 2rem;
   font-size: 1rem;
@@ -152,9 +174,9 @@ h1 {
 @media screen and (min-width: 978px) {
   .moviedetail-card .moviedetail-img {
     -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
     -o-object-position: top;
-       object-position: top;
+    object-position: top;
   }
   .moviedetail-card .moviedetail-wrapper {
     padding: 8em 3em 1em 3em;
@@ -176,19 +198,19 @@ h1 {
 .theatre-container {
   border: 2px solid #000;
   border-radius: 0.25em;
-  background-color: #1E2D2F;
+  background-color: #1e2d2f;
   max-width: 450px;
 }
 .theatre-container .theatre-screen {
   width: 80%;
-  fill: #EDEDED;
-  filter: drop-shadow(0px 0px 10px #EDEDED);
+  fill: #ededed;
+  filter: drop-shadow(0px 0px 10px #ededed);
   margin: 0 auto;
 }
 .theatre-container .theatre-wrapper {
   overflow-x: scroll;
   scrollbar-width: thin;
-  scrollbar-color: #1E2D2F;
+  scrollbar-color: #1e2d2f;
   padding: 0 1em;
 }
 .theatre-container .theatre-wrapper .theatre-seats {
@@ -206,11 +228,11 @@ h1 {
 }
 
 .theatre-wrapper::-webkit-scrollbar-track {
-  background: #1E2D2F;
+  background: #1e2d2f;
 }
 
 .theatre-wrapper::-webkit-scrollbar-thumb {
-  background: #041F1E;
+  background: #041f1e;
   border-radius: 0.5em;
 }
 
@@ -218,7 +240,7 @@ h1 {
   width: 20px;
   height: 20px;
   flex: 0 0 20px;
-  border: 3.5px solid #F7DBA7;
+  border: 3.5px solid #f7dba7;
   border-top-right-radius: 20em;
   border-top-left-radius: 20em;
   border-bottom-right-radius: 10em;
@@ -226,11 +248,11 @@ h1 {
 }
 
 .taken-seat {
-  border-color: #041F1E;
+  border-color: #041f1e;
 }
 
 .selected-seat {
-  border-color: #5A8F76;
+  border-color: #5a8f76;
 }
 
 .seat-row {
@@ -240,7 +262,7 @@ h1 {
   width: fit-content;
   justify-content: center;
   -moz-column-gap: 1em;
-       column-gap: 1em;
+  column-gap: 1em;
 }
 
 .screening-details {
@@ -269,8 +291,8 @@ h1 {
 }
 
 .screening-book-btn {
-  background-color: #5A8F76;
-  color: #EDEDED;
+  background-color: #5a8f76;
+  color: #ededed;
   padding: 1em 2.7em;
   border-radius: 1000px;
   border: transparent 1px;
@@ -291,7 +313,7 @@ h1 {
 }
 .main-nav-bar li a {
   text-decoration: none;
-  color: #F7DBA7;
+  color: #f7dba7;
   font-weight: 700;
 }
 .main-nav-bar button {
@@ -314,7 +336,7 @@ h1 {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-color: #1E2D2F;
+  background-color: #1e2d2f;
   border: none;
 }
 .main-nav-bar .burger-menu-container .burger-menu-modal .burger-menu-close {
@@ -341,7 +363,7 @@ h1 {
   padding: 0.3em;
   margin: 0.3em;
   border-radius: 0.3em;
-  color: #F7DBA7;
+  color: #f7dba7;
   background-color: transparent;
   border: none;
   border-bottom: 1px solid;
@@ -367,7 +389,7 @@ h1 {
   margin: 0.3em;
   background: transparent;
   border: none;
-  color: #F7DBA7;
+  color: #f7dba7;
 }
 
 .search-btn {
@@ -380,14 +402,14 @@ h1 {
   width: 35px;
   height: 35px;
   border-radius: 50%;
-  background: conic-gradient(transparent 75%, #F7DBA7);
+  background: conic-gradient(transparent 75%, #f7dba7);
   animation: rotateLoading infinite 1s linear;
 }
 .loading .loading-inner {
   position: absolute;
   inset: 5px;
   border-radius: 50%;
-  background-color: #1E2D2F;
+  background-color: #1e2d2f;
 }
 
 @keyframes rotateLoading {
@@ -405,7 +427,7 @@ h1 {
   right: 0.5em;
   width: 90vw;
   max-width: 800px;
-  background-color: #1E2D2F;
+  background-color: #1e2d2f;
   padding: 2em;
   border-radius: 0.3em;
 }
@@ -414,7 +436,7 @@ h1 {
   margin-block: 1em;
   gap: 1em;
   padding: 1em;
-  background-color: #041F1E;
+  background-color: #041f1e;
 }
 .search-result-card p {
   overflow: hidden;
@@ -428,12 +450,115 @@ h1 {
   width: 100%;
 }
 
+.search-section {
+  position: relative;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+}
+.search-form .search-input {
+  font-size: 1.2rem;
+  padding: 0.3em;
+  margin: 0.3em;
+  border-radius: 0.3em;
+  color: #f7dba7;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid;
+}
+.search-form .search-input-mobile {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid;
+}
+.search-form .search-input-relative-input {
+  position: relative;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: inline;
+}
+.search-form .search-input-clear-btn {
+  position: absolute;
+  right: 0.5em;
+  top: 50%;
+  transform: translateY(-60%);
+  font-size: 1.2rem;
+  padding: 0.3em;
+  margin: 0.3em;
+  background: transparent;
+  border: none;
+  color: #f7dba7;
+}
+
+.search-btn {
+  background-color: transparent;
+  border: transparent;
+}
+
+.loading {
+  position: relative;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: conic-gradient(transparent 75%, #f7dba7);
+  animation: rotateLoading infinite 1s linear;
+}
+.loading .loading-inner {
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  background-color: #1e2d2f;
+}
+
+@keyframes rotateLoading {
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: 359deg;
+  }
+}
+.search-result-container {
+  position: absolute;
+  z-index: 10;
+  top: 3em;
+  right: 0.5em;
+  width: 90vw;
+  max-width: 800px;
+  background-color: #1e2d2f;
+  padding: 2em;
+  border-radius: 0.3em;
+}
+
+.search-result-card {
+  margin-block: 1em;
+  gap: 1em;
+  padding: 1em;
+  background-color: #041f1e;
+}
+.search-result-card p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.search-result-card .search-result-img {
+  width: 100px;
+}
+.search-result-card .search-result-img img {
+  width: 100%;
+}
+
+.cancel-booking-page .page-title {
+  text-align: center;
+}
 .cancel-booking-page .cancel-form {
   display: flex;
   flex-direction: column;
   align-items: center;
   row-gap: 0.75em;
-  background-color: #1E2D2F;
+  background-color: #1e2d2f;
   padding: 2em 0;
   border-radius: 0.25em;
   max-width: 400px;
@@ -451,8 +576,8 @@ h1 {
 .cancel-booking-page .cancel-form input {
   width: 95%;
   max-width: 300px;
-  background-color: #041F1E;
-  color: #F7DBA7;
+  background-color: #041f1e;
+  color: #f7dba7;
   outline: none;
 }
 .cancel-booking-page .cancel-form button {
@@ -461,15 +586,15 @@ h1 {
   max-width: 10em;
   text-align: center;
   background-color: #837771;
-  color: #EDEDED;
+  color: #ededed;
   transition: background-color 0.1s, color 0.1s;
 }
 .cancel-booking-page .cancel-form button:hover {
-  background-color: #041F1E;
-  color: #F7DBA7;
+  background-color: #041f1e;
+  color: #f7dba7;
 }
 .cancel-booking-page .cancel-form a {
-  color: #F7DBA7;
+  color: #f7dba7;
   font-style: italic;
 }
 
@@ -493,15 +618,15 @@ h1 {
 }
 
 .admin-page-search-btn {
-  background-color: #5A8F76;
-  color: #EDEDED;
+  background-color: #5a8f76;
+  color: #ededed;
   padding-inline: 1em;
   border-radius: 1000px;
   border: transparent solid 1px;
   cursor: pointer;
 }
 .admin-page-search-btn:hover {
-  border: #F7DBA7 solid 1px;
+  border: #f7dba7 solid 1px;
 }
 
 .admin-page-relative-input {
@@ -529,7 +654,7 @@ h1 {
   width: 20em;
   height: 5em;
   padding-left: 0.3em;
-  border: #F7DBA7 solid 1px;
+  border: #f7dba7 solid 1px;
 }
 
 .admin-display-flex-container {
@@ -537,4 +662,43 @@ h1 {
   flex-direction: column;
   align-items: center;
   gap: 0.5em;
-}/*# sourceMappingURL=main.css.map */
+}
+
+.ticket-list-item {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+}
+.ticket-list-item .button-container {
+  display: flex;
+  -moz-column-gap: 1em;
+  column-gap: 1em;
+}
+.ticket-list-item .button-container button {
+  width: 2em;
+  height: 2em;
+}
+.ticket-list-item .button-container span {
+  width: 0.75em;
+}
+
+.ticket-picker {
+  color: #ededed;
+  max-width: 400px;
+}
+.ticket-picker .picker-title {
+  text-align: left;
+}
+.ticket-picker .ticket-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+  margin: 1em 0;
+}
+.ticket-picker .total-cost-container {
+  display: flex;
+  justify-content: space-between;
+}
+.ticket-picker .total-cost-container span:last-child {
+  margin-right: 2em;
+} /*# sourceMappingURL=main.css.map */
