@@ -7,7 +7,7 @@
   box-sizing: border-box;
 }
 
-#root {
+.max-width-wrapper {
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -333,6 +333,77 @@ h1 {
   gap: 3em;
 }
 
+.footer {
+  background-color: #1E2D2F;
+  padding: 2em 0em;
+}
+.footer .top-footer {
+  margin-bottom: 3em;
+  line-height: 1.8em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.footer .title-footer {
+  padding-bottom: 1.6em;
+}
+.footer .mail {
+  margin-top: 1em;
+}
+.footer .bottom-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.footer .title-socials {
+  padding-bottom: 1.6em;
+}
+.footer .socials-icon {
+  padding-bottom: 1.6em;
+}
+.footer .socials-icon * {
+  margin: 0 0.5em;
+}
+.footer .copyright {
+  text-align: center;
+}
+
+@media screen and (min-width: 978px) {
+  .footer {
+    width: 100%;
+  }
+  .footer .max-width-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .footer .top-footer {
+    display: flex;
+    justify-content: left;
+    align-items: start;
+    margin-left: 1em;
+  }
+  .footer .bottom-footer {
+    display: flex;
+    justify-content: right;
+    align-items: end;
+    margin-right: 1em;
+  }
+  .footer .socials-icon {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+  .footer .copyright {
+    position: absolute;
+    left: 35vw;
+    right: 35vw;
+    bottom: 10%;
+  }
+}
 .booking-confirmation-container {
   position: fixed;
   background-color: #041F1E;
@@ -566,7 +637,6 @@ h1 {
 
 .landingpage-container {
   min-width: 350px;
-  height: 100vh;
   background: rgb(131, 119, 113);
   background: radial-gradient(circle, rgba(131, 119, 113, 0.676) 0%, rgb(4, 31, 30) 100%);
   padding: 3em 1em;
