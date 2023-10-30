@@ -1,33 +1,28 @@
-import { MovieCard } from "../../components/MovieCard/MovieCard"
-import { useEffect, useState } from "react"
-import { fetchHelper } from "../../utils/fetchHelper"
-import { Footer } from "../../components/Footer/Footer";
+import { MovieCard } from "../../components/MovieCard/MovieCard";
+import { useEffect, useState } from "react";
+import { fetchHelper } from "../../utils/fetchHelper";
+import MovieFilters from "../../components/MovieFilterOptions/MovieFilters";
 
+export function MoviesPage() {
+  const [movies, setMovies] = useState([]);
 
-export function MoviesPage () {
-    const [ movies, setMovies ] = useState ([]);
-
-
-    useEffect (
-        () => {
-        async function getMovies () {
-            const response = await fetchHelper("/movies", "get")
-            const data = await response.json() 
-            setMovies(data)
-            console.log(data)
-        }
-        getMovies()
-        }, []
-    )
-    return (
+  useEffect(() => {
+    async function getMovies() {
+      const response = await fetchHelper("/movies", "get");
+      const data = await response.json();
+      setMovies(data);
+    }
+    getMovies();
+  }, []);
+  return (
     <>
-    <h1 className="moviepage-title">Filmer</h1>
-    <section className="moviepage-wrapper">
-        {movies.map((movie, index) => <MovieCard key={index} movie = {movie}/>)}
-    </section>
-    <Footer/>
-    
+      <h1 className="moviepage-title">Filmer</h1>
+      <MovieFilters {...{ setMovies }} />
+      <section className="moviepage-wrapper">
+        {movies.map((movie, index) => (
+          <MovieCard key={index} movie={movie} />
+        ))}
+      </section>
     </>
-    )
+  );
 }
-

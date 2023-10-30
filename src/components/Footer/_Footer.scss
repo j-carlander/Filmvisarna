@@ -2,7 +2,6 @@
 
 .footer {
   background-color: $secBackground;
-  margin-top: 10em;
   padding: 2em 0em;
 
   .top-footer {
@@ -58,11 +57,13 @@
         display: flex;
         justify-content: left;
         align-items: start;
+        margin-left: 1em;
     }
     .bottom-footer {
       display: flex;
       justify-content: right;
       align-items: end;
+      margin-right: 1em;
     }
 
     .socials-icon {

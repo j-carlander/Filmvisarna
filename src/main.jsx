@@ -5,11 +5,14 @@ import "./stylesheet/main.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { MoviesPage } from "./pages/MoviesPage/MoviesPage.jsx";
 import { AdminPage } from "./pages/AdminPage/AdminPage.jsx";
+import { BookingConfirmationPage } from "./pages/BookingConfirmationPage/BookingConfirmationPage.jsx"
 import { CancelBookingPage } from "./pages/CancelBookingPage/CancelBookingPage.jsx";
 import { MovieDetailPage } from "./pages/MovieDetailPage/MovieDetailPage.jsx";
+import { LandingPage } from "./pages/LandingPage/LandingPage";
 
 export const pages = [
-  { path: "/", label: "Start", element: <MoviesPage /> },
+  { path: "/", label: "Start", element: <LandingPage /> },
+  { path: "/movies", label: "Movies", element: <MoviesPage /> },
   { path: "/movies/:movieid", element: <MovieDetailPage /> },
 ];
 
@@ -22,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: "/admin",
     element: <AdminPage />,
+  },
+  {
+    path: "/bookingconfirmation/:screeningId",
+    element: <BookingConfirmationPage />
   },
   { path: "/cancel", element: <CancelBookingPage /> },
 ]);
