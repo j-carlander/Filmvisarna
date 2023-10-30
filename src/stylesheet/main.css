@@ -333,6 +333,40 @@ h1 {
   gap: 3em;
 }
 
+.booking-confirmation-container {
+  position: fixed;
+  background-color: #041F1E;
+  top: 5em;
+  left: 10%;
+  right: 10%;
+  padding: 1.5em;
+  border-radius: 0.25em;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+  max-width: 450px;
+  align-items: center;
+  color: #F7DBA7;
+  border: none;
+}
+.booking-confirmation-container h3 {
+  color: #EDEDED;
+}
+.booking-confirmation-container .movie-info p {
+  margin: 0.25em 0;
+}
+.booking-confirmation-container .close-btn {
+  background-color: #5A8F76;
+  color: #EDEDED;
+  width: 60%;
+  margin: 0 auto;
+  border-radius: 3em;
+  border: none;
+  font-size: 1rem;
+  padding: 0.75em 0;
+}
+
 .search-section {
   position: relative;
 }
