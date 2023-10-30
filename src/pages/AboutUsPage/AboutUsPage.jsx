@@ -21,7 +21,7 @@ export function AboutUs() {
           Tel: <span>123 45 67 89</span>
         </span>
       </p>
-      <h3>
+      <h3 id="find-us">
         <img src="/map-outline.svg" />
         Hitta hit
       </h3>

@@ -13,12 +13,12 @@ export function checkToken(req, res, next) {
     } catch (error) {
       console.log(error);
       if (error.message === "jwt malformed")
-        return res.status(401).send("Malformed token!");
+        return res.status(401).json({ error: "Missbildad token!" });
 
       if (error.message === "invalid token")
-        return res.status(401).send("Invalid token!");
+        return res.status(401).json({ error: "Ogiltig token!" });
 
-      return res.status(500).send("Internal server error!");
+      return res.status(500).json({ error: "Internt server fel!" });
     }
   }
 

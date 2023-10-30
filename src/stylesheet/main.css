@@ -351,6 +351,13 @@ h1 {
 .footer .mail {
   margin-top: 1em;
 }
+.footer .link-no-style {
+  text-decoration: none;
+  text-decoration: underline;
+  color: inherit;
+  font-style: italic;
+  padding-top: 1.8em;
+}
 .footer .bottom-footer {
   display: flex;
   flex-direction: column;
