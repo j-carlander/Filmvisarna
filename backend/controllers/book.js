@@ -27,7 +27,7 @@ export async function addBooking(req, res) {
   const currentTime = new Date();
 
   if (screeningTime < currentTime) {
-    return res.status(400).json({ error: "Screening is outdated" });
+    return res.status(400).json({ error: "Visningen är utdaterad!" });
   }
 
   const ticketType = await tickettypeService();
@@ -86,7 +86,8 @@ export async function addBooking(req, res) {
 export async function getBookings(req, res) {
   const payload = res.locals.jwtPayload;
 
-  if (!payload) return res.status(400).send("Token not provided!");
+  if (!payload)
+    return res.status(400).json({ error: "Token skickades inte med!" });
 
   const bookings = await getBookingsByUserId(payload.id);
 
