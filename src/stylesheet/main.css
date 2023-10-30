@@ -330,12 +330,12 @@ h1 {
     justify-content: flex-end;
     width: 90%;
     gap: 4em;
-    margin: 1em 0;
+    height: 30vh;
   }
   .Bookingpage-container .seaction-header {
     display: flex;
     justify-content: flex-end;
-    width: 78%;
+    width: 77.6%;
     line-height: 1.5;
   }
   .Bookingpage-container .seaction-header2 {
@@ -351,13 +351,20 @@ h1 {
     font-weight: 500;
     padding: 0.5em 0;
   }
-  .section-1 img {
-    border-radius: 50%;
-  }
   .section-2 {
     margin: 3em 3.5em;
   }
+  .section-2 p {
+    margin-bottom: 1rem;
+  }
 }
+img {
+  background-color: red;
+  height: 10rem;
+  width: 8rem;
+  margin: -1rem -2rem;
+}
+
 .main-nav-bar {
   display: flex;
   align-items: center;

@@ -7,7 +7,7 @@
 
 //   _w200.webp`
 // }
-// 1025 desktop
+// 
 
 @media screen and (min-width: 475px) {
   .Bookingpage-container{
@@ -67,17 +67,15 @@
       justify-content: flex-end;
       width: 90%;
       gap: 4em;
-      margin: 1em 0;
+      height: 30vh;
     }
     .seaction-header{
-      // background-color: red;
       display: flex;
       justify-content: flex-end;
-      width: 78%;
+      width: 77.6%;
       line-height: 1.5;
     }
     .seaction-header2{
-      // background-color: rgb(202, 161, 161);
       display: flex;
       justify-content: flex-end;
       width: 80%;
@@ -85,14 +83,8 @@
     }
   }
   .seat-section{
-    // background-color: red;
-      // display: grid;
-      // grid-template-columns: 1fr;
     display: flex;
-    // align-items: center;
-    // justify-content: center;
     h2{
-      // background-color: blue;
       font-weight: 500;
       padding: 0.5em 0;
     }
@@ -105,12 +97,19 @@
     
     //     _w200.webp`
     //   }
-    img{
-      border-radius: 50%;
-    }
   }
   .section-2{
     margin: 3em 3.5em;
+
+  }
+  .section-2 p{
+    margin-bottom: 1rem;
   }
 
+}
+img {
+  background-color: red;
+  height: 10rem;
+  width: 8rem;
+  margin: -1rem -2rem;
 }

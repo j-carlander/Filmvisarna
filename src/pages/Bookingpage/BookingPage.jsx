@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Seats } from '../../components/Seats/Seats';
 import TicketPicker from '../../components/TicketPicker/TicketPicker';
 
@@ -7,7 +7,7 @@ function BookingPage() {
     <div className="Bookingpage-container">
       <div className="header-content">
         <div className="seaction-header">
-          <img src={`/images/movie.${3}`} alt="" />
+          {/* Image */}
           <h3>Midnight in Paris 1t:54m - <p>7+</p></h3>
         </div>
           <div className="seaction-header2">
@@ -17,7 +17,6 @@ function BookingPage() {
 
       <TicketPicker />
 
-      {/* Importera seats */}
       <div className="seat-section">
         <div className="section-1">
           <h2>Välj platser</h2>
