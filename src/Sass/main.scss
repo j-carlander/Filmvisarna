@@ -10,7 +10,7 @@
 @use "../components/NavBar/NavBar" as *;
 @use "../components/SearchBar/SearchBar" as *;
 @use "../pages/MovieDetailPage/MovieDetailPage" as *;
-
+@use "../components/Header/Header" as *;
 @use "../pages/CancelBookingPage/CancelBookingPage" as *;
 @use "../pages//LandingPage/LandingPage" as *;
 @use "../pages/AdminPage/AdminPage" as *;
