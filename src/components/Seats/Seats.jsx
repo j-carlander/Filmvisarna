@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Seat from "./Seatrow/Seat/Seat";
+import Seat from "./Seat/Seat";
 import SeatRow from "./Seatrow/SeatRow";
 import { fetchHelper } from "../../utils/fetchHelper";
 
