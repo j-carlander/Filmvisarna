@@ -1,7 +1,33 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+body {
+  background-color: #041F1E;
+  color: #F7DBA7;
+  font-family: "Montserrat", sans-serif;
+}
+
+h1 {
+  color: #EDEDED;
+  padding: 1em 0 2em 0;
+  text-align: center;
+}
+
 .movie-card {
   position: relative;
   max-width: 250px;
+  cursor: pointer;
 }
 .movie-card .card-agelimit {
   position: absolute;
@@ -48,6 +74,104 @@
 @media screen and (min-width: 978px) {
   .moviepage-wrapper {
     grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+.moviedetail-card {
+  position: relative;
+}
+.moviedetail-card .moviedetail-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+  -webkit-mask-image: linear-gradient(to bottom, #041F1E, rgb(0, 0, 0) 10%, rgba(0, 0, 0, 0) 80%);
+          mask-image: linear-gradient(to bottom, #041F1E, rgb(0, 0, 0) 10%, rgba(0, 0, 0, 0) 80%);
+}
+.moviedetail-card .moviedetail-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 4em;
+}
+.moviedetail-card .moviedetail-wrapper .trailer {
+  margin-top: 3em;
+  width: 90%;
+  max-width: 500px;
+  aspect-ratio: 560/315;
+  background-color: rgba(128, 128, 128, 0.581);
+  z-index: 1;
+  position: relative;
+  overflow: hidden;
+}
+.moviedetail-card .moviedetail-wrapper .trailer .trailer-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.moviedetail-card .moviedetail-wrapper .moviedetail-infobox {
+  max-width: 500px;
+  padding: 1.5em;
+  z-index: 999;
+  text-align: left;
+  padding-bottom: 2em;
+}
+.moviedetail-card .moviedetail-wrapper .moviedetail-infobox .moviedetail-title {
+  font-size: 2rem;
+  padding-bottom: 0.1em;
+}
+.moviedetail-card .moviedetail-wrapper .moviedetail-infobox .moviedetail-info {
+  text-shadow: 2px 2px 4px black;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.3rem;
+  padding-bottom: 3em;
+}
+.moviedetail-card .moviedetail-wrapper .moviedetail-infobox .moviedetail-desc {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+.moviedetail-card .moviedetail-wrapper .moviedetail-infobox .moviedetail-director span,
+.moviedetail-card .moviedetail-wrapper .moviedetail-infobox .moviedetail-actor span {
+  font-size: 1rem;
+  font-weight: bold;
+  display: block;
+  line-height: 1.8rem;
+}
+.moviedetail-card .moviedetail-wrapper .moviedetail-infobox .moviedetail-director,
+.moviedetail-card .moviedetail-wrapper .moviedetail-infobox .moviedetail-actor {
+  margin-top: 2rem;
+  font-size: 1rem;
+}
+
+@media screen and (min-width: 978px) {
+  .moviedetail-card .moviedetail-img {
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: top;
+       object-position: top;
+  }
+  .moviedetail-card .moviedetail-wrapper {
+    padding: 8em 3em 1em 3em;
+    justify-content: center;
+    align-items: start;
+    gap: 5em;
+    flex-direction: row;
+  }
+  .moviedetail-card .moviedetail-wrapper .trailer {
+    margin-top: 5em;
+    width: 50%;
+    height: 300px;
+  }
+  .moviedetail-card .moviedetail-wrapper .moviedetail-infobox {
+    margin-top: 8em;
+    padding-bottom: 5em;
   }
 }
 .theatre-container {
@@ -104,6 +228,10 @@
 
 .taken-seat {
   border-color: #041F1E;
+}
+
+.selected-seat {
+  border-color: #5A8F76;
 }
 
 .seat-row {
@@ -200,7 +328,163 @@
   flex-direction: column;
   gap: 0.7em;
 }
+.main-nav-bar .desktop-menu-list {
+  display: flex;
+  gap: 3em;
+}
 
+.search-section {
+  position: relative;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+}
+.search-form .search-input {
+  font-size: 1.2rem;
+  padding: 0.3em;
+  margin: 0.3em;
+  border-radius: 0.3em;
+  color: #F7DBA7;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid;
+}
+.search-form .search-input-mobile {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid;
+}
+.search-form .search-input-relative-input {
+  position: relative;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: inline;
+}
+.search-form .search-input-clear-btn {
+  position: absolute;
+  right: 0.5em;
+  top: 50%;
+  transform: translateY(-60%);
+  font-size: 1.2rem;
+  padding: 0.3em;
+  margin: 0.3em;
+  background: transparent;
+  border: none;
+  color: #F7DBA7;
+}
+
+.search-btn {
+  background-color: transparent;
+  border: transparent;
+}
+
+.loading {
+  position: relative;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: conic-gradient(transparent 75%, #F7DBA7);
+  animation: rotateLoading infinite 1s linear;
+}
+.loading .loading-inner {
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  background-color: #1E2D2F;
+}
+
+@keyframes rotateLoading {
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: 359deg;
+  }
+}
+.search-result-container {
+  position: absolute;
+  z-index: 10;
+  top: 3em;
+  right: 0.5em;
+  width: 90vw;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #1E2D2F;
+  padding: 2em;
+  border-radius: 0.3em;
+}
+
+.search-result-card {
+  margin-block: 1em;
+  width: 100%;
+  gap: 1em;
+  padding: 1em;
+  background-color: #041F1E;
+}
+.search-result-card p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.search-result-card .search-result-img {
+  width: 100px;
+}
+.search-result-card .search-result-img img {
+  width: 100%;
+}
+
+.movieDetailsPage-container {
+  position: relative;
+}
+.movieDetailsPage-container .imgbox {
+  background-color: transparent;
+  border-style: none;
+}
+.movieDetailsPage-container .imgbox .back-to-previous {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  z-index: 50;
+  margin: 1.5em 1em;
+  cursor: pointer;
+  opacity: 0.9;
+  transition: all 0.3s;
+}
+.movieDetailsPage-container .imgbox .back-to-previous:hover {
+  opacity: 1;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+}
+
+.logo-img {
+  max-width: 300px;
+}
+@media (min-width: 780px) {
+  .logo-img {
+    max-width: 444px;
+  }
+}
+
+.page-header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  background-color: #1E2D2F;
+  z-index: 9;
+}
+
+.cancel-booking-page .page-title {
+  text-align: center;
+}
 .cancel-booking-page .cancel-form {
   display: flex;
   flex-direction: column;
@@ -246,6 +530,79 @@
   font-style: italic;
 }
 
+.landingpage-container {
+  min-width: 350px;
+  height: 100vh;
+  background: rgb(131, 119, 113);
+  background: radial-gradient(circle, rgba(131, 119, 113, 0.676) 0%, rgb(4, 31, 30) 100%);
+  padding: 3em 1em;
+}
+.landingpage-container .landingpage-card {
+  max-width: 1000px;
+  margin-top: 1em;
+  margin: 0 auto;
+}
+.landingpage-container .landingpage-card .landingpage-card-info {
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.landingpage-container .landingpage-card .landingpage-card-info h4 {
+  letter-spacing: 0.08rem;
+  transition: all 0.3s;
+}
+.landingpage-container .landingpage-card .landingpage-card-info a {
+  text-decoration: none;
+}
+.landingpage-container .landingpage-card .landingpage-card-info .show-all {
+  color: #F7DBA7;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.landingpage-container .landingpage-card .landingpage-card-info .show-all::after {
+  content: " >";
+}
+.landingpage-container .landingpage-card .carousel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 4rem 1rem;
+  justify-items: center;
+  margin: 0 auto;
+  padding: 1em 0 2em 0;
+  max-height: 300px;
+  min-height: 250px;
+  overflow-y: hidden;
+  transition: all 0.3s;
+}
+.landingpage-container .landingpage-card .carousel .carousel-img {
+  cursor: pointer;
+  width: 100%;
+  border-radius: 1.5px;
+}
+
+@media screen and (min-width: 600px) {
+  .landingpage-container .landingpage-card .carousel {
+    grid-template-columns: 1fr 1fr 1fr;
+    transition: all 0.3s;
+    overflow-y: hidden;
+  }
+}
+@media screen and (min-width: 978px) {
+  .landingpage-container .landingpage-card .landingpage-card-info h4 {
+    font-size: 1.3rem;
+  }
+  .landingpage-container .landingpage-card .landingpage-card-info .show-all, .landingpage-container .landingpage-card .landingpage-card-info .show-all::after {
+    font-size: 1.3rem;
+  }
+  .landingpage-container .landingpage-card .carousel {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    place-items: center;
+    transition: all 0.3s;
+    max-height: 400px;
+    overflow-y: hidden;
+  }
+}
 .admin-page-header {
   margin-bottom: 1em;
 }
@@ -425,26 +782,73 @@
     width: 50%;
   }
 }
-*,
-*::before,
-*::after {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+.ticket-list-item {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+}
+.ticket-list-item .button-container {
+  display: flex;
+  -moz-column-gap: 1em;
+       column-gap: 1em;
+}
+.ticket-list-item .button-container button {
+  width: 2em;
+  height: 2em;
+}
+.ticket-list-item .button-container span {
+  width: 0.75em;
 }
 
-#root {
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-body {
-  background-color: #041F1E;
-  color: #F7DBA7;
-  font-family: "Montserrat", sans-serif;
-}
-
-h1 {
+.ticket-picker {
   color: #EDEDED;
-  padding: 1em 0 2em 0;
+  max-width: 400px;
+}
+.ticket-picker .picker-title {
+  text-align: left;
+}
+.ticket-picker .ticket-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+  margin: 1em 0;
+}
+.ticket-picker .total-cost-container {
+  display: flex;
+  justify-content: space-between;
+}
+.ticket-picker .total-cost-container span:last-child {
+  margin-right: 2em;
+}
+
+.filter-list {
+  margin: 0 auto 3em auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.filter-list .filter-item {
+  list-style-type: none;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0.5em 0;
+}
+.filter-list .filter-item .filter-date-input,
+.filter-list .filter-item .filter-select {
+  font-family: "Montserrat", sans-serif;
+  padding: 0.25em;
+  border-radius: 0.25em;
+  width: 12em;
+  height: 2.25em;
+}
+
+@media screen and (min-width: 900px) {
+  .filter-list {
+    flex-direction: row;
+    justify-content: center;
+  }
+  .filter-list .filter-item {
+    margin: 0 0.25em;
+  }
 }/*# sourceMappingURL=main.css.map */

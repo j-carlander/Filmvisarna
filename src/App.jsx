@@ -1,11 +1,23 @@
-import "./App.css";
 import { Outlet } from "react-router-dom";
-import { NavBar } from "./components/NavBar/NavBar";
+import { useState } from "react";
+import { useEffect } from "react";
+import { Header } from "./components/Header/Header";
 
 function App() {
+  const [matchDesktop, setMatchDesktop] = useState(
+    window.matchMedia("(min-width: 1000px)")
+  );
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 1000px)");
+    mediaQuery.addEventListener("change", setMatchDesktop);
+
+    return () => mediaQuery.removeEventListener("change", setMatchDesktop);
+  }, []);
+
   return (
     <>
-      <NavBar />
+      <Header matchDesktop={matchDesktop} />
       <Outlet />
     </>
   );
