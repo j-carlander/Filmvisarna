@@ -13,7 +13,7 @@ import { AboutUs } from "./pages/AboutUsPage/AboutUsPage.jsx";
 
 export const pages = [
   { path: "/", label: "Start", element: <LandingPage /> },
-  { path: "/movies", label: "Movies", element: <MoviesPage /> },
+  { path: "/movies", label: "Filmer", element: <MoviesPage /> },
   { path: "/movies/:movieid", element: <MovieDetailPage /> },
   { path: "/aboutus", label: "Om oss", element: <AboutUs /> },
 ];
