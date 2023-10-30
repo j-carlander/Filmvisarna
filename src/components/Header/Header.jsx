@@ -13,8 +13,10 @@ export function Header({ matchDesktop }) {
         </div>
       ) : null}
       <header className="page-header">
-        <NavBar matchDesktop={matchDesktop} />
-        <SearchBar matchDesktop={matchDesktop} />
+        <div className="max-width-wrapper">
+          <NavBar matchDesktop={matchDesktop} />
+          <SearchBar matchDesktop={matchDesktop} />
+        </div>
       </header>
     </>
   );
