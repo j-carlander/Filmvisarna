@@ -3,7 +3,7 @@ import { fetchHelper } from "../../utils/fetchHelper";
 
 export default function MovieFilters({ setMovies }) {
   const [filters, setFilters] = useState({
-    upcoming: "--",
+    upcoming: "false",
     age: "Välj ålder",
     date: "--",
   });
