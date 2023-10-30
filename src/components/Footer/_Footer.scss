@@ -21,6 +21,14 @@
     margin-top: 1em;
   }
 
+  .link-no-style {
+    text-decoration: none;
+    text-decoration: underline;
+    color: inherit;
+    font-style: italic;
+    padding-top: 1.8em;
+  }
+
   .bottom-footer {
     display: flex;
     flex-direction: column;
