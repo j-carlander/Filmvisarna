@@ -8,6 +8,8 @@
 @use "../components/Seats/Seatrow/SeatRow" as *;
 @use "../components/ScreeningDetails/ScreeningDetails" as *;
 @use "../components/NavBar/NavBar" as *;
+@use "../components/BookingConfirmation/BookingConfirmation" as *;
+
 @use "../components/SearchBar/SearchBar" as *;
 @use "../pages/MovieDetailPage/MovieDetailPage" as *;
 @use "../components/Header/Header" as *;
