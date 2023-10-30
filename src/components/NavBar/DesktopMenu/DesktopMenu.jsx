@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 export function DesktopMenu({ pages }) {
   return (
-    <ul>
+    <ul className="desktop-menu-list">
       {pages.map((page) => {
         if (!("label" in page)) return null;
         return (

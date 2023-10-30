@@ -10,11 +10,15 @@
 @use "../components/NavBar/NavBar" as *;
 @use "../components/BookingConfirmation/BookingConfirmation" as *;
 
+@use "../components/SearchBar/SearchBar" as *;
+@use "../pages/MovieDetailPage/MovieDetailPage" as *;
+@use "../components/Header/Header" as *;
 @use "../pages/CancelBookingPage/CancelBookingPage" as *;
 @use "../pages//LandingPage/LandingPage" as *;
 @use "../pages/AdminPage/AdminPage" as *;
 @use "../components/AdminDisplayTicket/AdminDisplayTicket" as *;
 @use "../components/AdminDisplayBooking/AdminDisplayBooking" as *;
+@use "../pages/BookingConfirmationPage/BookingConfirmationPage" as *;
 @use "../components/TicketPicker/TicketPicker" as *;
 @use "../components/MovieFilterOptions/MovieFilters" as *;
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
