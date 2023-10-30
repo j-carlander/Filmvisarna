@@ -5,7 +5,7 @@ export function MovieCard ({movie}) {
     return (
         <article className="movie-card">
             <span className="card-agelimit">{ageLimitFormatter(movie.agelimit)}</span>
-            <img 
+            <img
             className="card-img"
             src={`/images/${movie.id}_w200.webp`} 
             srcSet={`/images/${movie.id}_w200.webp 200w, /images/${movie.id}_w400.webp 400w`} 
