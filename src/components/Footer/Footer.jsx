@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export function Footer() {
   return (
     <div className="footer">
@@ -7,6 +9,7 @@ export function Footer() {
         <p>Adressen 8, 123 45</p>
         <p>Nr: 011-111 22 33</p>
         <p className="mail">Filmvisarna@mejl.com</p>
+        <Link to="./aboutus#find-us" className="link-no-style">Hitta hit</Link>
       </div>
       <div className="bottom-footer">
         <h2 className="title-socials">Följ oss på sociala medier</h2>
