@@ -1,0 +1,29 @@
+@use "../../Sass/abstract/variables" as *;
+
+
+.movieDetailsPage-container{
+    position: relative;
+
+    .imgbox{
+        background-color: transparent;
+        border-style: none;
+
+        .back-to-previous {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            z-index: 50;
+    
+            margin: 1.5em 1em;
+            cursor: pointer;
+            opacity: .9;
+            transition: all .3s;
+        }
+    
+        .back-to-previous:hover {
+            opacity: 1;
+        }
+    }
+    
+
+}
