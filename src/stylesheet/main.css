@@ -74,6 +74,7 @@
   align-items: center;
   row-gap: 1em;
   padding: 2em 0;
+  width: -moz-fit-content;
   width: fit-content;
 }
 
@@ -108,9 +109,11 @@
 .seat-row {
   flex: 0 0;
   display: flex;
+  width: -moz-fit-content;
   width: fit-content;
   justify-content: center;
-  column-gap: 1em;
+  -moz-column-gap: 1em;
+       column-gap: 1em;
 }
 
 .screening-details {
@@ -276,6 +279,7 @@
 
 .admin-page-relative-input {
   position: relative;
+  width: -moz-fit-content;
   width: fit-content;
   display: inline;
 }
@@ -366,6 +370,10 @@
     background-color: rgb(0, 0, 0);
     color: #F7DBA7;
   }
+  .bookconfirm-wrapper .guest-info-group input::-moz-placeholder {
+    color: #F7DBA7;
+    padding-left: 1em;
+  }
   .bookconfirm-wrapper .guest-info-group input::placeholder {
     color: #F7DBA7;
     padding-left: 1em;
@@ -395,10 +403,10 @@
 }
 @media screen and (min-width: 801px) {
   .bookconfirm-wrapper {
-    width: 100%;
+    max-width: 40%;
   }
   .bookconfirm-page {
-    max-width: 60%;
+    min-width: 500px;
     margin: 0 auto;
     position: relative;
   }
