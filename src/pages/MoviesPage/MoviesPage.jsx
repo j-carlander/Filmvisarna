@@ -1,6 +1,7 @@
 import { MovieCard } from "../../components/MovieCard/MovieCard"
 import { useEffect, useState } from "react"
 import { fetchHelper } from "../../utils/fetchHelper"
+import { Footer } from "../../components/Footer/Footer";
 
 
 export function MoviesPage () {
@@ -24,6 +25,7 @@ export function MoviesPage () {
     <section className="moviepage-wrapper">
         {movies.map((movie, index) => <MovieCard key={index} movie = {movie}/>)}
     </section>
+    <Footer/>
     
     </>
     )
