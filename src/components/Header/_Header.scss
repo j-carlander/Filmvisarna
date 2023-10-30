@@ -16,10 +16,14 @@
 .page-header {
   position: sticky;
   top: 0;
-  display: flex;
-  justify-content: space-between;
-  padding: 1em;
+
   background-color: $secBackground;
 
   z-index: 9;
+
+  .max-width-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+  }
 }
