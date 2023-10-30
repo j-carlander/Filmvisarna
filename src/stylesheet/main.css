@@ -399,8 +399,8 @@ h1 {
   }
   .footer .copyright {
     position: absolute;
-    left: 35vw;
-    right: 35vw;
+    left: 35%;
+    right: 35%;
     bottom: 10%;
   }
 }
@@ -438,6 +438,59 @@ h1 {
   padding: 0.75em 0;
 }
 
+.about-us-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 3em;
+  row-gap: 2em;
+}
+.about-us-page .theatre-img {
+  width: 100%;
+  max-width: 600px;
+}
+.about-us-page .contact-info {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+}
+.about-us-page .text {
+  width: 90%;
+  max-width: 700px;
+}
+.about-us-page h1,
+.about-us-page h2,
+.about-us-page h3 {
+  color: #EDEDED;
+  margin-top: 1em;
+  padding: 0;
+  font-size: 2rem;
+}
+.about-us-page .map-frame {
+  width: 100%;
+  height: 300px;
+  max-width: 700px;
+}
+
+@media screen and (min-width: 978px) {
+  .about-us-page .contact-info {
+    background-color: #1E2D2F;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    width: 98.75vw;
+    padding: 2em 0;
+  }
+  .about-us-page .contact-info span {
+    width: 25em;
+    display: flex;
+    justify-content: space-between;
+  }
+  .about-us-page .contact-info span span {
+    text-align: left;
+    width: 10em;
+  }
+}
 .search-section {
   position: relative;
 }
