@@ -32,10 +32,10 @@ export function AboutUs() {
           Adress: <span>Adressen 8, 123 45</span>
         </span>
         <span>
-          Email: <span>kontakt@filmvisarna.se</span>
+          Email: <span>Filmvisarna@mejl.com</span>
         </span>
         <span>
-          Tel: <span>123 45 67 89</span>
+          Tel: <span>011-111 22 33</span>
         </span>
       </p>
       <h3 id="find-us">
