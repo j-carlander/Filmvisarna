@@ -31,7 +31,7 @@ export function LandingPage() {
             <section className="landingpage-card">
                 <div className="landingpage-card-info">
                     <h4>På bio nu</h4>
-                    <Link to="/movies"><p className="show-all">Visa alla</p></Link>
+                    <Link to="/movies?upcoming=false"><p className="show-all">Visa alla</p></Link>
                 </div>
                 <div className="carousel">
                     {movies.map((movie, index) => (
@@ -50,7 +50,7 @@ export function LandingPage() {
             <section className="landingpage-card">
                 <div className="landingpage-card-info">
                     <h4>Kommande</h4>
-                    <Link to="/movies"><p className="show-all">Visa alla</p></Link>
+                    <Link to="/movies?upcoming=true"><p className="show-all">Visa alla</p></Link>
                 </div>
                 <div className="carousel">
                     {upcomingMovies.map((movie, index) => (
