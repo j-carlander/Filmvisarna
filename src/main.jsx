@@ -14,9 +14,10 @@ import { BookingPage } from "./pages/Bookingpage/BookingPage.jsx";
 
 
 export const pages = [
-  { path: "/", label: "Start", element: <LandingPage /> },
-  { path: "/movies", label: "Movies", element: <MoviesPage /> },
+  { path: "/", element: <LandingPage /> },
+  { path: "/movies", label: "Filmer", element: <MoviesPage /> },
   { path: "/movies/:movieid", element: <MovieDetailPage /> },
+  { path: "/aboutus#find-us", label: "Hitta hit", element: <AboutUs /> },
   { path: "/aboutus", label: "Om oss", element: <AboutUs /> },
   { path: "/booking/:screeningid", element: <BookingPage /> },
 ];

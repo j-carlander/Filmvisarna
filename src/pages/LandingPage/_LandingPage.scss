@@ -1,107 +1,60 @@
 @use "../../Sass/abstract/variables" as *;
 
-
 .landingpage-container {
-    min-width: 350px;
-    background: rgb(131,119,113);
-    background: radial-gradient(circle, rgba(131, 119, 113, 0.676) 0%, rgba(4,31,30,1) 100%);
-    padding: 3em 1em ;
-    
+  min-width: 350px;
+  background: rgb(131, 119, 113);
+  background: radial-gradient(
+    circle,
+    rgba(131, 119, 113, 0.676) 0%,
+    rgba(4, 31, 30, 1) 100%
+  );
+  padding: 3em 1em;
+
+  .landingpage-card {
+    max-width: 1000px;
+    margin-top: 1em;
+    margin: 0 auto;
+
+    .landingpage-card-info {
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      h4 {
+        letter-spacing: 0.08rem;
+        transition: all 0.3s;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      .show-all {
+        color: $lightAccent;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .show-all::after {
+        content: " >";
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 978px) {
+  .landingpage-container {
     .landingpage-card {
-        max-width: 1000px;
-        margin-top: 1em;
-        margin: 0 auto;
-
-            .landingpage-card-info{
-            transition: all .3s;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            
-
-            h4 {
-                letter-spacing: 0.080rem;
-                transition: all .3s;
-            }
-
-            a { 
-                text-decoration: none;
-            }
-
-            .show-all {
-                color: $lightAccent;
-                cursor: pointer;
-                transition: all .3s;
-            }
-
-            .show-all::after {
-                content: " >"
-            }
+      .landingpage-card-info {
+        h4 {
+          font-size: 1.3rem;
         }
-
-        .carousel {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-gap: 4rem 1rem;
-            justify-items: center;
-            margin: 0 auto;
-            padding: 1em 0 2em 0;
-            
-            max-height: 300px;
-            min-height: 250px;
-            overflow-y: hidden;
-            transition: all .3s;
-
-            .carousel-img {
-                cursor: pointer;
-                width: 100%;
-                border-radius: 1.5px;
-            }
+        .show-all,
+        .show-all::after {
+          font-size: 1.3rem;
         }
-        
+      }
     }
-}
-
-@media screen and (min-width: 600px){
-    .landingpage-container{
-
-        .landingpage-card{
-            
-            .carousel {
-                grid-template-columns: 1fr 1fr 1fr;
-                transition: all .3s;
-                overflow-y: hidden;
-            }
-    
-        }
-    }
-}
-
-
-@media screen and (min-width: 978px){
-    
-    .landingpage-container{
-        
-        .landingpage-card{
-            
-            .landingpage-card-info{
-                h4 {
-                    font-size: 1.3rem;
-                }
-                .show-all, .show-all::after {
-                    font-size: 1.3rem;
-                }
-            }
-            
-            
-        .carousel {
-            grid-template-columns: 1fr 1fr 1fr 1fr;
-            place-items: center;
-            transition: all .3s;
-
-            max-height: 400px;
-            overflow-y: hidden;
-        }
-        }
-    }
+  }
 }

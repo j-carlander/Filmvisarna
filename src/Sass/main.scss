@@ -9,6 +9,9 @@
 @use "../components/ScreeningDetails/ScreeningDetails" as *;
 @use "../pages/Bookingpage/BookingPage" as *;
 @use "../components/NavBar/NavBar" as *;
+@use "../pages/MovieDetailPage/MovieDetailPage" as *;
+@use "../components/MovieDetailsScreeningsByDate//MovieDetailsScreeningsByDate"
+  as *;
 @use "../components/Footer/Footer" as *;
 @use "../components/BookingConfirmation/BookingConfirmation" as *;
 @use "../pages/AboutUsPage/AboutUsPage" as *;
@@ -18,6 +21,7 @@
 @use "../components/Header/Header" as *;
 @use "../pages/CancelBookingPage/CancelBookingPage" as *;
 @use "../pages//LandingPage/LandingPage" as *;
+@use "../components/Carousel/Carousel" as *;
 @use "../pages/AdminPage/AdminPage" as *;
 @use "../components/AdminDisplayTicket/AdminDisplayTicket" as *;
 @use "../components/AdminDisplayBooking/AdminDisplayBooking" as *;

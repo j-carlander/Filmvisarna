@@ -7,6 +7,17 @@
   box-sizing: border-box;
 }
 
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  width: 100%;
+  flex: 1;
+}
+
 .max-width-wrapper {
   max-width: 1400px;
   margin: 0 auto;
@@ -67,6 +78,12 @@ h1 {
   padding: 1em;
 }
 
+.no-movies-text {
+  text-align: center;
+  font-size: 1.25rem;
+  margin: 0 1em 2em 1em;
+}
+
 @media screen and (min-width: 600px) {
   .moviepage-wrapper {
     grid-template-columns: 1fr 1fr 1fr;
@@ -85,7 +102,6 @@ h1 {
   top: 0;
   left: 0;
   width: 100%;
-  z-index: -1;
   -webkit-mask-image: linear-gradient(to bottom, #041F1E, rgb(0, 0, 0) 10%, rgba(0, 0, 0, 0) 80%);
           mask-image: linear-gradient(to bottom, #041F1E, rgb(0, 0, 0) 10%, rgba(0, 0, 0, 0) 80%);
 }
@@ -119,7 +135,7 @@ h1 {
 .moviedetail-card .moviedetail-wrapper .moviedetail-infobox {
   max-width: 500px;
   padding: 1.5em;
-  z-index: 999;
+  z-index: 5;
   text-align: left;
   padding-bottom: 2em;
 }
@@ -256,6 +272,11 @@ h1 {
   text-align: left;
 }
 
+.details-left,
+.details-right {
+  margin-bottom: 2.5em;
+}
+
 .details-flex-wrap {
   display: flex;
   flex-wrap: wrap;
@@ -264,10 +285,12 @@ h1 {
 
 .screening-time {
   margin-right: 0.5em;
+  font-size: 1rem;
 }
 
 .screening-lang {
   font-size: 0.75rem;
+  padding-top: 0.5em;
 }
 
 .screening-book-btn {
@@ -277,9 +300,11 @@ h1 {
   border-radius: 1000px;
   border: transparent 1px;
   font-weight: 700;
+  cursor: pointer;
 }
 
 .screening-seats {
+  padding-top: 1em;
   font-size: 0.75rem;
 }
 
@@ -419,6 +444,75 @@ h1 {
   gap: 3em;
 }
 
+.movieDetailsPage-container {
+  position: relative;
+}
+.movieDetailsPage-container .imgbox {
+  background-color: transparent;
+  border-style: none;
+}
+.movieDetailsPage-container .imgbox .back-to-previous {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  z-index: 5;
+  margin: 1.5em 1em;
+  cursor: pointer;
+  opacity: 0.9;
+  transition: all 0.3s;
+}
+.movieDetailsPage-container .imgbox .back-to-previous:hover {
+  opacity: 1;
+}
+.movieDetailsPage-container .imgbox::before {
+  content: "";
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  background-image: radial-gradient(ellipse, #041F1E 25%, transparent 65%);
+  z-index: 4;
+  margin: 1.2em 0.8em;
+  border-radius: 20em;
+}
+
+.movie-screenings-container {
+  transition: all 0.3s;
+  margin: 3em 1em;
+  display: flex;
+  flex-direction: column;
+}
+.movie-screenings-container .date-wrapper {
+  width: 130px;
+  text-align: center;
+}
+.movie-screenings-container .date-wrapper .date-label {
+  display: block;
+  padding-bottom: 0.5em;
+}
+.movie-screenings-container .date-wrapper .date-input {
+  padding: 0.5em;
+  border-radius: 3px;
+  border-style: none;
+  cursor: pointer;
+}
+.movie-screenings-container .screenings-list {
+  margin: 3em 0;
+}
+
+@media screen and (min-width: 768px) {
+  .movie-screenings-container {
+    padding: 0 4em;
+    transition: all 0.3s;
+  }
+}
+@media screen and (min-width: 978px) {
+  .movie-screenings-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 3em;
+    transition: all 0.3s;
+  }
+}
 .footer {
   background-color: #1E2D2F;
   padding: 2em 0em;
@@ -436,6 +530,13 @@ h1 {
 }
 .footer .mail {
   margin-top: 1em;
+}
+.footer .link-no-style {
+  text-decoration: none;
+  text-decoration: underline;
+  color: inherit;
+  font-style: italic;
+  padding-top: 1.8em;
 }
 .footer .bottom-footer {
   display: flex;
@@ -681,27 +782,6 @@ h1 {
   width: 100%;
 }
 
-.movieDetailsPage-container {
-  position: relative;
-}
-.movieDetailsPage-container .imgbox {
-  background-color: transparent;
-  border-style: none;
-}
-.movieDetailsPage-container .imgbox .back-to-previous {
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  z-index: 50;
-  margin: 1.5em 1em;
-  cursor: pointer;
-  opacity: 0.9;
-  transition: all 0.3s;
-}
-.movieDetailsPage-container .imgbox .back-to-previous:hover {
-  opacity: 1;
-}
-
 .logo-container {
   display: flex;
   justify-content: center;
@@ -808,46 +888,54 @@ h1 {
 .landingpage-container .landingpage-card .landingpage-card-info .show-all::after {
   content: " >";
 }
-.landingpage-container .landingpage-card .carousel {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 4rem 1rem;
-  justify-items: center;
-  margin: 0 auto;
-  padding: 1em 0 2em 0;
-  max-height: 300px;
-  min-height: 250px;
-  overflow-y: hidden;
-  transition: all 0.3s;
-}
-.landingpage-container .landingpage-card .carousel .carousel-img {
-  cursor: pointer;
-  width: 100%;
-  border-radius: 1.5px;
-}
 
-@media screen and (min-width: 600px) {
-  .landingpage-container .landingpage-card .carousel {
-    grid-template-columns: 1fr 1fr 1fr;
-    transition: all 0.3s;
-    overflow-y: hidden;
-  }
-}
 @media screen and (min-width: 978px) {
   .landingpage-container .landingpage-card .landingpage-card-info h4 {
     font-size: 1.3rem;
   }
-  .landingpage-container .landingpage-card .landingpage-card-info .show-all, .landingpage-container .landingpage-card .landingpage-card-info .show-all::after {
+  .landingpage-container .landingpage-card .landingpage-card-info .show-all,
+  .landingpage-container .landingpage-card .landingpage-card-info .show-all::after {
     font-size: 1.3rem;
   }
-  .landingpage-container .landingpage-card .carousel {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    place-items: center;
-    transition: all 0.3s;
-    max-height: 400px;
-    overflow-y: hidden;
-  }
 }
+.carousel-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1em;
+}
+.carousel-wrapper .carousel {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 1rem;
+  justify-items: start;
+  margin: 1em auto;
+  padding: 0;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: #F7DBA7;
+  transition: all 0.3s;
+}
+.carousel-wrapper .carousel::-webkit-scrollbar {
+  height: 3px;
+}
+.carousel-wrapper .carousel::-webkit-scrollbar-thumb {
+  background-color: #F7DBA7;
+}
+.carousel-wrapper .carousel .carousel-card {
+  scroll-snap-align: start;
+}
+.carousel-wrapper .carousel .carousel-img {
+  cursor: pointer;
+  max-width: clamp(150px, 30vw, 250px);
+  border-radius: 1.5px;
+}
+.carousel-wrapper .carousel-btn {
+  background: transparent;
+  border: none;
+}
+
 .admin-page-header {
   margin-bottom: 1em;
 }

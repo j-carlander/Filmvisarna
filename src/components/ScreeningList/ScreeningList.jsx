@@ -1,27 +1,15 @@
-// ScreeningsList.jsx
+import { ScreeningDetails } from '../ScreeningDetails/ScreeningDetails';
 
-import { useEffect, useState } from 'react';
-import { fetchHelper } from '../../utils/fetchHelper';
-import ScreeningDetails from './ScreeningDetails';
-
-function ScreeningsList({ movieId }) {
-  const [screenings, setScreenings] = useState([]);
-
-  useEffect(() => {
-    async function fetchScreenings() {
-      const response = await fetchHelper(`/moviescreenings/${movieId}`, 'get');
-      const data = await response.json();
-      setScreenings(data);
-    }
-
-    fetchScreenings();
-  }, [movieId]);
-
+function ScreeningsList({ showScreening }) {
   return (
     <section>
-        {screenings.map((screening, index) => 
-            <ScreeningDetails key={index} screening={screening} />
-        )}
+      {showScreening.length > 0 ? (
+        showScreening.map((screening, index) => (
+          <ScreeningDetails key={index} screening={screening} />
+        ))
+      ) : (
+        <p>Inga biljetter</p>
+      )}
     </section>
   );
 }

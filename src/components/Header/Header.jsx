@@ -4,7 +4,7 @@ import { SearchBar } from "../SearchBar/SearchBar";
 
 export function Header({ matchDesktop }) {
   const location = useLocation();
-  console.log("location: ", location);
+  // console.log("location: ", location);
   return (
     <>
       {location.pathname === "/" ? (

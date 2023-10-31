@@ -8,6 +8,17 @@
   box-sizing: border-box;
 }
 
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  width: 100%;
+  flex: 1;
+}
+
 .max-width-wrapper {
   max-width: 1400px;
   margin: 0 auto;
