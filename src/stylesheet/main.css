@@ -271,6 +271,11 @@ h1 {
   text-align: left;
 }
 
+.details-left,
+.details-right {
+  margin-bottom: 2.5em;
+}
+
 .details-flex-wrap {
   display: flex;
   flex-wrap: wrap;
@@ -279,10 +284,12 @@ h1 {
 
 .screening-time {
   margin-right: 0.5em;
+  font-size: 1rem;
 }
 
 .screening-lang {
   font-size: 0.75rem;
+  padding-top: 0.5em;
 }
 
 .screening-book-btn {
@@ -292,9 +299,11 @@ h1 {
   border-radius: 1000px;
   border: transparent 1px;
   font-weight: 700;
+  cursor: pointer;
 }
 
 .screening-seats {
+  padding-top: 1em;
   font-size: 0.75rem;
 }
 
@@ -349,6 +358,65 @@ h1 {
   gap: 3em;
 }
 
+.movieDetailsPage-container {
+  position: relative;
+}
+.movieDetailsPage-container .imgbox {
+  background-color: transparent;
+  border-style: none;
+}
+.movieDetailsPage-container .imgbox .back-to-previous {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  z-index: 5;
+  margin: 1.5em 1em;
+  cursor: pointer;
+  opacity: 0.9;
+  transition: all 0.3s;
+}
+.movieDetailsPage-container .imgbox .back-to-previous:hover {
+  opacity: 1;
+}
+
+.movie-screenings-container {
+  transition: all 0.3s;
+  margin: 3em 1em;
+  display: flex;
+  flex-direction: column;
+}
+.movie-screenings-container .date-wrapper {
+  width: 130px;
+  text-align: center;
+}
+.movie-screenings-container .date-wrapper .date-label {
+  display: block;
+  padding-bottom: 0.5em;
+}
+.movie-screenings-container .date-wrapper .date-input {
+  padding: 0.5em;
+  border-radius: 3px;
+  border-style: none;
+  cursor: pointer;
+}
+.movie-screenings-container .screenings-list {
+  margin: 3em 0;
+}
+
+@media screen and (min-width: 768px) {
+  .movie-screenings-container {
+    padding: 0 4em;
+    transition: all 0.3s;
+  }
+}
+@media screen and (min-width: 978px) {
+  .movie-screenings-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 3em;
+    transition: all 0.3s;
+  }
+}
 .footer {
   background-color: #1E2D2F;
   padding: 2em 0em;
@@ -616,37 +684,6 @@ h1 {
 }
 .search-result-card .search-result-img img {
   width: 100%;
-}
-
-.movieDetailsPage-container {
-  position: relative;
-}
-.movieDetailsPage-container .imgbox {
-  background-color: transparent;
-  border-style: none;
-}
-.movieDetailsPage-container .imgbox .back-to-previous {
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  z-index: 5;
-  margin: 1.5em 1em;
-  cursor: pointer;
-  opacity: 0.9;
-  transition: all 0.3s;
-}
-.movieDetailsPage-container .imgbox .back-to-previous:hover {
-  opacity: 1;
-}
-.movieDetailsPage-container .imgbox::before {
-  content: "";
-  position: absolute;
-  width: 35px;
-  height: 35px;
-  background-image: radial-gradient(ellipse, #041F1E 25%, transparent 65%);
-  z-index: 4;
-  margin: 1.2em 0.8em;
-  border-radius: 20em;
 }
 
 .logo-container {
