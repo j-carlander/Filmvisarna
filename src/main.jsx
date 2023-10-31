@@ -16,6 +16,7 @@ export const pages = [
   { path: "/movies", label: "Filmer", element: <MoviesPage /> },
   { path: "/movies/:movieid", element: <MovieDetailPage /> },
   { path: "/aboutus", label: "Om oss", element: <AboutUs /> },
+  { path: "/aboutus#find-us", label: "Hitta hit", element: <AboutUs /> },
 ];
 
 const router = createBrowserRouter([
