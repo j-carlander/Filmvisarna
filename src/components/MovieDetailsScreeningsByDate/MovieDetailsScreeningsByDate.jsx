@@ -21,7 +21,7 @@ export function MovieDetailsScreeningsByDate({ movieid }) {
     }
 
     getScreeningsById();
-  }, [filterDate, movieid, showScreening]);
+  }, [filterDate, movieid]);
 
 
 
