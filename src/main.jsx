@@ -10,12 +10,15 @@ import { CancelBookingPage } from "./pages/CancelBookingPage/CancelBookingPage.j
 import { MovieDetailPage } from "./pages/MovieDetailPage/MovieDetailPage.jsx";
 import { LandingPage } from "./pages/LandingPage/LandingPage";
 import { AboutUs } from "./pages/AboutUsPage/AboutUsPage.jsx";
+import { BookingPage } from "./pages/Bookingpage/BookingPage.jsx";
+
 
 export const pages = [
   { path: "/", label: "Start", element: <LandingPage /> },
   { path: "/movies", label: "Movies", element: <MoviesPage /> },
   { path: "/movies/:movieid", element: <MovieDetailPage /> },
   { path: "/aboutus", label: "Om oss", element: <AboutUs /> },
+  { path: "/booking/:screeningid", element: <BookingPage /> },
 ];
 
 const router = createBrowserRouter([

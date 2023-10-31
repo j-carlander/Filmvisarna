@@ -2,13 +2,8 @@ import { useState, useEffect } from "react";
 import TicketType from "./TicketType/TicketType";
 import { fetchHelper } from "../../utils/fetchHelper";
 
-<<<<<<< HEAD
- function TicketPicker() {
-  const [ticketTypes, setTicketTypes] = useState(ticketsMock);
-=======
 export function TicketPicker() {
   const [ticketTypes, setTicketTypes] = useState([]);
->>>>>>> dev
   const [selectedTickets, setSelectedTickets] = useState([]);
 
   function getTicketComp(ticketType, index) {

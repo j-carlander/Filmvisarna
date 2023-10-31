@@ -9,7 +9,7 @@ function App() {
   const [matchDesktop, setMatchDesktop] = useState(
     window.matchMedia("(min-width: 1000px)")
   );
-
+   const [selectedSeats, setSelectedSeats] = useState([]);
   useEffect(() => {
     const mediaQuery = window.matchMedia("(min-width: 1000px)");
     mediaQuery.addEventListener("change", setMatchDesktop);
@@ -21,7 +21,7 @@ function App() {
     <>
       <Header matchDesktop={matchDesktop} />
       <main className="max-width-wrapper">
-      <Outlet />
+      <Outlet context={[selectedSeats, setSelectedSeats]}/>
       </main>
       <Footer />
     </>
