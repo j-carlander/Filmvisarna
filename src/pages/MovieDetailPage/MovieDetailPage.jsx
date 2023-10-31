@@ -22,7 +22,7 @@ export function MovieDetailPage() {
 
   const goBackToPreviousPage = () => {
     navigate(-1);
-  }
+  };
 
   return (
     <>
