@@ -85,7 +85,6 @@ h1 {
   top: 0;
   left: 0;
   width: 100%;
-  z-index: -1;
   -webkit-mask-image: linear-gradient(to bottom, #041F1E, rgb(0, 0, 0) 10%, rgba(0, 0, 0, 0) 80%);
           mask-image: linear-gradient(to bottom, #041F1E, rgb(0, 0, 0) 10%, rgba(0, 0, 0, 0) 80%);
 }
@@ -119,7 +118,7 @@ h1 {
 .moviedetail-card .moviedetail-wrapper .moviedetail-infobox {
   max-width: 500px;
   padding: 1.5em;
-  z-index: 999;
+  z-index: 5;
   text-align: left;
   padding-bottom: 2em;
 }
@@ -614,7 +613,7 @@ h1 {
   position: absolute;
   width: 25px;
   height: 25px;
-  z-index: 50;
+  z-index: 5;
   margin: 1.5em 1em;
   cursor: pointer;
   opacity: 0.9;
