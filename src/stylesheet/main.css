@@ -622,6 +622,16 @@ h1 {
 .movieDetailsPage-container .imgbox .back-to-previous:hover {
   opacity: 1;
 }
+.movieDetailsPage-container .imgbox::before {
+  content: "";
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  background-image: radial-gradient(ellipse, #041F1E 25%, transparent 65%);
+  z-index: 4;
+  margin: 1.2em 0.8em;
+  border-radius: 20em;
+}
 
 .logo-container {
   display: flex;
