@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { fetchHelper } from "../../utils/fetchHelper";
 
-export default function MovieFilters({ setMovies }) {
+export default function MovieFilters({ setMovies, initialUpcoming }) {
   const [filters, setFilters] = useState({
-    upcoming: "false",
+    upcoming: initialUpcoming || "false",
     age: "Välj ålder",
     date: "--",
   });
@@ -22,6 +22,15 @@ export default function MovieFilters({ setMovies }) {
   }
 
   useEffect(() => {
+    const selectElement = document.querySelector(".filter-select");
+    if (initialUpcoming && selectElement) {
+      setFilters({ ...filters, upcoming: initialUpcoming });
+    
+      if (initialUpcoming === "true") {
+        selectElement.value = "true";
+      }
+    }
+
     async function fetchMoviesByFilters(searchFilters) {
       const filterQueries = searchFilters
         .map((filter) => `${filter[0]}=${filter[1]}`)
@@ -42,14 +51,14 @@ export default function MovieFilters({ setMovies }) {
     if (searchFilters.length === 0) return;
 
     fetchMoviesByFilters(searchFilters);
-  }, [filters, setMovies]);
+  }, [filters, setMovies, initialUpcoming]);
 
   return (
     <ul className="filter-list">
       <li className="filter-item">
         <select
           name="upcoming"
-          defaultValue={false}
+          defaultValue={initialUpcoming}
           onChange={onSelectChange}
           className="filter-select">
           <option value={false}>På bio nu</option>

@@ -27,7 +27,7 @@ export function LandingPage() {
       <section className="landingpage-card">
         <div className="landingpage-card-info">
           <h4>På bio nu</h4>
-          <Link to="/movies">
+          <Link to="/movies?upcoming=false">
             <p className="show-all">Visa alla</p>
           </Link>
         </div>
@@ -36,7 +36,7 @@ export function LandingPage() {
       <section className="landingpage-card">
         <div className="landingpage-card-info">
           <h4>Kommande</h4>
-          <Link to="/movies">
+          <Link to="/movies?upcoming=true">
             <p className="show-all">Visa alla</p>
           </Link>
         </div>
