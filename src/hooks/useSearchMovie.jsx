@@ -13,13 +13,15 @@ export function useSearchMovie(query) {
       if (!query) return setIsLoading(false);
 
       const result = await fetchHelper(`/movies/search?q=${query}`, "GET");
-      if (result.status === 204) {
-        setMessage("Hittade inga filmer");
-        setIsLoading(false);
-        return;
-      }
 
       const jsonResult = await result.json();
+
+      if (result.status >= 400) {
+        setMessage(jsonResult.message || jsonResult.error);
+        setIsLoading(false);
+        setMovieResult([{ test: "test" }]);
+        return;
+      }
 
       if (jsonResult.result.length > 0) setMovieResult(jsonResult.result);
 

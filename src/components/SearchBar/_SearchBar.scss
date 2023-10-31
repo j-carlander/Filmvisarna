@@ -17,6 +17,7 @@
     background-color: transparent;
     border: none;
     border-bottom: 1px solid;
+    width: 100%;
   }
 
   .search-input-mobile {
@@ -26,7 +27,8 @@
   }
   .search-input-relative-input {
     position: relative;
-    width: fit-content;
+    width: 90%;
+    padding-right: 0.75em;
     display: inline;
   }
   .search-input-clear-btn {
