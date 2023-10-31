@@ -308,6 +308,91 @@ h1 {
   font-size: 0.75rem;
 }
 
+.Bookingpage-container {
+  display: grid;
+  padding: 2.5em 0;
+  grid-template-areas: "a" "b" "c" "d";
+  gap: 4em;
+  justify-items: center;
+}
+
+.seat-section {
+  margin-top: 3rem;
+}
+
+.seat-section h2 {
+  font-size: 1.4em;
+}
+
+.section-2 button {
+  background-color: #5A8F76;
+  color: #fff;
+  font-size: 1em;
+  padding: 1em;
+  width: 15rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  margin-bottom: 1em;
+}
+
+.seat-section p {
+  padding: 10px 0;
+  text-align: center;
+  font-weight: 700;
+}
+
+.header-content h3 {
+  font-size: 1em;
+}
+.header-content h3 p {
+  font-weight: 400;
+}
+
+.seaction-header {
+  grid-area: a;
+  display: flex;
+  justify-content: center;
+  line-height: 1.5;
+  flex-direction: column;
+}
+
+.seaction-header2 {
+  grid-area: b;
+  min-width: 300px;
+}
+
+.section-1 {
+  grid-area: c;
+}
+
+.section-2 {
+  grid-area: d;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-2 p {
+  margin: 10px 0;
+}
+
+@media screen and (min-width: 992px) {
+  .Bookingpage-container {
+    grid-template-areas: "b a" "c d";
+    gap: 4em;
+  }
+  .section-2 {
+    margin: 3em 3.5em;
+  }
+  .section-2 p {
+    margin-bottom: 1rem;
+  }
+}
 .main-nav-bar {
   display: flex;
   align-items: center;

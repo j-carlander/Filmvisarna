@@ -7,6 +7,7 @@
 @use "../components/Seats/Seat/Seat" as *;
 @use "../components/Seats/Seatrow/SeatRow" as *;
 @use "../components/ScreeningDetails/ScreeningDetails" as *;
+@use "../pages/Bookingpage/BookingPage" as *;
 @use "../components/NavBar/NavBar" as *;
 @use "../pages/MovieDetailPage/MovieDetailPage" as *;
 @use "../components/MovieDetailsScreeningsByDate//MovieDetailsScreeningsByDate"
