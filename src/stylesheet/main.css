@@ -254,6 +254,11 @@ h1 {
   text-align: left;
 }
 
+.details-left,
+.details-right {
+  margin-bottom: 2.5em;
+}
+
 .details-flex-wrap {
   display: flex;
   flex-wrap: wrap;
@@ -262,10 +267,12 @@ h1 {
 
 .screening-time {
   margin-right: 0.5em;
+  font-size: 1rem;
 }
 
 .screening-lang {
   font-size: 0.75rem;
+  padding-top: 0.5em;
 }
 
 .screening-book-btn {
@@ -275,9 +282,11 @@ h1 {
   border-radius: 1000px;
   border: transparent 1px;
   font-weight: 700;
+  cursor: pointer;
 }
 
 .screening-seats {
+  padding-top: 1em;
   font-size: 0.75rem;
 }
 
@@ -349,6 +358,44 @@ h1 {
   opacity: 1;
 }
 
+.movie-screenings-container {
+  transition: all 0.3s;
+  margin: 3em 1em;
+  display: flex;
+  flex-direction: column;
+}
+.movie-screenings-container .date-wrapper {
+  width: 130px;
+  text-align: center;
+}
+.movie-screenings-container .date-wrapper .date-label {
+  display: block;
+  padding-bottom: 0.5em;
+}
+.movie-screenings-container .date-wrapper .date-input {
+  padding: 0.5em;
+  border-radius: 3px;
+  border-style: none;
+  cursor: pointer;
+}
+.movie-screenings-container .screenings-list {
+  margin: 3em 0;
+}
+
+@media screen and (min-width: 768px) {
+  .movie-screenings-container {
+    padding: 0 4em;
+    transition: all 0.3s;
+  }
+}
+@media screen and (min-width: 978px) {
+  .movie-screenings-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 3em;
+    transition: all 0.3s;
+  }
+}
 .cancel-booking-page .page-title {
   text-align: center;
 }

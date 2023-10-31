@@ -5,7 +5,7 @@ export function ScreeningDetails({ screening }) {
     <article className="screening-details">
       <div className="details-left">
         <div className="details-flex-wrap">
-          <h3 className="screening-time">{screening.screeningDate}</h3>
+          <h3 className="screening-time">{screening.screeningDate},</h3>
           <p className="screening-theatre">{screening.theatre}</p>
         </div>
         <p className="screening-lang">

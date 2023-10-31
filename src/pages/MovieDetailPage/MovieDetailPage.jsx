@@ -2,6 +2,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { fetchHelper } from "../../utils/fetchHelper";
 import { MovieDetailsInfo } from "../../components/MovieDetailsInfo/MovieDetailsInfo";
+import { MovieDetailsScreeningsByDate } from "../../components/MovieDetailsScreeningsByDate/MovieDetailsScreeningsByDate";
+
 
 export function MovieDetailPage() {
   const { movieid } = useParams();
@@ -31,6 +33,8 @@ export function MovieDetailPage() {
         {movies.map((movie, index) => (
           <MovieDetailsInfo key={index} movie={movie} />
         ))}
+        <MovieDetailsScreeningsByDate {...{ setMovies, movieid }}/>
+        
       </div>
     </>
   );

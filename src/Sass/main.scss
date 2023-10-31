@@ -9,6 +9,7 @@
 @use "../components/ScreeningDetails/ScreeningDetails" as *;
 @use "../components/NavBar/NavBar" as *;
 @use "../pages/MovieDetailPage/MovieDetailPage" as *;
+@use "../components/MovieDetailsScreeningsByDate//MovieDetailsScreeningsByDate" as *;
 
 @use "../pages/CancelBookingPage/CancelBookingPage" as *;
 @use "../pages//LandingPage/LandingPage" as *;
