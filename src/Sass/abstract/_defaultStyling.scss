@@ -9,6 +9,16 @@
 }
 
 #root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+.max-width-wrapper {
   max-width: 1400px;
   margin: 0 auto;
 }

@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Header } from "./components/Header/Header";
+import { Footer } from "./components/Footer/Footer";
 
 function App() {
   const [matchDesktop, setMatchDesktop] = useState(
@@ -18,7 +19,10 @@ function App() {
   return (
     <>
       <Header matchDesktop={matchDesktop} />
+      <main className="max-width-wrapper">
       <Outlet />
+      </main>
+      <Footer />
     </>
   );
 }

@@ -23,11 +23,17 @@ export function MoviesPage() {
     <>
       <h1 className="moviepage-title">Filmer</h1>
       <MovieFilters {...{ setMovies }} initialUpcoming={upcomingParam} />
-      <section className="moviepage-wrapper">
-        {movies.map((movie, index) => (
-          <MovieCard key={index} movie={movie} />
-        ))}
-      </section>
+      {movies.length > 0 ? (
+        <section className="moviepage-wrapper">
+          {movies.map((movie, index) => (
+            <MovieCard key={index} movie={movie} />
+          ))}
+        </section>
+      ) : (
+        <p className="no-movies-text">
+          Vi hittade inga filmer som matchade din sökning!
+        </p>
+      )}
     </>
   );
 }
