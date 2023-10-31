@@ -12,6 +12,8 @@ import { useNavigate } from 'react-router-dom';
 export function BookingPage() {
   const [data, setData] = useState({})
   const {screeningid} = useParams()
+  const [selectedSeats, setSelectedSeats] = useState([]);
+  const [selectedTickets, setSelectedTickets] = useState([]);
   
   const navigate = useNavigate()
 
@@ -26,6 +28,7 @@ export function BookingPage() {
     fectchScreening(screeningid)
     
   }, [])
+  console.log(selectedSeats);
   return (
     <div className="Bookingpage-container">
       {/* <div className="header-content"> */}
@@ -36,7 +39,7 @@ export function BookingPage() {
             <p> Slutar ca: {data.endTime}</p>
         </div>
           <div className="seaction-header2">
-            <TicketPicker />
+            <TicketPicker {...{selectedTickets, setSelectedTickets}} />
           </div>
       {/* </div> */}
 
@@ -44,10 +47,10 @@ export function BookingPage() {
       {/* <div className="seat-section"> */}
         <div className="section-1">
           <h2>Välj platser</h2>
-          <Seats />
+          <Seats {...{selectedSeats, setSelectedSeats, totalTickets: selectedTickets.length}}/>
         </div>
         <div className="section-2">
-          <p>Vald plats: rad 1 plats 1-2</p>
+          {selectedSeats.length > 0 && <p>Vald plats: rad {selectedSeats[0].rowNumber} plats {selectedSeats.length === 1 ? selectedSeats[0].seatNumber : `${selectedSeats[selectedSeats.length -1].seatNumber} - ${selectedSeats[0].seatNumber}`}</p>}
           <button onClick={() =>{
             navigate(`/bookingconfirmation/${screeningid}`)
           }}>Boka biljett</button>
@@ -57,4 +60,6 @@ export function BookingPage() {
   );
 }
 
+// ${selectedSeats[0].seatNumber}
+// selectedSeats[selectedSeats.length -1].seatNumber
 

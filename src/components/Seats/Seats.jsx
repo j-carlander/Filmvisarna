@@ -3,10 +3,10 @@ import Seat from "./Seat/Seat";
 import SeatRow from "./Seatrow/SeatRow";
 import { fetchHelper } from "../../utils/fetchHelper";
 
-export function Seats({ theatreId = 1, screeningId = 44, totalTickets }) {
+export function Seats({ theatreId = 1, screeningId = 44, totalTickets, selectedSeats, setSelectedSeats }) {
   const [seats, setSeats] = useState([]);
   const [takenSeats, setTakenSeats] = useState([]);
-  const [selectedSeats, setSelectedSeats] = useState([]); // TODO: Move state to booking page and send state through props
+  
 
   useEffect(() => {
     async function fetchTakenSeats() {

@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import TicketType from "./TicketType/TicketType";
 import { fetchHelper } from "../../utils/fetchHelper";
 
-export function TicketPicker() {
+export function TicketPicker({selectedTickets, setSelectedTickets}) {
   const [ticketTypes, setTicketTypes] = useState([]);
-  const [selectedTickets, setSelectedTickets] = useState([]);
+  
 
   function getTicketComp(ticketType, index) {
     return (
