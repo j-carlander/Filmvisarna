@@ -3,7 +3,7 @@ import { fetchHelper } from "../../utils/fetchHelper";
 
 export default function MovieFilters({ setMovies, initialUpcoming }) {
   const [filters, setFilters] = useState({
-    upcoming: initialUpcoming || "--",
+    upcoming: initialUpcoming || "false",
     age: "Välj ålder",
     date: "--",
   });
@@ -17,7 +17,7 @@ export default function MovieFilters({ setMovies, initialUpcoming }) {
 
   function onDateInputChange(e) {
     const value = e.target.value;
-    console.log(value);
+
     setFilters({ ...filters, date: value });
   }
 
@@ -58,7 +58,7 @@ export default function MovieFilters({ setMovies, initialUpcoming }) {
       <li className="filter-item">
         <select
           name="upcoming"
-          defaultValue={false}
+          defaultValue={initialUpcoming}
           onChange={onSelectChange}
           className="filter-select">
           <option value={false}>På bio nu</option>
