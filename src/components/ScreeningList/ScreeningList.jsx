@@ -1,13 +1,15 @@
 import { ScreeningDetails } from '../ScreeningDetails/ScreeningDetails';
 
 function ScreeningsList({ showScreening }) {
-
-
   return (
     <section>
-        {showScreening.map((screening, index) => 
-            <ScreeningDetails key={index} screening={screening} />
-        )}
+      {showScreening.length > 0 ? (
+        showScreening.map((screening, index) => (
+          <ScreeningDetails key={index} screening={screening} />
+        ))
+      ) : (
+        <p>Inga biljetter</p>
+      )}
     </section>
   );
 }
