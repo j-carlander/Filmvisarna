@@ -22,15 +22,6 @@ export default function MovieFilters({ setMovies, initialUpcoming }) {
   }
 
   useEffect(() => {
-    const selectElement = document.querySelector(".filter-select");
-    if (initialUpcoming && selectElement) {
-      setFilters({ ...filters, upcoming: initialUpcoming });
-    
-      if (initialUpcoming === "true") {
-        selectElement.value = "true";
-      }
-    }
-
     async function fetchMoviesByFilters(searchFilters) {
       const filterQueries = searchFilters
         .map((filter) => `${filter[0]}=${filter[1]}`)

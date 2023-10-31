@@ -12,13 +12,13 @@ import { LandingPage } from "./pages/LandingPage/LandingPage";
 import { AboutUs } from "./pages/AboutUsPage/AboutUsPage.jsx";
 import { BookingPage } from "./pages/Bookingpage/BookingPage.jsx";
 
-
 export const pages = [
   { path: "/", element: <LandingPage /> },
   { path: "/movies", label: "Filmer", element: <MoviesPage /> },
   { path: "/movies/:movieid", element: <MovieDetailPage /> },
   { path: "/aboutus#find-us", label: "Hitta hit", element: <AboutUs /> },
   { path: "/aboutus", label: "Om oss", element: <AboutUs /> },
+  { path: "/aboutus#find-us", label: "Hitta hit", element: <AboutUs /> },
   { path: "/booking/:screeningid", element: <BookingPage /> },
 ];
 

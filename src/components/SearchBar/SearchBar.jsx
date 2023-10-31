@@ -18,13 +18,22 @@ export function SearchBar({ matchDesktop }) {
   useEffect(() => {
     if (showMobileSearch) searchInputRef.current.focus();
     !searchInput
-      ? setSearchParams(undefined)
-      : setSearchParams([["search", searchInput]]);
+      ? setSearchParams((oldVal) => {
+          oldVal.delete("search");
+          return oldVal;
+        })
+      : setSearchParams((oldVal) => {
+          oldVal.set("search", searchInput);
+          return oldVal;
+        });
   }, [searchInput, setSearchParams, showMobileSearch]);
 
   function clearSearch() {
     setSearchInput("");
-    setSearchParams(undefined);
+    setSearchParams((oldVal) => {
+      oldVal.delete("search");
+      return oldVal;
+    });
   }
 
   return (

@@ -1,24 +1,14 @@
 import { MovieCard } from "../../components/MovieCard/MovieCard";
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
-import { fetchHelper } from "../../utils/fetchHelper";
+import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import MovieFilters from "../../components/MovieFilterOptions/MovieFilters";
 
 export function MoviesPage() {
   const [movies, setMovies] = useState([]);
 
-  const location = useLocation();
-  const params = new URLSearchParams(location.search);
+  const [params] = useSearchParams();
   const upcomingParam = params.get("upcoming");
 
-  useEffect(() => {
-    async function getMovies() {
-      const response = await fetchHelper("/movies", "get");
-      const data = await response.json();
-      setMovies(data);
-    }
-    getMovies();
-  }, []);
   return (
     <>
       <h1 className="moviepage-title">Filmer</h1>
