@@ -3,7 +3,7 @@ import { fetchHelper } from "../../utils/fetchHelper";
 
 export default function MovieFilters({ setMovies }) {
   const [filters, setFilters] = useState({
-    upcoming: "--",
+    upcoming: "false",
     age: "Välj ålder",
     date: "--",
   });
@@ -17,7 +17,7 @@ export default function MovieFilters({ setMovies }) {
 
   function onDateInputChange(e) {
     const value = e.target.value;
-    console.log(value);
+
     setFilters({ ...filters, date: value });
   }
 

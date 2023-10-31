@@ -9,7 +9,7 @@ export async function getScreeningInfo(req, res) {
   const result = await screeninginfoService(movieid);
   if (!result || result.length === 0) {
     // If no results were found, return a 404 Not Found response.
-    return res.status(404).send("Movie not found");
+    return res.status(404).json({ error: "Filmen hittades inte!" });
   }
 
   for (let screening of result) {
@@ -26,7 +26,11 @@ export async function screeningById(req, res) {
   const result = await screeningInfoById(screeningid);
 
   if (result.length === 0)
-    return res.status(400).send({ message: "Screening too old or not found" });
+    return res
+      .status(400)
+      .send({
+        message: "Visningen hittades inte eller så är visningen för gammal!",
+      });
   const screening = result[0];
 
   const screeningEndDate = new Date(screening.screeningDate);

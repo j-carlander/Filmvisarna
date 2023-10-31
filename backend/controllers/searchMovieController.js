@@ -8,8 +8,8 @@ export async function searchMovieController(req, res) {
 
   if (result.length === 0)
     return res
-      .status(204)
-      .json({ message: `Sorry, we have nothing that match your query` });
+      .status(404)
+      .json({ message: `Vi hittade inget som matchade din sökning!` });
 
   const formatetResult = formatSearchResult(result);
 
