@@ -17,7 +17,7 @@ export default function MovieFilters({ setMovies }) {
 
   function onDateInputChange(e) {
     const value = e.target.value;
-    console.log(value);
+
     setFilters({ ...filters, date: value });
   }
 
