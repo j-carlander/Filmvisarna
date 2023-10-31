@@ -46,6 +46,14 @@
       margin: 0 0.5em;
     }
   }
+  .socials-icon img {
+    cursor: pointer;
+    opacity: .85;
+    transition: all .3s;
+  }
+  .socials-icon img:hover {
+    opacity: 1;
+  }
 
   .copyright {
     text-align: center;

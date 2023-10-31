@@ -18,7 +18,6 @@ export const pages = [
   { path: "/movies/:movieid", element: <MovieDetailPage /> },
   { path: "/aboutus#find-us", label: "Hitta hit", element: <AboutUs /> },
   { path: "/aboutus", label: "Om oss", element: <AboutUs /> },
-  { path: "/aboutus#find-us", label: "Hitta hit", element: <AboutUs /> },
   { path: "/booking/:screeningid", element: <BookingPage /> },
 ];
 

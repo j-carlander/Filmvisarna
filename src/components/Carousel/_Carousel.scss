@@ -41,5 +41,11 @@
   .carousel-btn {
     background: transparent;
     border: none;
+    cursor: pointer;
+    opacity: .85;
+    transition: all .3s;
+  }
+  .carousel-btn:hover {
+    opacity: 1;
   }
 }
