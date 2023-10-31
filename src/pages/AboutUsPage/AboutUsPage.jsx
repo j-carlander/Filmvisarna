@@ -3,10 +3,27 @@ export function AboutUs() {
     <div className="about-us-page">
       <h1>Om oss</h1>
       <p className="text">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat.
+        Välkommen till vår lilla pärla av en biograf i hjärtat av vår älskade
+        stad. Hos oss får du den perfekta bioupplevelsen i en intim och mysig
+        atmosfär. Med två bekväma salonger har vi valt att bevara det lilla
+        formatet för att ge dig en personlig och nära upplevelse.
+      </p>
+      <p className="text">
+        Våra moderna salonger är utrustade med det senaste inom ljud- och
+        bildteknik, och vi visar de senaste filmerna från hela världen. Oavsett
+        om du är en äkta filmälskare eller bara söker en trevlig kväll med
+        familj och vänner, så är vår biograf det perfekta valet.
+      </p>
+      <p className="text">
+        Vår personal är passionerad och engagerad när det kommer till film, och
+        de ser till att din vistelse hos oss blir minnesvärd. Njut av din
+        favoritfilm med popcorn och dina favoritdrycker från vår lobbykiosk.
+      </p>
+      <p className="text">
+        Ge dig själv den där extra uppmärksamheten och kvaliteten som en liten
+        stad kan erbjuda. Vi ser fram emot att välkomna dig till vår biograf för
+        en filmupplevelse som du sent kommer att glömma. Kom och upptäck det
+        magiska i att gå på bio hos oss!
       </p>
       <img className="theatre-img" src="/movie-theatre.png" />
       <h2>Kontakt</h2>
