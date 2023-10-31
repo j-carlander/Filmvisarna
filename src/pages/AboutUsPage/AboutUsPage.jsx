@@ -1,4 +1,18 @@
+import { useLocation } from "react-router-dom";
+import { useRef, useEffect } from "react";
+
 export function AboutUs() {
+  const location = useLocation();
+  const findRef = useRef();
+  // console.log("location: ", location);
+  console.log(location.hash);
+
+  useEffect(() => {
+    if (findRef.current === undefined) return;
+    if (location.hash === "#find-us") {
+      findRef.current.scrollIntoView();
+    }
+  }, [findRef, location]);
   return (
     <div className="about-us-page">
       <h1>Om oss</h1>
@@ -38,7 +52,7 @@ export function AboutUs() {
           Tel: <span>011-111 22 33</span>
         </span>
       </p>
-      <h3 id="find-us">
+      <h3 ref={findRef} id="find-us">
         <img src="/map-outline.svg" />
         Hitta hit
       </h3>

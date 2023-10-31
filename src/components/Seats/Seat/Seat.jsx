@@ -44,6 +44,12 @@ export default function Seat({
           selectedSeats[0].seatNumber - i === seatNumber
         ) {
           selected = true;
+          const foundSeats = selectedSeats.find((value) => 
+            value.rowNumber === rowNumber && value.seatNumber === seatNumber
+            
+          )
+          if(foundSeats === undefined) 
+          {setSelectedSeats([...selectedSeats, {rowNumber, seatNumber}])}
         }
       }
     }
