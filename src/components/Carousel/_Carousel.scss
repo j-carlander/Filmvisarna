@@ -1,0 +1,45 @@
+@use "../../Sass/abstract/variables" as *;
+
+.carousel-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1em;
+  .carousel {
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 1rem;
+    justify-items: start;
+
+    margin: 1em auto;
+    padding: 0;
+
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    scrollbar-color: $lightAccent;
+    &::-webkit-scrollbar {
+      height: 3px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: $lightAccent;
+    }
+
+    transition: all 0.3s;
+
+    .carousel-card {
+      scroll-snap-align: start;
+    }
+
+    .carousel-img {
+      cursor: pointer;
+      max-width: clamp(150px, 30vw, 250px);
+      border-radius: 1.5px;
+    }
+  }
+
+  .carousel-btn {
+    background: transparent;
+    border: none;
+  }
+}

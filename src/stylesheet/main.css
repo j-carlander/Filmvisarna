@@ -729,46 +729,54 @@ h1 {
 .landingpage-container .landingpage-card .landingpage-card-info .show-all::after {
   content: " >";
 }
-.landingpage-container .landingpage-card .carousel {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 4rem 1rem;
-  justify-items: center;
-  margin: 0 auto;
-  padding: 1em 0 2em 0;
-  max-height: 300px;
-  min-height: 250px;
-  overflow-y: hidden;
-  transition: all 0.3s;
-}
-.landingpage-container .landingpage-card .carousel .carousel-img {
-  cursor: pointer;
-  width: 100%;
-  border-radius: 1.5px;
-}
 
-@media screen and (min-width: 600px) {
-  .landingpage-container .landingpage-card .carousel {
-    grid-template-columns: 1fr 1fr 1fr;
-    transition: all 0.3s;
-    overflow-y: hidden;
-  }
-}
 @media screen and (min-width: 978px) {
   .landingpage-container .landingpage-card .landingpage-card-info h4 {
     font-size: 1.3rem;
   }
-  .landingpage-container .landingpage-card .landingpage-card-info .show-all, .landingpage-container .landingpage-card .landingpage-card-info .show-all::after {
+  .landingpage-container .landingpage-card .landingpage-card-info .show-all,
+  .landingpage-container .landingpage-card .landingpage-card-info .show-all::after {
     font-size: 1.3rem;
   }
-  .landingpage-container .landingpage-card .carousel {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    place-items: center;
-    transition: all 0.3s;
-    max-height: 400px;
-    overflow-y: hidden;
-  }
 }
+.carousel-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1em;
+}
+.carousel-wrapper .carousel {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 1rem;
+  justify-items: start;
+  margin: 1em auto;
+  padding: 0;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: #F7DBA7;
+  transition: all 0.3s;
+}
+.carousel-wrapper .carousel::-webkit-scrollbar {
+  height: 3px;
+}
+.carousel-wrapper .carousel::-webkit-scrollbar-thumb {
+  background-color: #F7DBA7;
+}
+.carousel-wrapper .carousel .carousel-card {
+  scroll-snap-align: start;
+}
+.carousel-wrapper .carousel .carousel-img {
+  cursor: pointer;
+  max-width: clamp(150px, 30vw, 250px);
+  border-radius: 1.5px;
+}
+.carousel-wrapper .carousel-btn {
+  background: transparent;
+  border: none;
+}
+
 .admin-page-header {
   margin-bottom: 1em;
 }
