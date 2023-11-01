@@ -81,15 +81,17 @@ export function SearchBar({ matchDesktop }) {
           </button>
         </form>
       )}
-      <SearchResult
-        {...{
-          isLoading,
-          movieResult,
-          message,
-          clearSearch,
-          setShowMobileSearch,
-        }}
-      />
+      {searchInput !== "" && (
+        <SearchResult
+          {...{
+            isLoading,
+            movieResult,
+            message,
+            clearSearch,
+            setShowMobileSearch,
+          }}
+        />
+      )}
     </section>
   );
 }
