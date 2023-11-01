@@ -1,8 +1,15 @@
+import { useEffect } from "react";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 export function BurgerMenu({ pages }) {
   const [showMenu, setShowMenu] = useState(false);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    setShowMenu(false);
+  }, [location, setShowMenu]);
 
   return (
     <>

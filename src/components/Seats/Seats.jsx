@@ -3,10 +3,15 @@ import Seat from "./Seat/Seat";
 import SeatRow from "./Seatrow/SeatRow";
 import { fetchHelper } from "../../utils/fetchHelper";
 
-export function Seats({ theatreId = 1, screeningId = 44, totalTickets, selectedSeats, setSelectedSeats }) {
+export function Seats({
+  theatreId,
+  screeningId,
+  totalTickets,
+  selectedSeats,
+  setSelectedSeats,
+}) {
   const [seats, setSeats] = useState([]);
   const [takenSeats, setTakenSeats] = useState([]);
-  
 
   useEffect(() => {
     async function fetchTakenSeats() {
