@@ -1,0 +1,48 @@
+.movie-screenings-container {
+    transition: all .3s;
+    margin: 3em 1em;
+    display: flex;
+    flex-direction: column;
+
+    .date-wrapper {
+        width: 130px;
+        text-align: center;
+
+        .date-label {
+            display: block;
+            padding-bottom: .5em;
+        }
+        .date-input {
+            padding: .5em;
+            border-radius: 3px;
+            border-style: none;
+            cursor: pointer;
+        }
+        
+    }
+
+    .screenings-list {
+        margin: 3em 0;
+
+        .no-screening-para {
+            padding: 1em 0 4.5em 0;
+            font-style: italic;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .movie-screenings-container {
+        padding: 0 4em;
+        transition: all .3s;
+    }
+}
+
+@media screen and (min-width: 978px) {
+    .movie-screenings-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 3em;
+        transition: all .3s;
+    }
+}

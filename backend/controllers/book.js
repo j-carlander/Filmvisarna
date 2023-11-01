@@ -14,7 +14,7 @@ import { calculateCost } from "../utils/calculateCost.js";
 import { updateSubscribers } from "../controllers/polling.js";
 
 export async function addBooking(req, res) {
-  const { seats, guestEmail, guestPhone } = req.body;
+  const { seats, guestEmail } = req.body;
   const screeningid = req.params.screeningid;
   const bookingNumber = await bookingNumberService();
 
@@ -22,20 +22,19 @@ export async function addBooking(req, res) {
 
   const screening = await screeningsService(screeningid);
   const { date, movieid } = screening[0];
-  
+
   const screeningTime = new Date(date);
   const currentTime = new Date();
 
   if (screeningTime < currentTime) {
-    return res.status(400).json({ error: "Screening is outdated" });
+    return res.status(400).json({ error: "Visningen är utdaterad!" });
   }
-  
+
   const ticketType = await tickettypeService();
   const bookResult = await bookingservice(
     bookingNumber,
     screeningid,
     guestEmail,
-    guestPhone,
     userid
   );
 
@@ -49,7 +48,7 @@ export async function addBooking(req, res) {
     )
   );
 
-  await Promise.all(ticketPromises)
+  await Promise.all(ticketPromises);
 
   const movie = await getMovieDetails(movieid);
   const { title } = movie[0];
@@ -66,7 +65,6 @@ export async function addBooking(req, res) {
     bookingDetails = {
       ...bookingDetails,
       guestEmail: guestEmail,
-      guestPhone: guestPhone,
     };
   }
 
@@ -88,7 +86,8 @@ export async function addBooking(req, res) {
 export async function getBookings(req, res) {
   const payload = res.locals.jwtPayload;
 
-  if (!payload) return res.status(400).send("Token not provided!");
+  if (!payload)
+    return res.status(400).json({ error: "Token skickades inte med!" });
 
   const bookings = await getBookingsByUserId(payload.id);
 

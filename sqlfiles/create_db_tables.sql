@@ -99,7 +99,6 @@ CREATE TABLE
         screeningid INT NOT NULL,
         userid INT,
         guestemail VARCHAR(255),
-        guestphone VARCHAR(255),
         FOREIGN KEY (screeningid) REFERENCES screenings (id),
         FOREIGN KEY (userid) REFERENCES users (id)
     );
