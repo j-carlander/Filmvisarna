@@ -33,7 +33,7 @@
 
     .carousel-img {
       cursor: pointer;
-      max-width: clamp(150px, 30vw, 250px);
+      max-width: clamp(120px, 30vw, 250px);
       border-radius: 1.5px;
     }
   }
@@ -42,8 +42,8 @@
     background: transparent;
     border: none;
     cursor: pointer;
-    opacity: .85;
-    transition: all .3s;
+    opacity: 0.85;
+    transition: all 0.3s;
   }
   .carousel-btn:hover {
     opacity: 1;
