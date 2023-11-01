@@ -75,7 +75,7 @@ h1 {
   grid-gap: 3rem 2rem;
   justify-items: center;
   margin: 0 auto;
-  padding: 1em;
+  padding: 1em 1em 5em 1em;
 }
 
 .no-movies-text {
@@ -458,7 +458,7 @@ h1 {
   z-index: 5;
   margin: 1.5em 1em;
   cursor: pointer;
-  opacity: 0.9;
+  opacity: 0.85;
   transition: all 0.3s;
 }
 .movieDetailsPage-container .imgbox .back-to-previous:hover {
@@ -497,6 +497,10 @@ h1 {
 }
 .movie-screenings-container .screenings-list {
   margin: 3em 0;
+}
+.movie-screenings-container .screenings-list .no-screening-para {
+  padding: 1em 0 4.5em 0;
+  font-style: italic;
 }
 
 @media screen and (min-width: 768px) {
@@ -552,6 +556,14 @@ h1 {
 }
 .footer .socials-icon * {
   margin: 0 0.5em;
+}
+.footer .socials-icon img {
+  cursor: pointer;
+  opacity: 0.85;
+  transition: all 0.3s;
+}
+.footer .socials-icon img:hover {
+  opacity: 1;
 }
 .footer .copyright {
   text-align: center;
@@ -935,6 +947,12 @@ h1 {
 .carousel-wrapper .carousel-btn {
   background: transparent;
   border: none;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: all 0.3s;
+}
+.carousel-wrapper .carousel-btn:hover {
+  opacity: 1;
 }
 
 .admin-page-header {

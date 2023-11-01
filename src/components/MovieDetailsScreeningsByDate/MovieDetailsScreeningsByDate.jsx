@@ -39,7 +39,7 @@ export function MovieDetailsScreeningsByDate({ movieid }) {
         </div>
         <div className="screenings-list">
           {showScreening.length === 0 ? (
-            <p>nothing to show</p> 
+            <p className="no-screening-para">Tyvärr finns det ingen visning för det valda datumet.</p> 
             ) : (
             <ScreeningsList {...{ showScreening }}/>
           )}
