@@ -1,8 +1,9 @@
 @use "../../Sass/abstract/variables" as *;
 
 .admin-display-flex-container {
+  margin-top: 2em;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5em;
+  gap: 1.5em;
 }

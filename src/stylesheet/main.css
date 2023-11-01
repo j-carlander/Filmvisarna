@@ -1021,10 +1021,17 @@ button {
 
 .admin-page-header {
   margin-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .admin-page-title {
   padding: 1em;
+}
+
+.admin-page-search-title {
+  margin-bottom: 0.5em;
 }
 
 .admin-page-search-btn,
@@ -1072,6 +1079,7 @@ button {
   justify-content: center;
   align-items: start;
   gap: 0.3em;
+  margin-bottom: 0.3em;
   width: 20em;
   height: 5em;
   padding-left: 0.3em;
@@ -1079,10 +1087,11 @@ button {
 }
 
 .admin-display-flex-container {
+  margin-top: 2em;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5em;
+  gap: 1.5em;
 }
 
 .bookconfirm-wrapper {
