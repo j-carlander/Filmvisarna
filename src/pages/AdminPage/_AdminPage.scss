@@ -2,10 +2,17 @@
 
 .admin-page-header {
   margin-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .admin-page-title {
   padding: 1em;
+}
+
+.admin-page-search-title {
+  margin-bottom: 0.5em;
 }
 
 .admin-page-search-btn,

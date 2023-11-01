@@ -27,10 +27,10 @@ export function AdminDisplayBooking({ result }) {
   }
 
   return (
-    <article>
+    <article className="admin-display-flex-container">
       <h2>Resultat för bokingsnummer: {result.bookingNumber}</h2>
       <p>Antal biljetter: {formatTickets(result.tickets)[1]}</p>
-      <div className="admin-display-flex-container">
+      <div>
         {formatTickets(result.tickets)[0].map((ticket) => (
           <AdminDisplayTicket
             ticket={ticket}
