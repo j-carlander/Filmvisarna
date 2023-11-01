@@ -707,6 +707,7 @@ h1 {
   background-color: transparent;
   border: none;
   border-bottom: 1px solid;
+  width: 100%;
 }
 .search-form .search-input-mobile {
   background-color: transparent;
@@ -715,8 +716,8 @@ h1 {
 }
 .search-form .search-input-relative-input {
   position: relative;
-  width: -moz-fit-content;
-  width: fit-content;
+  width: 90%;
+  padding-right: 0.75em;
   display: inline;
 }
 .search-form .search-input-clear-btn {
