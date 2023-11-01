@@ -35,6 +35,10 @@ h1 {
   text-align: center;
 }
 
+button {
+  cursor: pointer;
+}
+
 .movie-card {
   position: relative;
   max-width: 250px;
@@ -75,7 +79,7 @@ h1 {
   grid-gap: 3rem 2rem;
   justify-items: center;
   margin: 0 auto;
-  padding: 1em 1em 5em 1em;
+  padding: 1em 2em 5em 2em;
 }
 
 .no-movies-text {
@@ -196,9 +200,10 @@ h1 {
   border-radius: 0.25em;
   background-color: #1E2D2F;
   max-width: 450px;
+  text-align: center;
 }
 .theatre-container .theatre-screen {
-  width: 80%;
+  width: 250px;
   fill: #EDEDED;
   filter: drop-shadow(0px 0px 10px #EDEDED);
   margin: 0 auto;
@@ -308,12 +313,49 @@ h1 {
   font-size: 0.75rem;
 }
 
+@media screen and (min-width: 475px) {
+  .bookingpage-scroll-note {
+    visibility: hidden;
+    margin-top: 0.5em;
+  }
+}
 .Bookingpage-container {
-  display: grid;
-  padding: 2.5em 0;
-  grid-template-areas: "a" "b" "c" "d";
+  display: flex;
+  padding: 2.5em 1em;
+  flex-direction: column;
+  position: relative;
   gap: 4em;
-  justify-items: center;
+  max-width: calc(450px + 2em);
+  margin: 0 auto;
+}
+.Bookingpage-container .imgbox {
+  background-color: transparent;
+  border-style: none;
+}
+.Bookingpage-container .imgbox .back-to-previous {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  margin: 1.5em 1em;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: all 0.3s;
+}
+.Bookingpage-container .imgbox .back-to-previous:hover {
+  opacity: 1;
+}
+.Bookingpage-container .imgbox::before {
+  content: "";
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  background-image: radial-gradient(ellipse, #041F1E 25%, transparent 65%);
+  z-index: 4;
+  margin: 1.2em 0.8em;
+  border-radius: 20em;
 }
 
 .seat-section {
@@ -325,7 +367,7 @@ h1 {
 }
 
 .section-2 button {
-  background-color: #5A8F76;
+  background-color: #5a8f76;
   color: #fff;
   font-size: 1em;
   padding: 1em;
@@ -334,7 +376,6 @@ h1 {
   border-radius: 30px;
   cursor: pointer;
   display: flex;
-  margin: 0 auto;
   justify-content: center;
   margin-bottom: 1em;
 }
@@ -359,6 +400,14 @@ h1 {
   line-height: 1.5;
   flex-direction: column;
 }
+.seaction-header .bookingpage-movie-title {
+  font-size: 1.2rem;
+}
+.seaction-header .bookingpage-movie-title,
+.seaction-header .bookingpage-screening-date {
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
 
 .seaction-header2 {
   grid-area: b;
@@ -367,6 +416,11 @@ h1 {
 
 .section-1 {
   grid-area: c;
+}
+
+.section-1 h2 {
+  margin-bottom: 1em;
+  color: #EDEDED;
 }
 
 .section-2 {
@@ -383,11 +437,14 @@ h1 {
 
 @media screen and (min-width: 992px) {
   .Bookingpage-container {
+    display: grid;
     grid-template-areas: "b a" "c d";
     gap: 4em;
+    max-width: 80%;
+    padding-top: 6em;
   }
   .section-2 {
-    margin: 3em 3.5em;
+    align-items: flex-start;
   }
   .section-2 p {
     margin-bottom: 1rem;
@@ -438,6 +495,8 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 0.7em;
+  width: -moz-max-content;
+  width: max-content;
 }
 .main-nav-bar .desktop-menu-list {
   display: flex;
@@ -614,11 +673,12 @@ h1 {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  row-gap: 1em;
+  gap: 2em;
   max-width: 450px;
   align-items: center;
   color: #F7DBA7;
   border: none;
+  box-shadow: 0 0 100px 200px rgba(0, 0, 0, 0.493);
 }
 .booking-confirmation-container h3 {
   color: #EDEDED;
@@ -669,6 +729,10 @@ h1 {
   width: 100%;
   height: 300px;
   max-width: 700px;
+}
+.about-us-page #find-us,
+.about-us-page #contact {
+  padding-top: 3em;
 }
 
 @media screen and (min-width: 978px) {
@@ -1021,117 +1085,123 @@ h1 {
   gap: 0.5em;
 }
 
-@media screen and (min-width: 320px) {
-  .bookconfirm-wrapper {
-    width: 60%;
-    margin: 0 auto;
-  }
-  .bookconfirm-wrapper .bookconfirm-interactions {
-    display: flex;
-    flex-direction: column;
-  }
-  .bookconfirm-wrapper h2 {
-    text-align: center;
-    margin-bottom: 2em;
-    font-size: 1.5em;
-  }
-  .bookconfirm-wrapper .bookconfirm-page {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .bookconfirm-wrapper .bookconfirm-screenings {
-    max-width: 20em;
-    text-align: left;
-  }
-  .bookconfirm-wrapper .login-signup-group {
-    display: flex;
-    flex-direction: column;
-    margin-top: 4em;
-    margin-bottom: 2em;
-  }
-  .bookconfirm-wrapper .login-button {
-    background-color: #5A8F76;
-    width: 12em;
-    height: 3em;
-    border-radius: 3em;
-    text-decoration: none;
-    border: none;
-    margin-bottom: 1em;
-    color: white;
-  }
-  .bookconfirm-wrapper .signup-button {
-    color: #F7DBA7;
-    text-decoration-color: #F7DBA7;
-  }
-  .bookconfirm-wrapper .guest-info-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 2em;
-  }
-  .bookconfirm-wrapper .guest-info-group input {
-    height: 3.5em;
-    width: 15em;
-    margin: 0 auto;
-    margin-bottom: 1em;
-    border: none;
-    background-color: rgb(0, 0, 0);
-    color: #F7DBA7;
-  }
-  .bookconfirm-wrapper .guest-info-group input::-moz-placeholder {
-    color: #F7DBA7;
-    padding-left: 1em;
-  }
-  .bookconfirm-wrapper .guest-info-group input::placeholder {
-    color: #F7DBA7;
-    padding-left: 1em;
-  }
-  .bookconfirm-wrapper .confirm-button {
-    background-color: #5A8F76;
-    width: 12em;
-    height: 3em;
-    border-radius: 3em;
-    text-decoration: none;
-    border: none;
-    margin: 0 auto;
-    margin-bottom: 2em;
-    color: white;
-  }
-  .bookconfirm-wrapper .cancel-button {
-    background-color: #837771;
-    width: 10em;
-    height: 3em;
-    border-radius: 3em;
-    text-decoration: none;
-    border: none;
-    margin: 0 auto;
-    margin-bottom: 1em;
-    color: white;
-  }
+.bookconfirm-wrapper {
+  margin: 0 auto;
+  background: rgb(131, 119, 113);
+  background: radial-gradient(circle, rgba(131, 119, 113, 0.676) 0%, rgb(4, 31, 30) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+.bookconfirm-wrapper .bookconfirm-interactions {
+  display: flex;
+  flex-direction: column;
+}
+.bookconfirm-wrapper h1 {
+  text-align: center;
+  margin-block: 3em 0;
+  font-size: 1.5em;
+}
+.bookconfirm-wrapper .bookconfirm-page {
+  padding: 2.5em;
+  margin-bottom: 2em;
+  background-color: #1E2D2F;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+  border-radius: 0.3em;
+}
+.bookconfirm-wrapper .bookconfirm-screenings {
+  text-align: left;
+}
+.bookconfirm-wrapper .bookconfirm-screenings > * {
+  margin-bottom: 0.5em;
+}
+.bookconfirm-wrapper .login-signup-group {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4em;
+  margin-bottom: 2em;
+}
+.bookconfirm-wrapper .login-button {
+  background-color: #5A8F76;
+  width: 12em;
+  height: 3em;
+  border-radius: 3em;
+  text-decoration: none;
+  border: none;
+  margin-bottom: 1em;
+  color: white;
+}
+.bookconfirm-wrapper .signup-button {
+  color: #F7DBA7;
+  text-decoration-color: #F7DBA7;
+}
+.bookconfirm-wrapper .guest-info-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2em;
+}
+.bookconfirm-wrapper .guest-info-group input {
+  height: 3.5em;
+  width: 18em;
+  margin: 0 auto;
+  margin-bottom: 1em;
+  border: none;
+  background-color: #041F1E;
+  color: #F7DBA7;
+  padding: 0.5em;
+}
+.bookconfirm-wrapper .guest-info-group input::-moz-placeholder {
+  color: #F7DBA7;
+  padding-left: 1em;
+}
+.bookconfirm-wrapper .guest-info-group input::placeholder {
+  color: #F7DBA7;
+  padding-left: 1em;
+}
+.bookconfirm-wrapper .confirm-button {
+  background-color: #5A8F76;
+  width: 12em;
+  height: 3em;
+  border-radius: 3em;
+  text-decoration: none;
+  border: none;
+  margin: 0 auto;
+  margin-bottom: 2em;
+  color: white;
+}
+.bookconfirm-wrapper .cancel-button {
+  background-color: #837771;
+  width: 10em;
+  height: 3em;
+  border-radius: 3em;
+  text-decoration: none;
+  border: none;
+  margin: 0 auto;
+  margin-bottom: 1em;
+  color: white;
+}
+
 @media screen and (min-width: 801px) {
-  .bookconfirm-wrapper {
-    max-width: 40%;
-  }
-  .bookconfirm-page {
-    min-width: 500px;
-    margin: 0 auto;
+  .bookconfirm-wrapper .bookconfirm-page {
+    flex-direction: row;
+    justify-content: center;
     position: relative;
   }
-  .bookconfirm-screenings {
-    position: absolute;
-    left: 0;
-  }
-  .bookconfirm-interactions {
-    position: absolute;
-    right: 0;
-  }
-  .bookconfirm-interactions .login-signup-group {
+  .bookconfirm-wrapper .bookconfirm-interactions .login-signup-group {
     margin-top: 0em;
   }
-  .bookconfirm-img {
+  .bookconfirm-wrapper .guest-info-group input {
+    width: 25em;
+  }
+  .bookconfirm-wrapper .bookconfirm-img {
     width: 50%;
+    margin-bottom: 2.5em;
+  }
+  .bookconfirm-wrapper .confirm-button {
+    width: 15em;
   }
 }
 .ticket-list-item {

@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import { formatStringWithFirstCharToUpper } from "../../utils/formatStringWithFirstCharToUpper";
 
 export function ScreeningDetails({ screening }) {
+  const navigate = useNavigate();
   return (
     <article className="screening-details">
       <div className="details-left">
@@ -14,7 +16,13 @@ export function ScreeningDetails({ screening }) {
         </p>
       </div>
       <div className="details-right">
-        <button className="screening-book-btn">Boka</button>
+        <button
+          className="screening-book-btn"
+          onClick={() => {
+            navigate(`/booking/${screening.id}`);
+          }}>
+          Boka
+        </button>
         <p className="screening-seats">Platser lediga: {screening.freeSeats}</p>
       </div>
     </article>

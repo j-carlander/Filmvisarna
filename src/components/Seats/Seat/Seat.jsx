@@ -12,6 +12,7 @@ export default function Seat({
   const [classNames, setClassnames] = useState("seat");
 
   function onClick() {
+    if (totalTickets === 0) return;
     const row = seats.find((el) => el.rownumber === rowNumber);
     console.log(row);
 
@@ -44,12 +45,13 @@ export default function Seat({
           selectedSeats[0].seatNumber - i === seatNumber
         ) {
           selected = true;
-          const foundSeats = selectedSeats.find((value) => 
-            value.rowNumber === rowNumber && value.seatNumber === seatNumber
-            
-          )
-          if(foundSeats === undefined) 
-          {setSelectedSeats([...selectedSeats, {rowNumber, seatNumber}])}
+          const foundSeats = selectedSeats.find(
+            (value) =>
+              value.rowNumber === rowNumber && value.seatNumber === seatNumber
+          );
+          if (foundSeats === undefined) {
+            setSelectedSeats([...selectedSeats, { rowNumber, seatNumber }]);
+          }
         }
       }
     }
@@ -66,6 +68,7 @@ export default function Seat({
     setClassnames,
     selectedSeats,
     totalTickets,
+    setSelectedSeats,
   ]);
 
   return <div className={classNames} onClick={onClick}></div>;

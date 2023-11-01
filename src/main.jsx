@@ -17,8 +17,13 @@ export const pages = [
   { path: "/movies", label: "Filmer", element: <MoviesPage /> },
   { path: "/movies/:movieid", element: <MovieDetailPage /> },
   { path: "/aboutus#find-us", label: "Hitta hit", element: <AboutUs /> },
+  { path: "/aboutus#contact", label: "Kontakt", element: <AboutUs /> },
   { path: "/aboutus", label: "Om oss", element: <AboutUs /> },
   { path: "/booking/:screeningid", element: <BookingPage /> },
+  {
+    path: "/bookingconfirmation/:screeningId",
+    element: <BookingConfirmationPage />,
+  },
 ];
 
 const router = createBrowserRouter([
@@ -30,10 +35,6 @@ const router = createBrowserRouter([
   {
     path: "/admin",
     element: <AdminPage />,
-  },
-  {
-    path: "/bookingconfirmation/:screeningId",
-    element: <BookingConfirmationPage />,
   },
   { path: "/cancel", element: <CancelBookingPage /> },
 ]);

@@ -1,125 +1,151 @@
 @use "../../Sass/abstract/variables" as *;
 
-@media screen and (min-width: 320px) {
-  .bookconfirm-wrapper {
-    width: 60%;
-    margin: 0 auto;
-    
-    .bookconfirm-interactions {
-      display: flex;
-      flex-direction: column;
-    }
+.bookconfirm-wrapper {
+  // width: 60%;
+  margin: 0 auto;
+  background: rgb(131, 119, 113);
+  background: radial-gradient(
+    circle,
+    rgba(131, 119, 113, 0.676) 0%,
+    rgba(4, 31, 30, 1) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-    h2 {
-      text-align: center;
-      margin-bottom: 2em;
-      font-size: 1.5em;
-    }
-  
-    .bookconfirm-page {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .bookconfirm-screenings {
-      max-width: 20em;
-      text-align: left;
-    }
-  
-    .login-signup-group {
-      display: flex;
-      flex-direction: column;
-      margin-top: 4em;
-      margin-bottom: 2em;
-    } 
-    .login-button {
-      background-color: $mediumAccent;
-      width: 12em;
-      height: 3em;
-      border-radius: 3em;
-      text-decoration: none;
-      border: none;
-      margin-bottom: 1em;
-      color: white;
-    }
-    .signup-button {
-      color: $lightAccent;
-      text-decoration-color: $lightAccent;
-    }
-    .guest-info-group {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 2em;
-    }
-    .guest-info-group input {
-      height: 3.5em;
-      width: 15em;
-      margin: 0 auto;
-      margin-bottom: 1em;
-      border: none;
-      background-color: rgb(0, 0, 0);
-      color: $lightAccent;
-    }
-  
-    .guest-info-group input::placeholder {
-      color: $lightAccent;
-      padding-left: 1em;
-    }
-  
-    .confirm-button {
-      background-color: $mediumAccent;
-      width: 12em;
-      height: 3em;
-      border-radius: 3em;
-      text-decoration: none;
-      border: none;
-      margin: 0 auto;
-      margin-bottom: 2em;
-      color: white;
-    }
-    .cancel-button {
-      background-color: $darkAccent;
-      width: 10em;
-      height: 3em;
-      border-radius: 3em;
-      text-decoration: none;
-      border: none;
-      margin: 0 auto;
-      margin-bottom: 1em;
-      color: white;
-    }
-  }  
-}
-
-@media screen and (min-width:801px) {
-  .bookconfirm-wrapper {
-    max-width: 40%;
+  .bookconfirm-interactions {
+    display: flex;
+    flex-direction: column;
   }
+
+  h1 {
+    text-align: center;
+    margin-block: 3em 0;
+    font-size: 1.5em;
+  }
+
   .bookconfirm-page {
-    // display: flex;
-    // flex-direction: row;
-    min-width: 500px;
-    margin: 0 auto;
-    position: relative;
+    // width: 80%;
+    padding: 2.5em;
+    margin-bottom: 2em;
+    background-color: $secBackground;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+    border-radius: 0.3em;
   }
 
   .bookconfirm-screenings {
-    position: absolute;
-    left: 0;
+    // max-width: 20em;
+    text-align: left;
+
+    > * {
+      margin-bottom: 0.5em;
+    }
   }
 
-  .bookconfirm-interactions {
-    position: absolute;
-    right: 0;
+  .login-signup-group {
+    display: flex;
+    flex-direction: column;
+    margin-top: 4em;
+    margin-bottom: 2em;
+  }
+  .login-button {
+    background-color: $mediumAccent;
+    width: 12em;
+    height: 3em;
+    border-radius: 3em;
+    text-decoration: none;
+    border: none;
+    margin-bottom: 1em;
+    color: white;
+  }
+  .signup-button {
+    color: $lightAccent;
+    text-decoration-color: $lightAccent;
+  }
+  .guest-info-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2em;
+  }
+  .guest-info-group input {
+    height: 3.5em;
+    width: 18em;
+    margin: 0 auto;
+    margin-bottom: 1em;
+    border: none;
+    background-color: $mainBackground;
+    color: $lightAccent;
+    padding: 0.5em;
   }
 
-  .bookconfirm-interactions .login-signup-group {
-    margin-top: 0em;
+  .guest-info-group input::placeholder {
+    color: $lightAccent;
+    padding-left: 1em;
   }
 
-  .bookconfirm-img {
-    width: 50%;
+  .confirm-button {
+    background-color: $mediumAccent;
+    width: 12em;
+    height: 3em;
+    border-radius: 3em;
+    text-decoration: none;
+    border: none;
+    margin: 0 auto;
+    margin-bottom: 2em;
+    color: white;
+  }
+  .cancel-button {
+    background-color: $darkAccent;
+    width: 10em;
+    height: 3em;
+    border-radius: 3em;
+    text-decoration: none;
+    border: none;
+    margin: 0 auto;
+    margin-bottom: 1em;
+    color: white;
+  }
+}
+
+@media screen and (min-width: 801px) {
+  .bookconfirm-wrapper {
+    // max-width: 40%;
+
+    .bookconfirm-page {
+      // display: flex;
+      flex-direction: row;
+      justify-content: center;
+      // min-width: 500px;
+      // margin: 0 auto;
+      position: relative;
+    }
+
+    .bookconfirm-screenings {
+      // position: absolute;
+      // left: 0;
+    }
+
+    .bookconfirm-interactions {
+      // position: absolute;
+      // right: 0;
+    }
+
+    .bookconfirm-interactions .login-signup-group {
+      margin-top: 0em;
+    }
+    .guest-info-group input {
+      width: 25em;
+    }
+
+    .bookconfirm-img {
+      width: 50%;
+      margin-bottom: 2.5em;
+    }
+    .confirm-button {
+      width: 15em;
+    }
   }
 }

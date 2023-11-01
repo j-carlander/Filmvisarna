@@ -4,17 +4,24 @@ import { useRef, useEffect } from "react";
 export function AboutUs() {
   const location = useLocation();
   const findRef = useRef();
+  const contactRef = useRef();
+  const aboutRef = useRef();
   // console.log("location: ", location);
   console.log(location.hash);
 
   useEffect(() => {
     if (findRef.current === undefined) return;
+    if (contactRef.current === undefined) return;
     if (location.hash === "#find-us") {
       findRef.current.scrollIntoView();
+    } else if (location.hash === "#contact") {
+      contactRef.current.scrollIntoView();
+    } else {
+      window.scrollTo(0, 0);
     }
-  }, [findRef, location]);
+  }, [findRef, location, contactRef]);
   return (
-    <div className="about-us-page">
+    <div className="about-us-page" ref={aboutRef}>
       <h1>Om oss</h1>
       <p className="text">
         Välkommen till vår lilla pärla av en biograf i hjärtat av vår älskade
@@ -40,7 +47,9 @@ export function AboutUs() {
         magiska i att gå på bio hos oss!
       </p>
       <img className="theatre-img" src="/movie-theatre.png" />
-      <h2>Kontakt</h2>
+      <h2 ref={contactRef} id="contact">
+        Kontakt
+      </h2>
       <p className="contact-info">
         <span>
           Adress: <span>Adressen 8, 123 45</span>

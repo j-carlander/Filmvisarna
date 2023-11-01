@@ -1,5 +1,7 @@
-export default function BookingConfirmation({ bookingData }) {
-  //TODO: add a callback to the close button to close the modal, for example a state with true/false value or navigate to another page.
+import { useNavigate } from "react-router-dom";
+
+export default function BookingConfirmation({ bookingData, ref }) {
+  const navigate = useNavigate();
   const dateArr = bookingData.date.split(". kl: ");
 
   const time = dateArr[1];
@@ -7,7 +9,7 @@ export default function BookingConfirmation({ bookingData }) {
   const date = dateArr[0];
 
   return (
-    <dialog className="booking-confirmation-container">
+    <dialog className="booking-confirmation-container" ref={ref}>
       <h3>Du har bokat:</h3>
       <div className="movie-info">
         <p>
@@ -30,7 +32,9 @@ export default function BookingConfirmation({ bookingData }) {
         <strong>Bokningsnummer</strong>: {bookingData.bookingNumber}
       </p>
       <strong>En bekräftelse har skickats till din mail!</strong>
-      <button className="close-btn">Stäng</button>
+      <button className="close-btn" onClick={() => navigate("/")}>
+        Stäng
+      </button>
     </dialog>
   );
 }

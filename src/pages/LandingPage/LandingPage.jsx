@@ -8,6 +8,7 @@ export function LandingPage() {
   const [upcomingMovies, setUpcomingMovies] = useState([]);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     async function getMovies() {
       const response = await fetchHelper("/movies?upcoming=false", "get");
       const data = await response.json();
