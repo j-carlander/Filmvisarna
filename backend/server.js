@@ -2,6 +2,7 @@ import "dotenv/config";
 import router from "./routes/routes.js";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
+import serveLimit from "./rateLimiters/serveLimiter.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -20,7 +21,7 @@ app.use("/api", router);
 
 app.use(express.static(join(__dirname, "dist")));
 
-app.use("*", (req, res) => {
+app.use("*", serveLimit, (req, res) => {
   res.sendFile(join(__dirname, "/dist/index.html"));
 });
 
