@@ -732,7 +732,7 @@ button {
 }
 .about-us-page #find-us,
 .about-us-page #contact {
-  padding-top: 3em;
+  scroll-margin: 3em;
 }
 
 @media screen and (min-width: 978px) {
