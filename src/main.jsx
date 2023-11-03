@@ -11,6 +11,7 @@ import { MovieDetailPage } from "./pages/MovieDetailPage/MovieDetailPage.jsx";
 import { LandingPage } from "./pages/LandingPage/LandingPage";
 import { AboutUs } from "./pages/AboutUsPage/AboutUsPage.jsx";
 import { BookingPage } from "./pages/Bookingpage/BookingPage.jsx";
+import { RegisterPage } from "./pages/RegisterPage/RegisterPage.jsx";
 
 export const pages = [
   { path: "/", element: <LandingPage /> },
@@ -24,6 +25,7 @@ export const pages = [
     path: "/bookingconfirmation/:screeningId",
     element: <BookingConfirmationPage />,
   },
+  { path: "/register", label: "Bli medlem", element: <RegisterPage /> },
 ];
 
 const router = createBrowserRouter([
