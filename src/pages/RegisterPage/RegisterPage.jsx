@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 import { fetchHelper } from "../../utils/fetchHelper";
 
 export function RegisterPage() {
@@ -11,18 +11,24 @@ export function RegisterPage() {
     password: "",
     repassword: "",
   });
-
+  const [setToken] = useOutletContext();
   async function handleSubmit(e) {
     e.preventDefault();
-    const result = await fetchHelper("/register", "post", formData)
-    const data = await result.json();
-    console.log(data)
+    const result = await fetchHelper("/register", "post", formData);
+    if (result.status === 201) {
+      const loginResult = await fetchHelper("/login", "post", {
+        email: formData.email,
+        password: formData.password,
+      });
+      const loginData = await loginResult.json()
+      setToken(loginData.token);
+    }
   }
 
   return (
     <>
       <h1>Bli medlem</h1>
-      <form onSubmit={handleSubmit}>
+      <form className="register-form" onSubmit={handleSubmit}>
         <input
           required
           value={formData.fname}
