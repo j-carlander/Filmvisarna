@@ -18,10 +18,20 @@ export function Seats({
       const response = await fetchHelper(`/takenseats/${screeningId}`, "get");
       const data = await response.json();
       setTakenSeats(data);
-      console.log(data);
+    }
+
+    async function subscribe() {
+      const response = await fetchHelper(`/subscribeScreenings/${screeningId}`, "get")
+
+      if (response.status == 200) {
+        const newTakenSeats = await response.json();
+        setTakenSeats(takenSeats => [...takenSeats, ...newTakenSeats]);
+      }
+      subscribe(); 
     }
 
     fetchTakenSeats();
+    subscribe();
   }, [screeningId]);
 
   function getSeatRow(rowInfo, index) {
