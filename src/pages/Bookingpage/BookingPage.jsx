@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { Seats } from "../../components/Seats/Seats";
-import TicketPicker from "../../components/TicketPicker/TicketPicker";
+import { TicketPicker } from "../../components/TicketPicker/TicketPicker";
 import { useEffect } from "react";
 import { fetchHelper } from "../../utils/fetchHelper";
 import { useState } from "react";
@@ -20,13 +20,13 @@ export function BookingPage() {
     async function fectchScreening(screeningid) {
       const res = await fetchHelper(`/screening/${screeningid}`, "get");
       const data = await res.json();
-      console.log(data);
+      // console.log(data);
       setData(data);
       // fetchHelper()
     }
     fectchScreening(screeningid);
   }, [screeningid]);
-  console.log(selectedSeats);
+  // console.log(selectedSeats);
 
   const goBackToPreviousPage = () => {
     navigate(-1);
