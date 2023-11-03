@@ -6,8 +6,6 @@ export function AboutUs() {
   const findRef = useRef();
   const contactRef = useRef();
   const aboutRef = useRef();
-  // console.log("location: ", location);
-  console.log(location.hash);
 
   useEffect(() => {
     if (findRef.current === undefined) return;
