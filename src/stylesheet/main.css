@@ -762,7 +762,8 @@ button {
 }
 
 .container h2 {
-  margin: 20px 0;
+  margin: 25px 0;
+  color: #fff;
 }
 
 p {
@@ -786,7 +787,7 @@ form {
   border: none;
   background-color: #041F1E;
   color: #F7DBA7;
-  padding: 1em 2em;
+  padding: 1.5em 2em;
   font-weight: 700;
   outline: none;
   border-radius: 5px;
@@ -805,8 +806,13 @@ form {
   font-size: 14px;
   font-weight: bold;
   border: none;
-  align-items: center;
-  justify-content: center;
+  margin: 0 auto;
+  display: flex;
+}
+
+.bli-medlem {
+  margin: 25px 0;
+  text-align: center;
 }
 
 .abort-btn {
@@ -817,6 +823,8 @@ form {
   font-size: 15px;
   border: none;
   font-weight: bold;
+  margin: 0 auto;
+  display: flex;
 }
 
 .search-section {

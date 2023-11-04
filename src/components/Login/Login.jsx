@@ -1,4 +1,3 @@
-import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export default function Login() {
@@ -15,7 +14,7 @@ export default function Login() {
           <input placeholder='Lösenord' type='password'></input>
         </div>
         <button className='Login-btn'>Logga in</button>
-        <p>Inget konto? <span className='bli-medlem-underline' onClick={() =>{
+        <p className='bli-medlem'>Inget konto? <span className='bli-medlem-underline' onClick={() =>{
           navigate("/register")
         }}>Bli medlem!</span></p>
         <button className='abort-btn'>Avbryt</button>

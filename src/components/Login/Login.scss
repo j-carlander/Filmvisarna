@@ -8,7 +8,8 @@
   min-height: 94vh;
 }
 .container h2{
-  margin: 20px 0;
+  margin: 25px 0;
+  color: #fff;
 
 }
 p{
@@ -30,7 +31,7 @@ form{
   border: none;
   background-color: $mainBackground;
   color: $lightAccent;
-  padding: 1em 2em;
+  padding: 1.5em 2em;
   // font-size: 20px;
   font-weight: 700;
   outline: none;
@@ -49,8 +50,12 @@ form{
   font-size: 14px;
   font-weight: bold;
   border: none;
-  align-items: center;
-  justify-content: center;
+  margin: 0 auto;
+  display: flex;
+}
+.bli-medlem{
+  margin: 25px 0;
+  text-align: center;
 }
 .abort-btn{
   padding: 1em 3em;
@@ -60,6 +65,8 @@ form{
   font-size: 15px;
   border: none;
   font-weight: bold;
+  margin: 0 auto;
+  display: flex;
 }
 //destop view
 @media only screen and (min-width: 992px) {}
