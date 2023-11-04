@@ -775,7 +775,7 @@ form {
   background-color: #1E2D2F;
   padding: 6em 3em;
   padding-bottom: 7em;
-  border-radius: 5px;
+  border-radius: 6px;
 }
 
 .form-control {
@@ -827,6 +827,31 @@ form {
   display: flex;
 }
 
+@media only screen and (min-width: 992px) {
+  form {
+    padding: 5em 15.7em;
+  }
+  .form-control input {
+    padding: 2em 3em;
+    width: 30em;
+  }
+  h2 {
+    text-align: center;
+  }
+  .Login-btn {
+    width: 25em;
+    justify-content: center;
+  }
+  .abort-btn {
+    width: 12em;
+    justify-content: center;
+    margin-bottom: 30px 0;
+  }
+  p {
+    margin: 30px 0;
+    padding: 30px 0;
+  }
+}
 .search-section {
   position: relative;
 }

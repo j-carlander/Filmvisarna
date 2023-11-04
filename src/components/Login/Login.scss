@@ -21,7 +21,7 @@ form{
   background-color: $secBackground;
   padding: 6em 3em;
   padding-bottom: 7em;
-  border-radius: 5px;
+  border-radius: 6px;
 }
 .form-control{
   margin-bottom: 1em;
@@ -32,7 +32,6 @@ form{
   background-color: $mainBackground;
   color: $lightAccent;
   padding: 1.5em 2em;
-  // font-size: 20px;
   font-weight: 700;
   outline: none;
   border-radius: 5px;
@@ -69,4 +68,29 @@ form{
   display: flex;
 }
 //destop view
-@media only screen and (min-width: 992px) {}
+@media only screen and (min-width: 992px) {
+  form{
+    padding: 5em 15.7em;
+  }
+
+  .form-control input{
+    padding: 2em 3em;
+    width: 30em;
+  }
+  h2{
+    text-align: center;
+  }
+  .Login-btn{
+    width: 25em;
+    justify-content: center;
+
+  }
+  .abort-btn{
+    width: 12em;
+    justify-content: center;
+    margin-bottom: 30px 0;
+  }
+  p{
+    padding: 30px 0;
+  }
+}
