@@ -1,0 +1,64 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 94vh;
+}
+
+.container h2 {
+  margin: 20px 0;
+}
+
+p {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+form {
+  background-color: #1E2D2F;
+  padding: 6em 3em;
+  padding-bottom: 7em;
+  border-radius: 5px;
+}
+
+.form-control {
+  margin-bottom: 1em;
+  padding-bottom: 1.4em;
+}
+
+.form-control input {
+  border: none;
+  background-color: #041F1E;
+  color: #F7DBA7;
+  padding: 1em 2em;
+  font-weight: 700;
+  outline: none;
+  border-radius: 5px;
+}
+
+.bli-medlem-underline {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.Login-btn {
+  padding: 1em 4em;
+  border-radius: 20px;
+  background-color: #5A8F76;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.abort-btn {
+  padding: 1em 3em;
+  border-radius: 20px;
+  background-color: #837771;
+  color: #fff;
+  font-size: 15px;
+  border: none;
+  font-weight: bold;
+}/*# sourceMappingURL=Login.css.map */
