@@ -11,12 +11,9 @@ import { MovieDetailPage } from "./pages/MovieDetailPage/MovieDetailPage.jsx";
 import { LandingPage } from "./pages/LandingPage/LandingPage";
 import { AboutUs } from "./pages/AboutUsPage/AboutUsPage.jsx";
 import { BookingPage } from "./pages/Bookingpage/BookingPage.jsx";
-<<<<<<< HEAD
 import { LoginPage } from "./pages/LoginPage/LoginPage.jsx";
 import { PageNotFound } from "./pages/PageNotFound/PageNotFound.jsx";
-=======
 import { RegisterPage } from "./pages/RegisterPage/RegisterPage.jsx";
->>>>>>> dev
 
 export const pages = [
   { path: "/", element: <LandingPage /> },
@@ -27,12 +24,13 @@ export const pages = [
   { path: "/aboutus", label: "Om oss", element: <AboutUs /> },
   { path: "/booking/:screeningid", element: <BookingPage /> },
   { path: "/Login", label: "Logga in", element: <LoginPage /> },
-  { path: "*", element: <PageNotFound /> },
+  // { path: "*", element: <PageNotFound /> },
   {
     path: "/bookingconfirmation/:screeningId",
     element: <BookingConfirmationPage />,
   },
   { path: "/register", label: "Bli medlem", element: <RegisterPage /> },
+  { path: "*", element: <PageNotFound /> },
 ];
 
 const router = createBrowserRouter([

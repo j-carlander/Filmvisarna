@@ -27,6 +27,7 @@ export default function Login() {
       if (response.ok) {
         const data = await response.json();
         console.log('Inloggning lyckades!', data);
+        setToken(data.token)
       } else {
         console.error('Inloggning misslyckades');
       }
@@ -39,7 +40,6 @@ export default function Login() {
     <>
       <div className="container">
         <form>
-          <h2>Logga in</h2>
           <div className="form-control">
             <input placeholder='Email' type='text' onChange={(e) => setEmail(e.target.value)} />
           </div>

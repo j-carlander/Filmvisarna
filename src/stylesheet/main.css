@@ -761,12 +761,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 94vh;
-}
-
-.container h2 {
-  margin: 25px 0;
-  color: #fff;
+  min-height: 60vh;
 }
 
 p {
@@ -831,15 +826,15 @@ form {
 }
 
 @media only screen and (min-width: 992px) {
+  .container {
+    min-height: 65vh;
+  }
   form {
-    padding: 5em 15.7em;
+    padding: 4em 15.7em;
   }
   .form-control input {
     padding: 2em 3em;
     width: 30em;
-  }
-  h2 {
-    text-align: center;
   }
   .Login-btn {
     width: 25em;
@@ -852,6 +847,24 @@ form {
   }
   p {
     padding: 30px 0;
+  }
+}
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: -38px;
+}
+
+@media only screen and (min-width: 992px) {
+  h1 {
+    margin-bottom: -38px;
   }
 }
 .user-bookings {
