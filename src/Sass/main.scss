@@ -15,6 +15,9 @@
 @use "../components/Footer/Footer" as *;
 @use "../components/BookingConfirmation/BookingConfirmation" as *;
 @use "../pages/AboutUsPage/AboutUsPage" as *;
+@use "../components/UserDetails/UserDetails" as *;
+
+@use "../components/UserBooking/UserBookings" as *;
 @use "../pages/RegisterPage/RegisterPage" as *;
 @use "../components/SearchBar/SearchBar" as *;
 @use "../pages/MovieDetailPage/MovieDetailPage" as *;
