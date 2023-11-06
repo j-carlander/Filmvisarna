@@ -3,12 +3,9 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Header } from "./components/Header/Header";
 import { Footer } from "./components/Footer/Footer";
-<<<<<<< HEAD
 // import Login from "./components/Login/Login";
-=======
 import sessionService from "./utils/sessionService";
 
->>>>>>> dev
 function App() {
   const [token, setUserToken] = useState(undefined);
 
