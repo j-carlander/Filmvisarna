@@ -17,6 +17,8 @@
 @use "../pages/AboutUsPage/AboutUsPage" as *;
 @use "../components/Login/Login" as *;
 
+@use "../components/UserBooking/UserBookings" as *;
+@use "../pages/RegisterPage/RegisterPage" as *;
 @use "../components/SearchBar/SearchBar" as *;
 @use "../pages/MovieDetailPage/MovieDetailPage" as *;
 @use "../components/Header/Header" as *;
