@@ -11,6 +11,7 @@ import { MovieDetailPage } from "./pages/MovieDetailPage/MovieDetailPage.jsx";
 import { LandingPage } from "./pages/LandingPage/LandingPage";
 import { AboutUs } from "./pages/AboutUsPage/AboutUsPage.jsx";
 import { BookingPage } from "./pages/Bookingpage/BookingPage.jsx";
+import { UserDetailsList } from "./components/UserDetailsList/UserDetailsList"
 
 export const pages = [
   { path: "/", element: <LandingPage /> },
@@ -37,6 +38,8 @@ const router = createBrowserRouter([
     element: <AdminPage />,
   },
   { path: "/cancel", element: <CancelBookingPage /> },
+  
+  { path: "/user", element: <UserDetailsList /> },
 ]);
 
 ReactDOM.createRoot(document.querySelector("#root")).render(
