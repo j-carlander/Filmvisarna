@@ -757,6 +757,30 @@ button {
     width: 10em;
   }
 }
+.userinfo-card {
+  padding: 1em;
+}
+.userinfo-card h3 {
+  margin-bottom: 2.5em;
+}
+.userinfo-card .userinfo-table {
+  width: 100%;
+  font-size: 0.8rem;
+}
+.userinfo-card .userinfo-table .userinfo-table,
+.userinfo-card .userinfo-table .table-content {
+  border-collapse: collapse;
+}
+.userinfo-card .userinfo-table .table-content {
+  padding: 5px;
+  text-align: left;
+  line-height: 1.8em;
+  letter-spacing: 0.04rem;
+}
+.userinfo-card .userinfo-table .table-content th {
+  font-weight: normal;
+}
+
 .search-section {
   position: relative;
 }
