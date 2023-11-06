@@ -1,10 +1,23 @@
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import { fetchHelper } from "../../utils/fetchHelper";
 
 export function CancelBookingPage() {
   const [serverMsg, setServerMsg] = useState("");
   const [values, setValues] = useState({ guestemail: "", bookingnumber: "" });
+
+  const location = useLocation();
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const bookingNumber = searchParams.get("bookingNumber");
+    const email = searchParams.get("email");
+    
+    // Populate the input fields with query parameter values
+    if (bookingNumber && email) {
+      setValues({ guestemail: email, bookingnumber: bookingNumber });
+    }
+  }, [location]);
 
   async function onSubmit(e) {
     e.preventDefault();
