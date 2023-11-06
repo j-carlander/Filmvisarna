@@ -435,6 +435,12 @@ button {
   margin: 10px 0;
 }
 
+.individual-seats {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.25em;
+}
+
 @media screen and (min-width: 992px) {
   .Bookingpage-container {
     display: grid;

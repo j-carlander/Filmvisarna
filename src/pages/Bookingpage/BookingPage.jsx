@@ -13,6 +13,7 @@ export function BookingPage() {
   const { screeningid } = useParams();
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [selectedTickets, setSelectedTickets] = useState([]);
+  const [individual, setIndividual] = useState(false);
 
   const navigate = useNavigate();
 
@@ -20,17 +21,40 @@ export function BookingPage() {
     async function fectchScreening(screeningid) {
       const res = await fetchHelper(`/screening/${screeningid}`, "get");
       const data = await res.json();
-      // console.log(data);
       setData(data);
-      // fetchHelper()
     }
     fectchScreening(screeningid);
   }, [screeningid]);
-  // console.log(selectedSeats);
 
   const goBackToPreviousPage = () => {
     navigate(-1);
   };
+
+  function getNonIndividualP() {
+    return (
+      <p>
+        Vald plats: rad {selectedSeats[0].rowNumber} plats{" "}
+        {selectedSeats.length === 1
+          ? selectedSeats[0].seatNumber
+          : `${selectedSeats[selectedSeats.length - 1].seatNumber} - ${
+              selectedSeats[0].seatNumber
+            }`}
+      </p>
+    );
+  }
+
+  function getIndividualP() {
+    return (
+      <p className="individual-seats">
+        Valda platser:
+        {selectedSeats.map((seat, index) => (
+          <span key={`seat-${index}`}>
+            Rad: {seat.rowNumber} plats: {seat.seatNumber}
+          </span>
+        ))}
+      </p>
+    );
+  }
 
   return (
     <>
@@ -38,9 +62,7 @@ export function BookingPage() {
         <button className="imgbox" onClick={goBackToPreviousPage}>
           <img className="back-to-previous" src="/back-left-arrow.png" />
         </button>
-        {/* <div className="header-content"> */}
         <div className="seaction-header">
-          {/* Image */}
           <p>
             <span className="bookingpage-movie-title">{data.title}</span>{" "}
             {movieLengthFormatter(data.durationinminutes)} -{" "}
@@ -57,9 +79,6 @@ export function BookingPage() {
         <div className="seaction-header2">
           <TicketPicker {...{ selectedTickets, setSelectedTickets }} />
         </div>
-        {/* </div> */}
-
-        {/* <div className="seat-section"> */}
         <div className="section-1">
           <h2>Välj platser</h2>
           {data.theatreId ? (
@@ -70,6 +89,8 @@ export function BookingPage() {
                 selectedSeats,
                 setSelectedSeats,
                 totalTickets: selectedTickets.length,
+                individual,
+                setIndividual,
               }}
             />
           ) : null}
@@ -78,31 +99,22 @@ export function BookingPage() {
           </p>
         </div>
         <div className="section-2">
-          {selectedSeats.length > 0 && (
-            <p>
-              Vald plats: rad {selectedSeats[0].rowNumber} plats{" "}
-              {selectedSeats.length === 1
-                ? selectedSeats[0].seatNumber
-                : `${selectedSeats[selectedSeats.length - 1].seatNumber} - ${
-                    selectedSeats[0].seatNumber
-                  }`}
-            </p>
-          )}
+          {selectedSeats.length > 0 &&
+            (!individual ? getNonIndividualP() : getIndividualP())}
           <button
             onClick={() => {
               navigate(`/bookingconfirmation/${screeningid}`, {
-                state: { selectedSeats, selectedTickets, data },
+                state: { selectedSeats, selectedTickets, data, individual },
               });
             }}
-            disabled={selectedSeats.length === 0}>
+            disabled={
+              selectedTickets.length === 0 ||
+              selectedSeats.length !== selectedTickets.length
+            }>
             Boka biljett
           </button>
         </div>
-        {/* </div> */}
       </div>
     </>
   );
 }
-
-// ${selectedSeats[0].seatNumber}
-// selectedSeats[selectedSeats.length -1].seatNumber
