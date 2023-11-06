@@ -781,6 +781,143 @@ button {
   font-weight: normal;
 }
 
+.user-bookings {
+  width: 100%;
+  max-width: 514px;
+}
+.user-bookings .user-bookings-title,
+.user-bookings .no-bookings {
+  width: 75%;
+  margin: 0 auto;
+}
+.user-bookings .user-bookings-title {
+  font-size: 1.25rem;
+  color: #F7DBA7;
+  margin-bottom: 1em;
+}
+.user-bookings .user-booking {
+  display: flex;
+  width: 85%;
+  margin: 0 auto;
+  justify-content: space-between;
+  background-color: #1E2D2F;
+  padding: 1em 1.5em;
+  border-radius: 0.75em;
+  border: 0.15em solid;
+  -o-border-image: linear-gradient(to top, #041F1E 25%, #837771, #041F1E 75%) 0 1;
+     border-image: linear-gradient(to top, #041F1E 25%, #837771, #041F1E 75%) 0 1;
+}
+.user-bookings .user-booking .booking-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.user-bookings .user-booking .booking-btns {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+}
+.user-bookings .user-booking .booking-btns button {
+  color: #EDEDED;
+  font-size: 1rem;
+  padding: 0.5em;
+  border-radius: 5em;
+  border: none;
+  font-weight: bold;
+}
+.user-bookings .user-booking .booking-btns .show-tickets-btn {
+  background-color: #5A8F76;
+}
+.user-bookings .user-booking .booking-btns .cancel-btn {
+  background-color: #837771;
+}
+
+.register-page-wrapper {
+  background: rgb(131, 119, 113);
+  background: radial-gradient(circle, rgba(131, 119, 113, 0.676) 0%, rgb(4, 31, 30) 100%);
+  padding: 3em;
+  display: grid;
+  place-items: center;
+}
+
+.register-form {
+  background-color: #1E2D2F;
+  padding: 2em;
+  display: grid;
+  gap: 2em 3em;
+}
+.register-form input {
+  padding: 0.7em;
+  background-color: #041F1E;
+  color: #F7DBA7;
+  font-weight: 700;
+  border: none;
+  border-radius: 0.3em;
+}
+.register-form input::-moz-placeholder {
+  color: #F7DBA7;
+}
+.register-form input::placeholder {
+  color: #F7DBA7;
+}
+
+.form-footer {
+  display: flex;
+}
+.form-footer img {
+  display: none;
+}
+
+.form-controlls {
+  display: grid;
+  place-items: center;
+  gap: 2em;
+  margin-top: 2em;
+}
+.form-controlls p {
+  text-align: center;
+}
+.form-controlls a {
+  color: #F7DBA7;
+}
+.form-controlls .confirm-button {
+  background-color: #5A8F76;
+  width: 12em;
+  height: 3em;
+  border-radius: 3em;
+  text-decoration: none;
+  border: none;
+  color: white;
+}
+.form-controlls .cancel-button {
+  background-color: #837771;
+  width: 10em;
+  height: 3em;
+  border-radius: 3em;
+  text-decoration: none;
+  border: none;
+  margin-top: 2em;
+  color: white;
+}
+
+@media screen and (min-width: 801px) {
+  .register-form {
+    grid-template-columns: 1fr 1fr;
+  }
+  .form-footer {
+    grid-column: 1/3;
+    position: relative;
+    gap: 8em;
+  }
+  .form-footer img {
+    display: block;
+  }
+  .form-controlls {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
 .search-section {
   position: relative;
 }

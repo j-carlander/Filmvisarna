@@ -1,0 +1,58 @@
+@use "../../Sass/abstract/variables" as *;
+
+.user-bookings {
+  width: 100%;
+  max-width: 514px;
+  .user-bookings-title,
+  .no-bookings {
+    width: 75%;
+    margin: 0 auto;
+  }
+  .user-bookings-title {
+    font-size: 1.25rem;
+    color: $lightAccent;
+    margin-bottom: 1em;
+  }
+
+  .user-booking {
+    display: flex;
+    width: 85%;
+    margin: 0 auto;
+    justify-content: space-between;
+    background-color: $secBackground;
+    padding: 1em 1.5em;
+    border-radius: 0.75em;
+    border: 0.15em solid;
+    border-image: linear-gradient(
+        to top,
+        $mainBackground 25%,
+        $darkAccent,
+        $mainBackground 75%
+      )
+      0 1;
+    .booking-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .booking-btns {
+      display: flex;
+      flex-direction: column;
+      row-gap: 1em;
+      button {
+        color: $whiteAccent;
+        font-size: 1rem;
+        padding: 0.5em;
+        border-radius: 5em;
+        border: none;
+        font-weight: bold;
+      }
+      .show-tickets-btn {
+        background-color: $mediumAccent;
+      }
+      .cancel-btn {
+        background-color: $darkAccent;
+      }
+    }
+  }
+}
