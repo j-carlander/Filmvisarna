@@ -8,7 +8,7 @@ export function NavBar({ matchDesktop }) {
     <nav className="main-nav-bar">
       {!matchDesktop.matches ? <BurgerMenu pages={pages} /> : null}
       <NavLink to={"/"}>
-        <img src="/home.svg" />
+        <img className="logo-mini-img" src="/logo-mini.png" />
       </NavLink>
       {matchDesktop.matches ? <DesktopMenu pages={pages} /> : null}
     </nav>

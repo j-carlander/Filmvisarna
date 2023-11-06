@@ -455,6 +455,9 @@ button {
   align-items: center;
   gap: 1em;
 }
+.main-nav-bar .logo-mini-img {
+  width: 45px;
+}
 .main-nav-bar li {
   list-style: none;
 }
@@ -494,7 +497,7 @@ button {
 .main-nav-bar .burger-menu-container .burger-menu-modal .burger-menu-list {
   display: flex;
   flex-direction: column;
-  gap: 0.7em;
+  gap: 1.5em;
   width: -moz-max-content;
   width: max-content;
 }

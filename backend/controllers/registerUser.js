@@ -1,5 +1,6 @@
 import bcrypt from "bcrypt";
 import { runQuery } from "../db.js";
+import { isPasswordComplex } from "../utils/checkPasswordComplexity.js";
 
 export async function registerHandler(req, res) {
   const { fname, lname, phone, email, password, repassword } = req.body;
@@ -22,6 +23,11 @@ export async function registerHandler(req, res) {
   if (password !== repassword) {
     return res.status(400).json({ error: "Lösenorden matchar inte!" });
   }
+
+  if (!isPasswordComplex(password))
+    return res
+      .status(400)
+      .json({ error: "Lösenordet är inte tillräckligt komplicerat!" });
 
   bcrypt.hash(password, 10, async (err, hashedPassword) => {
     if (err) {

@@ -14,13 +14,13 @@ export async function bookingConfirmationMailService(
     from: "filmvisarna.grupp1@gmail.com",
     to: email,
     subject: "Här är din bokning",
-    text: textBody(title, screeningDate, seats, bookingNumber, cost),
+    text: textBody(title, screeningDate, seats, bookingNumber, cost, email),
   };
 
   return mailTransporter.sendMail(msg);
 }
 
-function textBody(title, screeningDate, seats, bookingNumber, cost) {
+function textBody(title, screeningDate, seats, bookingNumber, cost, email) {
   return `
 Hej!
 
@@ -32,7 +32,7 @@ Platser: ${formatSeatInfo(seats)},
 Bokningsnummer: ${bookingNumber},
 Att betala: ${cost}
 
-För att avboka dina biljetter, gå in på http://www.filmvisarna.se/avboka
+För att avboka dina biljetter, gå in på http://localhost:5173/cancel?bookingNumber=${bookingNumber}&email=${email}
 
 Med Vänlig Hälsning
 Filmvisarna
