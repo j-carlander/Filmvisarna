@@ -18,6 +18,7 @@
 @use "../components/Login/Login" as *;
 @use "../pages/PageNotFound/PageNotFound" as *;
 @use "../pages/LoginPage/LoginPage" as *;
+@use "../components/UserDetails/UserDetails" as *;
 
 @use "../components/UserBooking/UserBookings" as *;
 @use "../pages/RegisterPage/RegisterPage" as *;
