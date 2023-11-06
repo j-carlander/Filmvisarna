@@ -757,6 +757,57 @@ button {
     width: 10em;
   }
 }
+.user-bookings {
+  width: 100%;
+  max-width: 514px;
+}
+.user-bookings .user-bookings-title,
+.user-bookings .no-bookings {
+  width: 75%;
+  margin: 0 auto;
+}
+.user-bookings .user-bookings-title {
+  font-size: 1.25rem;
+  color: #F7DBA7;
+  margin-bottom: 1em;
+}
+.user-bookings .user-booking {
+  display: flex;
+  width: 85%;
+  margin: 0 auto;
+  justify-content: space-between;
+  background-color: #1E2D2F;
+  padding: 1em 1.5em;
+  border-radius: 0.75em;
+  border: 0.15em solid;
+  -o-border-image: linear-gradient(to top, #041F1E 25%, #837771, #041F1E 75%) 0 1;
+     border-image: linear-gradient(to top, #041F1E 25%, #837771, #041F1E 75%) 0 1;
+}
+.user-bookings .user-booking .booking-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.user-bookings .user-booking .booking-btns {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+}
+.user-bookings .user-booking .booking-btns button {
+  color: #EDEDED;
+  font-size: 1rem;
+  padding: 0.5em;
+  border-radius: 5em;
+  border: none;
+  font-weight: bold;
+}
+.user-bookings .user-booking .booking-btns .show-tickets-btn {
+  background-color: #5A8F76;
+}
+.user-bookings .user-booking .booking-btns .cancel-btn {
+  background-color: #837771;
+}
+
 .search-section {
   position: relative;
 }
