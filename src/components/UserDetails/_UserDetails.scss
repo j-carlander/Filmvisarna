@@ -1,0 +1,28 @@
+.userinfo-card {
+    padding: 1em;
+
+    h3 {
+        margin-bottom: 2.5em;
+    }
+
+    .userinfo-table {
+        width: 100%;
+        font-size: .8rem;
+
+        .userinfo-table,
+        .table-content {
+            border-collapse: collapse;
+        }
+        .table-content {
+            padding: 5px;
+            text-align: left;
+            line-height: 1.8em;
+            letter-spacing: .04rem;
+
+            th {
+                font-weight: normal;
+            }
+        }
+    }
+    
+}
