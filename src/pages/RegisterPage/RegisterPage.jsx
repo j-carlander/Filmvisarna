@@ -20,13 +20,13 @@ export function RegisterPage() {
         email: formData.email,
         password: formData.password,
       });
-      const loginData = await loginResult.json()
+      const loginData = await loginResult.json();
       setToken(loginData.token);
     }
   }
 
   return (
-    <>
+    <article className="register-page-wrapper">
       <h1>Bli medlem</h1>
       <form className="register-form" onSubmit={handleSubmit}>
         <input
@@ -84,12 +84,18 @@ export function RegisterPage() {
           }}
         />
 
-        <button>Bli medlem</button>
-        <p>
-          Jag är redan medlem - <Link>logga in här</Link>
-        </p>
-        <button>Avbryt</button>
+        <div className="form-footer">
+          <img src="/Klappa.png" />
+          <div className="form-controlls">
+            <button className="confirm-button">Bli medlem</button>
+            <p>
+              Jag är redan medlem - <Link>logga in här</Link>
+            </p>
+            <button className="cancel-button">Avbryt</button>
+          </div>
+          <img src="/Projektor.png" />
+        </div>
       </form>
-    </>
+    </article>
   );
 }
