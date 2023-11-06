@@ -24,4 +24,3 @@ export default function Login() {
   )
 }
 
-// https://www.google.com/
