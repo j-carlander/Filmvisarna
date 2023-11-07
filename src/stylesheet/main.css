@@ -757,31 +757,27 @@ button {
     width: 10em;
   }
 }
-.container {
+.login-container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 60vh;
 }
-
-p {
+.login-container p {
   font-weight: 600;
   font-size: 14px;
 }
-
-form {
+.login-container form {
   background-color: #1E2D2F;
   padding: 6em 3em;
   padding-bottom: 7em;
   border-radius: 6px;
 }
-
-.form-control {
+.login-container .form-control {
   margin-bottom: 1em;
   padding-bottom: 1.4em;
 }
-
-.form-control input {
+.login-container .form-control input {
   border: none;
   background-color: #041F1E;
   color: #F7DBA7;
@@ -790,13 +786,11 @@ form {
   outline: none;
   border-radius: 5px;
 }
-
-.bli-medlem-underline {
+.login-container .bli-medlem-underline {
   text-decoration: underline;
   cursor: pointer;
 }
-
-.Login-btn {
+.login-container .Login-btn {
   padding: 1em 4em;
   border-radius: 20px;
   background-color: #5A8F76;
@@ -807,13 +801,11 @@ form {
   margin: 0 auto;
   display: flex;
 }
-
-.bli-medlem {
+.login-container .bli-medlem {
   margin: 25px 0;
   text-align: center;
 }
-
-.abort-btn {
+.login-container .abort-btn {
   padding: 1em 3em;
   border-radius: 20px;
   background-color: #837771;
@@ -826,26 +818,26 @@ form {
 }
 
 @media only screen and (min-width: 992px) {
-  .container {
+  .login-container {
     min-height: 65vh;
   }
-  form {
+  .login-container form {
     padding: 4em 15.7em;
   }
-  .form-control input {
+  .login-container .form-control input {
     padding: 2em 3em;
     width: 30em;
   }
-  .Login-btn {
+  .login-container .Login-btn {
     width: 25em;
     justify-content: center;
   }
-  .abort-btn {
+  .login-container .abort-btn {
     width: 12em;
     justify-content: center;
     margin-bottom: 30px 0;
   }
-  p {
+  .login-container p {
     padding: 30px 0;
   }
 }
@@ -858,15 +850,6 @@ form {
   text-align: center;
 }
 
-h1 {
-  margin-bottom: -38px;
-}
-
-@media only screen and (min-width: 992px) {
-  h1 {
-    margin-bottom: -38px;
-  }
-}
 .userinfo-card {
   padding: 1em;
 }
