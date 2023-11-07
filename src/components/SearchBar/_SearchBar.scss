@@ -51,32 +51,7 @@
   border: transparent;
 }
 
-.loading {
-  position: relative;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  background: conic-gradient(transparent 75%, $lightAccent);
 
-  animation: rotateLoading infinite 1s linear;
-
-  .loading-inner {
-    position: absolute;
-    inset: 5px;
-    border-radius: 50%;
-    background-color: $secBackground;
-  }
-}
-
-@keyframes rotateLoading {
-  0% {
-    rotate: 0deg;
-  }
-
-  100% {
-    rotate: 359deg;
-  }
-}
 .search-result-container {
   position: absolute;
   z-index: 10;
