@@ -1,0 +1,13 @@
+@use "../../Sass/abstract/variables" as *;
+
+.myaccount-btn {
+    width: 3em;
+    background: none;
+    border: none;
+}
+
+.myaccount-btn img {
+    width: 100%;
+    fill: $lightAccent;
+    width: 2em;
+}

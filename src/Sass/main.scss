@@ -15,8 +15,10 @@
 @use "../components/Footer/Footer" as *;
 @use "../components/BookingConfirmation/BookingConfirmation" as *;
 @use "../pages/AboutUsPage/AboutUsPage" as *;
+@use "../components/Login/Login" as *;
+@use "../pages/PageNotFound/PageNotFound" as *;
+@use "../pages/LoginPage/LoginPage" as *;
 @use "../components/UserDetails/UserDetails" as *;
-@use "../components/UserBooking/UserBookingsHistoryCard/UserBookingsHistoryCard" as *;
 
 @use "../components/UserBooking/UserBookings" as *;
 @use "../pages/RegisterPage/RegisterPage" as *;
@@ -32,4 +34,5 @@
 @use "../pages/BookingConfirmationPage/BookingConfirmationPage" as *;
 @use "../components/TicketPicker/TicketPicker" as *;
 @use "../components/MovieFilterOptions/MovieFilters" as *;
+@use "../components/AccountIcon/AccountIcon" as *;
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");

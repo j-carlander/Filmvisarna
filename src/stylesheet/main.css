@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
 *,
 *::before,
@@ -224,6 +225,39 @@ button {
   width: fit-content;
 }
 
+.individual-container {
+  display: flex;
+  margin-bottom: 1.5em;
+  align-items: center;
+}
+.individual-container .checkbox-label {
+  display: block;
+  position: relative;
+  margin-left: 1em;
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+}
+.individual-container .checkbox-label .individual-checkbox {
+  visibility: hidden;
+}
+.individual-container .checkbox-label .individual-checkbox:checked ~ .custom-checkbox:after {
+  content: "✔";
+}
+.individual-container .checkbox-label .custom-checkbox {
+  border-radius: 0.25em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border: 0.1em solid black;
+  background-color: #1E2D2F;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .theatre-wrapper::-webkit-scrollbar {
   height: 10px;
 }
@@ -347,16 +381,6 @@ button {
 .Bookingpage-container .imgbox .back-to-previous:hover {
   opacity: 1;
 }
-.Bookingpage-container .imgbox::before {
-  content: "";
-  position: absolute;
-  width: 35px;
-  height: 35px;
-  background-image: radial-gradient(ellipse, #041F1E 25%, transparent 65%);
-  z-index: 4;
-  margin: 1.2em 0.8em;
-  border-radius: 20em;
-}
 
 .seat-section {
   margin-top: 3rem;
@@ -430,9 +454,19 @@ button {
   flex-direction: column;
   align-items: center;
 }
+.section-2 button:disabled {
+  background-color: #1E2D2F;
+  color: #837771;
+}
 
 .section-2 p {
   margin: 10px 0;
+}
+
+.individual-seats {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.25em;
 }
 
 @media screen and (min-width: 992px) {
@@ -757,6 +791,99 @@ button {
     width: 10em;
   }
 }
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+}
+.login-container p {
+  font-weight: 600;
+  font-size: 14px;
+}
+.login-container form {
+  background-color: #1E2D2F;
+  padding: 6em 3em;
+  padding-bottom: 7em;
+  border-radius: 6px;
+}
+.login-container .form-control {
+  margin-bottom: 1em;
+  padding-bottom: 1.4em;
+}
+.login-container .form-control input {
+  border: none;
+  background-color: #041F1E;
+  color: #F7DBA7;
+  padding: 1.5em 2em;
+  font-weight: 700;
+  outline: none;
+  border-radius: 5px;
+}
+.login-container .bli-medlem-underline {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.login-container .Login-btn {
+  padding: 1em 4em;
+  border-radius: 20px;
+  background-color: #5A8F76;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  margin: 0 auto;
+  display: flex;
+}
+.login-container .bli-medlem {
+  margin: 25px 0;
+  text-align: center;
+}
+.login-container .abort-btn {
+  padding: 1em 3em;
+  border-radius: 20px;
+  background-color: #837771;
+  color: #fff;
+  font-size: 15px;
+  border: none;
+  font-weight: bold;
+  margin: 0 auto;
+  display: flex;
+}
+
+@media only screen and (min-width: 992px) {
+  .login-container {
+    min-height: 65vh;
+  }
+  .login-container form {
+    padding: 4em 15.7em;
+  }
+  .login-container .form-control input {
+    padding: 2em 3em;
+    width: 30em;
+  }
+  .login-container .Login-btn {
+    width: 25em;
+    justify-content: center;
+  }
+  .login-container .abort-btn {
+    width: 12em;
+    justify-content: center;
+    margin-bottom: 30px 0;
+  }
+  .login-container p {
+    padding: 30px 0;
+  }
+}
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  text-align: center;
+}
+
 .userinfo-card {
   padding: 1em;
 }
@@ -1075,6 +1202,15 @@ button {
   justify-content: space-between;
   padding: 1em;
 }
+.page-header .search-and-account {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1em;
+}
+.page-header .search-and-account .AccountIcon {
+  padding-left: 2em;
+}
 
 .cancel-booking-page .page-title {
   text-align: center;
@@ -1215,6 +1351,12 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.admin-page-header a {
+  color: #F7DBA7;
+  font-style: italic;
+  align-self: flex-start;
+  margin: 1em;
 }
 
 .admin-page-title {
@@ -1473,4 +1615,15 @@ button {
   .filter-list .filter-item {
     margin: 0 0.25em;
   }
+}
+.myaccount-btn {
+  width: 3em;
+  background: none;
+  border: none;
+}
+
+.myaccount-btn img {
+  width: 100%;
+  fill: #F7DBA7;
+  width: 2em;
 }/*# sourceMappingURL=main.css.map */

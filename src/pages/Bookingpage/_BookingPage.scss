@@ -1,14 +1,5 @@
 @use "../../Sass/abstract/variables" as *;
 
-// src= {
-//   `/images/$ {
-//     movie.id
-//   }
-
-//   _w200.webp`
-// }
-//
-
 @media screen and (min-width: 475px) {
   .bookingpage-scroll-note {
     visibility: hidden;
@@ -16,19 +7,13 @@
   }
 }
 .Bookingpage-container {
-  // display: flex;
   display: flex;
   padding: 2.5em 1em;
-  // justify-content: center;
   flex-direction: column;
-  // flex-wrap: wrap;
   position: relative;
   gap: 4em;
   max-width: calc(450px + 2em);
   margin: 0 auto;
-  // flex-direction: column;
-  // align-items: center;
-  // justify-items: center;
   .imgbox {
     background-color: transparent;
     border-style: none;
@@ -50,20 +35,6 @@
       opacity: 1;
     }
   }
-  .imgbox::before {
-    content: "";
-    position: absolute;
-    width: 35px;
-    height: 35px;
-    background-image: radial-gradient(
-      ellipse,
-      $mainBackground 25%,
-      transparent 65%
-    );
-    z-index: 4;
-    margin: 1.2em 0.8em;
-    border-radius: 20em;
-  }
 }
 
 .seat-section {
@@ -82,7 +53,6 @@
   border-radius: 30px;
   cursor: pointer;
   display: flex;
-  // margin: 0 auto;
   justify-content: center;
   margin-bottom: 1em;
 }
@@ -97,21 +67,12 @@
     font-weight: 400;
   }
 }
-.header-content,
-.seat-section {
-}
-// .seaction-header2,
-// .seaction-header{
-//   flex: 1 1 400px;
-// }
 .seaction-header {
   grid-area: a;
   display: flex;
   justify-content: center;
   line-height: 1.5;
-  // flex-wrap: wrap;
   flex-direction: column;
-  // gap: 2em;
 
   .bookingpage-movie-title {
     font-size: 1.2rem;
@@ -124,12 +85,10 @@
 }
 .seaction-header2 {
   grid-area: b;
-  // justify-self: stretch;
   min-width: 300px;
 }
 .section-1 {
   grid-area: c;
-  // padding: 1em 0;
 }
 .section-1 h2 {
   margin-bottom: 1em;
@@ -141,13 +100,20 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  // padding: 1em 0;
+  button:disabled {
+    background-color: $secBackground;
+    color: $darkAccent;
+  }
 }
 .section-2 p {
   margin: 10px 0;
 }
 
-// }
+.individual-seats {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.25em;
+}
 
 //Desktop
 @media screen and (min-width: 992px) {
@@ -155,24 +121,12 @@
     display: grid;
     grid-template-areas: "b a" "c d";
     gap: 4em;
-    // justify-items: center;
     max-width: 80%;
     padding-top: 6em;
-
-    .header-content,
-    .seat-section {
-      // display: flex;
-      // width: 90%;
-    }
   }
-  // .seat-section{
-  //   display: flex;
-  //   padding: 2em 0;
 
-  // }
   .section-2 {
     align-items: flex-start;
-    // margin: 3em 3.5em;
   }
   .section-2 p {
     margin-bottom: 1rem;

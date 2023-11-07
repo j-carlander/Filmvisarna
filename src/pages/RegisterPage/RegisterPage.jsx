@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useOutletContext } from "react-router-dom";
 import { fetchHelper } from "../../utils/fetchHelper";
+import { isPasswordComplex } from "../../../backend/utils/checkPasswordComplexity";
 
 export function RegisterPage() {
   const [formData, setFormData] = useState({
@@ -11,9 +12,28 @@ export function RegisterPage() {
     password: "",
     repassword: "",
   });
-  const [setToken] = useOutletContext();
+  const [token, setToken] = useOutletContext();
+  const [passwordError, setPasswordError] = useState("");
+
+  useEffect(() => {
+    if (passwordError) {
+      const clearErrorTimeout = setTimeout(() => {
+        setPasswordError("");
+      }, 2000);
+      return () => clearTimeout(clearErrorTimeout);
+    }
+  }, [passwordError]);
+
   async function handleSubmit(e) {
     e.preventDefault();
+
+    if (!isPasswordComplex(formData.password)) {
+      setPasswordError("Lösenordet är inte tillräckligt komplicerat");
+      return;
+    }
+
+    setPasswordError("");
+
     const result = await fetchHelper("/register", "post", formData);
     if (result.status === 201) {
       const loginResult = await fetchHelper("/login", "post", {
@@ -84,6 +104,7 @@ export function RegisterPage() {
           }}
         />
 
+        {passwordError && <div className="error-message">{passwordError}</div>}
         <div className="form-footer">
           <img src="/Klappa.png" />
           <div className="form-controlls">

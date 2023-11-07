@@ -4,15 +4,12 @@ import { fetchHelper } from "../../utils/fetchHelper";
 import BookingConfirmation from "../../components/BookingConfirmation/BookingConfirmation";
 import { useRef } from "react";
 
-// Mock data, kan tas bort/ändras beroende på hur filmdata och sånt skickas in från bokningssida, ändra i html också så den tar emot rätt filmdata.
-// Det är förmodligen tänkt att allt data ska samlas ihop till en objekt i bokningssidan som skickas till här, så egenskaper är generellt samma.
-
 export function BookingConfirmationPage() {
   const { screeningId } = useParams();
   const location = useLocation();
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const { selectedSeats, selectedTickets, data } = location.state;
+  const { selectedSeats, selectedTickets, data, individual } = location.state;
   const [guestEmail, setGuestEmail] = useState("");
   const [confirmationData, setConfirmationData] = useState();
 
@@ -24,16 +21,25 @@ export function BookingConfirmationPage() {
     id: data.movieid,
     title: data.title,
     date: data.screeningDate,
-    seats: ` rad ${selectedSeats[0].rowNumber} plats 
+    price: selectedTickets.reduce((acc, current) => current.price + acc, 0),
+  };
+
+  if (individual) {
+    screeningData.seats = selectedSeats.map((seat, index) => (
+      <span key={`seat-${index}`}>
+        Rad: {seat.rowNumber} plats: {seat.seatNumber}
+      </span>
+    ));
+  } else {
+    screeningData.seats = ` rad ${selectedSeats[0].rowNumber} plats 
     ${
       selectedSeats.length === 1
         ? selectedSeats[0].seatNumber
         : `${selectedSeats[selectedSeats.length - 1].seatNumber} - ${
             selectedSeats[0].seatNumber
           }`
-    }`,
-    price: selectedTickets.reduce((acc, current) => current.price + acc, 0),
-  };
+    }`;
+  }
 
   const seats = [];
   for (let i = 0; i < selectedSeats.length; i++) {
@@ -55,7 +61,6 @@ export function BookingConfirmationPage() {
       bookingData
     );
     if (response.ok) {
-      console.log("Booking successful");
       setConfirmationData(await response.json());
     } else {
       console.error("Booking failed");
@@ -91,7 +96,7 @@ export function BookingConfirmationPage() {
           <p>
             <strong>Tid:</strong> {screeningData.date}
           </p>
-          <p>
+          <p className={individual ? "individual-seats" : ""}>
             <strong>Valda Platser:</strong> {screeningData.seats}
           </p>
           <p>
