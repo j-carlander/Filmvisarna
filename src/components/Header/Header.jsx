@@ -1,6 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { NavBar } from "../NavBar/NavBar";
 import { SearchBar } from "../SearchBar/SearchBar";
+import { AccountIcon } from "../AccountIcon/AccountIcon";
 
 export function Header({ matchDesktop }) {
   const location = useLocation();
@@ -14,7 +15,10 @@ export function Header({ matchDesktop }) {
       <header className="page-header">
         <div className="max-width-wrapper">
           <NavBar matchDesktop={matchDesktop} />
-          <SearchBar matchDesktop={matchDesktop} />
+          <div className="search-and-account">
+            <SearchBar matchDesktop={matchDesktop} />
+            <AccountIcon matchDesktop={matchDesktop} />
+          </div>  
         </div>
       </header>
     </>
