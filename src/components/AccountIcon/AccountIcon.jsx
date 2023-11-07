@@ -1,12 +1,13 @@
-import { useNavigate, useOutletContext } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import sessionService from "../../utils/sessionService"
 
 export function AccountIcon() {
     const navigate = useNavigate();
+    const token = sessionService.getToken();
 
-    const isAuthenticated = useOutletContext();
-
+    console.log(token)
     const handleClick = () => {
-        if (isAuthenticated) {
+        if (token) {
             navigate("/test")
         } else {
             navigate("/login")

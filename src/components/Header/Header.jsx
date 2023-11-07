@@ -17,7 +17,7 @@ export function Header({ matchDesktop }) {
           <NavBar matchDesktop={matchDesktop} />
           <div className="search-and-account">
             <SearchBar matchDesktop={matchDesktop} />
-            <AccountIcon matchDesktop={matchDesktop} />
+            <AccountIcon className="AccountIcon" matchDesktop={matchDesktop} />
           </div>  
         </div>
       </header>
