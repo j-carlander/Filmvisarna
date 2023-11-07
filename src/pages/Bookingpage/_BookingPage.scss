@@ -35,20 +35,6 @@
       opacity: 1;
     }
   }
-  .imgbox::before {
-    content: "";
-    position: absolute;
-    width: 35px;
-    height: 35px;
-    background-image: radial-gradient(
-      ellipse,
-      $mainBackground 25%,
-      transparent 65%
-    );
-    z-index: 4;
-    margin: 1.2em 0.8em;
-    border-radius: 20em;
-  }
 }
 
 .seat-section {
