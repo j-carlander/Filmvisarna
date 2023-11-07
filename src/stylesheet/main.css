@@ -1189,6 +1189,11 @@ button {
   flex-direction: column;
   align-items: center;
 }
+.admin-page-header a {
+  color: #F7DBA7;
+  font-style: italic;
+  align-self: flex-start;
+}
 
 .admin-page-title {
   padding: 1em;

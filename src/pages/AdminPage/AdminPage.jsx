@@ -1,10 +1,22 @@
 import { useState } from "react";
 import { fetchHelper } from "../../utils/fetchHelper";
 import { AdminDisplayBooking } from "../../components/AdminDisplayBooking/AdminDisplayBooking";
+import sessionService from "../../utils/sessionService";
+import { NavLink, Navigate } from "react-router-dom";
 
 export function AdminPage() {
   const [inputValue, setInputValue] = useState("");
   const [result, setResult] = useState();
+
+  const token = sessionService.getToken();
+  let isadmin = false;
+  if (token) {
+    const payload = atob(token.split(".")[1]);
+    isadmin = payload.isadmin;
+  }
+  if (!isadmin) {
+    return <Navigate to={"/"} />;
+  }
 
   async function searchBooking(e) {
     e.preventDefault();
@@ -17,7 +29,6 @@ export function AdminPage() {
     );
     if (res.status === 200) {
       const resJson = await res.json();
-      console.log(resJson);
       return setResult(resJson[0]);
     }
 
@@ -35,6 +46,7 @@ export function AdminPage() {
   return (
     <>
       <header className="admin-page-header">
+        <NavLink to={"/"}>Till hemsidan</NavLink>
         <h1 className="admin-page-title">Filmvisarna - Administrationssida</h1>
         <form className="admin-page-search-form" onSubmit={searchBooking}>
           <h2 className="admin-page-search-title">Sök efter bokningsnummer</h2>
