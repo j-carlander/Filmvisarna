@@ -2,7 +2,6 @@ import { useLocation, useNavigate, useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { fetchHelper } from "../../utils/fetchHelper";
 import BookingConfirmation from "../../components/BookingConfirmation/BookingConfirmation";
-import { useRef } from "react";
 import sessionService from "../../utils/sessionService";
 import { Loading } from "../../components/Loading/Loading";
 
@@ -20,8 +19,6 @@ export function BookingConfirmationPage() {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
-
-  const dialogRef = useRef();
 
   const screeningData = {
     id: data.movieid,
