@@ -757,6 +757,116 @@ button {
     width: 10em;
   }
 }
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+}
+
+p {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+form {
+  background-color: #1E2D2F;
+  padding: 6em 3em;
+  padding-bottom: 7em;
+  border-radius: 6px;
+}
+
+.form-control {
+  margin-bottom: 1em;
+  padding-bottom: 1.4em;
+}
+
+.form-control input {
+  border: none;
+  background-color: #041F1E;
+  color: #F7DBA7;
+  padding: 1.5em 2em;
+  font-weight: 700;
+  outline: none;
+  border-radius: 5px;
+}
+
+.bli-medlem-underline {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.Login-btn {
+  padding: 1em 4em;
+  border-radius: 20px;
+  background-color: #5A8F76;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  margin: 0 auto;
+  display: flex;
+}
+
+.bli-medlem {
+  margin: 25px 0;
+  text-align: center;
+}
+
+.abort-btn {
+  padding: 1em 3em;
+  border-radius: 20px;
+  background-color: #837771;
+  color: #fff;
+  font-size: 15px;
+  border: none;
+  font-weight: bold;
+  margin: 0 auto;
+  display: flex;
+}
+
+@media only screen and (min-width: 992px) {
+  .container {
+    min-height: 65vh;
+  }
+  form {
+    padding: 4em 15.7em;
+  }
+  .form-control input {
+    padding: 2em 3em;
+    width: 30em;
+  }
+  .Login-btn {
+    width: 25em;
+    justify-content: center;
+  }
+  .abort-btn {
+    width: 12em;
+    justify-content: center;
+    margin-bottom: 30px 0;
+  }
+  p {
+    padding: 30px 0;
+  }
+}
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: -38px;
+}
+
+@media only screen and (min-width: 992px) {
+  h1 {
+    margin-bottom: -38px;
+  }
+}
 .userinfo-card {
   padding: 1em;
 }
