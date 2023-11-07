@@ -15,7 +15,24 @@ export default function Seat({
   function onClick() {
     if (totalTickets === 0) return;
 
+    const row = seats.find((el) => el.rownumber === rowNumber);
+
+    if (!individual && seatNumber - totalTickets + 1 <= 0) return;
+    const filteredTakenSeats = takenSeats.filter(
+      (el) => el.seatrow === row.rownumber
+    );
+    const max = individual ? 1 : totalTickets;
+    for (let i = 0; i < max; i++) {
+      const seat = filteredTakenSeats.find(
+        (el) => el.seatnumber === seatNumber - i
+      );
+      if (seat) return;
+    }
     if (individual) {
+      const thisSeat = selectedSeats.find(
+        (seat) => seat.rowNumber === rowNumber && seat.seatNumber === seatNumber
+      );
+      if (thisSeat) return;
       setSelectedSeats((old) => {
         if (old !== undefined && old.length === totalTickets) {
           old.splice(0, 1);
@@ -24,19 +41,6 @@ export default function Seat({
         return [...old, { rowNumber, seatNumber }];
       });
       return;
-    }
-
-    const row = seats.find((el) => el.rownumber === rowNumber);
-
-    if (seatNumber - totalTickets + 1 <= 0) return;
-    const filteredTakenSeats = takenSeats.filter(
-      (el) => el.seatrow === row.rownumber
-    );
-    for (let i = 0; i < totalTickets; i++) {
-      const seat = filteredTakenSeats.find(
-        (el) => el.seatnumber === seatNumber - i
-      );
-      if (seat) return;
     }
     setSelectedSeats([{ rowNumber, seatNumber }]);
   }

@@ -81,6 +81,18 @@ export function Seats({
 
   return (
     <>
+      <section className="individual-container">
+        <h4>Välj individuella platser:</h4>{" "}
+        <label className="checkbox-label">
+          <input
+            type="checkbox"
+            className="individual-checkbox"
+            checked={individual}
+            onChange={onIndividualCheck}
+          />
+          <span className="custom-checkbox"></span>
+        </label>
+      </section>
       <div className="theatre-container">
         <svg
           className="theatre-screen"
@@ -93,14 +105,6 @@ export function Seats({
           <div className="theatre-seats">{seats.map(getSeatRow)}</div>
         </div>
       </div>
-      <section>
-        <h4>Välj individuella platser:</h4>{" "}
-        <input
-          type="checkbox"
-          checked={individual}
-          onChange={onIndividualCheck}
-        />
-      </section>
     </>
   );
 }

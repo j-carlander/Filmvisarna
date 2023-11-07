@@ -29,6 +29,39 @@
   }
 }
 
+.individual-container {
+  display: flex;
+  margin-bottom: 1.5em;
+  align-items: center;
+  .checkbox-label {
+    display: block;
+    position: relative;
+    margin-left: 1em;
+    height: 25px;
+    width: 25px;
+    cursor: pointer;
+    .individual-checkbox {
+      visibility: hidden;
+    }
+    .individual-checkbox:checked ~ .custom-checkbox:after {
+      content: "\2714";
+    }
+    .custom-checkbox {
+      border-radius: 0.25em;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      border: 0.1em solid black;
+      background-color: $secBackground;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
 .theatre-wrapper::-webkit-scrollbar {
   height: 10px;
 }

@@ -18,6 +18,14 @@ export function BookingPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (selectedTickets.length < selectedSeats.length) {
+      setSelectedSeats(
+        selectedSeats.filter((el, index) => index !== selectedSeats.length - 1)
+      );
+    }
+  }, [selectedTickets, setSelectedSeats, selectedSeats]);
+
+  useEffect(() => {
     async function fectchScreening(screeningid) {
       const res = await fetchHelper(`/screening/${screeningid}`, "get");
       const data = await res.json();
