@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
 *,
 *::before,
@@ -221,6 +222,39 @@ button {
   width: fit-content;
 }
 
+.individual-container {
+  display: flex;
+  margin-bottom: 1.5em;
+  align-items: center;
+}
+.individual-container .checkbox-label {
+  display: block;
+  position: relative;
+  margin-left: 1em;
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+}
+.individual-container .checkbox-label .individual-checkbox {
+  visibility: hidden;
+}
+.individual-container .checkbox-label .individual-checkbox:checked ~ .custom-checkbox:after {
+  content: "✔";
+}
+.individual-container .checkbox-label .custom-checkbox {
+  border-radius: 0.25em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border: 0.1em solid black;
+  background-color: #1E2D2F;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .theatre-wrapper::-webkit-scrollbar {
   height: 10px;
 }
@@ -342,16 +376,6 @@ button {
 .Bookingpage-container .imgbox .back-to-previous:hover {
   opacity: 1;
 }
-.Bookingpage-container .imgbox::before {
-  content: "";
-  position: absolute;
-  width: 35px;
-  height: 35px;
-  background-image: radial-gradient(ellipse, #041F1E 25%, transparent 65%);
-  z-index: 4;
-  margin: 1.2em 0.8em;
-  border-radius: 20em;
-}
 
 .seat-section {
   margin-top: 3rem;
@@ -425,9 +449,19 @@ button {
   flex-direction: column;
   align-items: center;
 }
+.section-2 button:disabled {
+  background-color: #1E2D2F;
+  color: #837771;
+}
 
 .section-2 p {
   margin: 10px 0;
+}
+
+.individual-seats {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.25em;
 }
 
 @media screen and (min-width: 992px) {
