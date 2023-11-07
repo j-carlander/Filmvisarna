@@ -724,6 +724,7 @@ button {
   color: #F7DBA7;
   border: none;
   box-shadow: 0 0 100px 200px rgba(0, 0, 0, 0.493);
+  z-index: 5;
 }
 .booking-confirmation-container h3 {
   color: #EDEDED;
@@ -1446,6 +1447,8 @@ button {
 .bookconfirm-wrapper .bookconfirm-interactions {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 .bookconfirm-wrapper h1 {
   text-align: center;
@@ -1461,6 +1464,8 @@ button {
   align-items: center;
   gap: 2em;
   border-radius: 0.3em;
+  width: 90%;
+  max-width: 800px;
 }
 .bookconfirm-wrapper .bookconfirm-screenings {
   text-align: left;
@@ -1469,10 +1474,64 @@ button {
   margin-bottom: 0.5em;
 }
 .bookconfirm-wrapper .login-signup-group {
+  position: relative;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 4em;
   margin-bottom: 2em;
+  border-radius: 0.75em;
+  padding: 1.5em 1em;
+  background-color: none;
+}
+.bookconfirm-wrapper .login-signup-group p {
+  font-size: 0.9rem;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+}
+.bookconfirm-wrapper .login-signup-group button {
+  font-weight: bold;
+}
+.bookconfirm-wrapper .login-signup-group * {
+  z-index: 3;
+}
+.bookconfirm-wrapper .guest-info-group::after,
+.bookconfirm-wrapper .guest-info-group::before,
+.bookconfirm-wrapper .login-signup-group::after,
+.bookconfirm-wrapper .login-signup-group::before {
+  content: " ";
+  border-radius: 0.75em;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.bookconfirm-wrapper .guest-info-group::after,
+.bookconfirm-wrapper .login-signup-group::after {
+  width: 98%;
+  height: 96%;
+  top: 2%;
+  bottom: 2%;
+  left: 1%;
+  right: 1%;
+  background-color: #1E2D2F;
+  z-index: 2;
+}
+.bookconfirm-wrapper .guest-info-group::before,
+.bookconfirm-wrapper .login-signup-group::before {
+  width: 100%;
+  height: 100%;
+  padding: 0.5em;
+  z-index: 1;
+  background-image: linear-gradient(to top, #041F1E 25%, #837771, #041F1E 75%);
+}
+.bookconfirm-wrapper .or-text {
+  color: #EDEDED;
+  text-align: center;
+  margin-bottom: 1.5em;
 }
 .bookconfirm-wrapper .login-button {
   background-color: #5A8F76;
@@ -1484,20 +1543,35 @@ button {
   margin-bottom: 1em;
   color: white;
 }
+.bookconfirm-wrapper .server-error-text {
+  text-align: center;
+  width: 75%;
+  margin: 0 auto;
+}
 .bookconfirm-wrapper .signup-button {
   color: #F7DBA7;
   text-decoration-color: #F7DBA7;
 }
 .bookconfirm-wrapper .guest-info-group {
+  position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 2em;
+  border-radius: 0.5em;
+  padding: 1em 0.25em;
+  width: 100%;
+}
+.bookconfirm-wrapper .guest-info-group * {
+  z-index: 3;
 }
 .bookconfirm-wrapper .guest-info-group input {
   height: 3.5em;
-  width: 18em;
+  width: 85%;
   margin: 0 auto;
-  margin-bottom: 1em;
   border: none;
   background-color: #041F1E;
   color: #F7DBA7;
@@ -1521,6 +1595,7 @@ button {
   margin: 0 auto;
   margin-bottom: 2em;
   color: white;
+  font-weight: bold;
 }
 .bookconfirm-wrapper .cancel-button {
   background-color: #837771;
@@ -1532,6 +1607,12 @@ button {
   margin: 0 auto;
   margin-bottom: 1em;
   color: white;
+  font-weight: bold;
+}
+.bookconfirm-wrapper .logged-in-email {
+  width: 75%;
+  text-align: center;
+  margin: 1em auto;
 }
 
 @media screen and (min-width: 801px) {
@@ -1542,9 +1623,6 @@ button {
   }
   .bookconfirm-wrapper .bookconfirm-interactions .login-signup-group {
     margin-top: 0em;
-  }
-  .bookconfirm-wrapper .guest-info-group input {
-    width: 25em;
   }
   .bookconfirm-wrapper .bookconfirm-img {
     width: 50%;
