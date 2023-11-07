@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { Loading } from "../Loading/Loading";
 
 export function Carousel({ movies }) {
   function scroll(scrollOffset) {
@@ -12,7 +13,7 @@ export function Carousel({ movies }) {
 
   useEffect(() => {
     carouselRef.current.scrollLeft = 0;
-  }, []);
+  }, [movies]);
   return (
     <article className="carousel-wrapper">
       <button onClick={() => scroll(-200)} className="carousel-btn">
@@ -32,6 +33,7 @@ export function Carousel({ movies }) {
           </div>
         ))}{" "}
       </div>
+      
       <button onClick={() => scroll(200)} className="carousel-btn">
         <img src="/chevron-right.svg" />
       </button>

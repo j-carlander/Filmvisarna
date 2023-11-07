@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { fetchHelper } from "../../utils/fetchHelper";
 import { Link } from "react-router-dom";
 import { Carousel } from "../../components/Carousel/Carousel";
+import { Loading } from "../../components/Loading/Loading";
 
 export function LandingPage() {
+  // const [] = useState()
   const [movies, setMovies] = useState([]);
   const [upcomingMovies, setUpcomingMovies] = useState([]);
 
@@ -32,7 +34,7 @@ export function LandingPage() {
             <p className="show-all">Visa alla</p>
           </Link>
         </div>
-        <Carousel movies={movies} />
+        {movies.length === 0 ? <Loading/> : <Carousel movies={movies} />}
       </section>
       <section className="landingpage-card">
         <div className="landingpage-card-info">
@@ -41,7 +43,7 @@ export function LandingPage() {
             <p className="show-all">Visa alla</p>
           </Link>
         </div>
-        <Carousel movies={upcomingMovies} />
+        {upcomingMovies.length === 0 ? <Loading/> :<Carousel movies={upcomingMovies} />}
       </section>
     </div>
   );

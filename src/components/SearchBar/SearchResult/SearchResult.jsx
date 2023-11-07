@@ -1,5 +1,5 @@
 import { SearchResultCard } from "../SearchResultCard/SearchResultCard";
-
+import { Loading } from "../../Loading/Loading";
 export function SearchResult({
   isLoading,
   movieResult,
@@ -11,9 +11,7 @@ export function SearchResult({
     <>
       <article className="search-result-container">
         {isLoading ? (
-          <div className="loading">
-            <div className="loading-inner"></div>
-          </div>
+          <Loading />
         ) : message !== "" ? (
           <p>{message}</p>
         ) : (

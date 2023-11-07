@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { fetchHelper } from "../../utils/fetchHelper";
 import BookingConfirmation from "../../components/BookingConfirmation/BookingConfirmation";
 import { useRef } from "react";
+import { Loading } from "../../components/Loading/Loading";
 
 export function BookingConfirmationPage() {
   const { screeningId } = useParams();
@@ -12,6 +13,7 @@ export function BookingConfirmationPage() {
   const { selectedSeats, selectedTickets, data, individual } = location.state;
   const [guestEmail, setGuestEmail] = useState("");
   const [confirmationData, setConfirmationData] = useState();
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -55,6 +57,7 @@ export function BookingConfirmationPage() {
   };
 
   async function handleBooking() {
+    setLoading(true)
     const response = await fetchHelper(
       `/booking/${screeningId}`,
       "post",
@@ -65,6 +68,7 @@ export function BookingConfirmationPage() {
     } else {
       console.error("Booking failed");
     }
+    setLoading(false)
   }
 
   useEffect(() => {
@@ -131,6 +135,9 @@ export function BookingConfirmationPage() {
         </div>
         {/* )} */}
       </div>
+      {loading ? <div className="loading-screen">
+        <Loading/>
+      </div> : null}
       {confirmationData ? (
         <BookingConfirmation bookingData={confirmationData} ref={dialogRef} />
       ) : null}
