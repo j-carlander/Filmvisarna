@@ -13,7 +13,7 @@ dist-ssr
 *.local
 backend/config/
 public/images/
-
+public/movie-theatre.png
 
 # Editor directories and files
 .vscode/*

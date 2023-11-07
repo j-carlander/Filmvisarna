@@ -1,0 +1,50 @@
+@use "../../Sass/abstract/variables" as *;
+
+.screening-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2em;
+}
+
+.details-left {
+  text-align: left;
+}
+
+.details-left,
+.details-right {
+  margin-bottom: 2.5em;
+}
+
+.details-flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.screening-time {
+  margin-right: 0.5em;
+  font-size: 1rem;
+}
+
+.screening-lang {
+  font-size: 0.75rem;
+  padding-top: .5em;
+}
+
+.screening-book-btn {
+  background-color: $mediumAccent;
+  color: $whiteAccent;
+
+  padding: 1em 2.7em;
+
+  border-radius: 1000px;
+  border: transparent 1px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.screening-seats {
+  padding-top: 1em;
+  font-size: 0.75rem;
+}

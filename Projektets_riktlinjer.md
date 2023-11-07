@@ -14,13 +14,21 @@
 
 ## Kodstandard
 
-- funktioner deklareras med 'function' ex. `js function greeting(){return 'Hello!'} `
-- arrowfunction ok i "inline-kodning" ex. `js array.map(() => {}) `
+- Funktioner deklareras med 'function' ex. `js function greeting(){return 'Hello!'} `
+- Arrowfunction ok i "inline-kodning" ex. `js array.map(() => {}) `
 
-### Typescript
+## Styling
 
-- använda interface för object och inte type alias
-- inte ta med ordet interface i interfacenamnet
+- Responsiv design, mobile first
+- Responsiv design även i tablet? Anpassa vid behov
+- SCSS
+
+## Filstruktur
+
+- För en component heter mappen och filerna samma sak med stor bokstav i början (SCSS fil och js fil)
+- I pages ska mapparna och filerna heta samma sak och ha stor bokstav i början
+- JSX: stor bokstav
+- Vanliga funktioner: camelcase (liten bokstav i början)
 
 ## Möten
 

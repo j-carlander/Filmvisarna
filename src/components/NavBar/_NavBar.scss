@@ -1,0 +1,67 @@
+@use "../../Sass/abstract/variables" as *;
+
+.main-nav-bar {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+
+  .logo-mini-img {
+    width: 45px;
+  }
+
+  li {
+    list-style: none;
+
+    a {
+      text-decoration: none;
+      color: $lightAccent;
+      font-weight: 700;
+    }
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+    width: 36px;
+  }
+
+  .burger-menu-backdrop {
+    position: absolute;
+    inset: 0;
+  }
+
+  .burger-menu-container {
+    position: relative;
+    .burger-menu-modal {
+      position: absolute;
+      top: -0.2em;
+      left: -0.2em;
+      padding: 3em;
+      margin: 0;
+
+      display: flex;
+      flex-direction: column;
+
+      background-color: $secBackground;
+      border: none;
+
+      .burger-menu-close {
+        position: absolute;
+        top: 0.2em;
+        left: 0.2em;
+      }
+
+      .burger-menu-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5em;
+        width: max-content;
+      }
+    }
+  }
+
+  .desktop-menu-list {
+    display: flex;
+    gap: 3em;
+  }
+}

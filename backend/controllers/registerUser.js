@@ -1,34 +1,42 @@
 import bcrypt from "bcrypt";
 import { runQuery } from "../db.js";
+import { isPasswordComplex } from "../utils/checkPasswordComplexity.js";
 
 export async function registerHandler(req, res) {
   const { fname, lname, phone, email, password, repassword } = req.body;
 
   if (!fname || !lname) {
     return res
-      .status(403)
-      .json({ err: "Firstname and/or Lastname is missing" });
+      .status(400)
+      .json({ error: "Saknar förnamn och/eller efternamn!" });
   }
   if (!phone || !email) {
-    return res.status(403).json({ err: "Phone and/or email is missing" });
+    return res
+      .status(400)
+      .json({ error: "Saknar mobilnummer och/eller email!" });
   }
   if (!password || !repassword) {
-    return res.status(403).json({ err: "Password is missing" });
+    return res.status(400).json({ error: "Saknar lösenord!" });
   }
 
   //Om lösen1 inte matchar med lösen2
   if (password !== repassword) {
-    return res.status(400).json({ message: "Passwords do not match" });
+    return res.status(400).json({ error: "Lösenorden matchar inte!" });
   }
+
+  if (!isPasswordComplex(password))
+    return res
+      .status(400)
+      .json({ error: "Lösenordet är inte tillräckligt komplicerat!" });
 
   bcrypt.hash(password, 10, async (err, hashedPassword) => {
     if (err) {
       console.error("Password hashing error: " + err.message);
-      return res.status(500).json({ message: "Internal server error" });
+      return res.status(500).json({ error: "Internt server fel!" });
     }
 
     const insertRegisterQuery =
-      "INSERT INTO users (fname, lname, phone, email, password) VALUES (?, ?, ?, ?, ?)";
+      "INSERT INTO users (fname, lname, phone, email, password, isadmin) VALUES (?, ?, ?, ?, ?, false)";
 
     try {
       const result = await runQuery(insertRegisterQuery, [
@@ -41,15 +49,13 @@ export async function registerHandler(req, res) {
 
       // Om användaren är successfully registrerad
       if (result.affectedRows === 1) {
-        res.status(201).json({ message: "User registered successfully" });
+        res.status(201).json({ message: "Ditt konto har skapats!" });
       } else {
-        res.status(401).json({ message: "User registration failed" });
+        res.status(400).json({ error: "Ditt konto skapades inte!" });
       }
     } catch (error) {
       console.error("Error: " + error.message);
-      return res
-        .status(401)
-        .json({ message: "User registered unsuccessfully" });
+      return res.status(400).json({ error: "Ditt konto skapades inte!" });
     }
   });
 }

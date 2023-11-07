@@ -1,0 +1,32 @@
+@use "../../../Sass/abstract/variables" as *;
+
+$Size: 20px;
+$TopRadius: 20em;
+$BottomRadius: 10em;
+
+.seat {
+  width: $Size;
+  height: $Size;
+  flex: 0 0 $Size;
+  border: 3.5px solid $lightAccent;
+  border-top-right-radius: $TopRadius;
+  border-top-left-radius: $TopRadius;
+  border-bottom-right-radius: $BottomRadius;
+  border-bottom-left-radius: $BottomRadius;
+}
+
+.seat-hover {
+  border-color: $whiteAccent;
+}
+
+.taken-seat {
+  border-color: $mainBackground;
+}
+
+.selected-seat {
+  border-color: $mediumAccent;
+}
+
+.seat-hover-fail {
+  border-color: red;
+}
