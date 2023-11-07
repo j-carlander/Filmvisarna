@@ -23,6 +23,7 @@ export function Seats({
       setTakenSeats(data);
     }
 
+    let abortSubscription = false;
     async function subscribe() {
       const response = await fetchHelper(
         `/subscribeScreenings/${screeningId}`,
@@ -32,11 +33,16 @@ export function Seats({
         const newTakenSeats = await response.json();
         setTakenSeats((takenSeats) => [...takenSeats, ...newTakenSeats]);
       }
-      subscribe();
+
+      if (!abortSubscription) subscribe();
     }
 
     fetchTakenSeats();
     subscribe();
+
+    return () => {
+      abortSubscription = true;
+    };
   }, [screeningId]);
 
   function getSeatRow(rowInfo, index) {
