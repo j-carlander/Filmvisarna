@@ -14,7 +14,6 @@ import { BookingPage } from "./pages/Bookingpage/BookingPage.jsx";
 import { LoginPage } from "./pages/LoginPage/LoginPage.jsx";
 import { PageNotFound } from "./pages/PageNotFound/PageNotFound.jsx";
 import { RegisterPage } from "./pages/RegisterPage/RegisterPage.jsx";
-import UserBookings from "./components/UserBooking/UserBookings";
 
 export const pages = [
   { path: "/", element: <LandingPage /> },
