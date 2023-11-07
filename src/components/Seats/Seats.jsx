@@ -14,6 +14,7 @@ export function Seats({
 }) {
   const [seats, setSeats] = useState([]);
   const [takenSeats, setTakenSeats] = useState([]);
+  const [hoveredSeat, setHoveredSeat] = useState();
 
   useEffect(() => {
     async function fetchTakenSeats() {
@@ -54,6 +55,8 @@ export function Seats({
             totalTickets,
             seats,
             individual,
+            hoveredSeat,
+            setHoveredSeat,
           }}
         />
       );

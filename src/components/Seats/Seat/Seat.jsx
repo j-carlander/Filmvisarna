@@ -9,6 +9,8 @@ export default function Seat({
   totalTickets,
   seats,
   individual,
+  hoveredSeat,
+  setHoveredSeat,
 }) {
   const [classNames, setClassnames] = useState("seat");
 
@@ -72,10 +74,41 @@ export default function Seat({
       }
     }
 
+    let hover = false,
+      hoverFail = false;
+
+    if (individual && hoveredSeat !== undefined) {
+      if (
+        hoveredSeat.rowNumber === rowNumber &&
+        hoveredSeat.seatNumber === seatNumber
+      ) {
+        if (thisTakenSeat) {
+          hoverFail = true;
+        } else {
+          hover = true;
+        }
+      }
+    }
+
+    if (!individual && hoveredSeat !== undefined) {
+      for (let i = 0; i < totalTickets; i++) {
+        if (
+          hoveredSeat.rowNumber === rowNumber &&
+          hoveredSeat.seatNumber - i === seatNumber
+        ) {
+          if (thisTakenSeat) {
+            hoverFail = true;
+          } else {
+            hover = true;
+          }
+        }
+      }
+    }
+
     setClassnames(
       `seat${thisTakenSeat ? " taken-seat" : ""}${
         selected ? " selected-seat" : ""
-      }`
+      }${hover ? " seat-hover" : ""}${hoverFail ? " seat-hover-fail" : ""}`
     );
   }, [
     takenSeats,
@@ -86,7 +119,14 @@ export default function Seat({
     totalTickets,
     setSelectedSeats,
     individual,
+    hoveredSeat,
   ]);
 
-  return <div className={classNames} onClick={onClick}></div>;
+  return (
+    <div
+      className={classNames}
+      onMouseEnter={() => setHoveredSeat({ rowNumber, seatNumber })}
+      onMouseLeave={() => setHoveredSeat(undefined)}
+      onClick={onClick}></div>
+  );
 }

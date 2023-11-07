@@ -282,12 +282,20 @@ button {
   border-bottom-left-radius: 10em;
 }
 
+.seat-hover {
+  border-color: #EDEDED;
+}
+
 .taken-seat {
   border-color: #041F1E;
 }
 
 .selected-seat {
   border-color: #5A8F76;
+}
+
+.seat-hover-fail {
+  border-color: red;
 }
 
 .seat-row {

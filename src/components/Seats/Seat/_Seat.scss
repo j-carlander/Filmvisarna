@@ -15,10 +15,18 @@ $BottomRadius: 10em;
   border-bottom-left-radius: $BottomRadius;
 }
 
+.seat-hover {
+  border-color: $whiteAccent;
+}
+
 .taken-seat {
   border-color: $mainBackground;
 }
 
 .selected-seat {
   border-color: $mediumAccent;
+}
+
+.seat-hover-fail {
+  border-color: red;
 }
