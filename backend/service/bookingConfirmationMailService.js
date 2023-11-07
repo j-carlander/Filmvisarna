@@ -15,7 +15,7 @@ export async function bookingConfirmationMailService(
     to: email,
     subject: "Här är din bokning",
     text: textBody(title, screeningDate, seats, bookingNumber, cost, email),
-    html: htmlBody(title, screeningDate, seats, bookingNumber, cost),
+    html: htmlBody(title, screeningDate, seats, bookingNumber, cost, email),
   };
 
   return mailTransporter.sendMail(msg);
@@ -40,16 +40,14 @@ Filmvisarna
 `;
 }
 
-// html: htmlBody(title, screeningDate, seats, bookingNumber),
-
-function htmlBody(title, screeningDate, seats, bookingNumber, cost) {
-  const wrapperStyle = `width: 100%; max-width: 800px; height: 100%; font-family: Montserrat, sans-serif; background-color: #041F1E; color: #F7DBA7;`;
+function htmlBody(title, screeningDate, seats, bookingNumber, cost, email) {
+  const wrapperStyle = `width: 100%; max-width: 800px; height: 100%; padding: 5em; font-family: Montserrat, sans-serif; background-color: #041F1E; color: #F7DBA7;`;
   const innerWrapperStyle = `width: 50%; min-width:280px; margin: 5em auto; padding: 5em; font-family: Montserrat, sans-serif; background-color: #1E2D2F; color: #F7DBA7;`;
   const greetingStyle = `font-size: 22px;`;
   const titleStyle = `font-size: 32px;`;
   const pStyle = `font-size: 16px; font-weight: bold;`;
   const spanStyle = `font-weight: normal`;
-  const btnStyle = `padding: 1em 2em; font-weight: semibold; border-radius: 1000px; background-color: #837771; color: #EDEDED;`;
+  const btnStyle = `padding: 1em 2em; margin: 2em auto; font-weight: semibold; border-radius: 1000px; background-color: #837771; color: #EDEDED;`;
 
   return `<body style="${wrapperStyle}">
     <article style="${innerWrapperStyle}">
@@ -58,7 +56,9 @@ function htmlBody(title, screeningDate, seats, bookingNumber, cost) {
       <p style="${pStyle}">Du har bokat</p>
       <p style="${greetingStyle}">${title}</p>
       <p style="font-size: 16px; font-weight: bold;">
-        Den: <span style="${spanStyle}">${screeningDate}</span>
+        Den: <span style="${spanStyle}">${formatDateTimeSwe(
+    screeningDate
+  )}</span>
       </p>
       <p style="${pStyle}">
         Platser: <span style="${spanStyle}">${formatSeatInfo(seats)}</span>
@@ -69,7 +69,7 @@ function htmlBody(title, screeningDate, seats, bookingNumber, cost) {
       <p style="${pStyle}">
       Att betala: <span style="${spanStyle}">${cost}</span>
       </p>
-      <a href="http://www.filmvisarna.se/avboka" style="${btnStyle}">
+      <a href="http://localhost:5173/cancel?bookingNumber=${bookingNumber}&email=${email}" style="${btnStyle}">
         Avboka
       </a>
       <p style="${pStyle}">Med Vänlig Hälsning</p>
