@@ -784,11 +784,14 @@ button {
 .user-bookings {
   width: 100%;
   max-width: 514px;
+  margin-bottom: 3em;
+  position: relative;
 }
 .user-bookings .user-bookings-title,
 .user-bookings .no-bookings {
   width: 75%;
   margin: 0 auto;
+  margin-top: 1em;
 }
 .user-bookings .user-bookings-title {
   font-size: 1.25rem;
@@ -799,6 +802,7 @@ button {
   display: flex;
   width: 85%;
   margin: 0 auto;
+  margin-bottom: 0.5em;
   justify-content: space-between;
   background-color: #1E2D2F;
   padding: 1em 1.5em;
@@ -812,6 +816,19 @@ button {
   flex-direction: column;
   justify-content: space-between;
 }
+.user-bookings .user-booking .booking-info-hist {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 0.8rem;
+}
+.user-bookings .user-booking .booking-info-hist p {
+  margin-right: 0.4em;
+  opacity: 0.9;
+}
+.user-bookings .user-booking .booking-info-hist {
+  overflow-x: scroll;
+}
 .user-bookings .user-booking .booking-btns {
   display: flex;
   flex-direction: column;
@@ -820,7 +837,7 @@ button {
 .user-bookings .user-booking .booking-btns button {
   color: #EDEDED;
   font-size: 1rem;
-  padding: 0.5em;
+  padding: 0.7em;
   border-radius: 5em;
   border: none;
   font-weight: bold;
@@ -830,6 +847,16 @@ button {
 }
 .user-bookings .user-booking .booking-btns .cancel-btn {
   background-color: #837771;
+}
+
+.user-bookings:last-of-type::before {
+  position: absolute;
+  content: "";
+  width: 80%;
+  top: 0;
+  left: 10%;
+  height: 1px;
+  background-color: #F7DBA7;
 }
 
 .register-page-wrapper {
