@@ -6,7 +6,6 @@ export function ControlledLinks() {
   let isadmin = 0;
   if (token) {
     const payload = JSON.parse(atob(token.split(".")[1]));
-    console.log("payload", payload);
     isadmin = payload.isadmin;
   }
   return (
