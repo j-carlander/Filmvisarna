@@ -1,0 +1,28 @@
+@use "../../Sass/abstract/variables" as *;
+.loading {
+  position: relative;
+  margin: 2em auto;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: conic-gradient(transparent 75%, $lightAccent);
+
+  animation: rotateLoading infinite 1s linear;
+
+  .loading-inner {
+    position: absolute;
+    inset: 7px;
+    border-radius: 50%;
+    background-color: $secBackground;
+  }
+}
+
+@keyframes rotateLoading {
+  0% {
+    rotate: 0deg;
+  }
+
+  100% {
+    rotate: 359deg;
+  }
+}
