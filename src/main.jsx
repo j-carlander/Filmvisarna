@@ -45,7 +45,6 @@ const router = createBrowserRouter([
     element: <AdminPage />,
   },
   { path: "/cancel", element: <CancelBookingPage /> },
-  { path: "/user", element: <UserBookings /> },
 ]);
 
 ReactDOM.createRoot(document.querySelector("#root")).render(
