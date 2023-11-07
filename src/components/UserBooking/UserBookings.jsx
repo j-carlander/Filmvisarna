@@ -1,14 +1,23 @@
 import { useState, useEffect } from "react";
 import UserBooking from "./UserBooking/UserBooking";
 import { fetchHelper } from "../../utils/fetchHelper";
+import { UserBookingsHistoryCard } from "./UserBookingsHistoryCard/UserBookingsHistoryCard";
+
 
 export default function UserBookings() {
   const [currentBookings, setCurrentBookings] = useState([]);
   const [serverError, setServerError] = useState(undefined);
 
+
   function getBookingElement(bookingData, index) {
     return (
       <UserBooking {...{ bookingData, key: `current-booking-${index}` }} />
+    );
+  }
+
+  function getBookingHistoryElement(bookingData, index) {
+    return (
+      <UserBookingsHistoryCard {...{ bookingData, key: `current-booking-${index}` }} />
     );
   }
 
@@ -29,17 +38,32 @@ export default function UserBookings() {
   }, [setServerError]);
 
   return (
-    <section className="user-bookings">
-      <h2 className="user-bookings-title">Bokade biljetter</h2>
-      {serverError === undefined ? (
-        currentBookings.length > 0 ? (
-          <ul>{currentBookings.map(getBookingElement)}</ul>
+    <>
+      <section className="user-bookings">
+        <h2 className="user-bookings-title">Bokade biljetter</h2>
+        {serverError === undefined ? (
+          currentBookings.length > 0 ? (
+            <ul>{currentBookings.map(getBookingElement)}</ul>
+          ) : (
+            <p className="no-bookings">Du har inga nuvarande bokningar!</p>
+          )
         ) : (
-          <p className="no-bookings">Du har inga nuvarande bokningar!</p>
-        )
-      ) : (
-        <p>{serverError}</p>
-      )}
-    </section>
+          <p>{serverError}</p>
+        )}
+      </section>
+      <section className="user-bookings">
+        <h2 className="user-bookings-title">Filmhistorik</h2>
+        {serverError === undefined ? (
+          currentBookings.length > 0 ? (
+            <ul>{currentBookings.map(getBookingHistoryElement)}</ul>
+          ) : (
+            <p className="no-bookings">Du har inga tidigare bokningar!</p>
+          )
+        ) : (
+          <p>{serverError}</p>
+        )}
+      </section>
+    </>
+    
   );
 }
