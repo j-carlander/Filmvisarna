@@ -9,6 +9,8 @@ export function Seats({
   totalTickets,
   selectedSeats,
   setSelectedSeats,
+  individual,
+  setIndividual,
 }) {
   const [seats, setSeats] = useState([]);
   const [takenSeats, setTakenSeats] = useState([]);
@@ -21,13 +23,15 @@ export function Seats({
     }
 
     async function subscribe() {
-      const response = await fetchHelper(`/subscribeScreenings/${screeningId}`, "get")
-
+      const response = await fetchHelper(
+        `/subscribeScreenings/${screeningId}`,
+        "get"
+      );
       if (response.status == 200) {
         const newTakenSeats = await response.json();
-        setTakenSeats(takenSeats => [...takenSeats, ...newTakenSeats]);
+        setTakenSeats((takenSeats) => [...takenSeats, ...newTakenSeats]);
       }
-      subscribe(); 
+      subscribe();
     }
 
     fetchTakenSeats();
@@ -49,6 +53,7 @@ export function Seats({
             selectedSeats,
             totalTickets,
             seats,
+            individual,
           }}
         />
       );
@@ -57,6 +62,11 @@ export function Seats({
     seatsArray.reverse();
 
     return <SeatRow key={`row-${index}`} seats={seatsArray} />;
+  }
+
+  function onIndividualCheck(e) {
+    setSelectedSeats([]);
+    setIndividual(e.target.checked);
   }
 
   useEffect(() => {
@@ -70,17 +80,31 @@ export function Seats({
   }, [theatreId]);
 
   return (
-    <div className="theatre-container">
-      <svg
-        className="theatre-screen"
-        fill="none"
-        viewBox="0 0 50 10"
-        preserveAspectRatio="xMinYMin meet">
-        <path d="M0 0 L6 10 L44 10 L50 0 Z" strokeWidth={1} />
-      </svg>
-      <div className="theatre-wrapper">
-        <div className="theatre-seats">{seats.map(getSeatRow)}</div>
+    <>
+      <section className="individual-container">
+        <h4>Välj individuella platser:</h4>{" "}
+        <label className="checkbox-label">
+          <input
+            type="checkbox"
+            className="individual-checkbox"
+            checked={individual}
+            onChange={onIndividualCheck}
+          />
+          <span className="custom-checkbox"></span>
+        </label>
+      </section>
+      <div className="theatre-container">
+        <svg
+          className="theatre-screen"
+          fill="none"
+          viewBox="0 0 50 10"
+          preserveAspectRatio="xMinYMin meet">
+          <path d="M0 0 L6 10 L44 10 L50 0 Z" strokeWidth={1} />
+        </svg>
+        <div className="theatre-wrapper">
+          <div className="theatre-seats">{seats.map(getSeatRow)}</div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

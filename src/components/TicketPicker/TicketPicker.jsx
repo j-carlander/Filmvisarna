@@ -33,13 +33,25 @@ export function TicketPicker({ selectedTickets, setSelectedTickets }) {
 
   useEffect(() => {
     if (initialized && !selectedOrdinarie) {
-      const ordinarieTicketType = ticketTypes.find((type) => type.name === "Ordinarie");
+      const ordinarieTicketType = ticketTypes.find(
+        (type) => type.name === "Ordinarie"
+      );
       if (ordinarieTicketType) {
-        setSelectedTickets([...selectedTickets, ordinarieTicketType, ordinarieTicketType]);
+        setSelectedTickets([
+          ...selectedTickets,
+          { ...ordinarieTicketType },
+          { ...ordinarieTicketType },
+        ]);
         setSelectedOrdinarie(true);
       }
     }
-  }, [initialized, selectedTickets, setSelectedTickets, ticketTypes, selectedOrdinarie]);
+  }, [
+    initialized,
+    selectedTickets,
+    setSelectedTickets,
+    ticketTypes,
+    selectedOrdinarie,
+  ]);
 
   return (
     <section className="ticket-picker">
