@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
+import { ControlledLinks } from "../ControlledLinks";
 
 export function BurgerMenu({ pages }) {
   const [showMenu, setShowMenu] = useState(false);
@@ -47,6 +48,7 @@ export function BurgerMenu({ pages }) {
                   </li>
                 );
               })}
+              <ControlledLinks />
             </ul>
           </div>
         ) : null}

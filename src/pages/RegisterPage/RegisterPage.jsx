@@ -11,7 +11,7 @@ export function RegisterPage() {
     password: "",
     repassword: "",
   });
-  const [setToken] = useOutletContext();
+  const [token, setToken] = useOutletContext();
   async function handleSubmit(e) {
     e.preventDefault();
     const result = await fetchHelper("/register", "post", formData);

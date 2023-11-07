@@ -5,6 +5,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  a {
+    color: $lightAccent;
+    font-style: italic;
+    align-self: flex-start;
+    margin: 1em;
+  }
 }
 
 .admin-page-title {
