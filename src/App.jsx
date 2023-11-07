@@ -19,6 +19,7 @@ function App() {
     } else {
       sessionService.setToken(newToken);
     }
+    console.log(newToken)
     setUserToken(newToken);
   }
 
