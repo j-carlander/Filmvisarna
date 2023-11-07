@@ -1286,6 +1286,7 @@ button {
   color: #F7DBA7;
   font-style: italic;
   align-self: flex-start;
+  margin: 1em;
 }
 
 .admin-page-title {

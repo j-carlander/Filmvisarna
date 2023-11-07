@@ -3,16 +3,17 @@ import sessionService from "../../utils/sessionService";
 
 export function ControlledLinks() {
   const token = sessionService.getToken();
-  let isadmin = false;
+  let isadmin = 0;
   if (token) {
-    const payload = atob(token.split(".")[1]);
+    const payload = JSON.parse(atob(token.split(".")[1]));
+    console.log("payload", payload);
     isadmin = payload.isadmin;
   }
   return (
     <>
-      {isadmin ? (
+      {isadmin === 1 ? (
         <li>
-          <NavLink to={"/admin"}></NavLink>
+          <NavLink to={"/admin"}>Admin</NavLink>
         </li>
       ) : null}
     </>
