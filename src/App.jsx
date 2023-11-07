@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Header } from "./components/Header/Header";
 import { Footer } from "./components/Footer/Footer";
-// import Login from "./components/Login/Login";
 import sessionService from "./utils/sessionService";
 
 function App() {
@@ -19,7 +18,6 @@ function App() {
     } else {
       sessionService.setToken(newToken);
     }
-    console.log(newToken)
     setUserToken(newToken);
   }
 
@@ -43,7 +41,6 @@ function App() {
         <Outlet context={[token, setToken]} />
       </main>
       <Footer />
-      {/* <Login /> */}
     </>
   );
 }

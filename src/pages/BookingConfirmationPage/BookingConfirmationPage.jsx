@@ -1,23 +1,24 @@
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { fetchHelper } from "../../utils/fetchHelper";
 import BookingConfirmation from "../../components/BookingConfirmation/BookingConfirmation";
-import { useRef } from "react";
+import sessionService from "../../utils/sessionService";
 import { Loading } from "../../components/Loading/Loading";
 
 export function BookingConfirmationPage() {
   const { screeningId } = useParams();
   const location = useLocation();
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const token = sessionService.getToken();
+  const isLoggedIn = useState(token !== null)[0];
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const { selectedSeats, selectedTickets, data, individual } = location.state;
   const [guestEmail, setGuestEmail] = useState("");
   const [confirmationData, setConfirmationData] = useState();
+  const [serverError, setServerError] = useState("");
+  const payload = token ? JSON.parse(atob(token.split(".")[1])) : undefined;
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
-
-  const dialogRef = useRef();
 
   const screeningData = {
     id: data.movieid,
@@ -57,7 +58,16 @@ export function BookingConfirmationPage() {
   };
 
   async function handleBooking() {
-    setLoading(true)
+    setServerError("");
+
+    if (!isLoggedIn && guestEmail === "") {
+      return setServerError("Du måste vara inloggad eller ange din mail!");
+    }
+
+    if (isLoggedIn) {
+      delete bookingData.guestEmail;
+    }
+    setLoading(true);
     const response = await fetchHelper(
       `/booking/${screeningId}`,
       "post",
@@ -66,9 +76,9 @@ export function BookingConfirmationPage() {
     if (response.ok) {
       setConfirmationData(await response.json());
     } else {
-      console.error("Booking failed");
+      setServerError((await response.json()).error);
     }
-    setLoading(false)
+    setLoading(false);
   }
 
   useEffect(() => {
@@ -107,39 +117,54 @@ export function BookingConfirmationPage() {
             <strong>Att Betala:</strong> {screeningData.price} kr
           </p>
         </div>
-        {/* {isLoggedIn === false && ( */}
         <div className="bookconfirm-interactions">
-          {/* <div className="login-signup-group">
-              <Link to="/login">
-                <button className="login-button">Logga in</button>
-              </Link>
-              <Link className="signup-button" to="/signup">
-                Inget Konto? Bli medlem!
-              </Link>
-            </div> */}
-
-          <div className="guest-info-group">
-            <input
-              type="email"
-              placeholder="Email"
-              value={guestEmail}
-              onChange={(e) => setGuestEmail(e.target.value)}
-            />
-          </div>
+          {!isLoggedIn && (
+            <>
+              <div className="login-signup-group">
+                <Link to="/login">
+                  <button className="login-button">Logga in</button>
+                </Link>
+                <p>
+                  Inget konto?{" "}
+                  <Link className="signup-button" to="/signup">
+                    Bli medlem!
+                  </Link>
+                </p>
+              </div>
+              <p className="or-text">eller</p>
+              <div className="guest-info-group">
+                <input
+                  type="email"
+                  placeholder="Email"
+                  value={guestEmail}
+                  onChange={(e) => setGuestEmail(e.target.value)}
+                />
+              </div>
+            </>
+          )}
+          {isLoggedIn && (
+            <>
+              <p className="logged-in-email">
+                Inloggad med: <strong>{payload.email}</strong>
+              </p>
+            </>
+          )}
           <button className="confirm-button" onClick={handleBooking}>
             Bekräfta
           </button>
           <button className="cancel-button" onClick={() => navigate(-1)}>
             Avbryt
           </button>
+          <p className="server-error-text">{serverError}</p>
         </div>
-        {/* )} */}
       </div>
-      {loading ? <div className="loading-screen">
-        <Loading/>
-      </div> : null}
+      {loading ? (
+        <div className="loading-screen">
+          <Loading />
+        </div>
+      ) : null}
       {confirmationData ? (
-        <BookingConfirmation bookingData={confirmationData} ref={dialogRef} />
+        <BookingConfirmation bookingData={confirmationData} />
       ) : null}
     </div>
   );

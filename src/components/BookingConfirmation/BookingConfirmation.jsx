@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-export default function BookingConfirmation({ bookingData, ref }) {
+export default function BookingConfirmation({ bookingData }) {
   const navigate = useNavigate();
   const dateArr = bookingData.date.split(". kl: ");
 
@@ -9,7 +9,7 @@ export default function BookingConfirmation({ bookingData, ref }) {
   const date = dateArr[0];
 
   return (
-    <dialog className="booking-confirmation-container" ref={ref}>
+    <dialog className="booking-confirmation-container">
       <h3>Du har bokat:</h3>
       <div className="movie-info">
         <p>
