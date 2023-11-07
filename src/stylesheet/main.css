@@ -1129,29 +1129,6 @@ button {
   border: transparent;
 }
 
-.loading {
-  position: relative;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  background: conic-gradient(transparent 75%, #F7DBA7);
-  animation: rotateLoading infinite 1s linear;
-}
-.loading .loading-inner {
-  position: absolute;
-  inset: 5px;
-  border-radius: 50%;
-  background-color: #1E2D2F;
-}
-
-@keyframes rotateLoading {
-  0% {
-    rotate: 0deg;
-  }
-  100% {
-    rotate: 359deg;
-  }
-}
 .search-result-container {
   position: absolute;
   z-index: 10;
@@ -1614,6 +1591,12 @@ button {
   text-align: center;
   margin: 1em auto;
 }
+.bookconfirm-wrapper .loading-screen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
 @media screen and (min-width: 801px) {
   .bookconfirm-wrapper .bookconfirm-page {
@@ -1712,4 +1695,29 @@ button {
   width: 100%;
   fill: #F7DBA7;
   width: 2em;
+}
+
+.loading {
+  position: relative;
+  margin: 2em auto;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: conic-gradient(transparent 75%, #F7DBA7);
+  animation: rotateLoading infinite 1s linear;
+}
+.loading .loading-inner {
+  position: absolute;
+  inset: 7px;
+  border-radius: 50%;
+  background-color: #1E2D2F;
+}
+
+@keyframes rotateLoading {
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: 359deg;
+  }
 }/*# sourceMappingURL=main.css.map */

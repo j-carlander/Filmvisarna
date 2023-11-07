@@ -4,6 +4,7 @@ import { fetchHelper } from "../../utils/fetchHelper";
 import BookingConfirmation from "../../components/BookingConfirmation/BookingConfirmation";
 import { useRef } from "react";
 import sessionService from "../../utils/sessionService";
+import { Loading } from "../../components/Loading/Loading";
 
 export function BookingConfirmationPage() {
   const { screeningId } = useParams();
@@ -16,6 +17,8 @@ export function BookingConfirmationPage() {
   const [confirmationData, setConfirmationData] = useState();
   const [serverError, setServerError] = useState("");
   const payload = token ? JSON.parse(atob(token.split(".")[1])) : undefined;
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
 
   const dialogRef = useRef();
@@ -67,6 +70,7 @@ export function BookingConfirmationPage() {
     if (isLoggedIn) {
       delete bookingData.guestEmail;
     }
+    setLoading(true);
     const response = await fetchHelper(
       `/booking/${screeningId}`,
       "post",
@@ -77,6 +81,7 @@ export function BookingConfirmationPage() {
     } else {
       setServerError((await response.json()).error);
     }
+    setLoading(false);
   }
 
   useEffect(() => {
@@ -156,6 +161,11 @@ export function BookingConfirmationPage() {
           <p className="server-error-text">{serverError}</p>
         </div>
       </div>
+      {loading ? (
+        <div className="loading-screen">
+          <Loading />
+        </div>
+      ) : null}
       {confirmationData ? (
         <BookingConfirmation bookingData={confirmationData} />
       ) : null}
