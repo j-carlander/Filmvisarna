@@ -5,10 +5,12 @@ export default function Login() {
   const setToken = useOutletContext()[1];
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [serverError, setServerError] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
+    setServerError("");
 
     const userData = {
       email,
@@ -24,40 +26,43 @@ export default function Login() {
         body: JSON.stringify(userData),
       });
 
+      const data = await response.json();
       if (response.ok) {
-        const data = await response.json();
-        console.log("Inloggning lyckades!", data);
         setToken(data.token);
-        navigate(-1)
+        navigate(-1);
       } else {
+        setServerError(data.error);
         console.error("Inloggning misslyckades");
       }
     } catch (error) {
       console.error("Något gick fel:", error);
     }
-  };
+  }
 
   return (
     <>
       <div className="login-container">
-        <form>
+        <form onSubmit={handleSubmit} onReset={() => navigate(-1)}>
           <div className="form-control">
             <input
+              required
               placeholder="Email"
-              type="text"
+              type="email"
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="form-control">
             <input
+              required
               placeholder="Lösenord"
               type="password"
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button className="Login-btn" onClick={handleSubmit}>
+          <button className="Login-btn" type="submit">
             Logga in
           </button>
+          <p className="server-error">{serverError}</p>
           <p className="bli-medlem">
             Inget konto?{" "}
             <span
@@ -68,7 +73,9 @@ export default function Login() {
               Bli medlem!
             </span>
           </p>
-          <button className="abort-btn">Avbryt</button>
+          <button className="abort-btn" type="reset">
+            Avbryt
+          </button>
         </form>
       </div>
     </>

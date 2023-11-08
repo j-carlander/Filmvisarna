@@ -820,6 +820,10 @@ button {
   padding-bottom: 7em;
   border-radius: 6px;
 }
+.login-container form .server-error {
+  margin-top: 1em;
+  text-align: center;
+}
 .login-container .form-control {
   margin-bottom: 1em;
   padding-bottom: 1.4em;

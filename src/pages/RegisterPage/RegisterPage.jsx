@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useOutletContext } from "react-router-dom";
+import { Link, useOutletContext, useNavigate } from "react-router-dom";
 import { fetchHelper } from "../../utils/fetchHelper";
 import { isPasswordComplex } from "../../../backend/utils/checkPasswordComplexity";
 
@@ -14,6 +14,7 @@ export function RegisterPage() {
   });
   const setToken = useOutletContext()[1];
   const [passwordError, setPasswordError] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (passwordError) {
@@ -108,11 +109,18 @@ export function RegisterPage() {
         <div className="form-footer">
           <img src="/Klappa.png" />
           <div className="form-controlls">
-            <button className="confirm-button">Bli medlem</button>
+            <button className="confirm-button" type="submit">
+              Bli medlem
+            </button>
             <p>
               Jag är redan medlem - <Link>logga in här</Link>
             </p>
-            <button className="cancel-button">Avbryt</button>
+            <button
+              className="cancel-button"
+              type="reset"
+              onClick={() => navigate(-1)}>
+              Avbryt
+            </button>
           </div>
           <img src="/Projektor.png" />
         </div>
