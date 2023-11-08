@@ -26,7 +26,6 @@ export const pages = [
   { path: "/booking/:screeningid", element: <BookingPage /> },
   { path: "/Login", element: <LoginPage /> },
   { path: "/myaccount", element: <MyAccountPage /> },
-  // { path: "*", element: <PageNotFound /> },
   {
     path: "/bookingconfirmation/:screeningId",
     element: <BookingConfirmationPage />,

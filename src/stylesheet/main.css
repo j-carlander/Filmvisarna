@@ -107,8 +107,8 @@ button {
   top: 0;
   left: 0;
   width: 100%;
-  -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgb(0, 0, 0)), to(rgba(0, 0, 0, 0)));
-  mask-image: linear-gradient(to bottom, #041F1E, rgb(0, 0, 0) 10%, rgba(0, 0, 0, 0) 80%);
+  -webkit-mask-image: linear-gradient(to bottom, #041F1E, rgb(0, 0, 0) 10%, rgba(0, 0, 0, 0) 80%);
+          mask-image: linear-gradient(to bottom, #041F1E, rgb(0, 0, 0) 10%, rgba(0, 0, 0, 0) 80%);
 }
 .moviedetail-card .moviedetail-wrapper {
   display: flex;
@@ -174,8 +174,10 @@ button {
 
 @media screen and (min-width: 978px) {
   .moviedetail-card .moviedetail-img {
-    object-fit: cover;
-    object-position: top;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: top;
+       object-position: top;
   }
   .moviedetail-card .moviedetail-wrapper {
     padding: 8em 3em 1em 3em;
@@ -219,6 +221,7 @@ button {
   align-items: center;
   row-gap: 1em;
   padding: 2em 0;
+  width: -moz-fit-content;
   width: fit-content;
 }
 
@@ -298,9 +301,11 @@ button {
 .seat-row {
   flex: 0 0;
   display: flex;
+  width: -moz-fit-content;
   width: fit-content;
   justify-content: center;
-  column-gap: 1em;
+  -moz-column-gap: 1em;
+       column-gap: 1em;
 }
 
 .screening-details {
@@ -535,6 +540,7 @@ button {
   display: flex;
   flex-direction: column;
   gap: 1.5em;
+  width: -moz-max-content;
   width: max-content;
 }
 .main-nav-bar .desktop-menu-list {
@@ -947,7 +953,8 @@ button {
   padding: 1em 1.5em;
   border-radius: 0.75em;
   border: 0.15em solid;
-  border-image: linear-gradient(to top, #041F1E 25%, #837771, #041F1E 75%) 0 1;
+  -o-border-image: linear-gradient(to top, #041F1E 25%, #837771, #041F1E 75%) 0 1;
+     border-image: linear-gradient(to top, #041F1E 25%, #837771, #041F1E 75%) 0 1;
 }
 .user-bookings .user-booking .booking-info,
 .user-history .user-booking .booking-info {
@@ -1026,6 +1033,9 @@ button {
   font-weight: 700;
   border: none;
   border-radius: 0.3em;
+}
+.register-form input::-moz-placeholder {
+  color: #F7DBA7;
 }
 .register-form input::placeholder {
   color: #F7DBA7;
@@ -1395,6 +1405,7 @@ button {
 
 .admin-page-relative-input {
   position: relative;
+  width: -moz-fit-content;
   width: fit-content;
   display: inline;
 }
@@ -1570,6 +1581,10 @@ button {
   color: #F7DBA7;
   padding: 0.5em;
 }
+.bookconfirm-wrapper .guest-info-group input::-moz-placeholder {
+  color: #F7DBA7;
+  padding-left: 1em;
+}
 .bookconfirm-wrapper .guest-info-group input::placeholder {
   color: #F7DBA7;
   padding-left: 1em;
@@ -1634,7 +1649,8 @@ button {
 }
 .ticket-list-item .button-container {
   display: flex;
-  column-gap: 1em;
+  -moz-column-gap: 1em;
+       column-gap: 1em;
 }
 .ticket-list-item .button-container button {
   width: 2em;
@@ -1674,6 +1690,7 @@ button {
 }
 .filter-list .filter-item {
   list-style-type: none;
+  width: -moz-fit-content;
   width: fit-content;
   margin: 0.5em 0;
 }
