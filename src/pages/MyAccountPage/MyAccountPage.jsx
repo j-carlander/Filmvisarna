@@ -5,7 +5,7 @@ import { fetchHelper } from "../../utils/fetchHelper";
 
 export function MyAccountPage() {
     const [userInfo, setUserInfo] = useState([]);
-    const [token, setToken] = useOutletContext();
+    const [setToken] = useOutletContext();
     const navigate = useNavigate();
 
     useEffect(() => {

@@ -737,6 +737,10 @@ button {
   padding: 0.75em 0;
 }
 
+.booking-confirmation-container::backdrop {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
 .about-us-page {
   display: flex;
   flex-direction: column;

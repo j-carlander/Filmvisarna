@@ -12,7 +12,7 @@ export function RegisterPage() {
     password: "",
     repassword: "",
   });
-  const [token, setToken] = useOutletContext();
+  const setToken = useOutletContext()[1];
   const [passwordError, setPasswordError] = useState("");
 
   useEffect(() => {
