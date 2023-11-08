@@ -31,11 +31,18 @@ export function Seats({
       );
       if (response.status == 200) {
         const newTakenSeats = await response.json();
-        console.log(newTakenSeats);
-        setTakenSeats((takenSeats) => [
-          ...takenSeats,
-          ...newTakenSeats.seatsArray,
-        ]);
+        switch (newTakenSeats.event) {
+          case "book":
+            setTakenSeats((takenSeats) => [
+              ...takenSeats,
+              ...newTakenSeats.seatsArray,
+            ]);
+            break;
+          case "cancel":
+            console.log("removal: ", newTakenSeats.seatsArray);
+            // setTakenSeats((takenSeats) => takenSeats.filter((seat) => newTakenSeats.seatsArray.every(removal => removal.SeatRow !== seat.SeatRow && removal.seatNumber !== seat.seatNumber)));
+            break;
+        }
       }
 
       if (!abortSubscription) subscribe();
@@ -48,6 +55,8 @@ export function Seats({
       abortSubscription = true;
     };
   }, [screeningId]);
+
+  console.log("taken seats: ", takenSeats);
 
   function getSeatRow(rowInfo, index) {
     const seatsArray = [];
