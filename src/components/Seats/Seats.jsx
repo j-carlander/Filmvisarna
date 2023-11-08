@@ -31,7 +31,11 @@ export function Seats({
       );
       if (response.status == 200) {
         const newTakenSeats = await response.json();
-        setTakenSeats((takenSeats) => [...takenSeats, ...newTakenSeats]);
+        console.log(newTakenSeats);
+        setTakenSeats((takenSeats) => [
+          ...takenSeats,
+          ...newTakenSeats.seatsArray,
+        ]);
       }
 
       if (!abortSubscription) subscribe();
