@@ -28,6 +28,7 @@ export default function Login() {
         const data = await response.json();
         console.log("Inloggning lyckades!", data);
         setToken(data.token);
+        navigate(-1)
       } else {
         console.error("Inloggning misslyckades");
       }

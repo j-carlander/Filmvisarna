@@ -1,6 +1,6 @@
 import { useState } from "react";
 import UserTickets from "../UserTickets/UserTickets";
-import { fetchHelper } from "../../../../utils/fetchHelper";
+import { fetchHelper } from "../../../utils/fetchHelper";
 
 export default function UserBooking({ bookingData }) {
   const [showTickets, setShowTickets] = useState(false);

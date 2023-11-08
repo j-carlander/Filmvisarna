@@ -9,7 +9,7 @@ function App() {
   const [token, setUserToken] = useState(undefined);
 
   const [matchDesktop, setMatchDesktop] = useState(
-    window.matchMedia("(min-width: 1000px)")
+    window.matchMedia("(min-width: 1060px)")
   );
 
   function setToken(newToken) {
@@ -28,7 +28,7 @@ function App() {
       setToken(foundToken);
     }
 
-    const mediaQuery = window.matchMedia("(min-width: 1000px)");
+    const mediaQuery = window.matchMedia("(min-width: 1060px)");
     mediaQuery.addEventListener("change", setMatchDesktop);
 
     return () => mediaQuery.removeEventListener("change", setMatchDesktop);
