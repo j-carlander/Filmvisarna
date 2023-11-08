@@ -1795,15 +1795,18 @@ button {
   left: 0;
 }
 
+h1 {
+  padding-bottom: 0.8em;
+}
+
+.user-bookings {
+  padding-top: 1.5em;
+}
+
 .my-account-content .user-bookings,
 .my-account-content .user-history,
 .my-account-info {
   margin: 0 auto;
-}
-
-h2 {
-  display: flex;
-  margin-bottom: 2em;
 }
 
 .my-account-content .user-history {
