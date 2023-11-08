@@ -3,6 +3,8 @@ import {
   deleteBookingUserService,
 } from "../service/deleteBookingService.js";
 
+import { unBookMailService } from "../service/unBookMailService.js";
+
 export async function deleteBooking(req, res) {
   const payload = res.locals.jwtPayload;
   const { bookingnumber, guestemail } = req.body;
@@ -15,6 +17,7 @@ export async function deleteBooking(req, res) {
     if (deleteRes.affectedRows === 0) {
       return res.status(404).json({ error: "Bokningsnummret existerar inte!" });
     }
+    unBookMailService(payload.email)
     return res.status(200).json({ message: "Bokningen har tagits bort!" });
   }
 
@@ -28,6 +31,7 @@ export async function deleteBooking(req, res) {
         .status(404)
         .json({ error: "Ogiltigt bokningsnummer eller ogiltig email!" });
     }
+    unBookMailService(guestemail)
     return res.status(200).json({ message: "Bokningen har tagits bort!" });
   }
   return res.status(400).json({ error: "Email ej angedd!" });
