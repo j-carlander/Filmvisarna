@@ -126,7 +126,7 @@ export function BookingConfirmationPage() {
                 </Link>
                 <p>
                   Inget konto?{" "}
-                  <Link className="signup-button" to="/signup">
+                  <Link className="signup-button" to="/register">
                     Bli medlem!
                   </Link>
                 </p>
