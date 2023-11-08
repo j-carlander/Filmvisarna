@@ -38,3 +38,7 @@
     padding: 0.75em 0;
   }
 }
+
+.booking-confirmation-container::backdrop {
+  background-color: rgba(0, 0, 0, 0.7);
+}
