@@ -6,8 +6,7 @@ export function AccountIcon() {
   const token = sessionService.getToken();
 
   const handleClick = () => {
-    console.log(token)
-    if (token !== null) {
+    if (token) {
       navigate("/myaccount");
     } else {
       navigate("/login");
@@ -16,6 +15,7 @@ export function AccountIcon() {
 
   return (
     <button className="myaccount-btn" onClick={handleClick}>
+      {token ? "Min sida " : "Logga in"}
       <img src="/myaccount.svg" alt="Mitt Konto" />
     </button>
   );

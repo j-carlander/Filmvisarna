@@ -24,14 +24,13 @@ export const pages = [
   { path: "/aboutus#contact", label: "Kontakt", element: <AboutUs /> },
   { path: "/aboutus", label: "Om oss", element: <AboutUs /> },
   { path: "/booking/:screeningid", element: <BookingPage /> },
-  { path: "/Login", label: "Logga in", element: <LoginPage /> },
-  { path: "/myaccount", label: "Min Sida", element: <MyAccountPage />},
-  // { path: "*", element: <PageNotFound /> },
+  { path: "/Login", element: <LoginPage /> },
+  { path: "/myaccount", element: <MyAccountPage /> },
   {
     path: "/bookingconfirmation/:screeningId",
     element: <BookingConfirmationPage />,
   },
-  { path: "/register", label: "Bli medlem", element: <RegisterPage /> },
+  { path: "/register", element: <RegisterPage /> },
   { path: "*", element: <PageNotFound /> },
 ];
 

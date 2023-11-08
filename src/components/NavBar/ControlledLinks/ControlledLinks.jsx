@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import sessionService from "../../utils/sessionService";
+import sessionService from "../../../utils/sessionService";
 
 export function ControlledLinks() {
   const token = sessionService.getToken();
@@ -10,6 +10,11 @@ export function ControlledLinks() {
   }
   return (
     <>
+      {!token ? (
+        <li>
+          <NavLink to={"/register"}>Bli medlem</NavLink>
+        </li>
+      ) : null}
       {isadmin === 1 ? (
         <li>
           <NavLink to={"/admin"}>Admin</NavLink>
