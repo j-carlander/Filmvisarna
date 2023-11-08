@@ -1,19 +1,16 @@
 import {
   deleteBookingGuestService,
   deleteBookingUserService,
-  getSeatsForDeletionService,
 } from "../service/deleteBookingService.js";
 import { updateSubscribers } from "./polling.js";
 
 export async function deleteBooking(req, res) {
   const payload = res.locals.jwtPayload;
   const { bookingnumber, guestemail } = req.body;
-
+  const { screeningId, seats } = res.locals;
   if (!bookingnumber) {
     return res.status(400).json({ error: "Bokningsnummer ej angivet!" });
   }
-
-  const [seats, screeningId] = await getSeatsForDeletionService(bookingnumber);
 
   if (payload) {
     const deleteRes = await deleteBookingUserService(bookingnumber, payload.id);

@@ -39,10 +39,13 @@ export function Seats({
             ]);
             break;
           case "cancel":
-            console.log("removal: ", newTakenSeats.seatsArray);
-            // setTakenSeats((takenSeats) => takenSeats.filter((seat) => newTakenSeats.seatsArray.every(removal => removal.SeatRow !== seat.SeatRow && removal.seatNumber !== seat.seatNumber)));
+            console.log(newTakenSeats.seatsArray);
             break;
         }
+      }
+      if (response.status === 500) {
+        console.log("Abort subscription");
+        abortSubscription = true;
       }
 
       if (!abortSubscription) subscribe();
