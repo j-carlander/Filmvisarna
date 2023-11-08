@@ -1,14 +1,25 @@
 import { useNavigate, useOutletContext } from "react-router-dom"
+import { useEffect, useState } from "react";
 import { UserBookings } from "../../components/UserBooking/UserBookings"
+import { fetchHelper } from "../../utils/fetchHelper";
 
 export function MyAccountPage() {
+    const [userInfo, setUserInfo] = useState([]);
     const [token, setToken] = useOutletContext();
-
     const navigate = useNavigate();
+
+    useEffect(() => {
+        async function getUserInfo() {
+            const response = await fetchHelper("/currentUser", "get")
+            const data = await response.json();
+            setUserInfo(data)
+        }
+        getUserInfo();
+    }, []);
+
     const handleClick = () => {
         setToken(undefined)
         navigate("/")
-        console.log(token)
     }
     return (
         <>
@@ -18,8 +29,19 @@ export function MyAccountPage() {
                         Logga ut
                     </button>
                 </div>
+                <h1>Min Sida</h1>
                 <div className="my-account-content">
-                    <h1>Min Sida</h1>
+                    {userInfo.length > 0 ? (
+                        <section className="my-account-info">
+                        <h2>Hej, {userInfo[0].fname}!</h2>
+                        <p>First Name: {userInfo[0].fname}</p>
+                        <p>Last Name: {userInfo[0].lname}</p>
+                        <p>Email: {userInfo[0].email}</p>
+                        <p>Phone Number: {userInfo[0].phone}</p>
+                        </section>
+                    ) : (
+                        <p>Loading user information...</p>
+                    )}
                     <UserBookings />
                 </div>
             </div>

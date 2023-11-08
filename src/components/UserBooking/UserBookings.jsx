@@ -51,7 +51,7 @@ export function UserBookings() {
           <p>{serverError}</p>
         )}
       </section>
-      <section className="user-bookings">
+      <section className="user-history">
         <h2 className="user-bookings-title">Filmhistorik</h2>
         {serverError === undefined ? (
           oldBookings.length > 0 ? (

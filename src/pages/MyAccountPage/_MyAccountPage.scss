@@ -1,8 +1,14 @@
 @use "../../Sass/abstract/variables" as *;
 
 .my-account-wrapper {
+    overflow: hidden;
     width: 90%;
+    height: 100%;
     margin: 0 auto;
+}
+
+.my-account-content {
+    height: 100%;
 }
 
 .my-account-logout {
@@ -19,6 +25,59 @@
     left: 0;
 }
 
-.my-account-content h1 {
-    color: $lightAccent
+.my-account-content .user-bookings,
+.my-account-content .user-history,
+.my-account-info {
+    margin: 0 auto;
+}
+
+.my-account-content .user-history {
+    margin-bottom: 2em;
+    margin-top: 2em;
+}
+
+.my-account-info {
+    max-width: 514px;
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.my-account-info p {
+    display: none;
+}
+
+@media screen and (min-width: 1000px) {
+    .my-account-content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        text-align: center;
+    }
+
+    .my-account-content .user-bookings,
+    .my-account-content .user-history,
+    .my-account-info {
+        margin: 0 auto;
+    }
+
+    .my-account-info {
+        text-align: left;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+
+    .my-account-info p {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .my-account-content .user-history {
+        margin-bottom: 4em;
+        margin-top: 4em;
+    }
+    
+    .my-account-content .user-history::before {
+        display: none;
+    }
 }
