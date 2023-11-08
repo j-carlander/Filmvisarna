@@ -110,7 +110,7 @@ export function RegisterPage() {
           <div className="form-controlls">
             <button className="confirm-button">Bli medlem</button>
             <p>
-              Jag är redan medlem - <Link>logga in här</Link>
+              Jag är redan medlem - <Link to={"/login"}>logga in här</Link>
             </p>
             <button className="cancel-button">Avbryt</button>
           </div>
