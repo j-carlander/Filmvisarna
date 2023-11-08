@@ -138,6 +138,11 @@ export function BookingConfirmationPage() {
                   placeholder="Email"
                   value={guestEmail}
                   onChange={(e) => setGuestEmail(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      handleBooking();
+                    }
+                  }}
                 />
               </div>
             </>
