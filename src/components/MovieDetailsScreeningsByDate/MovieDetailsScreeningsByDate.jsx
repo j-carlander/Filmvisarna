@@ -10,7 +10,6 @@ export function MovieDetailsScreeningsByDate({ movieid }) {
 
   function dateInputChange(e) {
     const value = e.target.value;
-    console.log(value);
     setPage(0);
     setServerError("");
     setFilterDate(value);
@@ -22,7 +21,6 @@ export function MovieDetailsScreeningsByDate({ movieid }) {
 
   useEffect(() => {
     async function getScreeningsById() {
-      console.log("Get screenings");
       const url =
         filterDate === ""
           ? `/moviescreenings/${movieid}?page=${page}`
@@ -30,7 +28,6 @@ export function MovieDetailsScreeningsByDate({ movieid }) {
       const response = await fetchHelper(url, "get");
       const data = await response.json();
       if (response.status < 400) {
-        console.log(page);
         if (page > 0) {
           setShowScreening((old) => [...old, ...data]);
         } else {
