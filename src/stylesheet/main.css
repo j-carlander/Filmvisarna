@@ -606,6 +606,21 @@ button {
   padding: 1em 0 4.5em 0;
   font-style: italic;
 }
+.movie-screenings-container .more-screenings-btn {
+  background-color: #5A8F76;
+  color: #EDEDED;
+  width: 50%;
+  margin: 0 auto 3em auto;
+  max-width: 260px;
+  padding: 1em 2.7em;
+  border-radius: 1000px;
+  border: transparent 1px;
+  font-weight: 700;
+}
+.movie-screenings-container .no-more-screenings-text {
+  text-align: center;
+  margin-bottom: 3em;
+}
 
 @media screen and (min-width: 768px) {
   .movie-screenings-container {
@@ -820,6 +835,10 @@ button {
   padding-bottom: 7em;
   border-radius: 6px;
 }
+.login-container form .server-error {
+  margin-top: 1em;
+  text-align: center;
+}
 .login-container .form-control {
   margin-bottom: 1em;
   padding-bottom: 1.4em;
@@ -921,24 +940,29 @@ button {
   font-weight: normal;
 }
 
-.user-bookings {
+.user-bookings,
+.user-history {
   width: 100%;
   max-width: 514px;
   margin-bottom: 3em;
   position: relative;
 }
 .user-bookings .user-bookings-title,
-.user-bookings .no-bookings {
+.user-bookings .no-bookings,
+.user-history .user-bookings-title,
+.user-history .no-bookings {
   width: 75%;
   margin: 0 auto;
   margin-top: 1em;
 }
-.user-bookings .user-bookings-title {
+.user-bookings .user-bookings-title,
+.user-history .user-bookings-title {
   font-size: 1.25rem;
   color: #F7DBA7;
   margin-bottom: 1em;
 }
-.user-bookings .user-booking {
+.user-bookings .user-booking,
+.user-history .user-booking {
   display: flex;
   width: 85%;
   margin: 0 auto;
@@ -951,30 +975,36 @@ button {
   -o-border-image: linear-gradient(to top, #041F1E 25%, #837771, #041F1E 75%) 0 1;
      border-image: linear-gradient(to top, #041F1E 25%, #837771, #041F1E 75%) 0 1;
 }
-.user-bookings .user-booking .booking-info {
+.user-bookings .user-booking .booking-info,
+.user-history .user-booking .booking-info {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-.user-bookings .user-booking .booking-info-hist {
+.user-bookings .user-booking .booking-info-hist,
+.user-history .user-booking .booking-info-hist {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   font-size: 0.8rem;
 }
-.user-bookings .user-booking .booking-info-hist p {
+.user-bookings .user-booking .booking-info-hist p,
+.user-history .user-booking .booking-info-hist p {
   margin-right: 0.4em;
   opacity: 0.9;
 }
-.user-bookings .user-booking .booking-info-hist {
+.user-bookings .user-booking .booking-info-hist,
+.user-history .user-booking .booking-info-hist {
   overflow-x: scroll;
 }
-.user-bookings .user-booking .booking-btns {
+.user-bookings .user-booking .booking-btns,
+.user-history .user-booking .booking-btns {
   display: flex;
   flex-direction: column;
   row-gap: 1em;
 }
-.user-bookings .user-booking .booking-btns button {
+.user-bookings .user-booking .booking-btns button,
+.user-history .user-booking .booking-btns button {
   color: #EDEDED;
   font-size: 1rem;
   padding: 0.7em;
@@ -982,14 +1012,16 @@ button {
   border: none;
   font-weight: bold;
 }
-.user-bookings .user-booking .booking-btns .show-tickets-btn {
+.user-bookings .user-booking .booking-btns .show-tickets-btn,
+.user-history .user-booking .booking-btns .show-tickets-btn {
   background-color: #5A8F76;
 }
-.user-bookings .user-booking .booking-btns .cancel-btn {
+.user-bookings .user-booking .booking-btns .cancel-btn,
+.user-history .user-booking .booking-btns .cancel-btn {
   background-color: #837771;
 }
 
-.user-bookings:last-of-type::before {
+.user-history:last-of-type::before {
   position: absolute;
   content: "";
   width: 80%;
@@ -1085,6 +1117,16 @@ button {
     transform: translateX(-50%);
   }
 }
+@media screen and (max-width: 550px) {
+  .wrapper-position-absolute {
+    position: absolute;
+    right: 0;
+    z-index: 5;
+    background-color: #1E2D2F;
+    width: 100vw;
+  }
+}
+
 .search-section {
   position: relative;
 }
@@ -1690,15 +1732,18 @@ button {
   }
 }
 .myaccount-btn {
-  width: 3em;
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  width: 90px;
   background: none;
   border: none;
+  color: #F7DBA7;
 }
 
 .myaccount-btn img {
-  width: 100%;
   fill: #F7DBA7;
-  width: 2em;
+  width: 2.5em;
 }
 
 .loading {
@@ -1723,5 +1768,81 @@ button {
   }
   100% {
     rotate: 359deg;
+  }
+}
+.my-account-wrapper {
+  overflow: hidden;
+  width: 90%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.my-account-content {
+  height: 100%;
+}
+
+.my-account-logout {
+  width: 100%;
+  text-align: right;
+}
+
+.my-account-logout-btn {
+  background: none;
+  border: none;
+  color: #F7DBA7;
+  font-size: 1.2em;
+  margin-top: 1em;
+  left: 0;
+}
+
+.my-account-content .user-bookings,
+.my-account-content .user-history,
+.my-account-info {
+  margin: 0 auto;
+}
+
+.my-account-content .user-history {
+  margin-bottom: 2em;
+  margin-top: 2em;
+}
+
+.my-account-info {
+  max-width: 514px;
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.my-account-info p {
+  display: none;
+}
+
+@media screen and (min-width: 1000px) {
+  .my-account-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: center;
+  }
+  .my-account-content .user-bookings,
+  .my-account-content .user-history,
+  .my-account-info {
+    margin: 0 auto;
+  }
+  .my-account-info {
+    text-align: left;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+  .my-account-info p {
+    display: flex;
+    flex-direction: column;
+  }
+  .my-account-content .user-history {
+    margin-bottom: 4em;
+    margin-top: 4em;
+  }
+  .my-account-content .user-history::before {
+    display: none;
   }
 }/*# sourceMappingURL=main.css.map */

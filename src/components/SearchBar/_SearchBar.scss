@@ -1,5 +1,15 @@
 @use "../../Sass/abstract/variables" as *;
 
+.wrapper-position-absolute {
+  @media screen and (max-width: 550px) {
+    position: absolute;
+    right: 0;
+    z-index: 5;
+    background-color: $secBackground;
+    width: 100vw;
+  }
+}
+
 .search-section {
   position: relative;
 }
@@ -50,7 +60,6 @@
   background-color: transparent;
   border: transparent;
 }
-
 
 .search-result-container {
   position: absolute;

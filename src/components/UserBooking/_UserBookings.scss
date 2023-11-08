@@ -1,6 +1,7 @@
 @use "../../Sass/abstract/variables" as *;
 
-.user-bookings {
+.user-bookings,
+.user-history {
   width: 100%;
   max-width: 514px;
   margin-bottom: 3em;
@@ -81,7 +82,7 @@
   }
 }
 
-.user-bookings:last-of-type::before {
+.user-history:last-of-type::before {
   position: absolute;
   content: "";
   width: 80%;

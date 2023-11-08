@@ -126,7 +126,7 @@ export function BookingConfirmationPage() {
                 </Link>
                 <p>
                   Inget konto?{" "}
-                  <Link className="signup-button" to="/signup">
+                  <Link className="signup-button" to="/register">
                     Bli medlem!
                   </Link>
                 </p>
@@ -138,6 +138,11 @@ export function BookingConfirmationPage() {
                   placeholder="Email"
                   value={guestEmail}
                   onChange={(e) => setGuestEmail(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      handleBooking();
+                    }
+                  }}
                 />
               </div>
             </>

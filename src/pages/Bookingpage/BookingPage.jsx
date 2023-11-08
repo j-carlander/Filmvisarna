@@ -19,11 +19,18 @@ export function BookingPage() {
 
   useEffect(() => {
     if (selectedTickets.length < selectedSeats.length) {
-      setSelectedSeats(
-        selectedSeats.filter((el, index) => index !== selectedSeats.length - 1)
-      );
+      setSelectedSeats(() => {
+        if (individual) {
+          return selectedSeats.slice(0, selectedSeats.length - 1);
+        } else {
+          const newSeats = selectedSeats.sort(
+            (a, b) => b.seatNumber - a.seatNumber
+          );
+          return newSeats.slice(0, newSeats.length - 1);
+        }
+      });
     }
-  }, [selectedTickets, setSelectedSeats, selectedSeats]);
+  }, [selectedTickets, setSelectedSeats, selectedSeats, individual]);
 
   useEffect(() => {
     async function fectchScreening(screeningid) {

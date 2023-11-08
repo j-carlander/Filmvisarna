@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { ControlledLinks } from "../ControlledLinks";
+import { ControlledLinks } from "../ControlledLinks/ControlledLinks";
 
 export function DesktopMenu({ pages }) {
   return (
