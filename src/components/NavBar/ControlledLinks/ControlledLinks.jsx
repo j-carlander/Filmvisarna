@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import sessionService from "../../utils/sessionService";
+import sessionService from "../../../utils/sessionService";
 
 export function ControlledLinks() {
   const token = sessionService.getToken();
