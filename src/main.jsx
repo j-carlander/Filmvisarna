@@ -24,7 +24,7 @@ export const pages = [
   { path: "/aboutus#contact", label: "Kontakt", element: <AboutUs /> },
   { path: "/aboutus", label: "Om oss", element: <AboutUs /> },
   { path: "/booking/:screeningid", element: <BookingPage /> },
-  { path: "/Login", element: <LoginPage /> },
+  { path: "/login", element: <LoginPage /> },
   { path: "/myaccount", element: <MyAccountPage /> },
   {
     path: "/bookingconfirmation/:screeningId",
