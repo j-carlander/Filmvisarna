@@ -107,8 +107,8 @@ button {
   top: 0;
   left: 0;
   width: 100%;
-  -webkit-mask-image: linear-gradient(to bottom, #041F1E, rgb(0, 0, 0) 10%, rgba(0, 0, 0, 0) 80%);
-          mask-image: linear-gradient(to bottom, #041F1E, rgb(0, 0, 0) 10%, rgba(0, 0, 0, 0) 80%);
+  -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgb(0, 0, 0)), to(rgba(0, 0, 0, 0)));
+  mask-image: linear-gradient(to bottom, #041F1E, rgb(0, 0, 0) 10%, rgba(0, 0, 0, 0) 80%);
 }
 .moviedetail-card .moviedetail-wrapper {
   display: flex;
@@ -174,10 +174,8 @@ button {
 
 @media screen and (min-width: 978px) {
   .moviedetail-card .moviedetail-img {
-    -o-object-fit: cover;
-       object-fit: cover;
-    -o-object-position: top;
-       object-position: top;
+    object-fit: cover;
+    object-position: top;
   }
   .moviedetail-card .moviedetail-wrapper {
     padding: 8em 3em 1em 3em;
@@ -221,7 +219,6 @@ button {
   align-items: center;
   row-gap: 1em;
   padding: 2em 0;
-  width: -moz-fit-content;
   width: fit-content;
 }
 
@@ -301,11 +298,9 @@ button {
 .seat-row {
   flex: 0 0;
   display: flex;
-  width: -moz-fit-content;
   width: fit-content;
   justify-content: center;
-  -moz-column-gap: 1em;
-       column-gap: 1em;
+  column-gap: 1em;
 }
 
 .screening-details {
@@ -540,7 +535,6 @@ button {
   display: flex;
   flex-direction: column;
   gap: 1.5em;
-  width: -moz-max-content;
   width: max-content;
 }
 .main-nav-bar .desktop-menu-list {
@@ -921,24 +915,29 @@ button {
   font-weight: normal;
 }
 
-.user-bookings {
+.user-bookings,
+.user-history {
   width: 100%;
   max-width: 514px;
   margin-bottom: 3em;
   position: relative;
 }
 .user-bookings .user-bookings-title,
-.user-bookings .no-bookings {
+.user-bookings .no-bookings,
+.user-history .user-bookings-title,
+.user-history .no-bookings {
   width: 75%;
   margin: 0 auto;
   margin-top: 1em;
 }
-.user-bookings .user-bookings-title {
+.user-bookings .user-bookings-title,
+.user-history .user-bookings-title {
   font-size: 1.25rem;
   color: #F7DBA7;
   margin-bottom: 1em;
 }
-.user-bookings .user-booking {
+.user-bookings .user-booking,
+.user-history .user-booking {
   display: flex;
   width: 85%;
   margin: 0 auto;
@@ -948,33 +947,38 @@ button {
   padding: 1em 1.5em;
   border-radius: 0.75em;
   border: 0.15em solid;
-  -o-border-image: linear-gradient(to top, #041F1E 25%, #837771, #041F1E 75%) 0 1;
-     border-image: linear-gradient(to top, #041F1E 25%, #837771, #041F1E 75%) 0 1;
+  border-image: linear-gradient(to top, #041F1E 25%, #837771, #041F1E 75%) 0 1;
 }
-.user-bookings .user-booking .booking-info {
+.user-bookings .user-booking .booking-info,
+.user-history .user-booking .booking-info {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-.user-bookings .user-booking .booking-info-hist {
+.user-bookings .user-booking .booking-info-hist,
+.user-history .user-booking .booking-info-hist {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   font-size: 0.8rem;
 }
-.user-bookings .user-booking .booking-info-hist p {
+.user-bookings .user-booking .booking-info-hist p,
+.user-history .user-booking .booking-info-hist p {
   margin-right: 0.4em;
   opacity: 0.9;
 }
-.user-bookings .user-booking .booking-info-hist {
+.user-bookings .user-booking .booking-info-hist,
+.user-history .user-booking .booking-info-hist {
   overflow-x: scroll;
 }
-.user-bookings .user-booking .booking-btns {
+.user-bookings .user-booking .booking-btns,
+.user-history .user-booking .booking-btns {
   display: flex;
   flex-direction: column;
   row-gap: 1em;
 }
-.user-bookings .user-booking .booking-btns button {
+.user-bookings .user-booking .booking-btns button,
+.user-history .user-booking .booking-btns button {
   color: #EDEDED;
   font-size: 1rem;
   padding: 0.7em;
@@ -982,14 +986,16 @@ button {
   border: none;
   font-weight: bold;
 }
-.user-bookings .user-booking .booking-btns .show-tickets-btn {
+.user-bookings .user-booking .booking-btns .show-tickets-btn,
+.user-history .user-booking .booking-btns .show-tickets-btn {
   background-color: #5A8F76;
 }
-.user-bookings .user-booking .booking-btns .cancel-btn {
+.user-bookings .user-booking .booking-btns .cancel-btn,
+.user-history .user-booking .booking-btns .cancel-btn {
   background-color: #837771;
 }
 
-.user-bookings:last-of-type::before {
+.user-history:last-of-type::before {
   position: absolute;
   content: "";
   width: 80%;
@@ -1020,9 +1026,6 @@ button {
   font-weight: 700;
   border: none;
   border-radius: 0.3em;
-}
-.register-form input::-moz-placeholder {
-  color: #F7DBA7;
 }
 .register-form input::placeholder {
   color: #F7DBA7;
@@ -1382,7 +1385,6 @@ button {
 
 .admin-page-relative-input {
   position: relative;
-  width: -moz-fit-content;
   width: fit-content;
   display: inline;
 }
@@ -1558,10 +1560,6 @@ button {
   color: #F7DBA7;
   padding: 0.5em;
 }
-.bookconfirm-wrapper .guest-info-group input::-moz-placeholder {
-  color: #F7DBA7;
-  padding-left: 1em;
-}
 .bookconfirm-wrapper .guest-info-group input::placeholder {
   color: #F7DBA7;
   padding-left: 1em;
@@ -1626,8 +1624,7 @@ button {
 }
 .ticket-list-item .button-container {
   display: flex;
-  -moz-column-gap: 1em;
-       column-gap: 1em;
+  column-gap: 1em;
 }
 .ticket-list-item .button-container button {
   width: 2em;
@@ -1667,7 +1664,6 @@ button {
 }
 .filter-list .filter-item {
   list-style-type: none;
-  width: -moz-fit-content;
   width: fit-content;
   margin: 0.5em 0;
 }
@@ -1723,5 +1719,81 @@ button {
   }
   100% {
     rotate: 359deg;
+  }
+}
+.my-account-wrapper {
+  overflow: hidden;
+  width: 90%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.my-account-content {
+  height: 100%;
+}
+
+.my-account-logout {
+  width: 100%;
+  text-align: right;
+}
+
+.my-account-logout-btn {
+  background: none;
+  border: none;
+  color: #F7DBA7;
+  font-size: 1.2em;
+  margin-top: 1em;
+  left: 0;
+}
+
+.my-account-content .user-bookings,
+.my-account-content .user-history,
+.my-account-info {
+  margin: 0 auto;
+}
+
+.my-account-content .user-history {
+  margin-bottom: 2em;
+  margin-top: 2em;
+}
+
+.my-account-info {
+  max-width: 514px;
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.my-account-info p {
+  display: none;
+}
+
+@media screen and (min-width: 1000px) {
+  .my-account-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: center;
+  }
+  .my-account-content .user-bookings,
+  .my-account-content .user-history,
+  .my-account-info {
+    margin: 0 auto;
+  }
+  .my-account-info {
+    text-align: left;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+  .my-account-info p {
+    display: flex;
+    flex-direction: column;
+  }
+  .my-account-content .user-history {
+    margin-bottom: 4em;
+    margin-top: 4em;
+  }
+  .my-account-content .user-history::before {
+    display: none;
   }
 }/*# sourceMappingURL=main.css.map */
