@@ -1,6 +1,6 @@
 import { runQuery } from "../db.js";
 
-export async function screeninginfoService(movieid) {
+export async function screeninginfoService(movieid, page) {
   const currentDate = new Date();
   const sql = `
   SELECT scr.id,
@@ -17,8 +17,9 @@ export async function screeninginfoService(movieid) {
   AND scr.theatreid = the.id
   AND scr.movieid = ? 
   AND scr.date >= ? 
-  ORDER BY screeningDate;`;
-  const res = await runQuery(sql, [movieid, currentDate]);
+  ORDER BY screeningDate
+  LIMIT ?, 3;`;
+  const res = await runQuery(sql, [movieid, currentDate, Number(page) || 0]);
   return res;
 }
 
