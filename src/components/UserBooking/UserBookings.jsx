@@ -3,7 +3,6 @@ import UserBooking from "./UserBooking/UserBooking";
 import { fetchHelper } from "../../utils/fetchHelper";
 import { UserBookingsHistoryCard } from "./UserBookingsHistoryCard/UserBookingsHistoryCard";
 
-
 export function UserBookings() {
   const [currentBookings, setCurrentBookings] = useState([]);
   const [oldBookings, setOldBookings] = useState([]);
@@ -11,13 +10,21 @@ export function UserBookings() {
 
   function getBookingElement(bookingData, index) {
     return (
-      <UserBooking {...{ bookingData, key: `current-booking-${index}` }} />
+      <UserBooking
+        {...{
+          bookingData,
+          key: `current-booking-${index}`,
+          setCurrentBookings,
+        }}
+      />
     );
   }
 
   function getBookingHistoryElement(bookingData, index) {
     return (
-      <UserBookingsHistoryCard {...{ bookingData, key: `old-bookings-${index}` }} />
+      <UserBookingsHistoryCard
+        {...{ bookingData, key: `old-bookings-${index}` }}
+      />
     );
   }
 
@@ -64,6 +71,5 @@ export function UserBookings() {
         )}
       </section>
     </>
-    
   );
 }
