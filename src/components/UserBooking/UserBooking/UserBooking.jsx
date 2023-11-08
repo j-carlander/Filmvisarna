@@ -2,7 +2,7 @@ import { useState } from "react";
 import UserTickets from "../UserTickets/UserTickets";
 import { fetchHelper } from "../../../utils/fetchHelper";
 
-export default function UserBooking({ bookingData }) {
+export default function UserBooking({ bookingData, setCurrentBookings }) {
   const [showTickets, setShowTickets] = useState(false);
 
   const dateArr = bookingData.date.split(". kl: ");
@@ -12,9 +12,15 @@ export default function UserBooking({ bookingData }) {
   const day = dateArr[0];
 
   async function handleCancelBooking() {
-    const res = await fetchHelper("/booking", "delete", {bookingnumber: bookingData.bookingnumber})
+    const res = await fetchHelper("/booking", "delete", {
+      bookingnumber: bookingData.bookingnumber,
+    });
     const data = await res.json();
-    console.log(data)
+    if (res.status < 400) {
+      setCurrentBookings((old) => old.filter((el) => el !== bookingData));
+    } else {
+      console.log(data);
+    }
   }
 
   return (
@@ -30,7 +36,9 @@ export default function UserBooking({ bookingData }) {
           onClick={() => setShowTickets(true)}>
           Visa biljett
         </button>
-        <button className="cancel-btn" onClick={handleCancelBooking}>Avboka</button>
+        <button className="cancel-btn" onClick={handleCancelBooking}>
+          Avboka
+        </button>
       </div>
       {showTickets && (
         <UserTickets {...{ bookingData, setShowTickets, time, day }} />

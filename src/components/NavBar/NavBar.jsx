@@ -1,15 +1,30 @@
-import { NavLink } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import { pages } from "../../main";
 import { BurgerMenu } from "./BurgerMenu/BurgerMenu";
 import { DesktopMenu } from "./DesktopMenu/DesktopMenu";
 
 export function NavBar({ matchDesktop }) {
+  const [scrollY, setScrollY] = useState(window.scrollY);
+  const location = useLocation();
+
+  useEffect(() => {
+    function onWindowScroll() {
+      setScrollY(window.scrollY);
+    }
+    if (window.onscroll === null) {
+      window.onscroll = onWindowScroll;
+    }
+  }, []);
+
   return (
     <nav className="main-nav-bar">
       {!matchDesktop.matches ? <BurgerMenu pages={pages} /> : null}
-      <NavLink to={"/"}>
-        <img className="logo-mini-img" src="/logo-mini.png" />
-      </NavLink>
+      {location.pathname === "/" && scrollY < 250 ? null : (
+        <NavLink to={"/"}>
+          <img className="logo-mini-img" src="/logo-mini.png" />
+        </NavLink>
+      )}
       {matchDesktop.matches ? <DesktopMenu pages={pages} /> : null}
     </nav>
   );
