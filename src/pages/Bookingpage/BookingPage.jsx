@@ -85,7 +85,7 @@ export function BookingPage() {
           <p> Slutar ca: {data.endTime}</p>
         </div>
         <div className="seaction-header2">
-          <TicketPicker {...{ selectedTickets, setSelectedTickets }} />
+          <TicketPicker {...{ selectedTickets, setSelectedTickets, data }} />
         </div>
         <div className="section-1">
           <h2>Välj platser</h2>
