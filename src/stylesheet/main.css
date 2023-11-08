@@ -1085,6 +1085,16 @@ button {
     transform: translateX(-50%);
   }
 }
+@media screen and (max-width: 550px) {
+  .wrapper-position-absolute {
+    position: absolute;
+    right: 0;
+    z-index: 5;
+    background-color: #1E2D2F;
+    width: 100vw;
+  }
+}
+
 .search-section {
   position: relative;
 }
@@ -1693,16 +1703,15 @@ button {
   display: flex;
   align-items: center;
   gap: 0.3em;
-  width: 82px;
+  width: 90px;
   background: none;
   border: none;
   color: #F7DBA7;
 }
 
 .myaccount-btn img {
-  width: 100%;
   fill: #F7DBA7;
-  width: 2em;
+  width: 2.5em;
 }
 
 .loading {
