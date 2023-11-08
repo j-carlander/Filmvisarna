@@ -17,7 +17,7 @@ export function MyAccountPage() {
         getUserInfo();
     }, []);
 
-    const handleClick = () => {
+    function handleClick() {
         setToken(undefined)
         navigate("/")
     }
