@@ -113,7 +113,7 @@ export function RegisterPage() {
               Bli medlem
             </button>
             <p>
-              Jag är redan medlem - <Link>logga in här</Link>
+              Jag är redan medlem - <Link to={"/login"}>logga in här</Link>
             </p>
             <button
               className="cancel-button"
