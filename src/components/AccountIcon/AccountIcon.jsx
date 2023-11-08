@@ -6,8 +6,9 @@ export function AccountIcon() {
   const token = sessionService.getToken();
 
   const handleClick = () => {
-    if (token) {
-      navigate("/test");
+    console.log(token)
+    if (token !== null) {
+      navigate("/myaccount");
     } else {
       navigate("/login");
     }

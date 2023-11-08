@@ -4,7 +4,7 @@ import { fetchHelper } from "../../utils/fetchHelper";
 import { UserBookingsHistoryCard } from "./UserBookingsHistoryCard/UserBookingsHistoryCard";
 
 
-export default function UserBookings() {
+export function UserBookings() {
   const [currentBookings, setCurrentBookings] = useState([]);
   const [oldBookings, setOldBookings] = useState([]);
   const [serverError, setServerError] = useState(undefined);
