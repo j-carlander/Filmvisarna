@@ -1690,9 +1690,13 @@ button {
   }
 }
 .myaccount-btn {
-  width: 3em;
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  width: 82px;
   background: none;
   border: none;
+  color: #F7DBA7;
 }
 
 .myaccount-btn img {

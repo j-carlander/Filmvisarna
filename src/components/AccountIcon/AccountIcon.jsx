@@ -15,6 +15,7 @@ export function AccountIcon() {
 
   return (
     <button className="myaccount-btn" onClick={handleClick}>
+      {token ? "Min sida " : "Logga in"}
       <img src="/myaccount.svg" alt="Mitt Konto" />
     </button>
   );
