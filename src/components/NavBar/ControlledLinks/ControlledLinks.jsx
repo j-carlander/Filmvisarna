@@ -10,6 +10,11 @@ export function ControlledLinks() {
   }
   return (
     <>
+      {!token ? (
+        <li>
+          <NavLink to={"/register"}>Bli medlem</NavLink>
+        </li>
+      ) : null}
       {isadmin === 1 ? (
         <li>
           <NavLink to={"/admin"}>Admin</NavLink>
