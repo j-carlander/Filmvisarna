@@ -1801,16 +1801,24 @@ button {
   margin: 0 auto;
 }
 
-.my-account-content .user-history {
+h2 {
+  display: flex;
   margin-bottom: 2em;
-  margin-top: 2em;
+}
+
+.my-account-content .user-history {
+  margin-bottom: 5em;
+  margin-top: 8em;
+}
+
+.user-history::before {
+  margin-top: -1.2em;
 }
 
 .my-account-info {
   max-width: 514px;
   text-align: center;
-  margin-top: 1em;
-  margin-bottom: 1em;
+  margin-bottom: 5em;
 }
 
 .my-account-info p {
