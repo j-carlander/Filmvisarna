@@ -4,6 +4,7 @@
   position: relative;
   max-width: 250px;
   cursor: pointer;
+  transition: all .2s;
 
   .card-agelimit {
     position: absolute;
@@ -34,4 +35,9 @@
       text-align: right;
     }
   }
+}
+
+.movie-card:hover {
+  transform: scale(1.01);
+  transition: all .2s;
 }
