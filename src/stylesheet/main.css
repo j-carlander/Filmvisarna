@@ -1349,6 +1349,8 @@ button {
   grid-auto-flow: column;
   grid-gap: 1rem;
   justify-items: start;
+  scroll-behavior: smooth;
+  transition: scroll 0.3s ease-in-out;
   margin: 1em auto;
   padding: 0;
   overflow-x: scroll;
