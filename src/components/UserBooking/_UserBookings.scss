@@ -1,12 +1,13 @@
 @use "../../Sass/abstract/variables" as *;
 
-.user-bookings,
-.user-history {
-  width: 100%;
+.user-bookings {
   max-width: 514px;
+}
+
+.user-bookings {
+  width: 100%;
   margin-bottom: 3em;
   position: relative;
-  
 
   .user-bookings-title,
   .no-bookings {
@@ -82,13 +83,15 @@
   }
 }
 
-.user-history:last-of-type::before {
+.user-history {
+  position: relative;
+}
+
+.user-history::before {
   position: absolute;
   content: "";
-  width: 80%;
+  width: 100%;
   top:0;
-  left:10%;
   height: 1px;
   background-color: $lightAccent;
-  
 }
