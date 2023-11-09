@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import UserTickets from "../UserTickets/UserTickets";
 import { fetchHelper } from "../../../utils/fetchHelper";
 
 export default function UserBooking({ bookingData, setCurrentBookings }) {
   const [showTickets, setShowTickets] = useState(false);
+
+  const dialogRef = useRef();
 
   const dateArr = bookingData.date.split(". kl: ");
 
@@ -36,13 +38,30 @@ export default function UserBooking({ bookingData, setCurrentBookings }) {
           onClick={() => setShowTickets(true)}>
           Visa biljett
         </button>
-        <button className="cancel-btn" onClick={handleCancelBooking}>
+        <button
+          className="cancel-btn"
+          onClick={() => dialogRef.current.showModal()}>
           Avboka
         </button>
       </div>
       {showTickets && (
         <UserTickets {...{ bookingData, setShowTickets, time, day }} />
       )}
+      <dialog className="cancel-confirm-dialog" ref={dialogRef}>
+        <p>Är du säker på att du vill avboka</p>
+        <p className="cancel-dialog-title">{bookingData.title}</p>
+        <p className="cancel-dialog-date">{bookingData.date}</p>
+        <div className="cancel-dialog-btns">
+          <button className="cancel-btn" onClick={handleCancelBooking}>
+            Avboka
+          </button>
+          <button
+            className="show-tickets-btn"
+            onClick={() => dialogRef.current.close()}>
+            Avbryt
+          </button>
+        </div>
+      </dialog>
     </li>
   );
 }
