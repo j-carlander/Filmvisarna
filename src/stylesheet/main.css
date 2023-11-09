@@ -921,6 +921,7 @@ button {
 }
 .userinfo-card h3 {
   margin-bottom: 2.5em;
+  margin-top: 1em;
 }
 .userinfo-card .userinfo-table {
   width: 100%;
@@ -940,29 +941,27 @@ button {
   font-weight: normal;
 }
 
-.user-bookings,
-.user-history {
-  width: 100%;
+.user-bookings {
   max-width: 514px;
+}
+
+.user-bookings {
+  width: 100%;
   margin-bottom: 3em;
   position: relative;
 }
 .user-bookings .user-bookings-title,
-.user-bookings .no-bookings,
-.user-history .user-bookings-title,
-.user-history .no-bookings {
+.user-bookings .no-bookings {
   width: 75%;
   margin: 0 auto;
   margin-top: 1em;
 }
-.user-bookings .user-bookings-title,
-.user-history .user-bookings-title {
+.user-bookings .user-bookings-title {
   font-size: 1.25rem;
   color: #F7DBA7;
   margin-bottom: 1em;
 }
-.user-bookings .user-booking,
-.user-history .user-booking {
+.user-bookings .user-booking {
   display: flex;
   margin: 0 auto;
   margin-bottom: 0.5em;
@@ -974,32 +973,27 @@ button {
   -o-border-image: linear-gradient(to top, #041F1E 25%, #837771, #041F1E 75%) 0 1;
      border-image: linear-gradient(to top, #041F1E 25%, #837771, #041F1E 75%) 0 1;
 }
-.user-bookings .user-booking .booking-info,
-.user-history .user-booking .booking-info {
+.user-bookings .user-booking .booking-info {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-.user-bookings .user-booking .booking-info-hist,
-.user-history .user-booking .booking-info-hist {
+.user-bookings .user-booking .booking-info-hist {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   font-size: 0.8rem;
 }
-.user-bookings .user-booking .booking-info-hist p,
-.user-history .user-booking .booking-info-hist p {
+.user-bookings .user-booking .booking-info-hist p {
   margin-right: 0.4em;
   opacity: 0.9;
 }
-.user-bookings .user-booking .booking-btns,
-.user-history .user-booking .booking-btns {
+.user-bookings .user-booking .booking-btns {
   display: flex;
   flex-direction: column;
   row-gap: 1em;
 }
-.user-bookings .user-booking .booking-btns button,
-.user-history .user-booking .booking-btns button {
+.user-bookings .user-booking .booking-btns button {
   color: #EDEDED;
   font-size: 1rem;
   padding: 0.7em;
@@ -1007,21 +1001,22 @@ button {
   border: none;
   font-weight: bold;
 }
-.user-bookings .user-booking .booking-btns .show-tickets-btn,
-.user-history .user-booking .booking-btns .show-tickets-btn {
+.user-bookings .user-booking .booking-btns .show-tickets-btn {
   background-color: #5A8F76;
 }
-.user-bookings .user-booking .booking-btns .cancel-btn,
-.user-history .user-booking .booking-btns .cancel-btn {
+.user-bookings .user-booking .booking-btns .cancel-btn {
   background-color: #837771;
 }
 
-.user-history:last-of-type::before {
+.user-history {
+  position: relative;
+}
+
+.user-history::before {
   position: absolute;
   content: "";
-  width: 80%;
+  width: 100%;
   top: 0;
-  left: 10%;
   height: 1px;
   background-color: #F7DBA7;
 }
@@ -1790,22 +1785,27 @@ button {
   left: 0;
 }
 
-.my-account-content .user-bookings,
+h1 {
+  padding-bottom: 0.8em;
+}
+
 .my-account-content .user-history,
 .my-account-info {
   margin: 0 auto;
 }
 
 .my-account-content .user-history {
-  margin-bottom: 2em;
-  margin-top: 2em;
+  margin-bottom: 5em;
+  margin-top: 8em;
+}
+
+.user-history::before {
+  margin-top: -1.2em;
 }
 
 .my-account-info {
-  max-width: 514px;
   text-align: center;
-  margin-top: 1em;
-  margin-bottom: 1em;
+  margin-bottom: 5em;
 }
 
 .my-account-info p {
@@ -1817,27 +1817,17 @@ button {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    text-align: center;
-  }
-  .my-account-content .user-bookings,
-  .my-account-content .user-history,
-  .my-account-info {
+    max-width: 1100px;
     margin: 0 auto;
-  }
-  .my-account-info {
-    text-align: left;
-    margin-top: 1em;
-    margin-bottom: 1em;
   }
   .my-account-info p {
     display: flex;
     flex-direction: column;
   }
   .my-account-content .user-history {
-    margin-bottom: 4em;
-    margin-top: 4em;
+    width: 100%;
   }
   .my-account-content .user-history::before {
-    display: none;
+    width: 100%;
   }
 }/*# sourceMappingURL=main.css.map */
