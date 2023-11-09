@@ -44,6 +44,7 @@ button {
   position: relative;
   max-width: 250px;
   cursor: pointer;
+  transition: all 0.2s;
 }
 .movie-card .card-agelimit {
   position: absolute;
@@ -72,6 +73,11 @@ button {
 }
 .movie-card .card-info :last-child {
   text-align: right;
+}
+
+.movie-card:hover {
+  transform: scale(1.01);
+  transition: all 0.2s;
 }
 
 .moviepage-wrapper {
@@ -1365,6 +1371,8 @@ button {
   grid-auto-flow: column;
   grid-gap: 1rem;
   justify-items: start;
+  scroll-behavior: smooth;
+  transition: scroll 0.3s ease-in-out;
   margin: 1em auto;
   padding: 0;
   overflow-x: scroll;
