@@ -951,7 +951,8 @@ button {
   }
   .login-container .Projector {
     margin-left: 26%;
-    width: 360px;
+    width: 340px;
+    height: 220px;
   }
   .login-container .klappa {
     margin-left: -30%;
