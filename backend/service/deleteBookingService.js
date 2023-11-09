@@ -15,6 +15,5 @@ export async function deleteBookingUserService(bookingnumber, userid) {
 export async function getSeatsForDeletionService(bookingnumber) {
   const sql = `SELECT seatrow, seatnumber, screeningid FROM tickets WHERE bookingid = (select id from bookings where bookingnumber = ?);`;
   const res = await runQuery(sql, [bookingnumber]);
-
   return res;
 }

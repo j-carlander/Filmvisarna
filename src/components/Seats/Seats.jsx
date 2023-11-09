@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Seat from "./Seat/Seat";
 import SeatRow from "./Seatrow/SeatRow";
 import { fetchHelper } from "../../utils/fetchHelper";
+import { compareSeats } from "../../utils/compareSeats";
 
 export function Seats({
   theatreId,
@@ -30,16 +31,19 @@ export function Seats({
         "get"
       );
       if (response.status == 200) {
-        const newTakenSeats = await response.json();
-        switch (newTakenSeats.event) {
+        const subscribe = await response.json();
+        const newTakenSeats = subscribe.seatsArray;
+        switch (subscribe.event) {
           case "book":
-            setTakenSeats((takenSeats) => [
-              ...takenSeats,
-              ...newTakenSeats.seatsArray,
-            ]);
+            setTakenSeats((takenSeats) => [...takenSeats, ...newTakenSeats]);
             break;
           case "cancel":
-            console.log(newTakenSeats.seatsArray);
+            setTakenSeats((takenSeats) =>
+              takenSeats.filter(
+                (seat) =>
+                  !newTakenSeats.some((remove) => compareSeats(seat, remove))
+              )
+            );
             break;
         }
       }
@@ -58,8 +62,6 @@ export function Seats({
       abortSubscription = true;
     };
   }, [screeningId]);
-
-  console.log("taken seats: ", takenSeats);
 
   function getSeatRow(rowInfo, index) {
     const seatsArray = [];
