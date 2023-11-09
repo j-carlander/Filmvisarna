@@ -81,6 +81,9 @@
   gap: 1em;
   padding: 1em;
   background-color: $mainBackground;
+  cursor: pointer;
+  border-left: 3px solid transparent;
+  transition: all 0.3s;
 
   p {
     overflow: hidden;
@@ -95,4 +98,9 @@
       width: 100%;
     }
   }
+}
+
+.search-result-card:hover {
+  border-left: 3px solid $mediumAccent;
+  transition: all 0.3s;
 }
