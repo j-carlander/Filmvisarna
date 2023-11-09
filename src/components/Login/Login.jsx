@@ -43,6 +43,7 @@ export default function Login() {
     <>
       <div className="login-container">
         <form onSubmit={handleSubmit} onReset={() => navigate(-1)}>
+        <div className="form-wrapper">
           <div className="form-control">
             <input
               required
@@ -63,6 +64,10 @@ export default function Login() {
             Logga in
           </button>
           <p className="server-error">{serverError}</p>
+          <div className="img-container">
+            <img className="Projector" src="/Projektor.png" />
+            <img className="klappa" src="/Klappa.png" />
+          </div>
           <p className="bli-medlem">
             Inget konto?{" "}
             <span
@@ -76,8 +81,11 @@ export default function Login() {
           <button className="abort-btn" type="reset">
             Avbryt
           </button>
+        </div>
         </form>
       </div>
     </>
   );
 }
+// Klappa.png
+// Projektor.png
