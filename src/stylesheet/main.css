@@ -963,7 +963,6 @@ button {
 }
 .user-bookings .user-booking {
   display: flex;
-  width: 85%;
   margin: 0 auto;
   margin-bottom: 0.5em;
   justify-content: space-between;
@@ -988,9 +987,6 @@ button {
 .user-bookings .user-booking .booking-info-hist p {
   margin-right: 0.4em;
   opacity: 0.9;
-}
-.user-bookings .user-booking .booking-info-hist {
-  overflow-x: scroll;
 }
 .user-bookings .user-booking .booking-btns {
   display: flex;

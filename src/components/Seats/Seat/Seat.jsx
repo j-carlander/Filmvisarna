@@ -68,7 +68,11 @@ export default function Seat({
               value.rowNumber === rowNumber && value.seatNumber === seatNumber
           );
           if (foundSeats === undefined) {
-            setSelectedSeats([...selectedSeats, { rowNumber, seatNumber }]);
+            const sortedList = [...selectedSeats, { rowNumber, seatNumber }];
+
+            sortedList.sort((a, b) => b.seatNumber - a.seatNumber);
+
+            setSelectedSeats(sortedList);
           }
         }
       }

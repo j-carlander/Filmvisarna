@@ -32,7 +32,7 @@ export function useSearchMovie(query) {
     if (query) {
       setIsLoading(true);
 
-      timeoutId = setTimeout(searchMovies, 2000);
+      timeoutId = setTimeout(searchMovies, 500);
     }
 
     return () => {

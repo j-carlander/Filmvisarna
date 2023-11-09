@@ -1,11 +1,21 @@
+import { useRef, useEffect } from "react";
+
 export default function UserTickets({
   bookingData,
   setShowTickets,
   time,
   day,
 }) {
+  const ref = useRef();
+
+  useEffect(() => {
+    if (ref.current) {
+      ref.current.showModal();
+    }
+  }, [ref]);
+
   return (
-    <dialog className="booking-confirmation-container">
+    <dialog className="booking-confirmation-container" ref={ref}>
       <h3>Biljetter:</h3>
       <div className="movie-info">
         <p>

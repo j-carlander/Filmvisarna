@@ -23,9 +23,9 @@
 
   .user-booking {
     display: flex;
-    width: 85%;
+    // width: 85%;
     margin: 0 auto;
-    margin-bottom: .5em;
+    margin-bottom: 0.5em;
     justify-content: space-between;
     background-color: $secBackground;
     padding: 1em 1.5em;
@@ -49,16 +49,12 @@
       flex-direction: row;
       justify-content: space-between;
 
-      font-size: .8rem;
+      font-size: 0.8rem;
 
       p {
-        margin-right: .4em;
-        opacity: .9;
+        margin-right: 0.4em;
+        opacity: 0.9;
       }
-    }
-
-    .booking-info-hist {
-      overflow-x: scroll;
     }
 
     .booking-btns {
