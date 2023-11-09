@@ -1,93 +1,101 @@
 @use "../../Sass/abstract/variables" as *;
 
-.user-bookings {
-  max-width: 514px;
-}
-
-.user-bookings {
+.user-bookings,
+.user-history {
   width: 100%;
   margin-bottom: 3em;
   position: relative;
+}
 
-  .user-bookings-title,
-  .no-bookings {
-    width: 75%;
-    margin: 0 auto;
-    margin-top: 1em;
+.user-bookings {
+  max-width: 514px;
+}
+.user-bookings-title,
+.no-bookings {
+  width: 75%;
+  margin: 0 auto;
+  margin-top: 1em;
+}
+.user-bookings-title {
+  font-size: 1.25rem;
+  color: $lightAccent;
+  margin-bottom: 1em;
+}
+
+.user-history-li,
+.user-booking-li {
+  flex: 1 1 350px;
+  display: flex;
+  margin-bottom: 0.5em;
+  justify-content: space-between;
+  background-color: $secBackground;
+  padding: 1em 1.5em;
+  border-radius: 0.75em;
+  border: 0.15em solid;
+  border-image: linear-gradient(
+      to top,
+      $mainBackground 25%,
+      $darkAccent,
+      $mainBackground 75%
+    )
+    0 1;
+}
+
+.user-history-li {
+  @media screen and (min-width: 1167px) {
+    max-width: 370px;
   }
-  .user-bookings-title {
-    font-size: 1.25rem;
-    color: $lightAccent;
-    margin-bottom: 1em;
+}
+.booking-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.booking-btns {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+  button {
+    color: $whiteAccent;
+    font-size: 1rem;
+    padding: 0.7em;
+    border-radius: 5em;
+    border: none;
+    font-weight: bold;
   }
-
-  .user-booking {
-    display: flex;
-    // width: 85%;
-    margin: 0 auto;
-    margin-bottom: 0.5em;
-    justify-content: space-between;
-    background-color: $secBackground;
-    padding: 1em 1.5em;
-    border-radius: 0.75em;
-    border: 0.15em solid;
-    border-image: linear-gradient(
-        to top,
-        $mainBackground 25%,
-        $darkAccent,
-        $mainBackground 75%
-      )
-      0 1;
-    .booking-info {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .booking-info-hist {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-
-      font-size: 0.8rem;
-
-      p {
-        margin-right: 0.4em;
-        opacity: 0.9;
-      }
-    }
-
-    .booking-btns {
-      display: flex;
-      flex-direction: column;
-      row-gap: 1em;
-      button {
-        color: $whiteAccent;
-        font-size: 1rem;
-        padding: 0.7em;
-        border-radius: 5em;
-        border: none;
-        font-weight: bold;
-      }
-      .show-tickets-btn {
-        background-color: $mediumAccent;
-      }
-      .cancel-btn {
-        background-color: $darkAccent;
-      }
-    }
+  .show-tickets-btn {
+    background-color: $mediumAccent;
+  }
+  .cancel-btn {
+    background-color: $darkAccent;
   }
 }
 
-.user-history {
-  position: relative;
+.booking-info-hist {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  font-size: 0.8rem;
+
+  p {
+    margin-right: 0.4em;
+    opacity: 0.9;
+  }
+}
+.user-history-ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 0.3em;
 }
 
 .user-history::before {
   position: absolute;
   content: "";
   width: 100%;
-  top:0;
+  top: 0;
   height: 1px;
   background-color: $lightAccent;
 }
