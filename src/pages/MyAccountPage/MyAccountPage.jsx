@@ -1,21 +1,15 @@
 import { useNavigate, useOutletContext } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { UserBookings } from "../../components/UserBooking/UserBookings";
-import { fetchHelper } from "../../utils/fetchHelper";
+import { UserDetailsList } from "../../components/UserDetailsList/UserDetailsList";
+
 
 export function MyAccountPage() {
-  const [userInfo, setUserInfo] = useState([]);
   const setToken = useOutletContext()[1];
   const navigate = useNavigate();
+  const [isLoading] = useState(false);
 
-  useEffect(() => {
-    async function getUserInfo() {
-      const response = await fetchHelper("/currentUser", "get");
-      const data = await response.json();
-      setUserInfo(data);
-    }
-    getUserInfo();
-  }, []);
+  
 
   function handleClick() {
     setToken(undefined);
@@ -31,17 +25,11 @@ export function MyAccountPage() {
         </div>
         <h1>Min Sida</h1>
         <div className="my-account-content">
-          {userInfo.length > 0 ? (
-            <section className="my-account-info">
-              <h2>Hej, {userInfo[0].fname}!</h2>
-              <p>Förnamn: {userInfo[0].fname}</p>
-              <p>Efternamn: {userInfo[0].lname}</p>
-              <p>Email: {userInfo[0].email}</p>
-              <p>Telefon: {userInfo[0].phone}</p>
-            </section>
-          ) : (
-            <p>Loading user information...</p>
-          )}
+        {isLoading ? (
+          <div className="loading">
+            <div className="loading-inner"></div>
+          </div> ) : 
+            <UserDetailsList />}
           <UserBookings />
         </div>
       </div>
