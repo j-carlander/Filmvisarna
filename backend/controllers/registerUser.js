@@ -15,6 +15,10 @@ export async function registerHandler(req, res) {
       .status(400)
       .json({ error: "Saknar mobilnummer och/eller email!" });
   }
+
+  if (isNaN(Number(phone)))
+    return res.status(400).json({ error: "Telefonnumret är inte ett nummer!" });
+
   if (!password || !repassword) {
     return res.status(400).json({ error: "Saknar lösenord!" });
   }
