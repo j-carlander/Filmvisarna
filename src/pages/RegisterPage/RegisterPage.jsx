@@ -3,17 +3,20 @@ import { Link, useOutletContext, useNavigate } from "react-router-dom";
 import { fetchHelper } from "../../utils/fetchHelper";
 import { isPasswordComplex } from "../../../backend/utils/checkPasswordComplexity";
 
+const standardFormData = {
+  fname: "",
+  lname: "",
+  phone: "",
+  email: "",
+  password: "",
+  repassword: "",
+};
+
 export function RegisterPage() {
-  const [formData, setFormData] = useState({
-    fname: "",
-    lname: "",
-    phone: "",
-    email: "",
-    password: "",
-    repassword: "",
-  });
+  const [formData, setFormData] = useState({ ...standardFormData });
   const setToken = useOutletContext()[1];
   const [passwordError, setPasswordError] = useState("");
+  const [serverMessage, setServerMessage] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -27,6 +30,7 @@ export function RegisterPage() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    setServerMessage("");
 
     if (!isPasswordComplex(formData.password)) {
       setPasswordError("Lösenordet är inte tillräckligt komplicerat");
@@ -43,6 +47,8 @@ export function RegisterPage() {
       });
       const loginData = await loginResult.json();
       setToken(loginData.token);
+      setServerMessage("Ditt konto har skapats och du är inloggad!");
+      setFormData({ ...standardFormData });
     }
   }
 
@@ -106,6 +112,7 @@ export function RegisterPage() {
         />
 
         {passwordError && <div className="error-message">{passwordError}</div>}
+        {serverMessage && <div className="error-message">{serverMessage}</div>}
         <div className="form-footer">
           <img src="/Klappa.png" />
           <div className="form-controlls">
