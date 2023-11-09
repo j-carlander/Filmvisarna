@@ -28,6 +28,14 @@ export function RegisterPage() {
     }
   }, [passwordError]);
 
+  function onPhoneChange(e) {
+    const value = e.target.value;
+
+    if (isNaN(Number(value))) return;
+
+    setFormData((old) => ({ ...old, phone: value }));
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
     setServerMessage("");
@@ -49,6 +57,8 @@ export function RegisterPage() {
       setToken(loginData.token);
       setServerMessage("Ditt konto har skapats och du är inloggad!");
       setFormData({ ...standardFormData });
+    } else if (result.status >= 400) {
+      setServerMessage((await result.json()).error);
     }
   }
 
@@ -79,9 +89,7 @@ export function RegisterPage() {
           value={formData.phone}
           type="tel"
           placeholder="Telefon"
-          onChange={(e) => {
-            setFormData({ ...formData, phone: e.target.value });
-          }}
+          onChange={onPhoneChange}
         />
         <input
           required
