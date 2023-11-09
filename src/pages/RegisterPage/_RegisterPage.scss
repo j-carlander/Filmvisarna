@@ -10,6 +10,7 @@
   padding: 3em;
   display: grid;
   place-items: center;
+  min-height: 66vh;
 }
 
 .register-form {
@@ -62,6 +63,7 @@
     text-decoration: none;
     border: none;
     color: white;
+    transition: 0.4s ease;
   }
   .cancel-button {
     background-color: $darkAccent;
@@ -72,6 +74,13 @@
     border: none;
     margin-top: 2em;
     color: white;
+    transition: 0.4s ease;
+  }
+  .confirm-button:hover{
+    scale: 1.05;
+  }
+  .cancel-button:hover{
+    scale: 1.05;
   }
 }
 

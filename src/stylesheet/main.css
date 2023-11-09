@@ -361,6 +361,14 @@ button {
   font-size: 0.75rem;
 }
 
+.screening-book-btn {
+  transition: 0.4s ease;
+}
+
+.screening-book-btn:hover {
+  scale: 1.05;
+}
+
 @media screen and (min-width: 475px) {
   .bookingpage-scroll-note {
     visibility: hidden;
@@ -481,6 +489,14 @@ button {
   display: flex;
   flex-direction: column;
   row-gap: 0.25em;
+}
+
+.section-2 button {
+  transition: 0.4s ease;
+}
+
+.section-2 button:hover {
+  scale: 1.05;
 }
 
 @media screen and (min-width: 992px) {
@@ -762,6 +778,10 @@ button {
   border: none;
   font-size: 1rem;
   padding: 0.75em 0;
+  transition: 0.4s ease;
+}
+.booking-confirmation-container .close-btn:hover {
+  scale: 1.05;
 }
 
 .booking-confirmation-container::backdrop {
@@ -872,6 +892,10 @@ button {
   border: none;
   margin: 0 auto;
   display: flex;
+  transition: 0.4s ease;
+}
+.login-container .Login-btn:hover {
+  scale: 1.05;
 }
 .login-container .bli-medlem {
   margin: 25px 0;
@@ -887,6 +911,14 @@ button {
   font-weight: bold;
   margin: 0 auto;
   display: flex;
+  transition: 0.4s ease;
+  cursor: pointer;
+}
+.login-container .abort-btn:hover {
+  scale: 1.05;
+}
+.login-container img {
+  display: none;
 }
 
 @media only screen and (min-width: 992px) {
@@ -894,14 +926,18 @@ button {
     min-height: 65vh;
   }
   .login-container form {
+    position: relative;
     padding: 4em 15.7em;
   }
+  .login-container .form-wrapper {
+    z-index: 100;
+  }
   .login-container .form-control input {
-    padding: 2em 3em;
+    padding: 1.5em 3em;
     width: 30em;
   }
   .login-container .Login-btn {
-    width: 25em;
+    width: 23em;
     justify-content: center;
   }
   .login-container .abort-btn {
@@ -910,7 +946,25 @@ button {
     margin-bottom: 30px 0;
   }
   .login-container p {
-    padding: 30px 0;
+    padding: 20px 0;
+  }
+  .login-container img {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%);
+  }
+  .login-container .Projector {
+    margin-left: 26%;
+    width: 340px;
+    height: 220px;
+  }
+  .login-container .klappa {
+    margin-left: -30%;
+  }
+  .login-container span {
+    z-index: 100;
   }
 }
 .not-found-container {
@@ -922,6 +976,11 @@ button {
   text-align: center;
 }
 
+
+.wrapper {
+  background: rgb(131, 119, 113);
+  background: radial-gradient(circle, rgba(131, 119, 113, 0.676) 0%, rgb(4, 31, 30) 100%);
+}
 .userinfo-section {
   width: 100%;
   max-width: 514px;
@@ -1082,6 +1141,7 @@ button {
   padding: 3em;
   display: grid;
   place-items: center;
+  min-height: 66vh;
 }
 
 .register-form {
@@ -1132,6 +1192,7 @@ button {
   text-decoration: none;
   border: none;
   color: white;
+  transition: 0.4s ease;
 }
 .form-controlls .cancel-button {
   background-color: #837771;
@@ -1142,6 +1203,13 @@ button {
   border: none;
   margin-top: 2em;
   color: white;
+  transition: 0.4s ease;
+}
+.form-controlls .confirm-button:hover {
+  scale: 1.05;
+}
+.form-controlls .cancel-button:hover {
+  scale: 1.05;
 }
 
 @media screen and (min-width: 801px) {
@@ -1654,6 +1722,7 @@ button {
   background-color: #041F1E;
   color: #F7DBA7;
   padding: 0.5em;
+  outline: none;
 }
 .bookconfirm-wrapper .guest-info-group input::-moz-placeholder {
   color: #F7DBA7;
@@ -1697,6 +1766,18 @@ button {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+.bookconfirm-wrapper .confirm-button {
+  transition: 0.4s ease;
+}
+.bookconfirm-wrapper .confirm-button:hover {
+  scale: 1.05;
+}
+.bookconfirm-wrapper .cancel-button {
+  transition: 0.4s ease;
+}
+.bookconfirm-wrapper .cancel-button:hover {
+  scale: 1.05;
 }
 
 @media screen and (min-width: 801px) {
