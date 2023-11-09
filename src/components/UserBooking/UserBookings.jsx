@@ -62,7 +62,9 @@ export function UserBookings() {
         <h2 className="user-bookings-title">Filmhistorik</h2>
         {serverError === undefined ? (
           oldBookings.length > 0 ? (
-            <ul>{oldBookings.map(getBookingHistoryElement)}</ul>
+            <ul className="user-history-ul">
+              {oldBookings.map(getBookingHistoryElement)}
+            </ul>
           ) : (
             <p className="no-bookings">Du har inga tidigare bokningar!</p>
           )

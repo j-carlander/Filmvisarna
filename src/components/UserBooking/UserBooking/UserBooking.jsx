@@ -24,7 +24,7 @@ export default function UserBooking({ bookingData, setCurrentBookings }) {
   }
 
   return (
-    <li className="user-booking">
+    <li className="user-booking-li">
       <div className="booking-info">
         <p>{bookingData.title}</p>
         <p>{time}</p>
