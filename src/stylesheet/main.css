@@ -1086,6 +1086,7 @@ button {
   padding: 3em;
   display: grid;
   place-items: center;
+  min-height: 66vh;
 }
 
 .register-form {
