@@ -1,18 +1,17 @@
 const subscription = {};
 
-export function updateSubscribers(screeningid, seats) {
+export function updateSubscribers(screeningid, seats, event) {
   if (subscription[screeningid] === undefined) {
     return;
   }
 
-  const seatsArray = seats.map( seat => ({
+  const seatsArray = seats.map((seat) => ({
     seatrow: seat.rowNumber,
     seatnumber: seat.seatNumber,
-  })
-  );
+  }));
 
   for (let res of subscription[screeningid]) {
-    res.json(seatsArray);
+    res.json({ seatsArray, event });
   }
 }
 

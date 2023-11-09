@@ -80,7 +80,7 @@ export async function addBooking(req, res) {
   );
 
   res.status(201).json(bookingDetails);
-  updateSubscribers(screeningid, seats);
+  updateSubscribers(screeningid, seats, "book");
 }
 
 export async function getBookings(req, res) {
