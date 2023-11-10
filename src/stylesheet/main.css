@@ -1605,6 +1605,23 @@ button {
     position: relative;
   }
 }
+.add-screening-page .form-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.add-screening-page .form-wrapper .date-input, .add-screening-page .form-wrapper .select-element, .add-screening-page .form-wrapper button {
+  padding: 0.5em;
+  border-radius: 0.5em;
+}
+.add-screening-page .form-wrapper button {
+  background-color: #5A8F76;
+  color: #EDEDED;
+  border: none;
+  font-weight: bold;
+  font-family: "Montserrat";
+}
+
 .admin-display-ticket {
   display: flex;
   flex-direction: column;
