@@ -15,7 +15,7 @@ export function AdminPage() {
   const token = sessionService.getToken();
   let role = "user";
   if (token) {
-    const payload = atob(token.split(".")[1]);
+    const payload = JSON.parse(atob(token.split(".")[1]));
     role = payload.role;
   }
   if (role === "user") {
@@ -67,7 +67,7 @@ export function AdminPage() {
           </nav>
         </aside>
         <main className="admin-page-main">
-          <Outlet />
+          <Outlet context={[role]} />
         </main>
       </div>
     </>
