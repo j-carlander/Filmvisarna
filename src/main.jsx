@@ -16,6 +16,7 @@ import { PageNotFound } from "./pages/PageNotFound/PageNotFound.jsx";
 import { RegisterPage } from "./pages/RegisterPage/RegisterPage.jsx";
 import { MyAccountPage } from "./pages/MyAccountPage/MyAccountPage.jsx";
 import { AdminSearchBookingPage } from "./pages/AdminSearchBookingPage/AdminSearchBookingPage.jsx";
+import { AdminAddScreeningPage } from "./pages/AdminAddScreeningPage/AdminAddScreeningPage.jsx";
 import { AdminHandleUserPage } from "./pages/AdminHandleUserPage/AdminHandelUserPage.jsx";
 
 export const pages = [
@@ -41,6 +42,11 @@ export const adminPages = [
     path: "/admin",
     label: "Sök bokning",
     element: <AdminSearchBookingPage />,
+  },
+  {
+    path: "/admin/addscreening",
+    label: "Lägg till visning",
+    element: <AdminAddScreeningPage />,
   },
   {
     path: "/admin/users",
