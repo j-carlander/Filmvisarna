@@ -11,12 +11,11 @@ export function AdminDisplayUser({ userResult }){
   }
     return (
         <article className="admin-display-userinfo">
-            <h2>Resultat för sökning:</h2>
-            <p>Förnamn: {userResult.fname}</p>
-            <p>Efternamn: {userResult.lname}</p>
-            <p>E-post: {userResult.email}</p>
-            <p>Telefon: {userResult.phone}</p>
-            <p>Roll: {userResult.role}</p>
+                <p><span>Förnamn:</span> {userResult.fname}</p>
+                <p><span>Efternamn:</span> {userResult.lname}</p>
+                <p><span>E-post:</span> {userResult.email}</p>
+                <p><span>Telefon:</span> {userResult.phone}</p>
+                <p><span>Roll:</span> {userResult.role}</p>
         </article>
     )
 }

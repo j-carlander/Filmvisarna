@@ -1,0 +1,31 @@
+@use "../../Sass/abstract/variables" as *;
+
+.admin-display-userinfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 0.3em;
+    margin-bottom: 0.3em;
+
+    padding-left: 0.3em;
+    border-top: $lightAccent solid 1px;
+    margin-top: 2em;
+    margin: .5em;
+
+    border: $lightAccent solid 1px;
+    border-radius: 2px;
+    padding: 1em;
+    
+    
+      p {
+        letter-spacing: 0.06rem;
+        font-size: 0.9rem;
+        text-align: left;
+      }
+    
+      p span {
+        font-weight: 600;
+      }
+  
+}

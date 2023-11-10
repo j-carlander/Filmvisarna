@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { Navigate, useOutletContext } from "react-router-dom";
+import { fetchHelper } from "../../utils/fetchHelper";
+import { AdminDisplayUser } from "../../components/AdminDisplayUser/AdminDisplayUser.jsx";
 
 export function AdminHandleUserPage() {
+  const [searchResults, setSearchResults] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [role] = useOutletContext();
 
@@ -9,16 +12,23 @@ export function AdminHandleUserPage() {
     return <Navigate to={"/admin"} />;
   }
 
-  function searchUser(e) {
-    e.preventDeafult();
-    // TODO: fetch function for fetching user task 24.6
+  async function searchUser(e) {
+    e.preventDefault();
+    const res = await fetchHelper(`/users?q=${inputValue}`, "GET");
+    if (res.status === 200) {
+      const resJson = await res.json();
+      setSearchResults(resJson);
+    }
+    console.log(inputValue);
+    console.log(searchResults);
   }
 
   function resetForm() {
     setInputValue("");
   }
+
   return (
-    <article>
+    <article className="admin-page-search-container">
       <h2 className="admin-page-search-title">Sök efter en användare</h2>
       <form className="admin-page-search-form" onSubmit={searchUser}>
         <div className="admin-page-relative-input">
@@ -45,7 +55,14 @@ export function AdminHandleUserPage() {
           Sök
         </button>
       </form>
-      {/* TODO: add component for user info */}
+      <div className="admin-page-search-result">
+      {searchResults.length > 0 && (
+          <h3 className="admin-search-result-title">Resultat för sökning:</h3>
+        )}
+      {searchResults.map((userResult, index) => (
+          <AdminDisplayUser key={index} userResult={userResult} />
+        ))}
+      </div>
     </article>
   );
 }
