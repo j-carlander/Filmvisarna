@@ -17,6 +17,7 @@ import { RegisterPage } from "./pages/RegisterPage/RegisterPage.jsx";
 import { MyAccountPage } from "./pages/MyAccountPage/MyAccountPage.jsx";
 import { AdminSearchBookingPage } from "./pages/AdminSearchBookingPage/AdminSearchBookingPage.jsx";
 import { AdminAddScreeningPage } from "./pages/AdminAddScreeningPage/AdminAddScreeningPage.jsx";
+import { AdminHandleUserPage } from "./pages/AdminHandleUserPage/AdminHandelUserPage.jsx";
 
 export const pages = [
   { path: "/", element: <LandingPage /> },
@@ -46,6 +47,11 @@ export const adminPages = [
     path: "/admin/addscreening",
     label: "Lägg till visning",
     element: <AdminAddScreeningPage />,
+  },
+  {
+    path: "/admin/users",
+    label: "Hantera användare",
+    element: <AdminHandleUserPage />,
   },
 ];
 
