@@ -1,14 +1,13 @@
+import { fetchHelper } from "../../utils/fetchHelper";
+
 export function AdminPromoteDemoteUserBtn({ role, id }) {
-  function handleClick() {
+  async function handleClick() {
+    const result = await fetchHelper("/users", "PUT", { role, id });
     console.log(id);
   }
   return (
-    <>
-      {role === "user" ? (
-        <button onClick={handleClick}>Gör till admin</button>
-      ) : (
-        <button>Gör till användare</button>
-      )}
-    </>
+    <button onClick={handleClick}>
+      {role === "user" ? "Gör till admin" : "Gör till användare"}
+    </button>
   );
 }
