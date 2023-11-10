@@ -9,12 +9,12 @@ export function AdminPage() {
   const [result, setResult] = useState();
 
   const token = sessionService.getToken();
-  let isadmin = 0;
+  let role = "user";
   if (token) {
     const payload = atob(token.split(".")[1]);
-    isadmin = payload.isadmin;
+    role = payload.role;
   }
-  if (isadmin === 0) {
+  if (role === "user") {
     return <Navigate to={"/"} />;
   }
 

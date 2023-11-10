@@ -40,7 +40,7 @@ export async function registerHandler(req, res) {
     }
 
     const insertRegisterQuery =
-      "INSERT INTO users (fname, lname, phone, email, password, isadmin) VALUES (?, ?, ?, ?, ?, false)";
+      "INSERT INTO users (fname, lname, phone, email, password, role) VALUES (?, ?, ?, ?, ?, 'user')";
 
     try {
       const result = await runQuery(insertRegisterQuery, [

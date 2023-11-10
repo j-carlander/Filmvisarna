@@ -3,10 +3,10 @@ import sessionService from "../../../utils/sessionService";
 
 export function ControlledLinks() {
   const token = sessionService.getToken();
-  let isadmin = 0;
+  let role = 0;
   if (token) {
     const payload = JSON.parse(atob(token.split(".")[1]));
-    isadmin = payload.isadmin;
+    role = payload.role;
   }
   return (
     <>
@@ -15,7 +15,7 @@ export function ControlledLinks() {
           <NavLink to={"/register"}>Bli medlem</NavLink>
         </li>
       ) : null}
-      {isadmin === 1 ? (
+      {role === "admin"|| role === "super" ? (
         <li>
           <NavLink to={"/admin"}>Admin</NavLink>
         </li>
