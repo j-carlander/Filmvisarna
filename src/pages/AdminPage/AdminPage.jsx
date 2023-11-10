@@ -1,10 +1,17 @@
 import { useState } from "react";
 import { adminPages } from "../../main";
 import sessionService from "../../utils/sessionService";
-import { NavLink, Navigate, Outlet } from "react-router-dom";
+import { NavLink, Navigate, Outlet, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 export function AdminPage() {
   const [showMenu, setShowMenu] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    setShowMenu(false);
+  }, [location.pathname]);
+
   const token = sessionService.getToken();
   let role = "user";
   if (token) {
