@@ -10,10 +10,7 @@ export function AdminSearchBookingPage() {
 
     if (!inputValue) return;
 
-    const res = await fetchHelper(
-      `/bookinginfo?bookingNumber=${inputValue}`,
-      "GET"
-    );
+    const res = await fetchHelper(`/bookinginfo?q=${inputValue}`, "GET");
     if (res.status === 200) {
       const resJson = await res.json();
       return setResult(resJson[0]);
@@ -34,10 +31,13 @@ export function AdminSearchBookingPage() {
       <h2 className="admin-page-search-title">Sök efter bokningsnummer</h2>
       <form className="admin-page-search-form" onSubmit={searchBooking}>
         <div className="admin-page-relative-input">
+          <label className="search-label" htmlFor="searchQuery">
+            Sök på bokningsnummer eller email
+          </label>
           <input
             className="admin-page-search-input"
+            id="searchQuery"
             type="text"
-            placeholder="Sök bokningsnummer..."
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value.toLocaleUpperCase())}
           />
