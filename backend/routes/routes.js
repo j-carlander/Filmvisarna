@@ -36,6 +36,8 @@ import { addScreeningCheck } from "../middleware/addScreeningCheck.js";
 import { isAdmin } from "../middleware/isAdmin.js";
 import { addScreeningRoute } from "../controllers/addScreening.js";
 import { getTheatresController } from "../controllers/theatre.js";
+import { checkIfSuperAdmin } from "../middleware/checkIfSuperAdmin.js"
+import { findUser } from "../controllers/findUser.js"
 const router = express.Router();
 
 // Route to check which seats are taken on a specific screening
@@ -108,5 +110,7 @@ router.get("/currentUser/bookings", getBookings);
 router.post("/addscreening", isAdmin, addScreeningCheck, addScreeningRoute);
 
 router.get("/theatres", isAdmin, getTheatresController);
+
+router.get("/users", checkIfSuperAdmin, findUser)
 
 export default router;
