@@ -105,6 +105,14 @@
     color: $darkAccent;
   }
 }
+
+.ticketlimit-notis {
+  transition: all .3s;
+  color: rgba(255, 0, 0, 0.927);
+  margin-top: 3em;
+  font-style: italic;
+}
+
 .section-2 p {
   margin: 10px 0;
 }
