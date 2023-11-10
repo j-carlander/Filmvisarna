@@ -1534,6 +1534,7 @@ button {
   font-size: 1.2rem;
   padding: 0.3em;
   margin: 0.3em;
+  margin-top: 3em;
 }
 
 .admin-page-search-input {
@@ -1557,6 +1558,10 @@ button {
   width: -moz-fit-content;
   width: fit-content;
   display: inline;
+}
+.admin-page-relative-input .search-label {
+  position: absolute;
+  text-align: center;
 }
 
 .admin-page-reset-btn {

@@ -48,10 +48,13 @@ export function AdminPage() {
         <form className="admin-page-search-form" onSubmit={searchBooking}>
           <h2 className="admin-page-search-title">Sök efter bokningsnummer</h2>
           <div className="admin-page-relative-input">
+            <label className="search-label" htmlFor="searchQuery">
+              Sök på bokningsnummer eller email
+            </label>
             <input
               className="admin-page-search-input"
+              id="searchQuery"
               type="text"
-              placeholder="Sök bokningsnummer..."
               value={inputValue}
               onChange={(e) =>
                 setInputValue(e.target.value.toLocaleUpperCase())
