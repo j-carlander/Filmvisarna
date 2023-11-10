@@ -1,0 +1,18 @@
+@use "../../Sass/abstract/variables" as *;
+
+.admin-promote-btn,
+.admin-demote-btn {
+  padding: 0.5em 1em;
+  border-radius: 3em;
+  border: none;
+  color: $whiteAccent;
+  font-weight: bold;
+}
+
+.admin-promote-btn {
+  background-color: $mediumAccent;
+}
+
+.admin-demote-btn {
+  background-color: $darkAccent;
+}
