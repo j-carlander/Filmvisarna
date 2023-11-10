@@ -976,11 +976,11 @@ button {
   text-align: center;
 }
 
-
 .wrapper {
   background: rgb(131, 119, 113);
   background: radial-gradient(circle, rgba(131, 119, 113, 0.676) 0%, rgb(4, 31, 30) 100%);
 }
+
 .userinfo-section {
   width: 100%;
   max-width: 514px;
@@ -1516,49 +1516,6 @@ button {
 
 .admin-page-title {
   padding: 1em;
-}
-
-.admin-page-search-title {
-  margin-bottom: 0.5em;
-}
-
-.admin-page-search-btn,
-.admin-page-search-input {
-  font-size: 1.2rem;
-  padding: 0.3em;
-  margin: 0.3em;
-}
-
-.admin-page-search-input {
-  border-radius: 0.3em;
-}
-
-.admin-page-search-btn {
-  background-color: #5A8F76;
-  color: #EDEDED;
-  padding-inline: 1em;
-  border-radius: 1000px;
-  border: transparent solid 1px;
-  cursor: pointer;
-}
-.admin-page-search-btn:hover {
-  border: #F7DBA7 solid 1px;
-}
-
-.admin-page-relative-input {
-  position: relative;
-  width: -moz-fit-content;
-  width: fit-content;
-  display: inline;
-}
-
-.admin-page-reset-btn {
-  position: absolute;
-  right: 0.5em;
-  top: 50%;
-  transform: translateY(-60%);
-  background: transparent;
-  border: none;
 }
 
 .admin-display-ticket {

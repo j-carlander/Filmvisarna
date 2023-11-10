@@ -1,0 +1,42 @@
+.admin-page-search-title {
+  margin-bottom: 0.5em;
+}
+
+.admin-page-search-btn,
+.admin-page-search-input {
+  font-size: 1.2rem;
+  padding: 0.3em;
+  margin: 0.3em;
+}
+
+.admin-page-search-input {
+  border-radius: 0.3em;
+}
+.admin-page-search-btn {
+  background-color: $mediumAccent;
+  color: $whiteAccent;
+  padding-inline: 1em;
+  border-radius: 1000px;
+  border: transparent solid 1px;
+  cursor: pointer;
+
+  &:hover {
+    border: $lightAccent solid 1px;
+  }
+}
+
+.admin-page-relative-input {
+  position: relative;
+  width: fit-content;
+  display: inline;
+}
+
+.admin-page-reset-btn {
+  position: absolute;
+  right: 0.5em;
+  top: 50%;
+  transform: translateY(-60%);
+
+  background: transparent;
+  border: none;
+}
