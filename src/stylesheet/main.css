@@ -481,6 +481,13 @@ button {
   color: #837771;
 }
 
+.ticketlimit-notis {
+  transition: all 0.3s;
+  color: rgba(255, 0, 0, 0.927);
+  margin-top: 3em;
+  font-style: italic;
+}
+
 .section-2 p {
   margin: 10px 0;
 }
@@ -976,11 +983,11 @@ button {
   text-align: center;
 }
 
-
 .wrapper {
   background: rgb(131, 119, 113);
   background: radial-gradient(circle, rgba(131, 119, 113, 0.676) 0%, rgb(4, 31, 30) 100%);
 }
+
 .userinfo-section {
   width: 100%;
   max-width: 514px;
@@ -1502,65 +1509,102 @@ button {
 }
 
 .admin-page-header {
-  margin-bottom: 1em;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-.admin-page-header a {
-  color: #F7DBA7;
-  font-style: italic;
-  align-self: flex-start;
-  margin: 1em;
 }
 
 .admin-page-title {
   padding: 1em;
 }
 
-.admin-page-search-title {
-  margin-bottom: 0.5em;
+.admin-page-wrapper {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.admin-page-search-btn,
-.admin-page-search-input {
-  font-size: 1.2rem;
-  padding: 0.3em;
-  margin: 0.3em;
+.admin-page-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2em;
 }
 
-.admin-page-search-input {
-  border-radius: 0.3em;
-}
-
-.admin-page-search-btn {
-  background-color: #5A8F76;
-  color: #EDEDED;
-  padding-inline: 1em;
-  border-radius: 1000px;
-  border: transparent solid 1px;
-  cursor: pointer;
-}
-.admin-page-search-btn:hover {
-  border: #F7DBA7 solid 1px;
-}
-
-.admin-page-relative-input {
+.admin-page-aside {
+  background-color: #1E2D2F;
+  width: 100%;
   position: relative;
-  width: -moz-fit-content;
-  width: fit-content;
-  display: inline;
+}
+.admin-page-aside .admin-page-nav-list {
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.admin-page-aside li {
+  list-style: none;
+}
+.admin-page-aside .admin-navlink,
+.admin-page-aside .active-admin-navlink {
+  color: #F7DBA7;
+  padding: 0.5em 1em;
+  width: 100%;
+  text-decoration: none;
+}
+.admin-page-aside .admin-navlink:hover,
+.admin-page-aside .active-admin-navlink:hover {
+  text-decoration: underline;
+}
+.admin-page-aside .active-admin-navlink {
+  font-style: italic;
+  text-decoration: underline;
 }
 
-.admin-page-reset-btn {
-  position: absolute;
-  right: 0.5em;
-  top: 50%;
-  transform: translateY(-60%);
-  background: transparent;
+.admin-page-show-mobile-menu {
+  margin: 2em;
+  background: none;
   border: none;
+  height: 36px;
 }
 
+.admin-page-nav-close {
+  display: none;
+}
+
+.admin-page-nav-open {
+  display: block;
+  position: absolute;
+  z-index: 10;
+  top: 6em;
+  left: 1em;
+  background-color: #1E2D2F;
+  border-radius: 0.5em;
+}
+
+@media screen and (min-width: 1000px) {
+  .admin-page-aside {
+    max-width: 250px;
+    min-height: calc(100vh - 105px);
+  }
+  .admin-page-wrapper {
+    margin: 0 auto;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2em;
+  }
+  .admin-page-show-mobile-menu {
+    display: none;
+  }
+  .admin-page-nav-close,
+  .admin-page-nav-close {
+    display: block;
+    position: relative;
+  }
+}
 .admin-display-ticket {
   display: flex;
   flex-direction: column;
@@ -1979,4 +2023,46 @@ h1 {
   .my-account-content .user-history::before {
     width: 100%;
   }
+}
+.admin-page-search-title {
+  margin-bottom: 0.5em;
+}
+
+.admin-page-search-btn,
+.admin-page-search-input {
+  font-size: 1.2rem;
+  padding: 0.3em;
+  margin: 0.3em;
+}
+
+.admin-page-search-input {
+  border-radius: 0.3em;
+}
+
+.admin-page-search-btn {
+  background-color: #5A8F76;
+  color: #EDEDED;
+  padding-inline: 1em;
+  border-radius: 1000px;
+  border: transparent solid 1px;
+  cursor: pointer;
+}
+.admin-page-search-btn:hover {
+  border: #F7DBA7 solid 1px;
+}
+
+.admin-page-relative-input {
+  position: relative;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: inline;
+}
+
+.admin-page-reset-btn {
+  position: absolute;
+  right: 0.5em;
+  top: 50%;
+  transform: translateY(-60%);
+  background: transparent;
+  border: none;
 }/*# sourceMappingURL=main.css.map */
