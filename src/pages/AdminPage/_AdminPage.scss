@@ -1,19 +1,107 @@
 @use "../../Sass/abstract/variables" as *;
 
 .admin-page-header {
-  margin-bottom: 1em;
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  a {
-    color: $lightAccent;
-    font-style: italic;
-    align-self: flex-start;
-    margin: 1em;
-  }
 }
 
 .admin-page-title {
   padding: 1em;
+}
+
+.admin-page-wrapper {
+  width: 100%;
+  // max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.admin-page-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2em;
+}
+
+.admin-page-aside {
+  background-color: $secBackground;
+  width: 100%;
+  position: relative;
+
+  .admin-page-nav-list {
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+  }
+  li {
+    list-style: none;
+  }
+
+  .admin-navlink,
+  .active-admin-navlink {
+    color: $lightAccent;
+    padding: 0.5em 1em;
+    width: 100%;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .active-admin-navlink {
+    font-style: italic;
+    text-decoration: underline;
+  }
+}
+
+.admin-page-show-mobile-menu {
+  margin: 2em;
+  background: none;
+  border: none;
+  height: 36px;
+}
+
+.admin-page-nav-close {
+  display: none;
+}
+.admin-page-nav-open {
+  display: block;
+  position: absolute;
+  z-index: 10;
+  top: 6em;
+  left: 1em;
+  background-color: $secBackground;
+  border-radius: 0.5em;
+}
+
+@media screen and (min-width: 1000px) {
+  .admin-page-aside {
+    max-width: 250px;
+    min-height: calc(100vh - 105px);
+  }
+
+  .admin-page-wrapper {
+    // width: 100%;
+    // max-width: 1400px;
+    margin: 0 auto;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2em;
+  }
+
+  .admin-page-show-mobile-menu {
+    display: none;
+  }
+
+  .admin-page-nav-close,
+  .admin-page-nav-close {
+    display: block;
+    position: relative;
+  }
 }
