@@ -32,6 +32,9 @@ import { getTicketTypes } from "../controllers/getTicketTypes.js";
 import { validateData } from "../middleware/checkSentData.js";
 import { subscribe } from "../controllers/polling.js";
 import { checkSeatsForDeletion } from "../middleware/checkSeatsForDeletion.js";
+import { addScreeningCheck } from "../middleware/addScreeningCheck.js";
+import { isAdmin } from "../middleware/isAdmin.js";
+import { addScreeningRoute } from "../controllers/addScreening.js";
 const router = express.Router();
 
 // Route to check which seats are taken on a specific screening
@@ -100,5 +103,7 @@ router.delete("/booking", checkSeatsForDeletion, deleteBooking);
 
 // Route to get current logged in users bookings
 router.get("/currentUser/bookings", getBookings);
+
+router.post("/addscreening", isAdmin, addScreeningCheck, addScreeningRoute);
 
 export default router;
