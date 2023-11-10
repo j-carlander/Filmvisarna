@@ -2132,4 +2132,21 @@ h1 {
   transform: translateY(-60%);
   background: transparent;
   border: none;
+}
+
+.admin-promote-btn,
+.admin-demote-btn {
+  padding: 0.5em 1em;
+  border-radius: 3em;
+  border: none;
+  color: #EDEDED;
+  font-weight: bold;
+}
+
+.admin-promote-btn {
+  background-color: #5A8F76;
+}
+
+.admin-demote-btn {
+  background-color: #837771;
 }/*# sourceMappingURL=main.css.map */

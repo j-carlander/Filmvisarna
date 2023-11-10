@@ -1,6 +1,7 @@
-export function AdminDisplayUser({ userResult }){
+import { AdminPromoteDemoteUserBtn } from "../AdminPromoteDemoteUserBtn/AdminPromoteDemoteUserBtn";
 
-    if (!userResult) return;
+export function AdminDisplayUser({ userResult }) {
+  if (!userResult) return;
 
   if ("error" in userResult) {
     return (
@@ -9,13 +10,14 @@ export function AdminDisplayUser({ userResult }){
       </article>
     );
   }
-    return (
-        <article className="admin-display-userinfo">
-                <p><span>Förnamn:</span> {userResult.fname}</p>
-                <p><span>Efternamn:</span> {userResult.lname}</p>
-                <p><span>E-post:</span> {userResult.email}</p>
-                <p><span>Telefon:</span> {userResult.phone}</p>
-                <p><span>Roll:</span> {userResult.role}</p>
-        </article>
-    )
+  return (
+    <article className="admin-display-userinfo">
+      <p>Förnamn: {userResult.fname}</p>
+      <p>Efternamn: {userResult.lname}</p>
+      <p>E-post: {userResult.email}</p>
+      <p>Telefon: {userResult.phone}</p>
+      <p>Roll: {userResult.role}</p>
+      <AdminPromoteDemoteUserBtn role={userResult.role} id={userResult.id} />
+    </article>
+  );
 }
