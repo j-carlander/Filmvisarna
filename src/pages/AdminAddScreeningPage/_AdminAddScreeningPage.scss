@@ -1,0 +1,22 @@
+@use "../../Sass/abstract/variables" as *;
+
+.add-screening-page {
+    .form-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+
+        .date-input, .select-element, button {
+            padding: .5em;
+            border-radius: .5em;
+        }
+
+        button {
+            background-color: $mediumAccent;
+            color: $whiteAccent;
+            border: none;
+            font-weight: bold;
+            font-family: 'Montserrat';
+        }
+    }
+}

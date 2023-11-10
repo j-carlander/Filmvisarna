@@ -29,6 +29,7 @@
 @use "../pages//LandingPage/LandingPage" as *;
 @use "../components/Carousel/Carousel" as *;
 @use "../pages/AdminPage/AdminPage" as *;
+@use "../pages/AdminAddScreeningPage/AdminAddScreeningPage" as *;
 @use "../components/AdminDisplayTicket/AdminDisplayTicket" as *;
 @use "../components/AdminDisplayBooking/AdminDisplayBooking" as *;
 @use "../pages/BookingConfirmationPage/BookingConfirmationPage" as *;
