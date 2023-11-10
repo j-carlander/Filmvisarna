@@ -23,10 +23,7 @@ export function AdminPage() {
 
     if (!inputValue) return;
 
-    const res = await fetchHelper(
-      `/bookinginfo?bookingNumber=${inputValue}`,
-      "GET"
-    );
+    const res = await fetchHelper(`/bookinginfo?q=${inputValue}`, "GET");
     if (res.status === 200) {
       const resJson = await res.json();
       return setResult(resJson[0]);
