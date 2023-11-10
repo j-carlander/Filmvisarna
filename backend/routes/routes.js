@@ -36,6 +36,8 @@ import { addScreeningCheck } from "../middleware/addScreeningCheck.js";
 import { isAdmin } from "../middleware/isAdmin.js";
 import { addScreeningRoute } from "../controllers/addScreening.js";
 import { getTheatresController } from "../controllers/theatre.js";
+import { removeScreeningRoute } from "../controllers/removeScreening.js";
+import { removeScreeningCheck } from "../middleware/removeScreeningCheck.js";
 const router = express.Router();
 
 // Route to check which seats are taken on a specific screening
@@ -101,6 +103,9 @@ router.post(
 
 // Route to delete a booking
 router.delete("/booking", checkSeatsForDeletion, deleteBooking);
+
+// Route to delete a screening
+router.delete("/removescreening", isAdmin, removeScreeningCheck, removeScreeningRoute);
 
 // Route to get current logged in users bookings
 router.get("/currentUser/bookings", getBookings);

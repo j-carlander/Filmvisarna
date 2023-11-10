@@ -22,3 +22,9 @@ export async function addScreening(info) {
 
   return res;
 }
+
+export async function removeScreening(screeningId) {
+  const sql = "DELETE FROM screenings WHERE id = ?";
+  const res = await runQuery(sql, [screeningId]);
+  return res;
+}
