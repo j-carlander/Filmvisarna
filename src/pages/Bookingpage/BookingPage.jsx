@@ -124,10 +124,13 @@ export function BookingPage() {
             }}
             disabled={
               selectedTickets.length === 0 ||
-              selectedSeats.length !== selectedTickets.length
+              selectedSeats.length !== selectedTickets.length || selectedTickets.length > 8
             }>
             Boka biljett
           </button>
+          {selectedTickets.length > 8 && (
+            <p className="ticketlimit-notis">Du kan boka högst 8 biljetter.</p>
+          )}
         </div>
       </div>
     </>
