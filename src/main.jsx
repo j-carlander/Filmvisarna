@@ -15,6 +15,7 @@ import { LoginPage } from "./pages/LoginPage/LoginPage.jsx";
 import { PageNotFound } from "./pages/PageNotFound/PageNotFound.jsx";
 import { RegisterPage } from "./pages/RegisterPage/RegisterPage.jsx";
 import { MyAccountPage } from "./pages/MyAccountPage/MyAccountPage.jsx";
+import { AdminSearchBookingPage } from "./pages/AdminSearchBookingPage/AdminSearchBookingPage.jsx";
 
 export const pages = [
   { path: "/", element: <LandingPage /> },
@@ -34,6 +35,14 @@ export const pages = [
   { path: "*", element: <PageNotFound /> },
 ];
 
+export const adminPages = [
+  {
+    path: "/admin",
+    label: "Sök bokning",
+    element: <AdminSearchBookingPage />,
+  },
+];
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -43,6 +52,7 @@ const router = createBrowserRouter([
   {
     path: "/admin",
     element: <AdminPage />,
+    children: adminPages,
   },
   { path: "/cancel", element: <CancelBookingPage /> },
 ]);
