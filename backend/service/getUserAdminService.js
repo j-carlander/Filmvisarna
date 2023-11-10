@@ -14,7 +14,7 @@ export async function getUserWithMail(email) {
 
 export async function getUserWithBoth(q) {
   const query = `%${q}%`;
-  const sql = `SELECT * FROM users WHERE fname LIKE ? OR lname LIKE ? OR email LIKE ?`;
+  const sql = `SELECT id, fname, lname, email,phone, role FROM users WHERE fname LIKE ? OR lname LIKE ? OR email LIKE ?`;
   const res = await runQuery(sql, [query, query, query]);
   return res;
 }
