@@ -481,6 +481,13 @@ button {
   color: #837771;
 }
 
+.ticketlimit-notis {
+  transition: all 0.3s;
+  color: rgba(255, 0, 0, 0.927);
+  margin-top: 3em;
+  font-style: italic;
+}
+
 .section-2 p {
   margin: 10px 0;
 }
@@ -976,11 +983,11 @@ button {
   text-align: center;
 }
 
-
 .wrapper {
   background: rgb(131, 119, 113);
   background: radial-gradient(circle, rgba(131, 119, 113, 0.676) 0%, rgb(4, 31, 30) 100%);
 }
+
 .userinfo-section {
   width: 100%;
   max-width: 514px;
