@@ -36,6 +36,7 @@ import { addScreeningCheck } from "../middleware/addScreeningCheck.js";
 import { isAdmin } from "../middleware/isAdmin.js";
 import { addScreeningRoute } from "../controllers/addScreening.js";
 import { getTheatresController } from "../controllers/theatre.js";
+import { getLanguages } from "../controllers/Language.js";
 
 import { checkIfSuperAdmin } from "../middleware/checkIfSuperAdmin.js";
 import { findUser } from "../controllers/findUser.js";
@@ -70,6 +71,9 @@ router.get(
   checkScreeningFilter,
   getScreeningsByDate
 );
+
+//Route to get all languages
+router.get("/languages", getLanguages);
 
 // Route to get all tickettypes
 router.get("/tickettypes", getTicketTypes);
@@ -108,7 +112,12 @@ router.post(
 router.delete("/booking", checkSeatsForDeletion, deleteBooking);
 
 // Route to delete a screening
-router.delete("/removescreening/:screeningId", isAdmin, removeScreeningCheck, removeScreeningRoute);
+router.delete(
+  "/removescreening/:screeningId",
+  isAdmin,
+  removeScreeningCheck,
+  removeScreeningRoute
+);
 
 // Route to get current logged in users bookings
 router.get("/currentUser/bookings", getBookings);
@@ -121,6 +130,6 @@ router.get("/theatres", isAdmin, getTheatresController);
 router.get("/bookinginfo", isAdmin, validateBookingSearch, findBooking);
 router.get("/users", checkIfSuperAdmin, findUser);
 
-router.put("/users", checkIfSuperAdmin, updateUserRole)
+router.put("/users", checkIfSuperAdmin, updateUserRole);
 
 export default router;
