@@ -2244,4 +2244,36 @@ h1 {
   border-width: 2px;
   border-color: #F7DBA7;
   border-style: solid;
+}
+
+.admin-add-movie-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+}
+
+.new-movie-form {
+  display: grid;
+  gap: 1em;
+}
+.new-movie-form .grid-column {
+  display: grid;
+  gap: 1em;
+}
+@media screen and (min-width: 800px) {
+  .new-movie-form {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.new-movie-form label {
+  display: grid;
+  align-items: center;
+}
+.new-movie-form label input,
+.new-movie-form label textarea,
+.new-movie-form label select {
+  padding: 0.5em;
+  background-color: #1E2D2F;
+  color: #F7DBA7;
 }/*# sourceMappingURL=main.css.map */

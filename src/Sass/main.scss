@@ -22,7 +22,6 @@
 @use "../pages/AdminHandleUserPage/AdminHandleUserPage" as *;
 @use "../components/AdminDisplayUser/AdminDisplayUser" as *;
 
-
 @use "../components/UserBooking/UserBookings" as *;
 @use "../pages/RegisterPage/RegisterPage" as *;
 @use "../components/SearchBar/SearchBar" as *;
@@ -47,4 +46,5 @@
 @use "../pages/AdminMoviesPage/AdminMoviesPage" as *;
 @use "../components/AdminScreeningCard/AdminScreeningCard" as *;
 @use "../components/AdminMovieCard/AdminMovieCard" as *;
+@use "../pages/AdminAddMoviePage/AdminAddMoviePage" as *;
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");

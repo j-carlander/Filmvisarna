@@ -20,6 +20,7 @@ import { AdminAddScreeningPage } from "./pages/AdminAddScreeningPage/AdminAddScr
 import { AdminHandleUserPage } from "./pages/AdminHandleUserPage/AdminHandelUserPage.jsx";
 import { AdminMoviesPage } from "./pages/AdminMoviesPage/AdminMoviesPage.jsx";
 import { AdminScreeningsPage } from "./pages/AdminScreeningsPage/AdminScreeningsPage.jsx";
+import { AdminAddMoviePage } from "./pages/AdminAddMoviePage/AdminAddMoviePage.jsx";
 
 export const pages = [
   { path: "/", element: <LandingPage /> },
@@ -58,12 +59,17 @@ export const adminPages = [
   {
     path: "/admin/screenings",
     label: "Ta bort visningar",
-    element: <AdminMoviesPage />
+    element: <AdminMoviesPage />,
   },
   {
     path: "/admin/screenings/:movieid",
     element: <AdminScreeningsPage />,
-  }
+  },
+  {
+    path: "/admin/addmovie",
+    label: "Lägg till en film",
+    element: <AdminAddMoviePage />,
+  },
 ];
 
 const router = createBrowserRouter([

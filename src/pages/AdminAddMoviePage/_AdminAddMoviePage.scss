@@ -1,0 +1,35 @@
+@use "../../Sass/abstract/variables" as *;
+
+.admin-add-movie-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+}
+
+.new-movie-form {
+  display: grid;
+  gap: 1em;
+
+  .grid-column {
+    display: grid;
+    gap: 1em;
+  }
+
+  @media screen and (min-width: 800px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  label {
+    display: grid;
+    align-items: center;
+
+    input,
+    textarea,
+    select {
+      padding: 0.5em;
+      background-color: $secBackground;
+      color: $lightAccent;
+    }
+  }
+}
