@@ -2,16 +2,16 @@ import { runQuery } from "../db.js";
 
 export async function addLanguage(req, res) {
   try {
-    const { name } = req.body;
+    const { language } = req.body;
 
-    if (!name) {
+    if (!language) {
       return res.status(400).json({ error: "Namn är obligatoriskt" });
     }
     const query = "INSERT INTO languages (name) VALUES (?)";
-    const result = runQuery(query, [name]);
+    const result = runQuery(query, [language]);
 
     const insertedLanguageId = result.insertId;
-    const insertedLanguage = { id: insertedLanguageId, name };
+    const insertedLanguage = { id: insertedLanguageId, language };
 
     res.status(201).json(insertedLanguage);
   } catch (error) {
