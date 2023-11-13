@@ -1,15 +1,9 @@
-// h1 {
-//   margin-bottom: -38px;
-// }
-
-// @media only screen and (min-width: 992px) {
-//   h1 {
-//     margin-bottom: -38px;
-//   }
-// }
-.wrapper{
+.wrapper {
   background: rgb(131, 119, 113);
-    background: radial-gradient(circle,
-        rgba(131, 119, 113, 0.676) 0%,
-        rgba(4, 31, 30, 1) 100%);
+  background: radial-gradient(
+    circle,
+    rgba(131, 119, 113, 0.676) 0%,
+    rgba(4, 31, 30, 1) 100%
+  );
+  padding: 3em;
 }
