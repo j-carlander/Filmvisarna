@@ -1,10 +1,20 @@
 @use "../../Sass/abstract/variables" as *;
 
 .login-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 60vh;
+  background: rgb(131, 119, 113);
+  background: radial-gradient(
+    circle,
+    rgba(131, 119, 113, 0.676) 0%,
+    rgba(4, 31, 30, 1) 100%
+  );
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+
+  padding: 3em;
+  display: grid;
+  place-items: center;
+  min-height: 66vh;
 
   p {
     font-weight: 600;
@@ -13,26 +23,43 @@
 
   form {
     background-color: $secBackground;
-    padding: 6em 3em;
-    padding-bottom: 7em;
-    border-radius: 6px;
+      // padding: 6em 3em;
+      // padding-bottom: 7em;
+      // border-radius: 6px;
+      padding: 2em;
+      display: grid;
+      gap: 2em 3em;
     .server-error {
-      margin-top: 1em;
-      text-align: center;
+      // margin-top: 1em;
+      // text-align: center;
     }
   }
   .form-control {
-    margin-bottom: 1em;
-    padding-bottom: 1.4em;
+    // margin-bottom: 1em;
+    // padding-bottom: 1.4em;
+    display: grid;
+    place-items: center;
+    gap: 2em;
+    margin-top: 2em;
   }
   .form-control input {
-    border: none;
+    // border: none;
+    // background-color: $mainBackground;
+    // color: $lightAccent;
+    // padding: 1.5em 2em;
+    // font-weight: 700;
+    // outline: none;
+    // border-radius: 5px;
+    padding: 0.7em;
     background-color: $mainBackground;
     color: $lightAccent;
-    padding: 1.5em 2em;
     font-weight: 700;
-    outline: none;
-    border-radius: 5px;
+    border: none;
+    border-radius: 0.3em;
+
+    &::placeholder {
+      color: $lightAccent;
+    }
   }
 
   .bli-medlem-underline {
@@ -40,16 +67,26 @@
     cursor: pointer;
   }
   .Login-btn {
-    padding: 1em 4em;
-    border-radius: 20px;
+    // padding: 1em 4em;
+    // border-radius: 20px;
+    // background-color: $mediumAccent;
+    // color: #fff;
+    // font-size: 14px;
+    // font-weight: bold;
+    // border: none;
+    // margin: 0 auto;
+    // display: flex;
+    // transition: 0.4s ease;
+
     background-color: $mediumAccent;
-    color: #fff;
-    font-size: 14px;
-    font-weight: bold;
+    width: 12em;
+    height: 3em;
+    border-radius: 3em;
+    text-decoration: none;
     border: none;
-    margin: 0 auto;
-    display: flex;
+    color: white;
     transition: 0.4s ease;
+    
   }
   .Login-btn:hover{
     scale: 1.05;
@@ -59,17 +96,27 @@
     text-align: center;
   }
   .abort-btn {
-    padding: 1em 3em;
-    border-radius: 20px;
+    // padding: 1em 3em;
+    // border-radius: 20px;
+    // background-color: $darkAccent;
+    // color: #fff;
+    // font-size: 15px;
+    // border: none;
+    // font-weight: bold;
+    // margin: 0 auto;
+    // display: flex;
+    // transition: 0.4s ease;
+    // cursor: pointer;
+
     background-color: $darkAccent;
-    color: #fff;
-    font-size: 15px;
+    width: 10em;
+    height: 3em;
+    border-radius: 3em;
+    text-decoration: none;
     border: none;
-    font-weight: bold;
-    margin: 0 auto;
-    display: flex;
+    margin-top: 2em;
+    color: white;
     transition: 0.4s ease;
-    cursor: pointer;
 
   }
   .abort-btn:hover{

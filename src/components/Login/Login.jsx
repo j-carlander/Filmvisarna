@@ -43,45 +43,45 @@ export default function Login() {
     <>
       <div className="login-container">
         <form onSubmit={handleSubmit} onReset={() => navigate(-1)}>
-        <div className="form-wrapper">
-          <div className="form-control">
-            <input
-              required
-              placeholder="Email"
-              type="email"
-              onChange={(e) => setEmail(e.target.value)}
-            />
+          <div className="form-wrapper">
+            <div className="form-control">
+              <input
+                required
+                placeholder="Email"
+                type="email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className="form-control">
+              <input
+                required
+                placeholder="Lösenord"
+                type="password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <button className="Login-btn" type="submit">
+              Logga in
+            </button>
+            <p className="server-error">{serverError}</p>
+            <div className="img-container">
+              <img className="Projector" src="/Projektor.png" />
+              <img className="klappa" src="/Klappa.png" />
+            </div>
+            <p className="bli-medlem">
+              Inget konto?{" "}
+              <span
+                className="bli-medlem-underline"
+                onClick={() => {
+                  navigate("/register");
+                }}>
+                Bli medlem!
+              </span>
+            </p>
+            <button className="abort-btn" type="reset">
+              Avbryt
+            </button>
           </div>
-          <div className="form-control">
-            <input
-              required
-              placeholder="Lösenord"
-              type="password"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-          <button className="Login-btn" type="submit">
-            Logga in
-          </button>
-          <p className="server-error">{serverError}</p>
-          <div className="img-container">
-            <img className="Projector" src="/Projektor.png" />
-            <img className="klappa" src="/Klappa.png" />
-          </div>
-          <p className="bli-medlem">
-            Inget konto?{" "}
-            <span
-              className="bli-medlem-underline"
-              onClick={() => {
-                navigate("/register");
-              }}>
-              Bli medlem!
-            </span>
-          </p>
-          <button className="abort-btn" type="reset">
-            Avbryt
-          </button>
-        </div>
         </form>
       </div>
     </>
