@@ -44,6 +44,8 @@ import { removeScreeningCheck } from "../middleware/removeScreeningCheck.js";
 import { removeScreeningRoute } from "../controllers/removeScreening.js";
 
 import { updateUserRole } from "../controllers/updateUserRole.js";
+import { addName } from "../controllers/addNameController.js";
+import { checkName } from "../middleware/addNameCheck.js";
 
 const router = express.Router();
 
@@ -123,6 +125,8 @@ router.delete(
 router.get("/currentUser/bookings", getBookings);
 
 router.post("/addscreening", isAdmin, addScreeningCheck, addScreeningRoute);
+
+router.post("/addname", isAdmin, checkName, addName);
 
 router.get("/theatres", isAdmin, getTheatresController);
 
