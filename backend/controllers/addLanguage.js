@@ -1,4 +1,4 @@
-import { runQuery } from "../db";
+import { runQuery } from "../db.js";
 
 export async function addLanguage(req, res) {
   try {
