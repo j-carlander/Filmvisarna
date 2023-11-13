@@ -55,7 +55,8 @@ export function AdminPage() {
                   <li key={page.label}>
                     <NavLink
                       to={page.path}
-                      className={(isActive) =>
+                      end
+                      className={({ isActive }) =>
                         isActive ? "active-admin-navlink" : "admin-navlink"
                       }>
                       {page.label}

@@ -2147,6 +2147,22 @@ h1 {
   background-color: #837771;
 }
 
+.more-screenings-btn {
+  background-color: #5A8F76;
+  color: #EDEDED;
+  width: 50%;
+  margin: 0 auto 3em auto;
+  max-width: 260px;
+  padding: 1em 2.7em;
+  border-radius: 1000px;
+  border: transparent 1px;
+  font-weight: 700;
+}
+
+.delete-message {
+  margin-top: 1em;
+}
+
 .adminmovies-wrapper {
   width: 60vw;
 }

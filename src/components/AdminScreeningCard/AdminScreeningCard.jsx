@@ -3,19 +3,13 @@ import { formatStringWithFirstCharToUpper } from "../../utils/formatStringWithFi
 import { fetchHelper } from "../../utils/fetchHelper";
 
 export function AdminScreeningCard({ screening, onDeleteScreening }) {
-  const [message, setMessage] = useState("");
 
   async function deleteScreening() {
     const url = `/removescreening/${screening.id}`;
     const response = await fetchHelper(url, "delete");
-    const data = await response.json();
-    console.log(response)
     if (response.status < 400) {
-      setMessage(data.message);
       onDeleteScreening(screening.id);
-    } else {
-      setMessage(data.error)
-    }
+    } 
   }
 
   return (
@@ -35,7 +29,6 @@ export function AdminScreeningCard({ screening, onDeleteScreening }) {
           Ta Bort
         </button>
         <p className="adminscreening-seats">Platser lediga: {screening.freeSeats}</p>
-        <p>{message}</p>
       </div>
     </article>
   )
