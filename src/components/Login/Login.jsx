@@ -87,5 +87,3 @@ export default function Login() {
     </>
   );
 }
-// Klappa.png
-// Projektor.png
