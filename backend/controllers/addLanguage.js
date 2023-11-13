@@ -7,7 +7,7 @@ export async function addLanguage(req, res) {
     if (!language) {
       return res.status(400).json({ error: "Språk är obligatoriskt" });
     }
-    const query = "INSERT INTO languages (name) VALUES (?)";
+    const query = "INSERT INTO languages (language) VALUES (?)";
     const result = runQuery(query, [language]);
 
     const insertedLanguageId = result.insertId;
