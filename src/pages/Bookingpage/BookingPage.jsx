@@ -124,7 +124,8 @@ export function BookingPage() {
             }}
             disabled={
               selectedTickets.length === 0 ||
-              selectedSeats.length !== selectedTickets.length || selectedTickets.length > 8
+              selectedSeats.length !== selectedTickets.length ||
+              selectedTickets.length > 8
             }>
             Boka biljett
           </button>

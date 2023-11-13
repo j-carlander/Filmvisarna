@@ -857,6 +857,7 @@ button {
   justify-content: center;
   align-items: center;
   min-height: 60vh;
+  margin-bottom: 2em;
 }
 .login-container p {
   font-weight: 600;
@@ -885,6 +886,12 @@ button {
   outline: none;
   border-radius: 5px;
 }
+.login-container .form-control input::-moz-placeholder {
+  color: #F7DBA7;
+}
+.login-container .form-control input::placeholder {
+  color: #F7DBA7;
+}
 .login-container .bli-medlem-underline {
   text-decoration: underline;
   cursor: pointer;
@@ -897,7 +904,7 @@ button {
   font-size: 14px;
   font-weight: bold;
   border: none;
-  margin: 0 auto;
+  margin: 3em auto;
   display: flex;
   transition: 0.4s ease;
 }
@@ -916,7 +923,7 @@ button {
   font-size: 15px;
   border: none;
   font-weight: bold;
-  margin: 0 auto;
+  margin: 3em auto 0;
   display: flex;
   transition: 0.4s ease;
   cursor: pointer;
@@ -934,7 +941,7 @@ button {
   }
   .login-container form {
     position: relative;
-    padding: 4em 15.7em;
+    padding: 4em 10em;
   }
   .login-container .form-wrapper {
     z-index: 100;
@@ -943,32 +950,19 @@ button {
     padding: 1.5em 3em;
     width: 30em;
   }
-  .login-container .Login-btn {
-    width: 23em;
-    justify-content: center;
-  }
-  .login-container .abort-btn {
-    width: 12em;
-    justify-content: center;
-    margin-bottom: 30px 0;
-  }
-  .login-container p {
-    padding: 20px 0;
-  }
   .login-container img {
     display: block;
     position: absolute;
-    left: 50%;
     top: 50%;
-    transform: translateX(-50%);
   }
   .login-container .Projector {
-    margin-left: 26%;
+    left: 5%;
     width: 340px;
     height: 220px;
+    transform: scaleX(-1);
   }
   .login-container .klappa {
-    margin-left: -30%;
+    right: 5%;
   }
   .login-container span {
     z-index: 100;
@@ -986,6 +980,7 @@ button {
 .wrapper {
   background: rgb(131, 119, 113);
   background: radial-gradient(circle, rgba(131, 119, 113, 0.676) 0%, rgb(4, 31, 30) 100%);
+  padding: 3em;
 }
 
 .userinfo-section {
@@ -1201,9 +1196,10 @@ button {
   padding: 2em;
   display: grid;
   gap: 2em 3em;
+  border-radius: 6px;
 }
 .register-form input {
-  padding: 0.7em;
+  padding: 1.5em 2em;
   background-color: #041F1E;
   color: #F7DBA7;
   font-weight: 700;
