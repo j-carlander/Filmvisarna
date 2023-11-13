@@ -10,6 +10,7 @@ export function AdminAddScreeningPage() {
   const [movies, setMovies] = useState([]);
   const [theatre, setTheatre] = useState([]);
   const [language, setLanguage] = useState(mockLanguages);
+  const [subtitle, setSubtitle] = useState([{ id: 1, language: "sv" }]);
   const [values, setValues] = useState({
     date: "",
     movieid: 1,
@@ -62,6 +63,16 @@ export function AdminAddScreeningPage() {
     fetchMovies();
     fetchTheatres();
   }, []);
+
+  useEffect(() => {
+    async function fetchLanguageByMovie() {
+      const respons = await fetchHelper(`/language/${values.movieid}`, "get");
+      const json = await respons.json();
+      setLanguage(json);
+    }
+    fetchLanguageByMovie();
+  }, [values.movieid]);
+
   return (
     <div className="add-screening-page">
       <form className="form-wrapper" onSubmit={onSubmit}>
@@ -99,7 +110,7 @@ export function AdminAddScreeningPage() {
           className="select-element"
           name="subtitleid"
           onChange={onChange}>
-          {language.map((language) => (
+          {subtitle.map((language) => (
             <option
               value={language.id}
               key={`language-subtitle-${language.id}`}>

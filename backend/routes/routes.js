@@ -36,7 +36,11 @@ import { addScreeningCheck } from "../middleware/addScreeningCheck.js";
 import { isAdmin } from "../middleware/isAdmin.js";
 import { addScreeningRoute } from "../controllers/addScreening.js";
 import { getTheatresController } from "../controllers/theatre.js";
-import { getLanguages } from "../controllers/Language.js";
+import {
+  getLanguages,
+  getLanguagesByMovieId,
+} from "../controllers/Language.js";
+import { findLanguage } from "../controllers/findLanguage.js";
 
 import { checkIfSuperAdmin } from "../middleware/checkIfSuperAdmin.js";
 import { findUser } from "../controllers/findUser.js";
@@ -47,6 +51,10 @@ import { removeScreeningRoute } from "../controllers/removeScreening.js";
 import { updateUserRole } from "../controllers/updateUserRole.js";
 import { addName } from "../controllers/addNameController.js";
 import { checkName } from "../middleware/addNameCheck.js";
+import { searchGenreCheck } from "../middleware/genreSearchCheck.js";
+import { searchGenre } from "../controllers/genreSearchController.js";
+import { addGenreCheck } from "../middleware/addGenreCheck.js";
+import { addGenreController } from "../controllers/addGenreController.js";
 
 const router = express.Router();
 
@@ -127,14 +135,25 @@ router.get("/currentUser/bookings", getBookings);
 
 router.post("/addscreening", isAdmin, addScreeningCheck, addScreeningRoute);
 
+router.get("/language/:movieid", isAdmin, getLanguagesByMovieId);
+
 router.post("/addname", isAdmin, checkName, addName);
+
+router.get("/searchgenre", isAdmin, searchGenreCheck, searchGenre);
+
+router.post("/addgenre", isAdmin, addGenreCheck, addGenreController);
 
 router.get("/theatres", isAdmin, getTheatresController);
 
 // Route to search for a booking by query
 router.get("/bookinginfo", isAdmin, validateBookingSearch, findBooking);
 router.get("/users", checkIfSuperAdmin, findUser);
+
+// Route to search for actors / directors
 router.get("/namesearch", isAdmin, findName);
+
+// Route to search for languages
+router.get("/searchlanguages", isAdmin, findLanguage);
 
 router.put("/users", checkIfSuperAdmin, updateUserRole);
 
