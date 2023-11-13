@@ -36,7 +36,10 @@ import { addScreeningCheck } from "../middleware/addScreeningCheck.js";
 import { isAdmin } from "../middleware/isAdmin.js";
 import { addScreeningRoute } from "../controllers/addScreening.js";
 import { getTheatresController } from "../controllers/theatre.js";
-import { getLanguages } from "../controllers/Language.js";
+import {
+  getLanguages,
+  getLanguagesByMovieId,
+} from "../controllers/Language.js";
 import { findLanguage } from "../controllers/findLanguage.js";
 
 import { checkIfSuperAdmin } from "../middleware/checkIfSuperAdmin.js";
@@ -131,6 +134,8 @@ router.delete(
 router.get("/currentUser/bookings", getBookings);
 
 router.post("/addscreening", isAdmin, addScreeningCheck, addScreeningRoute);
+
+router.get("/language/:movieid", isAdmin, getLanguagesByMovieId);
 
 router.post("/addname", isAdmin, checkName, addName);
 

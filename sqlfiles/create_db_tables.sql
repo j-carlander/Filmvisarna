@@ -127,3 +127,12 @@ CREATE TABLE
             seatnumber
         )
     );
+
+    CREATE TABLE
+    movielanguages (
+        languageid INT NOT NULL,
+        movieid INT NOT NULL,
+        FOREIGN KEY (languageid) REFERENCES languages (id),
+        FOREIGN KEY (movieid) REFERENCES movies (id),
+        CONSTRAINT id PRIMARY KEY (languageid, movieid)
+    );
