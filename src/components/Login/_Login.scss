@@ -5,6 +5,7 @@
   justify-content: center;
   align-items: center;
   min-height: 60vh;
+  margin-bottom: 2em;
 
   p {
     font-weight: 600;
@@ -33,6 +34,9 @@
     font-weight: 700;
     outline: none;
     border-radius: 5px;
+    &::placeholder {
+      color: $lightAccent;
+    }
   }
 
   .bli-medlem-underline {
@@ -47,7 +51,7 @@
     font-size: 14px;
     font-weight: bold;
     border: none;
-    margin: 0 auto;
+    margin: 3em auto;
     display: flex;
     transition: 0.4s ease;
   }
@@ -66,7 +70,7 @@
     font-size: 15px;
     border: none;
     font-weight: bold;
-    margin: 0 auto;
+    margin: 3em auto 0;
     display: flex;
     transition: 0.4s ease;
     cursor: pointer;
@@ -83,10 +87,9 @@
 @media only screen and (min-width: 992px) {
   .login-container {
     min-height: 65vh;
-    // z-index: -3;
     form {
       position: relative;
-      padding: 4em 15.7em;
+      padding: 4em 10em;
     }
     .form-wrapper{
       z-index: 100;
@@ -95,33 +98,20 @@
       padding: 1.5em 3em;
       width: 30em;
     }
-    .Login-btn {
-      width: 23em;
-      justify-content: center;
-    }
-    .abort-btn {
-      width: 12em;
-      justify-content: center;
-      margin-bottom: 30px 0;
-    }
-    p {
-      padding: 20px 0;
-    }
     img{
       display: block;
       position: absolute;
-      left: 50%;
       top: 50%;
-      transform: translateX(-50%);
     }
     .Projector{
-      margin-left: 26%;
+      left: 5%;
       width: 340px;
       height: 220px;
+      transform: scaleX(-1);
 
     }
     .klappa{
-      margin-left: -30%;
+      right: 5%;
     }
     span{
       z-index: 100;
