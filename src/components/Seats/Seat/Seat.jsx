@@ -56,11 +56,17 @@ export default function Seat({
       (el) => el.rowNumber === rowNumber && el.seatNumber === seatNumber
     );
 
-    if (!selected && selectedSeats.length > 0 && !individual) {
+    if (
+      !thisTakenSeat &&
+      !selected &&
+      selectedSeats.length > 0 &&
+      !individual
+    ) {
       for (let i = 0; i < totalTickets; i++) {
         if (
           selectedSeats[0].rowNumber === rowNumber &&
-          selectedSeats[0].seatNumber - i === seatNumber
+          selectedSeats[0].seatNumber - i === seatNumber &&
+          selectedSeats[selectedSeats.length - 1].seatNumber - 1 === seatNumber
         ) {
           selected = true;
           const foundSeats = selectedSeats.find(
