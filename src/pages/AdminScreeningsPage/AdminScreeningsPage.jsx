@@ -7,18 +7,31 @@ import { AdminScreeningCard } from "../../components/AdminScreeningCard/AdminScr
 export function AdminScreeningsPage() {
     const [screenings, setScreenings] = useState([])
     const [deleteMessage, setDeleteMessage] = useState("");
+    const [serverError, setServerError] = useState("");
+    const [page, setPage] = useState(0);
     const { movieid } = useParams();
+
+    function onMoreScreeningsClick() {
+        setPage(page + 3);
+    }
 
     useEffect(() => {
         async function getAllScreenings() {
-            const url = `/moviescreenings/${movieid}`
+            const url = `/moviescreenings/${movieid}?page=${page}`
             const response = await fetchHelper(url, "get")
             const data = await response.json();
-            setScreenings(data);
-            console.log(data)
+            if (response.status < 400) {
+                if (page > 0) {
+                    setScreenings((old) => [...old, ...data]);
+                } else {
+                    setScreenings(data);
+                }
+            } else {
+                setServerError(data.error);
+            }
         }
         getAllScreenings();
-    }, [movieid])
+    }, [movieid, page])
 
     const handleDeleteScreening = (deletedScreeningId) => {
         setScreenings((prevScreenings) =>
@@ -29,7 +42,7 @@ export function AdminScreeningsPage() {
 
         setTimeout(() => {
           setDeleteMessage("");
-        }, 3000);
+        }, 1500);
     };
     
     return (
@@ -37,6 +50,17 @@ export function AdminScreeningsPage() {
             {screenings.map((screening, index) => (
                 <AdminScreeningCard key={index} screening={screening} onDeleteScreening={handleDeleteScreening} />
             ))}
+            {serverError === "" ? (
+                <button onClick={onMoreScreeningsClick} className="more-screenings-btn">
+                Hämta fler visningar
+                </button>
+            ) : (
+                serverError !== "" && (
+                <p className="no-more-screenings-text">
+                    Det finns inga fler visningar för denna film!
+                </p>
+                )
+            )}
             {deleteMessage && <div className="delete-message">{deleteMessage}</div>}
         </div>
     )
