@@ -37,6 +37,7 @@ import { isAdmin } from "../middleware/isAdmin.js";
 import { addScreeningRoute } from "../controllers/addScreening.js";
 import { getTheatresController } from "../controllers/theatre.js";
 import { getLanguages } from "../controllers/Language.js";
+import { findLanguage } from "../controllers/findLanguage.js";
 
 import { checkIfSuperAdmin } from "../middleware/checkIfSuperAdmin.js";
 import { findUser } from "../controllers/findUser.js";
@@ -138,7 +139,12 @@ router.get("/theatres", isAdmin, getTheatresController);
 // Route to search for a booking by query
 router.get("/bookinginfo", isAdmin, validateBookingSearch, findBooking);
 router.get("/users", checkIfSuperAdmin, findUser);
+
+// Route to search for actors / directors
 router.get("/namesearch", isAdmin, findName);
+
+// Route to search for languages
+router.get("/searchlanguages", isAdmin, findLanguage);
 
 router.put("/users", checkIfSuperAdmin, updateUserRole);
 

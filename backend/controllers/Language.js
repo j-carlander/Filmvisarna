@@ -10,3 +10,10 @@ export async function getLanguages(req, res) {
     res.status(500).json({ error: "Internt serverfel " });
   }
 }
+
+export async function searchLanguage(language) {
+  const searchQuery = `${language}%`;
+  const sql = `SELECT * FROM languages WHERE language LIKE ?`;
+  const res = await runQuery(sql, [searchQuery]);
+  return res;
+}
