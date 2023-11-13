@@ -43,4 +43,8 @@
 @use "../pages/MyAccountPage/MyAccountPage" as *;
 @use "../pages/AdminSearchBookingPage/AdminSearchBookingPage" as *;
 @use "../components/AdminPromoteDemoteUserBtn/AdminPromoteDemoteUserBtn" as *;
+@use "../pages/AdminScreeningsPage/AdminScreeningsPage" as *;
+@use "../pages/AdminMoviesPage/AdminMoviesPage" as *;
+@use "../components/AdminScreeningCard/AdminScreeningCard" as *;
+@use "../components/AdminMovieCard/AdminMovieCard" as *;
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");

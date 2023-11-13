@@ -113,8 +113,8 @@ button {
   top: 0;
   left: 0;
   width: 100%;
-  -webkit-mask-image: linear-gradient(to bottom, #041F1E, rgb(0, 0, 0) 10%, rgba(0, 0, 0, 0) 80%);
-          mask-image: linear-gradient(to bottom, #041F1E, rgb(0, 0, 0) 10%, rgba(0, 0, 0, 0) 80%);
+  -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgb(0, 0, 0)), to(rgba(0, 0, 0, 0)));
+  mask-image: linear-gradient(to bottom, #041F1E, rgb(0, 0, 0) 10%, rgba(0, 0, 0, 0) 80%);
 }
 .moviedetail-card .moviedetail-wrapper {
   display: flex;
@@ -180,10 +180,8 @@ button {
 
 @media screen and (min-width: 978px) {
   .moviedetail-card .moviedetail-img {
-    -o-object-fit: cover;
-       object-fit: cover;
-    -o-object-position: top;
-       object-position: top;
+    object-fit: cover;
+    object-position: top;
   }
   .moviedetail-card .moviedetail-wrapper {
     padding: 8em 3em 1em 3em;
@@ -227,7 +225,6 @@ button {
   align-items: center;
   row-gap: 1em;
   padding: 2em 0;
-  width: -moz-fit-content;
   width: fit-content;
 }
 
@@ -307,11 +304,9 @@ button {
 .seat-row {
   flex: 0 0;
   display: flex;
-  width: -moz-fit-content;
   width: fit-content;
   justify-content: center;
-  -moz-column-gap: 1em;
-       column-gap: 1em;
+  column-gap: 1em;
 }
 
 .screening-details {
@@ -569,7 +564,6 @@ button {
   display: flex;
   flex-direction: column;
   gap: 1.5em;
-  width: -moz-max-content;
   width: max-content;
 }
 .main-nav-bar .desktop-menu-list {
@@ -1097,8 +1091,7 @@ button {
   padding: 1em 1.5em;
   border-radius: 0.75em;
   border: 0.15em solid;
-  -o-border-image: linear-gradient(to top, #041F1E 25%, #837771, #041F1E 75%) 0 1;
-     border-image: linear-gradient(to top, #041F1E 25%, #837771, #041F1E 75%) 0 1;
+  border-image: linear-gradient(to top, #041F1E 25%, #837771, #041F1E 75%) 0 1;
 }
 
 @media screen and (min-width: 1167px) {
@@ -1209,9 +1202,6 @@ button {
   font-weight: 700;
   border: none;
   border-radius: 0.3em;
-}
-.register-form input::-moz-placeholder {
-  color: #F7DBA7;
 }
 .register-form input::placeholder {
   color: #F7DBA7;
@@ -1830,10 +1820,6 @@ button {
   padding: 0.5em;
   outline: none;
 }
-.bookconfirm-wrapper .guest-info-group input::-moz-placeholder {
-  color: #F7DBA7;
-  padding-left: 1em;
-}
 .bookconfirm-wrapper .guest-info-group input::placeholder {
   color: #F7DBA7;
   padding-left: 1em;
@@ -1910,8 +1896,7 @@ button {
 }
 .ticket-list-item .button-container {
   display: flex;
-  -moz-column-gap: 1em;
-       column-gap: 1em;
+  column-gap: 1em;
 }
 .ticket-list-item .button-container button {
   width: 2em;
@@ -1951,7 +1936,6 @@ button {
 }
 .filter-list .filter-item {
   list-style-type: none;
-  width: -moz-fit-content;
   width: fit-content;
   margin: 0.5em 0;
 }
@@ -2116,7 +2100,6 @@ h1 {
 
 .admin-page-relative-input {
   position: relative;
-  width: -moz-fit-content;
   width: fit-content;
   display: inline;
 }
@@ -2149,4 +2132,87 @@ h1 {
 
 .admin-demote-btn {
   background-color: #837771;
+}
+
+.adminmovies-wrapper {
+  width: 60vw;
+}
+
+.adminmovies-flex {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.adminscreening-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2em;
+}
+
+.adminscreening-left {
+  text-align: left;
+}
+
+.adminscreening-left,
+.adminscreening-right {
+  margin-bottom: 2.5em;
+}
+
+.adminscreening-flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.adminscreening-time {
+  margin-right: 0.5em;
+  font-size: 1rem;
+}
+
+.adminscreening-lang {
+  font-size: 0.75rem;
+  padding-top: 0.5em;
+}
+
+.adminscreening-book-btn {
+  background-color: darkred;
+  color: #EDEDED;
+  padding: 1em 2.7em;
+  border-radius: 1000px;
+  border: transparent 1px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.adminscreening-seats {
+  padding-top: 1em;
+  font-size: 0.75rem;
+}
+
+.adminscreening-book-btn {
+  transition: 0.4s ease;
+}
+
+.adminscreening-btn:hover {
+  scale: 1.05;
+}
+
+.adminmoviecard-wrapper {
+  width: 80%;
+  text-align: center;
+  margin: 1em;
+}
+
+.adminmoviecard-btn {
+  width: 12em;
+  height: 6em;
+  border: none;
+  background-color: #1E2D2F;
+  color: #F7DBA7;
+  font-weight: bold;
+  border-radius: 20px;
+  border-width: 2px;
+  border-color: #F7DBA7;
+  border-style: solid;
 }/*# sourceMappingURL=main.css.map */
