@@ -12,7 +12,6 @@ export function AdminDisplayUser({ userResult }) {
   }
   return (
     <article className="admin-display-userinfo">
-      <h2>Resultat för sökning:</h2>
       <p>Förnamn: {userResult.fname}</p>
       <p>Efternamn: {userResult.lname}</p>
       <p>E-post: {userResult.email}</p>
