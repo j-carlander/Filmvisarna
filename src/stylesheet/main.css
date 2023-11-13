@@ -1012,6 +1012,51 @@ button {
   font-weight: normal;
 }
 
+.admin-page-search-container {
+  padding: 1em;
+}
+.admin-page-search-container .admin-page-search-title {
+  text-align: center;
+  color: #EDEDED;
+}
+.admin-page-search-container .admin-page-search-form {
+  display: flex;
+  justify-content: center;
+}
+.admin-page-search-container .admin-page-search-form .admin-page-relative-input .admin-page-reset-btn {
+  padding: 0.8em;
+  margin-top: 2.2em;
+}
+.admin-page-search-container .admin-page-search-result .admin-search-result-title {
+  text-align: center;
+  color: #EDEDED;
+  margin: 4em 0 2em 0;
+}
+
+.admin-display-userinfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 0.3em;
+  margin-bottom: 0.3em;
+  padding-left: 0.3em;
+  border-top: #F7DBA7 solid 1px;
+  margin-top: 2em;
+  margin: 0.5em;
+  border: #F7DBA7 solid 1px;
+  border-radius: 2px;
+  padding: 1em;
+}
+.admin-display-userinfo p {
+  letter-spacing: 0.06rem;
+  font-size: 0.9rem;
+  text-align: left;
+}
+.admin-display-userinfo p span {
+  font-weight: 600;
+}
+
 .user-bookings,
 .user-history {
   width: 100%;

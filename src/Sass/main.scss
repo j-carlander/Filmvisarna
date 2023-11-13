@@ -19,6 +19,9 @@
 @use "../pages/PageNotFound/PageNotFound" as *;
 @use "../pages/LoginPage/LoginPage" as *;
 @use "../components/UserDetails/UserDetails" as *;
+@use "../pages/AdminHandleUserPage/AdminHandleUserPage" as *;
+@use "../components/AdminDisplayUser/AdminDisplayUser" as *;
+
 
 @use "../components/UserBooking/UserBookings" as *;
 @use "../pages/RegisterPage/RegisterPage" as *;
