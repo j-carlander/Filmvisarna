@@ -36,6 +36,8 @@ import { addScreeningCheck } from "../middleware/addScreeningCheck.js";
 import { isAdmin } from "../middleware/isAdmin.js";
 import { addScreeningRoute } from "../controllers/addScreening.js";
 import { getTheatresController } from "../controllers/theatre.js";
+import { addMovie } from "../controllers/addMovie.js";
+import { checkAddMovie } from "../middleware/checkAddMovie.js";
 import {
   getLanguages,
   getLanguagesByMovieId,
@@ -156,5 +158,7 @@ router.get("/namesearch", isAdmin, findName);
 router.get("/searchlanguages", isAdmin, findLanguage);
 
 router.put("/users", checkIfSuperAdmin, updateUserRole);
+
+router.post("/addmovie", isAdmin, checkAddMovie, addMovie)
 
 export default router;
