@@ -18,6 +18,8 @@ import { MyAccountPage } from "./pages/MyAccountPage/MyAccountPage.jsx";
 import { AdminSearchBookingPage } from "./pages/AdminSearchBookingPage/AdminSearchBookingPage.jsx";
 import { AdminAddScreeningPage } from "./pages/AdminAddScreeningPage/AdminAddScreeningPage.jsx";
 import { AdminHandleUserPage } from "./pages/AdminHandleUserPage/AdminHandelUserPage.jsx";
+import { AdminMoviesPage } from "./pages/AdminMoviesPage/AdminMoviesPage.jsx";
+import { AdminScreeningsPage } from "./pages/AdminScreeningsPage/AdminScreeningsPage.jsx";
 
 export const pages = [
   { path: "/", element: <LandingPage /> },
@@ -53,6 +55,15 @@ export const adminPages = [
     label: "Hantera användare",
     element: <AdminHandleUserPage />,
   },
+  {
+    path: "/admin/screenings",
+    label: "Ta bort visningar",
+    element: <AdminMoviesPage />
+  },
+  {
+    path: "/admin/screenings/:movieid",
+    element: <AdminScreeningsPage />,
+  }
 ];
 
 const router = createBrowserRouter([

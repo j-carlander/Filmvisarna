@@ -853,12 +853,11 @@ button {
   }
 }
 .login-container {
-  background: rgb(131, 119, 113);
-  background: radial-gradient(circle, rgba(131, 119, 113, 0.676) 0%, rgb(4, 31, 30) 100%);
-  padding: 3em;
-  display: grid;
-  place-items: center;
-  min-height: 66vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  margin-bottom: 2em;
 }
 .login-container p {
   font-weight: 600;
@@ -866,23 +865,26 @@ button {
 }
 .login-container form {
   background-color: #1E2D2F;
-  padding: 2em;
-  display: grid;
-  gap: 2em 3em;
+  padding: 6em 3em;
+  padding-bottom: 7em;
+  border-radius: 6px;
+}
+.login-container form .server-error {
+  margin-top: 1em;
+  text-align: center;
 }
 .login-container .form-control {
-  display: grid;
-  place-items: center;
-  gap: 2em;
-  margin-top: 2em;
+  margin-bottom: 1em;
+  padding-bottom: 1.4em;
 }
 .login-container .form-control input {
-  padding: 0.7em;
+  border: none;
   background-color: #041F1E;
   color: #F7DBA7;
+  padding: 1.5em 2em;
   font-weight: 700;
-  border: none;
-  border-radius: 0.3em;
+  outline: none;
+  border-radius: 5px;
 }
 .login-container .form-control input::-moz-placeholder {
   color: #F7DBA7;
@@ -895,13 +897,15 @@ button {
   cursor: pointer;
 }
 .login-container .Login-btn {
+  padding: 1em 4em;
+  border-radius: 20px;
   background-color: #5A8F76;
-  width: 12em;
-  height: 3em;
-  border-radius: 3em;
-  text-decoration: none;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
   border: none;
-  color: white;
+  margin: 3em auto;
+  display: flex;
   transition: 0.4s ease;
 }
 .login-container .Login-btn:hover {
@@ -912,15 +916,17 @@ button {
   text-align: center;
 }
 .login-container .abort-btn {
+  padding: 1em 3em;
+  border-radius: 20px;
   background-color: #837771;
-  width: 10em;
-  height: 3em;
-  border-radius: 3em;
-  text-decoration: none;
+  color: #fff;
+  font-size: 15px;
   border: none;
-  margin-top: 2em;
-  color: white;
+  font-weight: bold;
+  margin: 3em auto 0;
+  display: flex;
   transition: 0.4s ease;
+  cursor: pointer;
 }
 .login-container .abort-btn:hover {
   scale: 1.05;
@@ -935,7 +941,7 @@ button {
   }
   .login-container form {
     position: relative;
-    padding: 4em 15.7em;
+    padding: 4em 10em;
   }
   .login-container .form-wrapper {
     z-index: 100;
@@ -944,32 +950,19 @@ button {
     padding: 1.5em 3em;
     width: 30em;
   }
-  .login-container .Login-btn {
-    width: 23em;
-    justify-content: center;
-  }
-  .login-container .abort-btn {
-    width: 12em;
-    justify-content: center;
-    margin-bottom: 30px 0;
-  }
-  .login-container p {
-    padding: 20px 0;
-  }
   .login-container img {
     display: block;
     position: absolute;
-    left: 50%;
     top: 50%;
-    transform: translateX(-50%);
   }
   .login-container .Projector {
-    margin-left: 26%;
+    left: 5%;
     width: 340px;
     height: 220px;
+    transform: scaleX(-1);
   }
   .login-container .klappa {
-    margin-left: -30%;
+    right: 5%;
   }
   .login-container span {
     z-index: 100;
@@ -982,6 +975,12 @@ button {
   justify-content: center;
   min-height: 70vh;
   text-align: center;
+}
+
+.wrapper {
+  background: rgb(131, 119, 113);
+  background: radial-gradient(circle, rgba(131, 119, 113, 0.676) 0%, rgb(4, 31, 30) 100%);
+  padding: 3em;
 }
 
 .userinfo-section {
@@ -1012,6 +1011,51 @@ button {
 }
 .userinfo-card .userinfo-table .table-content th {
   font-weight: normal;
+}
+
+.admin-page-search-container {
+  padding: 1em;
+}
+.admin-page-search-container .admin-page-search-title {
+  text-align: center;
+  color: #EDEDED;
+}
+.admin-page-search-container .admin-page-search-form {
+  display: flex;
+  justify-content: center;
+}
+.admin-page-search-container .admin-page-search-form .admin-page-relative-input .admin-page-reset-btn {
+  padding: 0.8em;
+  margin-top: 2.2em;
+}
+.admin-page-search-container .admin-page-search-result .admin-search-result-title {
+  text-align: center;
+  color: #EDEDED;
+  margin: 4em 0 2em 0;
+}
+
+.admin-display-userinfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 0.3em;
+  margin-bottom: 0.3em;
+  padding-left: 0.3em;
+  border-top: #F7DBA7 solid 1px;
+  margin-top: 2em;
+  margin: 0.5em;
+  border: #F7DBA7 solid 1px;
+  border-radius: 2px;
+  padding: 1em;
+}
+.admin-display-userinfo p {
+  letter-spacing: 0.06rem;
+  font-size: 0.9rem;
+  text-align: left;
+}
+.admin-display-userinfo p span {
+  font-weight: 600;
 }
 
 .user-bookings,
@@ -1152,9 +1196,10 @@ button {
   padding: 2em;
   display: grid;
   gap: 2em 3em;
+  border-radius: 6px;
 }
 .register-form input {
-  padding: 0.7em;
+  padding: 1.5em 2em;
   background-color: #041F1E;
   color: #F7DBA7;
   font-weight: 700;
@@ -2083,4 +2128,104 @@ h1 {
   transform: translateY(-60%);
   background: transparent;
   border: none;
+}
+
+.admin-promote-btn,
+.admin-demote-btn {
+  padding: 0.5em 1em;
+  border-radius: 3em;
+  border: none;
+  color: #EDEDED;
+  font-weight: bold;
+}
+
+.admin-promote-btn {
+  background-color: #5A8F76;
+}
+
+.admin-demote-btn {
+  background-color: #837771;
+}
+
+.adminmovies-wrapper {
+  width: 60vw;
+}
+
+.adminmovies-flex {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.adminscreening-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2em;
+}
+
+.adminscreening-left {
+  text-align: left;
+}
+
+.adminscreening-left,
+.adminscreening-right {
+  margin-bottom: 2.5em;
+}
+
+.adminscreening-flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.adminscreening-time {
+  margin-right: 0.5em;
+  font-size: 1rem;
+}
+
+.adminscreening-lang {
+  font-size: 0.75rem;
+  padding-top: 0.5em;
+}
+
+.adminscreening-book-btn {
+  background-color: darkred;
+  color: #EDEDED;
+  padding: 1em 2.7em;
+  border-radius: 1000px;
+  border: transparent 1px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.adminscreening-seats {
+  padding-top: 1em;
+  font-size: 0.75rem;
+}
+
+.adminscreening-book-btn {
+  transition: 0.4s ease;
+}
+
+.adminscreening-btn:hover {
+  scale: 1.05;
+}
+
+.adminmoviecard-wrapper {
+  width: 80%;
+  text-align: center;
+  margin: 1em;
+}
+
+.adminmoviecard-btn {
+  width: 12em;
+  height: 6em;
+  border: none;
+  background-color: #1E2D2F;
+  color: #F7DBA7;
+  font-weight: bold;
+  border-radius: 20px;
+  border-width: 2px;
+  border-color: #F7DBA7;
+  border-style: solid;
 }/*# sourceMappingURL=main.css.map */

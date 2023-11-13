@@ -92,13 +92,10 @@ export async function getBookings(req, res) {
   const bookings = await getBookingsByUserId(payload.id);
 
   const today = new Date();
-  const yesterday = new Date(today);
-  yesterday.setDate(today.getDate() - 1);
+  today.setTime(today.getTime() - 15 * 60 * 1000);
 
-  const oldBookings = bookings.filter((booking) => booking.date <= yesterday);
-  const currentBookings = bookings.filter(
-    (booking) => booking.date > yesterday
-  );
+  const oldBookings = bookings.filter((booking) => booking.date <= today);
+  const currentBookings = bookings.filter((booking) => booking.date > today);
 
   for (let booking of bookings) {
     booking.date = formatDateTimeSwe(booking.date);
