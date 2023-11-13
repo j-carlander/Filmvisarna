@@ -6,6 +6,7 @@ import { AdminScreeningCard } from "../../components/AdminScreeningCard/AdminScr
 
 export function AdminScreeningsPage() {
     const [screenings, setScreenings] = useState([])
+    const [deleteMessage, setDeleteMessage] = useState("");
     const { movieid } = useParams();
 
     useEffect(() => {
@@ -18,11 +19,25 @@ export function AdminScreeningsPage() {
         }
         getAllScreenings();
     }, [movieid])
+
+    const handleDeleteScreening = (deletedScreeningId) => {
+        setScreenings((prevScreenings) =>
+          prevScreenings.filter((screening) => screening.id !== deletedScreeningId)
+        );
+
+        setDeleteMessage("Visning tagits bort!");
+
+        setTimeout(() => {
+          setDeleteMessage("");
+        }, 3000);
+    };
+    
     return (
         <div className="adminscreenings-wrapper">
             {screenings.map((screening, index) => (
-                <AdminScreeningCard key={index} screening={screening} />
+                <AdminScreeningCard key={index} screening={screening} onDeleteScreening={handleDeleteScreening} />
             ))}
+            {deleteMessage && <div className="delete-message">{deleteMessage}</div>}
         </div>
     )
 }
