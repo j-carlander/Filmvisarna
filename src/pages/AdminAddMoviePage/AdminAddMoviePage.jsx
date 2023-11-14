@@ -56,16 +56,27 @@ export function AdminAddMoviePage() {
 
   async function onSubmitMovie(e) {
     e.preventDefault();
-    console.log(movie);
-    console.log("Submit movie");
+
+    const resp = await fetchHelper("/addmovie", "post", movie);
+
+    const json = await resp.json();
+
+    if (resp.status < 400) {
+      console.log(json);
+    }
   }
 
   function handleFiles(e) {
     const file = e.target.files[0];
-    if (file) {
-      const base64 = URL.createObjectURL(file);
+    if (!file) return;
+    const fileReader = new FileReader();
+
+    fileReader.onloadend = (event) => {
+      const base64 = event.target.result;
       setMovie((movie) => ({ ...movie, base64Img: base64 }));
-    }
+    };
+
+    fileReader.readAsDataURL(file);
   }
 
   async function fetchAddCategory() {
