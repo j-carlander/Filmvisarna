@@ -36,8 +36,14 @@ import { addScreeningCheck } from "../middleware/addScreeningCheck.js";
 import { isAdmin } from "../middleware/isAdmin.js";
 import { addScreeningRoute } from "../controllers/addScreening.js";
 import { getTheatresController } from "../controllers/theatre.js";
-import { getLanguages } from "../controllers/Language.js";
+import { addMovie } from "../controllers/addMovie.js";
+import { validateAddMovie } from "../middleware/checkAddMovie.js";
+import {
+  getLanguages,
+  getLanguagesByMovieId,
+} from "../controllers/Language.js";
 import { findLanguage } from "../controllers/findLanguage.js";
+import { addLanguage } from "../controllers/addLanguage.js";
 
 import { checkIfSuperAdmin } from "../middleware/checkIfSuperAdmin.js";
 import { findUser } from "../controllers/findUser.js";
@@ -132,11 +138,16 @@ router.get("/currentUser/bookings", getBookings);
 
 router.post("/addscreening", isAdmin, addScreeningCheck, addScreeningRoute);
 
+router.get("/language/:movieid", isAdmin, getLanguagesByMovieId);
+
 router.post("/addname", isAdmin, checkName, addName);
 
 router.get("/searchgenre", isAdmin, searchGenreCheck, searchGenre);
 
 router.post("/addgenre", isAdmin, addGenreCheck, addGenreController);
+
+//Route to add a language.
+router.post("/addLanguages", isAdmin, addLanguage);
 
 router.get("/theatres", isAdmin, getTheatresController);
 
@@ -151,5 +162,7 @@ router.get("/namesearch", isAdmin, findName);
 router.get("/searchlanguages", isAdmin, findLanguage);
 
 router.put("/users", checkIfSuperAdmin, updateUserRole);
+
+router.post("/addmovie", isAdmin, validateAddMovie, addMovie);
 
 export default router;
