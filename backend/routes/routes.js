@@ -43,6 +43,7 @@ import {
   getLanguagesByMovieId,
 } from "../controllers/Language.js";
 import { findLanguage } from "../controllers/findLanguage.js";
+import { addLanguage } from "../controllers/addLanguage.js";
 
 import { checkIfSuperAdmin } from "../middleware/checkIfSuperAdmin.js";
 import { findUser } from "../controllers/findUser.js";
@@ -144,6 +145,9 @@ router.post("/addname", isAdmin, checkName, addName);
 router.get("/searchgenre", isAdmin, searchGenreCheck, searchGenre);
 
 router.post("/addgenre", isAdmin, addGenreCheck, addGenreController);
+
+//Route to add a language.
+router.post("/addLanguages", isAdmin, addLanguage);
 
 router.get("/theatres", isAdmin, getTheatresController);
 
