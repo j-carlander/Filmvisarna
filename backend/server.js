@@ -11,7 +11,7 @@ import express from "express";
 const app = express();
 const port = 3000;
 
-app.use(express.json());
+app.use(express.json({ limit: "10mb" }));
 
 app.get("/api/health", (req, res) => {
   res.send("Hello, Express!");
