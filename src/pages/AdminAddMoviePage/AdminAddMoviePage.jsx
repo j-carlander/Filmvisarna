@@ -149,29 +149,41 @@ export function AdminAddMoviePage() {
               onChange={handleChange}
             />
           </label>
-          <label htmlFor="">
-            <span>Filmlängd i minuter:</span>
-            <input
-              type="number"
-              required
-              name="durationInMinutes"
-              value={movie.durationInMinutes}
-              onChange={handleChange}
-            />
-          </label>
-          <label htmlFor="">
-            <span>Åldersgräns:</span>
-            <select
-              name="ageLimit"
-              required
-              onChange={handleChange}
-              value={movie.ageLimit}>
-              <option value={0}>alla</option>
-              <option value={7}>7 +</option>
-              <option value={11}>11 +</option>
-              <option value={15}>15 +</option>
-            </select>
-          </label>
+          <div className="length-and-age-container">
+            <label htmlFor="">
+              <span>Filmlängd i minuter:</span>
+              <input
+                type="number"
+                required
+                name="durationInMinutes"
+                value={movie.durationInMinutes}
+                onChange={handleChange}
+              />
+            </label>
+            <label htmlFor="">
+              <span>Åldersgräns:</span>
+              <select
+                name="ageLimit"
+                required
+                onChange={handleChange}
+                value={movie.ageLimit}>
+                <option value={0}>alla</option>
+                <option value={7}>7 +</option>
+                <option value={11}>11 +</option>
+                <option value={15}>15 +</option>
+              </select>
+            </label>
+            <label htmlFor="">
+              <span>Premiärdatum:</span>
+              <input
+                type="date"
+                required
+                name="releaseDate"
+                value={movie.releaseDate}
+                onChange={handleChange}
+              />
+            </label>
+          </div>
           <label htmlFor="">
             <span>Välj regissör:</span>
             <AdminFetchingNames onSetName={handleSetDirector} />
@@ -179,16 +191,6 @@ export function AdminAddMoviePage() {
               Nuvarande regisör: {director || "Ingen regisör är vald!"}
             </span>
           </label>
-          <label htmlFor="">
-            <span>Premiärdatum:</span>
-            <input
-              type="date"
-              required
-              name="releaseDate"
-              value={movie.releaseDate}
-              onChange={handleChange}
-            />
-          </label>{" "}
         </div>
         <div className="grid-column">
           <label htmlFor="">

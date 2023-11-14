@@ -1,6 +1,10 @@
 @use "../../Sass/abstract/variables" as *;
 
 .name-search-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  column-gap: 2em;
   h3,
   h2 {
     font-size: 1.15rem;
@@ -16,9 +20,13 @@
   }
   .name-container {
     margin: 1em 0;
+    h2 {
+      width: 120%;
+    }
     label {
       input {
         margin: 0.5em 0;
+        width: 100%;
       }
     }
     ul {

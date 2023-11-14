@@ -44,8 +44,8 @@ export function AdminFetchingNames({ onSetName }) {
 
   return (
     <div className="name-search-container">
-      <h2>Sök efter namn</h2>
       <div className="name-container">
+        <h2>Sök efter namn</h2>
         <label>
           <span>Namn:</span>
           <input
@@ -59,8 +59,8 @@ export function AdminFetchingNames({ onSetName }) {
         </button>
       </div>
 
-      <h2>Lägg till nytt namn</h2>
       <div className="name-container">
+        <h2>Lägg till nytt namn</h2>
         <label>
           <span>Nytt namn:</span>
           <input
