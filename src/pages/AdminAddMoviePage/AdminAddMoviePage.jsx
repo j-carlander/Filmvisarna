@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { fetchHelper } from "../../utils/fetchHelper";
+import { AdminFetchingNames } from "../../components/AdminFetchingNames/AdminFetchingNames";
 
 const movieSetup = {
   title: "",
@@ -18,9 +19,10 @@ const movieSetup = {
 
 export function AdminAddMoviePage() {
   const [movie, setMovie] = useState(movieSetup);
-  const [names, setNames] = useState([{ id: 0, name: "John Doe" }]);
+  const [names, setNames] = useState([]);
   const [languages, setLanguages] = useState([{ id: 0, language: "sv" }]);
   const [categories, setCategories] = useState([]);
+  const [director, setDirector] = useState(undefined);
   const [catSearch, setCatSearch] = useState("");
   const [addCat, setAddCat] = useState(false);
 
@@ -28,12 +30,33 @@ export function AdminAddMoviePage() {
     setMovie((movie) => ({ ...movie, [e.target.name]: e.target.value }));
   }
 
+  function onActorClick(id) {
+    setNames((old) => old.filter((nameObject) => nameObject.id !== id));
+  }
+
+  function handleSetDirector(nameObject) {
+    setDirector(nameObject.name);
+    setMovie((movie) => ({ ...movie, directorid: nameObject.id }));
+  }
+
+  function handleAddActors(nameObject) {
+    const oldActorids = movie.actorids;
+    setNames((old) => [...old, nameObject]);
+    setMovie((movie) => ({
+      ...movie,
+      actorids: [...oldActorids, nameObject.id],
+    }));
+  }
+
   function onRemoveCategory(id) {
+    const filteredCats = movie.categoryids.filter((cat) => cat !== id);
+    setMovie((old) => ({ ...old, categoryids: [...filteredCats] }));
     setCategories((old) => old.filter((cat) => cat.id !== id));
   }
 
   async function onSubmitMovie(e) {
     e.preventDefault();
+    console.log(movie);
     console.log("Submit movie");
   }
 
@@ -58,14 +81,14 @@ export function AdminAddMoviePage() {
   }
 
   async function onSearchCategoryClick() {
-    console.log("On search cat click!");
     const resp = await fetchHelper(`/searchgenre?q=${catSearch}`, "get");
 
     const json = await resp.json();
 
     if (resp.status < 400) {
-      console.log("Cat found");
       setCategories((old) => [...old, ...json]);
+      const oldCats = movie.categoryids;
+      setMovie((old) => ({ ...old, categoryids: [...oldCats, json[0].id] }));
       setCatSearch("");
     } else if (resp.status === 404) {
       setAddCat(true);
@@ -75,9 +98,9 @@ export function AdminAddMoviePage() {
   useEffect(() => {}, []);
 
   // TODO:
-  // useEffect to fetch and set names and languages
+  // useEffect to fetch and set languages
   // Fetch to submit form
-  // Options for adding names and languages that is not in their list.
+  // Options for adding languages that is not in their list.
 
   return (
     <article className="admin-add-movie-page-wrapper">
@@ -140,13 +163,10 @@ export function AdminAddMoviePage() {
           </label>
           <label htmlFor="">
             <span>Välj regissör:</span>
-            <select name="directorid" onChange={handleChange} required>
-              {names.map((name) => (
-                <option value={name.id} key={`name_${name.id}`}>
-                  {name.name}
-                </option>
-              ))}
-            </select>
+            <AdminFetchingNames onSetName={handleSetDirector} />
+            <span>
+              Nuvarande regisör: {director || "Ingen regisör är vald!"}
+            </span>
           </label>
           <label htmlFor="">
             <span>Premiärdatum:</span>
@@ -209,27 +229,40 @@ export function AdminAddMoviePage() {
                 </button>
               </div>
             )}
-            <span>Klicka på en kategori för att ta bort den</span>
-            <select name="categoryids" multiple required>
+            {categories.length > 0 ? (
+              <span>Klicka på en kategori för att ta bort den</span>
+            ) : (
+              <span>Inga kategorier har lagts till!</span>
+            )}
+            <ul name="categoryids" required className="category-list">
               {categories.map((category) => (
-                <option
+                <li
                   value={category.id}
                   key={`category_${category.id}`}
                   onClick={() => onRemoveCategory(category.id)}>
                   {category.category}
-                </option>
+                </li>
               ))}
-            </select>
+            </ul>
           </label>
           <label htmlFor="">
             <span>Välj några av de skådespelare som är med:</span>
-            <select name="actorids" onChange={handleChange} multiple required>
+            <AdminFetchingNames onSetName={handleAddActors} />
+            <span>Klicka på ett namn för att ta bort det</span>
+            <ul
+              name="actorids"
+              className="category-list"
+              onChange={handleChange}
+              required>
               {names.map((name) => (
-                <option value={name.id} key={`actor_${name.id}`}>
+                <li
+                  value={name.id}
+                  key={`actor_${name.id}`}
+                  onClick={() => onActorClick(name.id)}>
                   {name.name}
-                </option>
+                </li>
               ))}
-            </select>
+            </ul>
           </label>
           <div className="img-file-container">
             <label htmlFor="imgFile">Välj filmomslag:</label>

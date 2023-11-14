@@ -1,0 +1,30 @@
+@use "../../Sass/abstract/variables" as *;
+
+.name-search-container {
+  h3,
+  h2 {
+    font-size: 1.15rem;
+  }
+
+  button {
+    padding: 0.5em 0.75em;
+    color: $whiteAccent;
+    background-color: $mediumAccent;
+    border: none;
+    border-radius: 0.5em;
+    margin: 0.75em 0;
+  }
+  .name-container {
+    margin: 1em 0;
+    label {
+      input {
+        margin: 0.5em 0;
+      }
+    }
+    ul {
+      li {
+        list-style-type: none;
+      }
+    }
+  }
+}

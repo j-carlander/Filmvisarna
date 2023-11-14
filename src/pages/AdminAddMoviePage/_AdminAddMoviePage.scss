@@ -53,6 +53,13 @@
     display: grid;
     align-items: center;
 
+    .category-list {
+      li {
+        list-style-type: none;
+        cursor: pointer;
+      }
+    }
+
     .search-cat-btn {
       width: 5em;
       padding: 0.5em 0;

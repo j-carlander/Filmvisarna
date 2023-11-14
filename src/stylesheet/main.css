@@ -2296,6 +2296,10 @@ h1 {
   display: grid;
   align-items: center;
 }
+.new-movie-form label .category-list li {
+  list-style-type: none;
+  cursor: pointer;
+}
 .new-movie-form label .search-cat-btn {
   width: 5em;
   padding: 0.5em 0;
@@ -2343,4 +2347,25 @@ h1 {
   .new-movie-form .grid-column label span {
     margin-bottom: 1em;
   }
+}
+.name-search-container h3,
+.name-search-container h2 {
+  font-size: 1.15rem;
+}
+.name-search-container button {
+  padding: 0.5em 0.75em;
+  color: #ededed;
+  background-color: #5a8f76;
+  border: none;
+  border-radius: 0.5em;
+  margin: 0.75em 0;
+}
+.name-search-container .name-container {
+  margin: 1em 0;
+}
+.name-search-container .name-container label input {
+  margin: 0.5em 0;
+}
+.name-search-container .name-container ul li {
+  list-style-type: none;
 }/*# sourceMappingURL=main.css.map */
