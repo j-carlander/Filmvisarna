@@ -17,6 +17,7 @@ export async function addMovieService({
   categoryIds,
   actorNames,
   base64Img,
+  languageIds,
 }) {
   try {
     const movieInsertQuery = `
@@ -48,6 +49,15 @@ export async function addMovieService({
     ]);
     await Promise.all(
       categoryValues.map((values) => runQuery(categoryInsertQuery, values))
+    );
+
+    const languageInsertQuery = `INSERT INTO movielanguages (languageid, movieid) VALUES (?, ?);`;
+    const languageValues = languageIds.map((languageId) => [
+      languageId,
+      movieId,
+    ]);
+    await Promise.all(
+      languageValues.map((values) => runQuery(languageInsertQuery, values))
     );
 
     const actorInsertQuery = `

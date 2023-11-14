@@ -12,6 +12,7 @@ export async function addMovie(req, res) {
     categoryIds,
     actorNames,
     base64Img,
+    languageIds,
   } = req.body;
 
   const result = await addMovieService({
@@ -25,6 +26,7 @@ export async function addMovie(req, res) {
     categoryIds,
     actorNames,
     base64Img,
+    languageIds,
   });
 
   if (result.success) {

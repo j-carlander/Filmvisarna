@@ -11,6 +11,7 @@ export function validateAddMovie(req, res, next) {
     categoryIds,
     actorNames,
     base64Img,
+    languageIds,
   } = req.body;
 
   // Check if all required fields are present
@@ -24,7 +25,8 @@ export function validateAddMovie(req, res, next) {
     !directorId ||
     !categoryIds ||
     !actorNames ||
-    !base64Img
+    !base64Img ||
+    !languageIds
   ) {
     return res.status(400).json({ error: "Alla fält är nödvändiga." });
   }
