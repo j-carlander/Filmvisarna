@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const movieSetup = {
   title: "",
@@ -32,6 +32,8 @@ export function AdminAddMoviePage() {
       setMovie((movie) => ({ ...movie, imgbase64: base64 }));
     }
   }
+
+  useEffect(() => {}, []);
 
   // TODO:
   // useEffect to fetch and set names, languages and categories
@@ -82,12 +84,15 @@ export function AdminAddMoviePage() {
           </label>
           <label htmlFor="">
             Åldersgräns:
-            <input
-              type="number"
+            <select
               name="agelimit"
-              value={movie.agelimit}
               onChange={handleChange}
-            />
+              value={movie.agelimit}>
+              <option value={0}>alla</option>
+              <option value={7}>7 +</option>
+              <option value={11}>11 +</option>
+              <option value={15}>15 +</option>
+            </select>
           </label>
           <label htmlFor="">
             Välj regissör:
