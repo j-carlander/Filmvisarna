@@ -8,5 +8,5 @@ export async function addGenreController(req, res) {
   if (result.affectedRows === 0)
     return res.status(500).json({ error: "Internt server fel!" });
 
-  res.json({ message: "Genren har lagts till!" });
+  res.json({ id: result.insertId, category: genre });
 }
