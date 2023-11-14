@@ -5,16 +5,16 @@ import { AdminFetchingNames } from "../../components/AdminFetchingNames/AdminFet
 const movieSetup = {
   title: "",
   description: "",
-  trailerlink: "",
-  durationinminutes: 0,
-  agelimit: 0,
-  directorid: 0,
-  releasedate: "",
+  trailerLink: "",
+  durationInMinutes: 0,
+  ageLimit: 0,
+  directorId: 0,
+  releaseDate: "",
   languageid: 0,
   subtitleid: 0,
-  categoryids: [],
-  actorids: [],
-  imgbase64: "",
+  categoryIds: [],
+  actorNames: [],
+  base64Img: "",
 };
 
 export function AdminAddMoviePage() {
@@ -36,21 +36,21 @@ export function AdminAddMoviePage() {
 
   function handleSetDirector(nameObject) {
     setDirector(nameObject.name);
-    setMovie((movie) => ({ ...movie, directorid: nameObject.id }));
+    setMovie((movie) => ({ ...movie, directorId: nameObject.id }));
   }
 
   function handleAddActors(nameObject) {
-    const oldActorids = movie.actorids;
+    const oldActorids = movie.actorNames;
     setNames((old) => [...old, nameObject]);
     setMovie((movie) => ({
       ...movie,
-      actorids: [...oldActorids, nameObject.id],
+      actorNames: [...oldActorids, nameObject.id],
     }));
   }
 
   function onRemoveCategory(id) {
-    const filteredCats = movie.categoryids.filter((cat) => cat !== id);
-    setMovie((old) => ({ ...old, categoryids: [...filteredCats] }));
+    const filteredCats = movie.categoryIds.filter((cat) => cat !== id);
+    setMovie((old) => ({ ...old, categoryIds: [...filteredCats] }));
     setCategories((old) => old.filter((cat) => cat.id !== id));
   }
 
@@ -64,7 +64,7 @@ export function AdminAddMoviePage() {
     const file = e.target.files[0];
     if (file) {
       const base64 = URL.createObjectURL(file);
-      setMovie((movie) => ({ ...movie, imgbase64: base64 }));
+      setMovie((movie) => ({ ...movie, base64Img: base64 }));
     }
   }
 
@@ -87,8 +87,8 @@ export function AdminAddMoviePage() {
 
     if (resp.status < 400) {
       setCategories((old) => [...old, ...json]);
-      const oldCats = movie.categoryids;
-      setMovie((old) => ({ ...old, categoryids: [...oldCats, json[0].id] }));
+      const oldCats = movie.categoryIds;
+      setMovie((old) => ({ ...old, categoryIds: [...oldCats, json[0].id] }));
       setCatSearch("");
     } else if (resp.status === 404) {
       setAddCat(true);
@@ -132,9 +132,9 @@ export function AdminAddMoviePage() {
             <span>Länk till trailer:</span>
             <input
               type="text"
-              name="trailerlink"
+              name="trailerLink"
               required
-              value={movie.trailerlink}
+              value={movie.trailerLink}
               onChange={handleChange}
             />
           </label>
@@ -143,18 +143,18 @@ export function AdminAddMoviePage() {
             <input
               type="number"
               required
-              name="durationinminutes"
-              value={movie.durationinminutes}
+              name="durationInMinutes"
+              value={movie.durationInMinutes}
               onChange={handleChange}
             />
           </label>
           <label htmlFor="">
             <span>Åldersgräns:</span>
             <select
-              name="agelimit"
+              name="ageLimit"
               required
               onChange={handleChange}
-              value={movie.agelimit}>
+              value={movie.ageLimit}>
               <option value={0}>alla</option>
               <option value={7}>7 +</option>
               <option value={11}>11 +</option>
@@ -173,8 +173,8 @@ export function AdminAddMoviePage() {
             <input
               type="date"
               required
-              name="releasedate"
-              value={movie.releasedate}
+              name="releaseDate"
+              value={movie.releaseDate}
               onChange={handleChange}
             />
           </label>{" "}
@@ -234,7 +234,7 @@ export function AdminAddMoviePage() {
             ) : (
               <span>Inga kategorier har lagts till!</span>
             )}
-            <ul name="categoryids" required className="category-list">
+            <ul name="categoryIds" required className="category-list">
               {categories.map((category) => (
                 <li
                   value={category.id}
@@ -250,7 +250,7 @@ export function AdminAddMoviePage() {
             <AdminFetchingNames onSetName={handleAddActors} />
             <span>Klicka på ett namn för att ta bort det</span>
             <ul
-              name="actorids"
+              name="actorNames"
               className="category-list"
               onChange={handleChange}
               required>
@@ -268,7 +268,7 @@ export function AdminAddMoviePage() {
             <label htmlFor="imgFile">Välj filmomslag:</label>
             <input id="imgFile" type="file" required onChange={handleFiles} />
           </div>
-          {movie.imgbase64 ? <img src={movie.imgbase64} width={200} /> : null}
+          {movie.base64Img ? <img src={movie.base64Img} width={200} /> : null}
         </div>
         <button className="add-movie-btn" type="submit">
           Lägg till film!
