@@ -1,10 +1,13 @@
+import { emailAllBookingsByScreeningService } from "../service/deleteBookingService.js";
 import { removeScreening } from "../service/screeningsService.js";
 
 export async function removeScreeningRoute(req, res) {
   const { screeningId } = req.params;
 
+  await emailAllBookingsByScreeningService(screeningId);
+
   const result = await removeScreening(screeningId);
-  console.log(result)
+  console.log(result);
   if (result.affectedRows !== 1) {
     return res.status(500).json({ error: "Internt serverfel!" });
   }

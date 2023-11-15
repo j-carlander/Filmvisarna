@@ -1058,6 +1058,41 @@ button {
   font-weight: 600;
 }
 
+.Moviemodal-wrapper {
+  box-shadow: 0 0 100px 200px rgba(12, 12, 12, 0.493);
+}
+
+.modal {
+  display: block;
+  position: fixed;
+  top: 5em;
+  left: 10%;
+  right: 10%;
+  margin: 0 auto;
+  border: 1px solid #1e2d2f;
+  padding: 5em;
+  background-color: #041f1e;
+  z-index: 1;
+  align-items: center;
+  border: none;
+}
+
+.modal-content {
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 25px;
+  border-radius: 15px;
+  background-color: #5a8f76;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
 .user-bookings,
 .user-history {
   width: 100%;
@@ -2177,6 +2212,7 @@ h1 {
   justify-content: space-between;
   align-items: center;
   gap: 2em;
+  position: relative;
 }
 
 .adminscreening-left {
@@ -2225,6 +2261,27 @@ h1 {
 
 .adminscreening-btn:hover {
   scale: 1.05;
+}
+
+.adminscreening-dialog[open] {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  padding: 2em;
+  background-color: #1e2d2f;
+  color: #f7dba7;
+}
+.adminscreening-dialog[open] .adminscreening-book-btn {
+  margin-top: 2em;
+}
+.adminscreening-dialog[open] p:nth-child(2) {
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .adminmoviecard-wrapper {
