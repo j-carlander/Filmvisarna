@@ -11,6 +11,8 @@ export default function Seat({
   individual,
   hoveredSeat,
   setHoveredSeat,
+  clickedSeatNumber,
+  setClickedSeatNumber,
 }) {
   const [classNames, setClassnames] = useState("seat");
 
@@ -19,7 +21,7 @@ export default function Seat({
 
     const row = seats.find((el) => el.rownumber === rowNumber);
 
-    if (!individual && seatNumber - totalTickets + 1 <= 0) return;
+    // if (!individual && seatNumber - totalTickets + 1 <= 0) return;
     const filteredTakenSeats = takenSeats.filter(
       (el) => el.seatrow === row.rownumber
     );
@@ -44,6 +46,7 @@ export default function Seat({
       });
       return;
     }
+    setClickedSeatNumber(seatNumber);
     setSelectedSeats([{ rowNumber, seatNumber }]);
   }
 
@@ -63,22 +66,55 @@ export default function Seat({
       !individual
     ) {
       for (let i = 0; i < totalTickets; i++) {
-        if (
-          selectedSeats[0].rowNumber === rowNumber &&
-          selectedSeats[0].seatNumber - i === seatNumber &&
-          selectedSeats[selectedSeats.length - 1].seatNumber - 1 === seatNumber
-        ) {
-          selected = true;
-          const foundSeats = selectedSeats.find(
-            (value) =>
-              value.rowNumber === rowNumber && value.seatNumber === seatNumber
-          );
-          if (foundSeats === undefined) {
-            const sortedList = [...selectedSeats, { rowNumber, seatNumber }];
+        if (clickedSeatNumber - i === 0) {
+          for (
+            let j = 0;
+            j < totalTickets && selectedSeats.length < totalTickets;
+            j++
+          ) {
+            if (
+              selectedSeats[0].rowNumber === rowNumber &&
+              selectedSeats[0].seatNumber + j === seatNumber &&
+              selectedSeats[0].seatNumber + 1 === seatNumber
+            ) {
+              selected = true;
+              const foundSeats = selectedSeats.find(
+                (value) =>
+                  value.rowNumber === rowNumber &&
+                  value.seatNumber === seatNumber
+              );
+              if (foundSeats === undefined) {
+                const sortedList = [
+                  ...selectedSeats,
+                  { rowNumber, seatNumber },
+                ];
 
-            sortedList.sort((a, b) => b.seatNumber - a.seatNumber);
+                sortedList.sort((a, b) => b.seatNumber - a.seatNumber);
 
-            setSelectedSeats(sortedList);
+                setSelectedSeats(sortedList);
+              }
+            }
+          }
+          break;
+        } else {
+          if (
+            selectedSeats[0].rowNumber === rowNumber &&
+            selectedSeats[0].seatNumber - i === seatNumber &&
+            selectedSeats[selectedSeats.length - 1].seatNumber - 1 ===
+              seatNumber
+          ) {
+            selected = true;
+            const foundSeats = selectedSeats.find(
+              (value) =>
+                value.rowNumber === rowNumber && value.seatNumber === seatNumber
+            );
+            if (foundSeats === undefined) {
+              const sortedList = [...selectedSeats, { rowNumber, seatNumber }];
+
+              sortedList.sort((a, b) => b.seatNumber - a.seatNumber);
+
+              setSelectedSeats(sortedList);
+            }
           }
         }
       }
@@ -102,14 +138,30 @@ export default function Seat({
 
     if (!individual && hoveredSeat !== undefined) {
       for (let i = 0; i < totalTickets; i++) {
-        if (
-          hoveredSeat.rowNumber === rowNumber &&
-          hoveredSeat.seatNumber - i === seatNumber
-        ) {
-          if (thisTakenSeat) {
-            hoverFail = true;
-          } else {
-            hover = true;
+        if (hoveredSeat.seatNumber - i === 0) {
+          for (let j = 0; j <= totalTickets - i; j++) {
+            if (
+              hoveredSeat.rowNumber === rowNumber &&
+              hoveredSeat.seatNumber + j === seatNumber
+            ) {
+              if (thisTakenSeat) {
+                hoverFail = true;
+              } else {
+                hover = true;
+              }
+            }
+          }
+          break;
+        } else {
+          if (
+            hoveredSeat.rowNumber === rowNumber &&
+            hoveredSeat.seatNumber - i === seatNumber
+          ) {
+            if (thisTakenSeat) {
+              hoverFail = true;
+            } else {
+              hover = true;
+            }
           }
         }
       }
@@ -130,6 +182,7 @@ export default function Seat({
     setSelectedSeats,
     individual,
     hoveredSeat,
+    clickedSeatNumber,
   ]);
 
   return (
