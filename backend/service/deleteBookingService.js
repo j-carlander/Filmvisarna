@@ -32,8 +32,11 @@ export async function emailAllBookingsByScreeningService(screeningId) {
   const emailsList = await runQuery(selectEmailFromBookingsByScreeningId, [
     screeningId,
   ]);
+  console.log(emailsList);
   if (emailsList.length > 0) {
-    emailsList.map((email) => removeScreeningMailService(email, title, date));
+    emailsList.map(({ email }) =>
+      removeScreeningMailService(email, title, date)
+    );
   }
   return;
 }
