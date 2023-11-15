@@ -34,7 +34,8 @@
   display: inline;
   .search-label {
     position: absolute;
-    text-align: center;
+    text-align: left;
+    width: max-content;
   }
 }
 

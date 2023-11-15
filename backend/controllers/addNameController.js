@@ -8,5 +8,5 @@ export async function addName(req, res) {
   if (result.affectedRows === 0)
     return res.status(500).json({ error: "Internt server fel!" });
 
-  res.status(201).json({ message: "Namnet har lagts till!" });
+  res.status(201).json({ id: result.insertId, name });
 }

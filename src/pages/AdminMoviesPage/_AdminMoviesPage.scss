@@ -1,8 +1,12 @@
 .adminmovies-wrapper {
-    width: 60vw;
+  width: 60vw;
+  h2 {
+    text-align: center;
+    padding-bottom: 2em;
+  }
 }
 
 .adminmovies-flex {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }

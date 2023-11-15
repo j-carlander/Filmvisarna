@@ -48,6 +48,7 @@ export function AdminScreeningsPage() {
 
   return (
     <div className="adminscreenings-wrapper">
+      <h2>Visningar för: {title}</h2>
       {screenings.map((screening, index) => (
         <AdminScreeningCard
           key={index}

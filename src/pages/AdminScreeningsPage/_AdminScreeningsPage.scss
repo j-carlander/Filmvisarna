@@ -1,19 +1,26 @@
 @use "../../Sass/abstract/variables" as *;
 
+.adminscreenings-wrapper {
+  h2 {
+    text-align: center;
+    margin-bottom: 2em;
+  }
+}
+
 .more-screenings-btn {
-    background-color: $mediumAccent;
-    color: $whiteAccent;
-    width: 50%;
-    margin: 0 auto 3em auto;
-    max-width: 260px;
+  background-color: $mediumAccent;
+  color: $whiteAccent;
+  width: 50%;
+  margin: 0 auto 3em auto;
+  max-width: 260px;
 
-    padding: 1em 2.7em;
+  padding: 1em 2.7em;
 
-    border-radius: 1000px;
-    border: transparent 1px;
-    font-weight: 700;
+  border-radius: 1000px;
+  border: transparent 1px;
+  font-weight: 700;
 }
 
 .delete-message {
-    margin-top: 1em;
+  margin-top: 1em;
 }

@@ -1,0 +1,42 @@
+@use "../../Sass/abstract/variables" as *;
+
+.name-search-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  column-gap: 2em;
+  padding-bottom: 2em;
+  h3,
+  h2 {
+    font-size: 1.15rem;
+  }
+
+  button {
+    padding: 0.5em 0.75em;
+    color: $whiteAccent;
+    background-color: $mediumAccent;
+    border: none;
+    border-radius: 0.5em;
+    margin: 0.75em 0;
+  }
+  .not-found-text {
+    grid-column: 1 / 3;
+  }
+  .name-container {
+    margin: 1em 0;
+    h2 {
+      width: 120%;
+    }
+    label {
+      input {
+        margin: 0.5em 0;
+        width: 100%;
+      }
+    }
+    ul {
+      li {
+        list-style-type: none;
+      }
+    }
+  }
+}

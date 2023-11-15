@@ -1,0 +1,170 @@
+@use "../../Sass/abstract/variables" as *;
+
+.admin-add-movie-page-wrapper {
+  // position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+}
+
+.new-movie-form {
+  display: grid;
+  gap: 2em;
+  padding-bottom: 3em;
+
+  button {
+    font-family: "Montserrat", sans-serif;
+  }
+
+  .add-movie-btn {
+    width: 10em;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    margin: 1.5em auto;
+    border: none;
+    background-color: $mediumAccent;
+    color: $whiteAccent;
+    font-size: 1.25rem;
+    font-weight: bold;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  .grid-column {
+    display: grid;
+    gap: 2em;
+    .length-and-age-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      label {
+        position: relative;
+        width: 34%;
+      }
+      label:last-child {
+        margin-top: 1em;
+      }
+    }
+  }
+  .second-column {
+    margin-top: 2em;
+  }
+  .second-column > label {
+    margin: 2em 0;
+    border-top: 1px solid $lightAccent;
+    padding-top: 1em;
+    ul {
+      li {
+        cursor: pointer;
+        list-style-type: none;
+      }
+    }
+  }
+
+  .second-column > label:last-of-type {
+    border-bottom: 1px solid $lightAccent;
+    padding-bottom: 3em;
+    h3 {
+      margin-bottom: 1em;
+    }
+  }
+
+  .img-file-container {
+    position: relative;
+    label {
+      display: inline-block;
+      padding: 12px 18px;
+      cursor: pointer;
+      border-radius: 5px;
+      background-color: $mediumAccent;
+      font-size: 16px;
+      font-weight: bold;
+      color: $whiteAccent;
+    }
+    input[type="file"] {
+      position: absolute;
+      z-index: -1;
+      top: 10px;
+      left: 6.35em;
+      font-size: 17px;
+      color: #b8b8b8;
+    }
+  }
+
+  label {
+    position: relative;
+    display: grid;
+    align-items: center;
+
+    .category-list {
+      li {
+        list-style-type: none;
+        cursor: pointer;
+      }
+    }
+
+    .search-cat-btn {
+      width: 5em;
+      padding: 0.5em 0;
+      margin: 2em auto;
+      border-radius: 0.5em;
+      border: none;
+      color: $whiteAccent;
+      background-color: $mediumAccent;
+    }
+
+    .add-cat-container {
+      margin: 0.5em 0;
+      button {
+        width: 3em;
+        padding: 0.5em 0;
+        margin: 0.75em 0;
+        color: $whiteAccent;
+        background-color: $mediumAccent;
+        border: none;
+        border-radius: 0.5em;
+      }
+
+      button:last-child {
+        background-color: $darkAccent;
+        margin-left: 2em;
+      }
+    }
+
+    span {
+      margin-bottom: 0.5em;
+    }
+
+    input,
+    textarea,
+    select {
+      padding: 0.5em;
+      background-color: $secBackground;
+      color: $lightAccent;
+    }
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .new-movie-form {
+    // grid-template-columns: 1fr 1fr;
+    width: 180%;
+    gap: 1em;
+
+    .grid-column {
+      .length-and-age-container {
+        label {
+          width: 30%;
+        }
+        label:last-child {
+          margin-top: 0;
+        }
+      }
+      label {
+        span {
+          margin-bottom: 1em;
+        }
+      }
+    }
+  }
+}

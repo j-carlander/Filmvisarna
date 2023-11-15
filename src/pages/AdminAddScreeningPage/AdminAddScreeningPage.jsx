@@ -75,13 +75,17 @@ export function AdminAddScreeningPage() {
 
   return (
     <div className="add-screening-page">
+      <h2>Lägg till visning</h2>
       <form className="form-wrapper" onSubmit={onSubmit}>
+        <label>Datum och tid för visning:</label>
         <input
           className="date-input"
           name="date"
           type="datetime-local"
           onChange={onChange}
-          value={values.date}></input>
+          value={values.date}
+        />
+        <label>Välj film:</label>
         <select className="select-element" name="movieid" onChange={onChange}>
           {movies.map((movie) => (
             <option value={movie.id} key={movie.id}>
@@ -89,6 +93,7 @@ export function AdminAddScreeningPage() {
             </option>
           ))}
         </select>
+        <label>Välj salong:</label>
         <select className="select-element" name="theatreid" onChange={onChange}>
           {theatre.map((theatre) => (
             <option value={theatre.id} key={`theatre${theatre.id}`}>
@@ -96,6 +101,7 @@ export function AdminAddScreeningPage() {
             </option>
           ))}
         </select>
+        <label>Välj talspråk:</label>
         <select
           className="select-element"
           name="languageid"
@@ -106,6 +112,7 @@ export function AdminAddScreeningPage() {
             </option>
           ))}
         </select>
+        <label>Välj undertext:</label>
         <select
           className="select-element"
           name="subtitleid"
