@@ -16,6 +16,7 @@ export function Seats({
   const [seats, setSeats] = useState([]);
   const [takenSeats, setTakenSeats] = useState([]);
   const [hoveredSeat, setHoveredSeat] = useState();
+  const [clickedSeatNumber, setClickedSeatNumber] = useState();
 
   useEffect(() => {
     async function fetchTakenSeats() {
@@ -81,6 +82,8 @@ export function Seats({
             individual,
             hoveredSeat,
             setHoveredSeat,
+            clickedSeatNumber,
+            setClickedSeatNumber,
           }}
         />
       );
