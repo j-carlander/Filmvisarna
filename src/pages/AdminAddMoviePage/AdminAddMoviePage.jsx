@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchHelper } from "../../utils/fetchHelper";
 import { AdminFetchingNames } from "../../components/AdminFetchingNames/AdminFetchingNames";
+import { AddMovieModal } from "../../components/AddMovieModal/AddMovieModal";
 
 const movieSetup = {
   title: "",
@@ -10,7 +11,7 @@ const movieSetup = {
   ageLimit: 0,
   directorId: 0,
   releaseDate: "",
-  languageid: [],
+  languageIds: [],
   categoryIds: [],
   actorNames: [],
   base64Img: "",
@@ -19,7 +20,7 @@ const movieSetup = {
 export function AdminAddMoviePage() {
   const [movie, setMovie] = useState(movieSetup);
   const [names, setNames] = useState([]);
-  const [languages, setLanguages] = useState([{ id: 0, language: "sv" }]);
+  const [languages, setLanguages] = useState([]);
   const [categories, setCategories] = useState([]);
   const [director, setDirector] = useState(undefined);
   const [catSearch, setCatSearch] = useState("");
@@ -28,6 +29,7 @@ export function AdminAddMoviePage() {
   const [addCat, setAddCat] = useState(false);
   const [languageNotFound, setLanguageNotFound] = useState(false);
   const [addedLanguage, setAddedLanguage] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   function handleChange(e) {
     setMovie((movie) => ({ ...movie, [e.target.name]: e.target.value }));
@@ -35,6 +37,8 @@ export function AdminAddMoviePage() {
 
   function onActorClick(id) {
     setNames((old) => old.filter((nameObject) => nameObject.id !== id));
+    const filteredActors = movie.actorNames.filter((actorId) => actorId !== id);
+    setMovie((old) => ({ ...old, actorNames: filteredActors }));
   }
 
   function handleSetDirector(nameObject) {
@@ -66,6 +70,7 @@ export function AdminAddMoviePage() {
 
     if (resp.status < 400) {
       console.log(json);
+      setModalOpen(true);
     }
   }
 
@@ -109,36 +114,45 @@ export function AdminAddMoviePage() {
   }
 
   async function onSearchLanguageClick() {
-    const response = await fetchHelper(`/searchlanguages?q=${langSearch}`, "get");
+    const response = await fetchHelper(
+      `/searchlanguages?q=${langSearch}`,
+      "get"
+    );
     const data = await response.json();
-    console.log(data)
+    console.log(data);
 
     if (data.length === 0) {
-        setLanguageNotFound(true);
+      setLanguageNotFound(true);
     } else {
       if (response.status < 400) {
-        setLanguageNotFound(false)
+        setLanguageNotFound(false);
         setLanguages((old) => [...old, ...data]);
-        const oldLang = movie.languageid
+        const oldLang = movie.languageIds;
         setMovie((old) => ({
           ...old,
-          languageid: [...oldLang, data[0].id],
+          languageIds: [...oldLang, data[0].id],
         }));
         setLangSearch("");
       }
     }
   }
 
+  function onLangClick(id) {
+    const newLang = movie.languageIds.filter((lang) => lang !== id);
+    setMovie((old) => ({ ...old, languageIds: newLang }));
+    setLanguages((old) => old.filter((lang) => lang.id !== id));
+  }
+
   async function onSearchAddLanguageClick() {
     const response = await fetchHelper(`/addLanguages`, "post", {
-      language: addLangSearch
+      language: addLangSearch,
     });
     if (response.status < 400) {
-      setAddedLanguage(true)
+      setAddedLanguage(true);
       setLangSearch("");
     }
   }
-  
+
   useEffect(() => {
     let timeoutId; // Variable to store timeout ID
 
@@ -157,7 +171,6 @@ export function AdminAddMoviePage() {
     return () => {
       clearTimeout(timeoutId); // Clear the timeout when the component unmounts or re-renders
     };
-
   }, [languageNotFound, addedLanguage]);
 
   // TODO:
@@ -236,55 +249,103 @@ export function AdminAddMoviePage() {
               />
             </label>
           </div>
-          <label htmlFor="">
-            <span>Välj regissör:</span>
+        </div>
+        <div className="grid-column second-column">
+          <label>
+            <h3>Välj regissör:</h3>
             <AdminFetchingNames onSetName={handleSetDirector} />
             <span>
-              Nuvarande regisör: {director || "Ingen regisör är vald!"}
+              <strong>Vald regissör</strong>:
             </span>
+            {director || <em>Ingen regissör är vald!</em>}
           </label>
-        </div>
-        <div className="grid-column">
-          <label htmlFor="">
-          <span>Sök språk/textspråk:</span>
-          <input 
-              placeholder="Sök språk"
-              onChange={(e) => setLangSearch(e.target.value)}
-              value={langSearch}
-              maxLength={3}
-            />
-            {languageNotFound && <p>Språk ej hittat!</p>}
-            <button
-              className="search-cat-btn"
-              onClick={onSearchLanguageClick}
-              type="button">
-              Sök
-            </button>
-            <span>Lägg till ny språk:</span>
-            <input 
-                placeholder="Lägg till nytt språk"
-                onChange={(e) => setAddLangSearch(e.target.value)}
-                value={addLangSearch}
-                maxLength={3}
-              />
-              {addedLanguage && <p>Språk Har Lagts In I Databasen</p>}
-              <button
-                className="search-cat-btn"
-                onClick={onSearchAddLanguageClick}
-                type="button">
-                Sök
-              </button>
-            <span>Välj språk:</span>
-            <select name="languageid" onChange={handleChange} multiple required>
-              {languages.map((language) => (
-                <option value={language.id} key={`language_${language.id}`}>
-                  {language.language}
-                </option>
+          <label>
+            <h3>Välj skådespelare:</h3>
+            <AdminFetchingNames onSetName={handleAddActors} />
+            <span>
+              <strong>Valda namn</strong>: (Klicka på ett namn för att ta bort
+              det)
+            </span>
+            {names.length === 0 && (
+              <em>Du har inte lagt till några skådespelare</em>
+            )}
+            <ul
+              name="actorNames"
+              className="category-list"
+              onChange={handleChange}
+              required>
+              {names.map((name) => (
+                <li
+                  value={name.id}
+                  key={`actor_${name.id}`}
+                  onClick={() => onActorClick(name.id)}>
+                  {name.name}
+                </li>
               ))}
-            </select>
+            </ul>
           </label>
-          <label htmlFor="">
-            <span>Välj en eller flera kategorier:</span>
+
+          <label>
+            <h3>Välj språk:</h3>
+            <div className="name-search-container">
+              <div className="name-container">
+                <label>
+                  <span>Sök språk:</span>
+                  <input
+                    placeholder="Sök språk"
+                    onChange={(e) => setLangSearch(e.target.value)}
+                    value={langSearch}
+                    maxLength={3}
+                  />
+                </label>
+                <button
+                  className="search-cat-btn"
+                  onClick={onSearchLanguageClick}
+                  type="button">
+                  Sök
+                </button>
+
+                {languageNotFound && <p>Språk ej hittat!</p>}
+              </div>
+              <div className="name-container">
+                <label>
+                  <span>Lägg till nytt språk:</span>
+                  <input
+                    placeholder="Lägg till nytt språk"
+                    onChange={(e) => setAddLangSearch(e.target.value)}
+                    value={addLangSearch}
+                    maxLength={3}
+                  />
+                </label>
+                <button
+                  className="search-cat-btn"
+                  onClick={onSearchAddLanguageClick}
+                  type="button">
+                  Lägg till
+                </button>
+
+                {addedLanguage && <p>Språk har lagts in i databasen</p>}
+              </div>
+            </div>
+            <span>
+              <strong>Valda språk</strong>: (Klicka på ett språk för att ta bort
+              det)
+            </span>
+            {languages.length === 0 && <em>Du har inte valt några språk</em>}
+            <ul required>
+              {languages.map((language) => (
+                <li
+                  value={language.id}
+                  key={`language_${language.id}`}
+                  onClick={() => onLangClick(language.id)}>
+                  {language.language}
+                </li>
+              ))}
+            </ul>
+          </label>
+          <label>
+            <h3>Välj kategorier:</h3>
+            <span>Sök en kategori:</span>
             <input
               placeholder="Sök kategori"
               onChange={(e) => setCatSearch(e.target.value)}
@@ -312,10 +373,12 @@ export function AdminAddMoviePage() {
                 </button>
               </div>
             )}
-            {categories.length > 0 ? (
-              <span>Klicka på en kategori för att ta bort den</span>
-            ) : (
-              <span>Inga kategorier har lagts till!</span>
+            <span>
+              <strong>Valda kategorier</strong>: (Klicka på en kategori för att
+              ta bort den)
+            </span>
+            {categories.length === 0 && (
+              <em>Inga kategorier har lagts till!</em>
             )}
             <ul name="categoryIds" required className="category-list">
               {categories.map((category) => (
@@ -324,25 +387,6 @@ export function AdminAddMoviePage() {
                   key={`category_${category.id}`}
                   onClick={() => onRemoveCategory(category.id)}>
                   {category.category}
-                </li>
-              ))}
-            </ul>
-          </label>
-          <label htmlFor="">
-            <span>Välj några av de skådespelare som är med:</span>
-            <AdminFetchingNames onSetName={handleAddActors} />
-            <span>Klicka på ett namn för att ta bort det</span>
-            <ul
-              name="actorNames"
-              className="category-list"
-              onChange={handleChange}
-              required>
-              {names.map((name) => (
-                <li
-                  value={name.id}
-                  key={`actor_${name.id}`}
-                  onClick={() => onActorClick(name.id)}>
-                  {name.name}
                 </li>
               ))}
             </ul>
@@ -357,6 +401,7 @@ export function AdminAddMoviePage() {
           Lägg till film!
         </button>
       </form>
+      <AddMovieModal {...{ modalOpen, setModalOpen }} />
     </article>
   );
 }

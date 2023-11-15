@@ -8,7 +8,7 @@ export function validateBookingSearch(req, res, next) {
       return res.status(400).json({ error: "Ogiltigt bokningsnummer!" });
     }
 
-    if (!isCharCapital(q[0]) || !isCharCapital(q[1]) || !isCharCapital(q[5])) {
+    if (!isChar(q[0]) || !isChar(q[1]) || !isChar(q[5])) {
       return res.status(400).json({ error: "Ogiltigt bokningsnummer!" });
     }
 
@@ -20,10 +20,6 @@ export function validateBookingSearch(req, res, next) {
   next();
 }
 
-function isCharCapital(char) {
-  const charCode = char.charCodeAt(0);
-  if (charCode < 65 || charCode > 90) {
-    return false;
-  }
-  return true;
+function isChar(char) {
+  return /[a-zA-Z]/.test(char);
 }

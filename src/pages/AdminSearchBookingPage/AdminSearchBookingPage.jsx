@@ -28,7 +28,7 @@ export function AdminSearchBookingPage() {
   }
   return (
     <article>
-      <h2 className="admin-page-search-title">Sök efter bokningsnummer</h2>
+      <h2 className="admin-page-search-title">Sök efter bokning</h2>
       <form className="admin-page-search-form" onSubmit={searchBooking}>
         <div className="admin-page-relative-input">
           <label className="search-label" htmlFor="searchQuery">
@@ -39,7 +39,7 @@ export function AdminSearchBookingPage() {
             id="searchQuery"
             type="text"
             value={inputValue}
-            onChange={(e) => setInputValue(e.target.value.toLocaleUpperCase())}
+            onChange={(e) => setInputValue(e.target.value)}
           />
           {inputValue ? (
             <button

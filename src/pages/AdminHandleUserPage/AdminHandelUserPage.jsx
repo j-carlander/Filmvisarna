@@ -40,7 +40,7 @@ export function AdminHandleUserPage() {
             id="searchQuery"
             type="text"
             value={inputValue}
-            onChange={(e) => setInputValue(e.target.value.toLocaleUpperCase())}
+            onChange={(e) => setInputValue(e.target.value)}
           />
           {inputValue ? (
             <button
@@ -56,10 +56,10 @@ export function AdminHandleUserPage() {
         </button>
       </form>
       <div className="admin-page-search-result">
-      {searchResults.length > 0 && (
+        {searchResults.length > 0 && (
           <h3 className="admin-search-result-title">Resultat för sökning:</h3>
         )}
-      {searchResults.map((userResult, index) => (
+        {searchResults.map((userResult, index) => (
           <AdminDisplayUser key={index} userResult={userResult} />
         ))}
       </div>

@@ -1,6 +1,7 @@
 @use "../../Sass/abstract/variables" as *;
 
 .admin-add-movie-page-wrapper {
+  // position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,6 +46,28 @@
       }
     }
   }
+  .second-column {
+    margin-top: 2em;
+  }
+  .second-column > label {
+    margin: 2em 0;
+    border-top: 1px solid $lightAccent;
+    padding-top: 1em;
+    ul {
+      li {
+        cursor: pointer;
+        list-style-type: none;
+      }
+    }
+  }
+
+  .second-column > label:last-of-type {
+    border-bottom: 1px solid $lightAccent;
+    padding-bottom: 3em;
+    h3 {
+      margin-bottom: 1em;
+    }
+  }
 
   .img-file-container {
     position: relative;
@@ -83,7 +106,7 @@
     .search-cat-btn {
       width: 5em;
       padding: 0.5em 0;
-      margin: 1em auto;
+      margin: 2em auto;
       border-radius: 0.5em;
       border: none;
       color: $whiteAccent;

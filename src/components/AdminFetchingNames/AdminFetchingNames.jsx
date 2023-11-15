@@ -6,6 +6,7 @@ export function AdminFetchingNames({ onSetName }) {
   const [names, setNames] = useState([]);
   const [newName, setNewName] = useState("");
   const [selectedName, setSelectedName] = useState("");
+  const [foundNames, setFoundNames] = useState(true);
 
   async function searchName() {
     if (!inputValue) return;
@@ -15,6 +16,7 @@ export function AdminFetchingNames({ onSetName }) {
       const resJson = await response.json();
       console.log(resJson);
       setNames(resJson);
+      setFoundNames(resJson.length > 0);
     }
   }
 
@@ -45,13 +47,13 @@ export function AdminFetchingNames({ onSetName }) {
   return (
     <div className="name-search-container">
       <div className="name-container">
-        <h2>Sök efter namn</h2>
         <label>
-          <span>Namn:</span>
+          <span>Sök efter namn:</span>
           <input
             type="text"
             value={inputValue}
-            onChange={(e) => setInputValue(e.target.value.toLocaleUpperCase())}
+            placeholder="Skriv ett namn..."
+            onChange={(e) => setInputValue(e.target.value)}
           />
         </label>
         <button type="button" onClick={searchName}>
@@ -60,13 +62,13 @@ export function AdminFetchingNames({ onSetName }) {
       </div>
 
       <div className="name-container">
-        <h2>Lägg till nytt namn</h2>
         <label>
-          <span>Nytt namn:</span>
+          <span>Lägg till nytt namn:</span>
           <input
             type="text"
             value={newName}
-            onChange={(e) => setNewName(e.target.value.toLocaleUpperCase())}
+            placeholder="Skriv ett namn..."
+            onChange={(e) => setNewName(e.target.value)}
           />
         </label>
         <button type="button" onClick={addNewName}>
@@ -74,24 +76,31 @@ export function AdminFetchingNames({ onSetName }) {
         </button>
       </div>
 
-      <div className="name-container">
-        <h3>Resultat - Välj i listan:</h3>
-        <ul>
-          {names.map((nameVal, index) => (
-            <li key={index}>
-              <button
-                type="button"
-                onClick={() => {
-                  handleNameSelect(nameVal.name);
-                  onSetName(nameVal);
-                }}>
-                {nameVal.name}
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div>{selectedName && <p>Valt namn: {selectedName}</p>}</div>
+      {!foundNames && (
+        <span className="not-found-text">
+          Vi hittade inga namn på den sökningen
+        </span>
+      )}
+      {names.length > 0 && (
+        <div className="name-container">
+          <h4>Resultat - Välj i listan:</h4>
+          <ul>
+            {names.map((nameVal, index) => (
+              <li key={index}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    handleNameSelect(nameVal.name);
+                    onSetName(nameVal);
+                  }}>
+                  {nameVal.name}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+      {/* <div>{selectedName && <p>Valt namn: {selectedName}</p>}</div> */}
     </div>
   );
 }

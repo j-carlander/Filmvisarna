@@ -1,14 +1,17 @@
 @use "../../Sass/abstract/variables" as *;
 
 .Moviemodal-wrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
   box-shadow: 0 0 100px 200px rgba(12, 12, 12, 0.493);
 }
 .modal {
   display: block;
-  position: fixed;
-  top: 5em;
-  left: 10%;
-  right: 10%;
+  // position: fixed;
+  // top: 5em;
+  // left: 10%;
+  // right: 10%;
   margin: 0 auto;
   border: 1px solid $secBackground;
   // transform: translate(-50%, -50%);
@@ -21,12 +24,16 @@
 
 .modal-content {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
 }
 
 .close-btn {
-  position: absolute;
-  top: 0;
-  right: 0;
+  // position: absolute;
+  // top: 0;
+  // right: 0;
   padding: 25px;
   border-radius: 15px;
   background-color: $mediumAccent;

@@ -3,11 +3,12 @@
 .admin-page-header {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
 }
 
 .admin-page-title {
   padding: 1em;
+  text-align: left;
 }
 
 .admin-page-wrapper {
@@ -79,10 +80,17 @@
   border-radius: 0.5em;
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1150px) {
   .admin-page-aside {
+    position: sticky;
     max-width: 250px;
     min-height: calc(100vh - 105px);
+  }
+
+  .admin-page-main {
+    margin-top: 0;
+    height: calc(100vh - 105px);
+    overflow-y: scroll;
   }
 
   .admin-page-wrapper {

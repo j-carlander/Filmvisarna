@@ -52,14 +52,14 @@ export const adminPages = [
     element: <AdminAddScreeningPage />,
   },
   {
+    path: "/admin/screenings",
+    label: "Ta bort visning",
+    element: <AdminMoviesPage />,
+  },
+  {
     path: "/admin/users",
     label: "Hantera användare",
     element: <AdminHandleUserPage />,
-  },
-  {
-    path: "/admin/screenings",
-    label: "Ta bort visningar",
-    element: <AdminMoviesPage />,
   },
   {
     path: "/admin/screenings/:movieid",
