@@ -10,8 +10,7 @@ const movieSetup = {
   ageLimit: 0,
   directorId: 0,
   releaseDate: "",
-  languageid: 0,
-  subtitleid: 0,
+  languageid: [],
   categoryIds: [],
   actorNames: [],
   base64Img: "",
@@ -24,7 +23,11 @@ export function AdminAddMoviePage() {
   const [categories, setCategories] = useState([]);
   const [director, setDirector] = useState(undefined);
   const [catSearch, setCatSearch] = useState("");
+  const [langSearch, setLangSearch] = useState("");
+  const [addLangSearch, setAddLangSearch] = useState("");
   const [addCat, setAddCat] = useState(false);
+  const [languageNotFound, setLanguageNotFound] = useState(false);
+  const [addedLanguage, setAddedLanguage] = useState(false);
 
   function handleChange(e) {
     setMovie((movie) => ({ ...movie, [e.target.name]: e.target.value }));
@@ -93,7 +96,6 @@ export function AdminAddMoviePage() {
 
   async function onSearchCategoryClick() {
     const resp = await fetchHelper(`/searchgenre?q=${catSearch}`, "get");
-
     const json = await resp.json();
 
     if (resp.status < 400) {
@@ -106,7 +108,57 @@ export function AdminAddMoviePage() {
     }
   }
 
-  useEffect(() => {}, []);
+  async function onSearchLanguageClick() {
+    const response = await fetchHelper(`/searchlanguages?q=${langSearch}`, "get");
+    const data = await response.json();
+    console.log(data)
+
+    if (data.length === 0) {
+        setLanguageNotFound(true);
+    } else {
+      if (response.status < 400) {
+        setLanguageNotFound(false)
+        setLanguages((old) => [...old, ...data]);
+        const oldLang = movie.languageid
+        setMovie((old) => ({
+          ...old,
+          languageid: [...oldLang, data[0].id],
+        }));
+        setLangSearch("");
+      }
+    }
+  }
+
+  async function onSearchAddLanguageClick() {
+    const response = await fetchHelper(`/addLanguages`, "post", {
+      language: addLangSearch
+    });
+    if (response.status < 400) {
+      setAddedLanguage(true)
+      setLangSearch("");
+    }
+  }
+  
+  useEffect(() => {
+    let timeoutId; // Variable to store timeout ID
+
+    if (languageNotFound) {
+      timeoutId = setTimeout(() => {
+        setLanguageNotFound(false); // Remove the message after 1.5 seconds
+      }, 1500);
+    }
+
+    if (addedLanguage) {
+      timeoutId = setTimeout(() => {
+        setAddedLanguage(false);
+      }, 1500);
+    }
+
+    return () => {
+      clearTimeout(timeoutId); // Clear the timeout when the component unmounts or re-renders
+    };
+
+  }, [languageNotFound, addedLanguage]);
 
   // TODO:
   // useEffect to fetch and set languages
@@ -194,20 +246,38 @@ export function AdminAddMoviePage() {
         </div>
         <div className="grid-column">
           <label htmlFor="">
+          <span>Sök språk/textspråk:</span>
+          <input 
+              placeholder="Sök språk"
+              onChange={(e) => setLangSearch(e.target.value)}
+              value={langSearch}
+              maxLength={3}
+            />
+            {languageNotFound && <p>Språk ej hittat!</p>}
+            <button
+              className="search-cat-btn"
+              onClick={onSearchLanguageClick}
+              type="button">
+              Sök
+            </button>
+            <span>Lägg till ny språk:</span>
+            <input 
+                placeholder="Lägg till nytt språk"
+                onChange={(e) => setAddLangSearch(e.target.value)}
+                value={addLangSearch}
+                maxLength={3}
+              />
+              {addedLanguage && <p>Språk Har Lagts In I Databasen</p>}
+              <button
+                className="search-cat-btn"
+                onClick={onSearchAddLanguageClick}
+                type="button">
+                Sök
+              </button>
             <span>Välj språk:</span>
             <select name="languageid" onChange={handleChange} multiple required>
               {languages.map((language) => (
                 <option value={language.id} key={`language_${language.id}`}>
-                  {language.language}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label htmlFor="">
-            <span>Välj textspråk:</span>
-            <select name="subtitleid" onChange={handleChange} multiple required>
-              {languages.map((language) => (
-                <option value={language.id} key={`subtitle_${language.id}`}>
                   {language.language}
                 </option>
               ))}
