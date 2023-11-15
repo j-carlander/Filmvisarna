@@ -1,0 +1,28 @@
+@use "../../Sass/abstract/variables" as *;
+
+.admin-page-search-container {
+  .admin-page-search-title {
+  }
+  .admin-page-search-form {
+    display: flex;
+    justify-content: center;
+
+    .admin-page-relative-input {
+      .admin-page-search-input {
+      }
+
+      .admin-page-reset-btn {
+        padding: 0.8em;
+        margin-top: 2.2em;
+      }
+    }
+  }
+
+  .admin-page-search-result {
+    .admin-search-result-title {
+      text-align: center;
+      color: $whiteAccent;
+      margin: 4em 0 2em 0;
+    }
+  }
+}

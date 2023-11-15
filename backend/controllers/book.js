@@ -80,7 +80,7 @@ export async function addBooking(req, res) {
   );
 
   res.status(201).json(bookingDetails);
-  updateSubscribers(screeningid, seats);
+  updateSubscribers(screeningid, seats, "book");
 }
 
 export async function getBookings(req, res) {
@@ -91,9 +91,20 @@ export async function getBookings(req, res) {
 
   const bookings = await getBookingsByUserId(payload.id);
 
+  const today = new Date();
+  today.setTime(today.getTime() - 15 * 60 * 1000);
+
+  const oldBookings = bookings.filter((booking) => booking.date <= today);
+  const currentBookings = bookings.filter((booking) => booking.date > today);
+
   for (let booking of bookings) {
     booking.date = formatDateTimeSwe(booking.date);
   }
 
-  res.send(bookings);
+  const result = {
+    oldBookings,
+    currentBookings,
+  };
+
+  res.send(result);
 }

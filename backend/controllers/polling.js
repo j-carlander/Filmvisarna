@@ -1,11 +1,17 @@
 const subscription = {};
 
-export function updateSubscribers(screeningid, seats) {
+export function updateSubscribers(screeningid, seats, event) {
   if (subscription[screeningid] === undefined) {
     return;
   }
+
+  const seatsArray = seats.map((seat) => ({
+    seatrow: seat.rowNumber,
+    seatnumber: seat.seatNumber,
+  }));
+
   for (let res of subscription[screeningid]) {
-    res.json(seats);
+    res.json({ seatsArray, event });
   }
 }
 
@@ -26,7 +32,6 @@ export function subscribe(req, res) {
     subscription[screeningid].splice(subscription[screeningid].indexOf(res), 1);
     if (subscription[screeningid].length === 0) {
       delete subscription[screeningid];
-      console.log(subscription);
     }
 
     clearTimeout(timer);

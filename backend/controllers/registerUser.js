@@ -1,5 +1,6 @@
 import bcrypt from "bcrypt";
 import { runQuery } from "../db.js";
+import { isPasswordComplex } from "../utils/checkPasswordComplexity.js";
 
 export async function registerHandler(req, res) {
   const { fname, lname, phone, email, password, repassword } = req.body;
@@ -14,6 +15,10 @@ export async function registerHandler(req, res) {
       .status(400)
       .json({ error: "Saknar mobilnummer och/eller email!" });
   }
+
+  if (isNaN(Number(phone)))
+    return res.status(400).json({ error: "Telefonnumret är inte ett nummer!" });
+
   if (!password || !repassword) {
     return res.status(400).json({ error: "Saknar lösenord!" });
   }
@@ -23,6 +28,11 @@ export async function registerHandler(req, res) {
     return res.status(400).json({ error: "Lösenorden matchar inte!" });
   }
 
+  if (!isPasswordComplex(password))
+    return res
+      .status(400)
+      .json({ error: "Lösenordet är inte tillräckligt komplicerat!" });
+
   bcrypt.hash(password, 10, async (err, hashedPassword) => {
     if (err) {
       console.error("Password hashing error: " + err.message);
@@ -30,7 +40,7 @@ export async function registerHandler(req, res) {
     }
 
     const insertRegisterQuery =
-      "INSERT INTO users (fname, lname, phone, email, password) VALUES (?, ?, ?, ?, ?)";
+      "INSERT INTO users (fname, lname, phone, email, password, role) VALUES (?, ?, ?, ?, ?, 'user')";
 
     try {
       const result = await runQuery(insertRegisterQuery, [

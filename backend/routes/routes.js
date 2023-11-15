@@ -31,6 +31,34 @@ import { checkSearchQuery } from "../middleware/checkSearchQuery.js";
 import { getTicketTypes } from "../controllers/getTicketTypes.js";
 import { validateData } from "../middleware/checkSentData.js";
 import { subscribe } from "../controllers/polling.js";
+import { checkSeatsForDeletion } from "../middleware/checkSeatsForDeletion.js";
+import { addScreeningCheck } from "../middleware/addScreeningCheck.js";
+import { isAdmin } from "../middleware/isAdmin.js";
+import { addScreeningRoute } from "../controllers/addScreening.js";
+import { getTheatresController } from "../controllers/theatre.js";
+import { addMovie } from "../controllers/addMovie.js";
+import { validateAddMovie } from "../middleware/checkAddMovie.js";
+import {
+  getLanguages,
+  getLanguagesByMovieId,
+} from "../controllers/Language.js";
+import { findLanguage } from "../controllers/findLanguage.js";
+import { addLanguage } from "../controllers/addLanguage.js";
+
+import { checkIfSuperAdmin } from "../middleware/checkIfSuperAdmin.js";
+import { findUser } from "../controllers/findUser.js";
+import { findName } from "../controllers/findName.js";
+import { removeScreeningCheck } from "../middleware/removeScreeningCheck.js";
+import { removeScreeningRoute } from "../controllers/removeScreening.js";
+
+import { updateUserRole } from "../controllers/updateUserRole.js";
+import { addName } from "../controllers/addNameController.js";
+import { checkName } from "../middleware/addNameCheck.js";
+import { searchGenreCheck } from "../middleware/genreSearchCheck.js";
+import { searchGenre } from "../controllers/genreSearchController.js";
+import { addGenreCheck } from "../middleware/addGenreCheck.js";
+import { addGenreController } from "../controllers/addGenreController.js";
+
 const router = express.Router();
 
 // Route to check which seats are taken on a specific screening
@@ -38,9 +66,6 @@ router.get("/takenseats/:screeningid", checkScreeningId, getTakenseats);
 
 // Route to get all screening for a specific movie
 router.get("/moviescreenings/:movieid", getScreeningInfo);
-
-// Route to search for a booking by query
-router.get("/bookinginfo", validateBookingSearch, findBooking);
 
 // Route to get a list of all movies
 router.get("/movies", checkMovieFilterQueries, getMovies);
@@ -60,6 +85,9 @@ router.get(
   checkScreeningFilter,
   getScreeningsByDate
 );
+
+//Route to get all languages
+router.get("/languages", getLanguages);
 
 // Route to get all tickettypes
 router.get("/tickettypes", getTicketTypes);
@@ -95,9 +123,46 @@ router.post(
 );
 
 // Route to delete a booking
-router.delete("/booking", deleteBooking);
+router.delete("/booking", checkSeatsForDeletion, deleteBooking);
+
+// Route to delete a screening
+router.delete(
+  "/removescreening/:screeningId",
+  isAdmin,
+  removeScreeningCheck,
+  removeScreeningRoute
+);
 
 // Route to get current logged in users bookings
 router.get("/currentUser/bookings", getBookings);
+
+router.post("/addscreening", isAdmin, addScreeningCheck, addScreeningRoute);
+
+router.get("/language/:movieid", isAdmin, getLanguagesByMovieId);
+
+router.post("/addname", isAdmin, checkName, addName);
+
+router.get("/searchgenre", isAdmin, searchGenreCheck, searchGenre);
+
+router.post("/addgenre", isAdmin, addGenreCheck, addGenreController);
+
+//Route to add a language.
+router.post("/addLanguages", isAdmin, addLanguage);
+
+router.get("/theatres", isAdmin, getTheatresController);
+
+// Route to search for a booking by query
+router.get("/bookinginfo", isAdmin, validateBookingSearch, findBooking);
+router.get("/users", checkIfSuperAdmin, findUser);
+
+// Route to search for actors / directors
+router.get("/namesearch", isAdmin, findName);
+
+// Route to search for languages
+router.get("/searchlanguages", isAdmin, findLanguage);
+
+router.put("/users", checkIfSuperAdmin, updateUserRole);
+
+router.post("/addmovie", isAdmin, validateAddMovie, addMovie);
 
 export default router;

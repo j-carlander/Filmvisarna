@@ -1,0 +1,82 @@
+@use "../../Sass/abstract/variables" as *;
+
+.adminscreening-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2em;
+  position: relative;
+}
+
+.adminscreening-left {
+  text-align: left;
+}
+
+.adminscreening-left,
+.adminscreening-right {
+  margin-bottom: 2.5em;
+}
+
+.adminscreening-flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.adminscreening-time {
+  margin-right: 0.5em;
+  font-size: 1rem;
+}
+
+.adminscreening-lang {
+  font-size: 0.75rem;
+  padding-top: 0.5em;
+}
+
+.adminscreening-book-btn {
+  background-color: darkred;
+  color: $whiteAccent;
+
+  padding: 1em 2.7em;
+
+  border-radius: 1000px;
+  border: transparent 1px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.adminscreening-seats {
+  padding-top: 1em;
+  font-size: 0.75rem;
+}
+.adminscreening-book-btn {
+  transition: 0.4s ease;
+}
+.adminscreening-btn:hover {
+  scale: 1.05;
+}
+
+.adminscreening-dialog[open] {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+
+  padding: 2em;
+
+  background-color: $secBackground;
+  color: $lightAccent;
+
+  .adminscreening-book-btn {
+    margin-top: 2em;
+  }
+
+  p:nth-child(2) {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+}

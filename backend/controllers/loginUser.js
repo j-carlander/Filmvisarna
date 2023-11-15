@@ -30,6 +30,7 @@ export async function loginhandler(req, res) {
         const token = jwtUtil.createToken({
           id: foundUser[0].id,
           email: foundUser[0].email,
+          role: foundUser[0].role,
         });
         res.status(200).json({ message: "Inloggning", token });
       } else {

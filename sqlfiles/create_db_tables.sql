@@ -9,7 +9,8 @@ CREATE TABLE
         lname VARCHAR(255) NOT NULL,
         email VARCHAR(255) UNIQUE NOT NULL,
         phone VARCHAR(255) NOT NULL,
-        password VARCHAR(255) NOT NULL
+        password VARCHAR(255) NOT NULL,
+        role enum("user", "admin", "super") NOT NULL
     );
 
 CREATE TABLE
@@ -125,4 +126,13 @@ CREATE TABLE
             seatrow,
             seatnumber
         )
+    );
+
+    CREATE TABLE
+    movielanguages (
+        languageid INT NOT NULL,
+        movieid INT NOT NULL,
+        FOREIGN KEY (languageid) REFERENCES languages (id),
+        FOREIGN KEY (movieid) REFERENCES movies (id),
+        CONSTRAINT id PRIMARY KEY (languageid, movieid)
     );

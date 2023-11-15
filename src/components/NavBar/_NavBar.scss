@@ -5,6 +5,10 @@
   align-items: center;
   gap: 1em;
 
+  .logo-mini-img {
+    width: 45px;
+  }
+
   li {
     list-style: none;
 
@@ -50,7 +54,7 @@
       .burger-menu-list {
         display: flex;
         flex-direction: column;
-        gap: 0.7em;
+        gap: 1.5em;
         width: max-content;
       }
     }

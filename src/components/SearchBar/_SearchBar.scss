@@ -1,5 +1,15 @@
 @use "../../Sass/abstract/variables" as *;
 
+.wrapper-position-absolute {
+  @media screen and (max-width: 550px) {
+    position: absolute;
+    right: 0;
+    z-index: 5;
+    background-color: $secBackground;
+    width: 100vw;
+  }
+}
+
 .search-section {
   position: relative;
 }
@@ -51,32 +61,6 @@
   border: transparent;
 }
 
-.loading {
-  position: relative;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  background: conic-gradient(transparent 75%, $lightAccent);
-
-  animation: rotateLoading infinite 1s linear;
-
-  .loading-inner {
-    position: absolute;
-    inset: 5px;
-    border-radius: 50%;
-    background-color: $secBackground;
-  }
-}
-
-@keyframes rotateLoading {
-  0% {
-    rotate: 0deg;
-  }
-
-  100% {
-    rotate: 359deg;
-  }
-}
 .search-result-container {
   position: absolute;
   z-index: 10;
@@ -97,6 +81,9 @@
   gap: 1em;
   padding: 1em;
   background-color: $mainBackground;
+  cursor: pointer;
+  border-left: 3px solid transparent;
+  transition: all 0.3s;
 
   p {
     overflow: hidden;
@@ -111,4 +98,9 @@
       width: 100%;
     }
   }
+}
+
+.search-result-card:hover {
+  border-left: 3px solid $mediumAccent;
+  transition: all 0.3s;
 }

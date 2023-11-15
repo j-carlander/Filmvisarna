@@ -1,9 +1,9 @@
-import { findBookingByBookingNumber } from "../service/bookingservice.js";
+import { findBookingByQuery } from "../service/bookingservice.js";
 
 export async function findBooking(req, res) {
-  const { bookingNumber } = req.query;
+  const { q } = req.query;
 
-  const result = await findBookingByBookingNumber(bookingNumber);
+  const result = await findBookingByQuery(q);
   if (result.length == 0) {
     res.status(404).json({ error: "Bokningen hittades inte!" });
   } else {

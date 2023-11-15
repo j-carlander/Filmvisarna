@@ -1,12 +1,20 @@
 import { useNavigate } from "react-router-dom";
+import { useRef, useEffect } from "react";
 
-export default function BookingConfirmation({ bookingData, ref }) {
+export default function BookingConfirmation({ bookingData }) {
   const navigate = useNavigate();
   const dateArr = bookingData.date.split(". kl: ");
+  const ref = useRef();
 
   const time = dateArr[1];
 
   const date = dateArr[0];
+
+  useEffect(() => {
+    if (ref.current) {
+      ref.current.showModal();
+    }
+  }, [ref]);
 
   return (
     <dialog className="booking-confirmation-container" ref={ref}>

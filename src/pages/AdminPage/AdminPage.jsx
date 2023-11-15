@@ -1,68 +1,76 @@
 import { useState } from "react";
-import { fetchHelper } from "../../utils/fetchHelper";
-import { AdminDisplayBooking } from "../../components/AdminDisplayBooking/AdminDisplayBooking";
+import { adminPages } from "../../main";
+import sessionService from "../../utils/sessionService";
+import { NavLink, Navigate, Outlet, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 export function AdminPage() {
-  const [inputValue, setInputValue] = useState("");
-  const [result, setResult] = useState();
+  const [showMenu, setShowMenu] = useState(false);
+  const location = useLocation();
 
-  async function searchBooking(e) {
-    e.preventDefault();
+  useEffect(() => {
+    setShowMenu(false);
+  }, [location.pathname]);
 
-    if (!inputValue) return;
-
-    const res = await fetchHelper(
-      `/bookinginfo?bookingNumber=${inputValue}`,
-      "GET"
-    );
-    if (res.status === 200) {
-      const resJson = await res.json();
-      console.log(resJson);
-      return setResult(resJson[0]);
-    }
-
-    setResult({
-      error:
-        "Ogiltigt bokingsnummer, kontrollera bokningsnumret och försök igen!",
-    });
+  const token = sessionService.getToken();
+  let role = "user";
+  if (token) {
+    const payload = JSON.parse(atob(token.split(".")[1]));
+    role = payload.role;
   }
-
-  function resetForm() {
-    setInputValue("");
-    setResult(undefined);
+  if (role === "user") {
+    return <Navigate to={"/"} />;
   }
 
   return (
     <>
       <header className="admin-page-header">
         <h1 className="admin-page-title">Filmvisarna - Administrationssida</h1>
-        <form className="admin-page-search-form" onSubmit={searchBooking}>
-          <h2 className="admin-page-search-title">Sök efter bokningsnummer</h2>
-          <div className="admin-page-relative-input">
-            <input
-              className="admin-page-search-input"
-              type="text"
-              placeholder="Sök bokningsnummer..."
-              value={inputValue}
-              onChange={(e) =>
-                setInputValue(e.target.value.toLocaleUpperCase())
-              }
-            />
-            {inputValue ? (
-              <button
-                className="admin-page-reset-btn"
-                type="button"
-                onClick={resetForm}>
-                &#x2715;
-              </button>
-            ) : null}
-          </div>
-          <button type="submit" className="admin-page-search-btn">
-            Sök
-          </button>
-        </form>
       </header>
-      <AdminDisplayBooking result={result} />
+      <div className="admin-page-wrapper">
+        <aside className="admin-page-aside">
+          <button
+            className="admin-page-show-mobile-menu"
+            onClick={() => setShowMenu(!showMenu)}>
+            {showMenu ? (
+              <img src="/close.svg" alt="close menu" />
+            ) : (
+              <img src="/hamburger_menu.svg" alt="open menu" />
+            )}
+          </button>
+          <nav
+            className={
+              showMenu ? "admin-page-nav-open " : "admin-page-nav-close"
+            }>
+            <ul className="admin-page-nav-list">
+              <li>
+                {" "}
+                <NavLink to={"/"} end className={"admin-navlink"}>
+                  Till start
+                </NavLink>
+              </li>
+              {adminPages.map((page) => {
+                if (!("label" in page)) return null;
+                return (
+                  <li key={page.label}>
+                    <NavLink
+                      to={page.path}
+                      end
+                      className={({ isActive }) =>
+                        isActive ? "active-admin-navlink" : "admin-navlink"
+                      }>
+                      {page.label}
+                    </NavLink>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+        </aside>
+        <main className="admin-page-main">
+          <Outlet context={[role]} />
+        </main>
+      </div>
     </>
   );
 }
