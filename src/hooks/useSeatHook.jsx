@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import useSeatHoverHook from "./useSeatHoverHook";
 
 export function useSeatHook({
   takenSeats,
@@ -12,6 +13,14 @@ export function useSeatHook({
   clickedSeatNumber,
 }) {
   const [classNames, setClassnames] = useState("seat");
+  const [hover, hoverFail] = useSeatHoverHook({
+    rowNumber,
+    seatNumber,
+    totalTickets,
+    individual,
+    hoveredSeat,
+    takenSeats,
+  });
 
   useEffect(() => {
     function addThisSeat() {
@@ -73,36 +82,6 @@ export function useSeatHook({
       }
     }
 
-    let hover = false,
-      hoverFail = false;
-
-    function checkHoverCondition(condition) {
-      if (hoveredSeat.rowNumber === rowNumber && condition) {
-        if (thisTakenSeat) {
-          hoverFail = true;
-        } else {
-          hover = true;
-        }
-      }
-    }
-
-    if (individual && hoveredSeat !== undefined) {
-      checkHoverCondition(hoveredSeat.seatNumber === seatNumber);
-    }
-
-    if (!individual && hoveredSeat !== undefined) {
-      for (let i = 0; i < totalTickets; i++) {
-        if (hoveredSeat.seatNumber - i === 0) {
-          for (let j = 0; j <= totalTickets - i; j++) {
-            checkHoverCondition(hoveredSeat.seatNumber + j === seatNumber);
-          }
-          break;
-        } else {
-          checkHoverCondition(hoveredSeat.seatNumber - i === seatNumber);
-        }
-      }
-    }
-
     setClassnames(
       `seat${thisTakenSeat ? " taken-seat" : ""}${
         selected ? " selected-seat" : ""
@@ -119,6 +98,8 @@ export function useSeatHook({
     individual,
     hoveredSeat,
     clickedSeatNumber,
+    hover,
+    hoverFail,
   ]);
 
   return [classNames];

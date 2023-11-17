@@ -1,4 +1,4 @@
-import { useSeatHook } from "../../../hooks/seatHook";
+import { useSeatHook } from "../../../hooks/useSeatHook";
 
 export default function Seat({
   takenSeats,
