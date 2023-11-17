@@ -18,7 +18,7 @@ export function AdminDisplayUser({ userResult }) {
       ...prevUser,
       role: newRole,
     }));
-  };
+  }
 
   return (
     <article className="admin-display-userinfo">
