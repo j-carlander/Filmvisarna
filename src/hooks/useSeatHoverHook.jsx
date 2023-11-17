@@ -14,14 +14,9 @@ export default function useSeatHoverHook({
     setHover(false);
     setHoverFail(false);
 
-    function findThisSeat(list) {
-      return list.find(
-        (value) =>
-          value.seatrow === rowNumber && value.seatnumber === seatNumber
-      );
-    }
-
-    const thisTakenSeat = findThisSeat(takenSeats);
+    const thisTakenSeat = takenSeats.find(
+      (value) => value.seatrow === rowNumber && value.seatnumber === seatNumber
+    );
 
     function checkHoverCondition(condition) {
       if (hoveredSeat.rowNumber === rowNumber && condition) {
