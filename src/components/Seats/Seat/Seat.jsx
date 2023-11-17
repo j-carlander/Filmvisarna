@@ -26,9 +26,7 @@ export default function Seat({
     clickedSeatNumber,
   });
 
-  function onClick() {
-    if (totalTickets === 0) return;
-
+  function isSeatTaken() {
     const row = seats.find((el) => el.rownumber === rowNumber);
 
     const filteredTakenSeats = takenSeats.filter(
@@ -39,20 +37,29 @@ export default function Seat({
       const seat = filteredTakenSeats.find(
         (el) => el.seatnumber === seatNumber - i
       );
-      if (seat) return;
+      return seat !== undefined;
     }
-    if (individual) {
-      const thisSeat = selectedSeats.find(
-        (seat) => seat.rowNumber === rowNumber && seat.seatNumber === seatNumber
-      );
-      if (thisSeat) return;
-      setSelectedSeats((old) => {
-        if (old !== undefined && old.length === totalTickets) {
-          old.splice(0, 1);
-        }
+  }
 
-        return [...old, { rowNumber, seatNumber }];
-      });
+  function trySelectSeat() {
+    const thisSeat = selectedSeats.find(
+      (seat) => seat.rowNumber === rowNumber && seat.seatNumber === seatNumber
+    );
+    if (thisSeat) return;
+    setSelectedSeats((old) => {
+      if (old !== undefined && old.length === totalTickets) {
+        old.splice(0, 1);
+      }
+
+      return [...old, { rowNumber, seatNumber }];
+    });
+  }
+
+  function onClick() {
+    if (totalTickets === 0 || isSeatTaken()) return;
+
+    if (individual) {
+      trySelectSeat();
       return;
     }
     setClickedSeatNumber(seatNumber);
