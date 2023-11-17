@@ -13,12 +13,12 @@ import {
   getMovieDetailsController,
   getScreeningsByDate,
 } from "../controllers/moviedetailsController.js";
-import { validateBookingSearch } from "../middleware/searchbooking.js";
+import { validateBookingSearch } from "../middleware/searchBooking.js";
 import { findBooking } from "../controllers/findBooking.js";
 import { checkMovieFilterQueries } from "../middleware/checkMoviesFilter.js";
 import { checkToken } from "../middleware/checkToken.js";
 import { deleteBooking } from "../controllers/deleteBooking.js";
-import { theatreLayout } from "../controllers/theatrelayout.js";
+import { theatreLayout } from "../controllers/theatreLayout.js";
 import { checkScreeningFilter } from "../middleware/checkScreeningsFilter.js";
 
 import { loginhandler } from "../controllers/loginUser.js";
