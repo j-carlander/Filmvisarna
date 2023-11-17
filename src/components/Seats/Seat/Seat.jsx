@@ -37,8 +37,12 @@ export default function Seat({
       const seat = filteredTakenSeats.find(
         (el) => el.seatnumber === seatNumber - i
       );
-      return seat !== undefined;
+      if (seat !== undefined) {
+        return true;
+      }
     }
+
+    return false;
   }
 
   function trySelectSeat() {
