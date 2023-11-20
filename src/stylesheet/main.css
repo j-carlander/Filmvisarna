@@ -1735,11 +1735,11 @@ button {
   flex-direction: column;
   align-items: center;
 }
-.bookconfirm-wrapper .bookconfirm-interactions {
+.bookconfirm-wrapper .bookconfirm-interactions,
+.bookconfirm-wrapper .bookconfirm-form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
 }
 .bookconfirm-wrapper h1 {
   text-align: center;
