@@ -1,22 +1,27 @@
 import { useLocation, useNavigate, useParams, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { fetchHelper } from "../../utils/fetchHelper";
 import BookingConfirmation from "../../components/BookingConfirmation/BookingConfirmation";
 import sessionService from "../../utils/sessionService";
 import { Loading } from "../../components/Loading/Loading";
+import { useWindowInnerWidth } from "../../hooks/useWindowInnerWidth";
 
 export function BookingConfirmationPage() {
-  const { screeningId } = useParams();
-  const location = useLocation();
-  const token = sessionService.getToken();
-  const isLoggedIn = useState(token !== null)[0];
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const { selectedSeats, selectedTickets, data, individual } = location.state;
+  const windowWidth = useWindowInnerWidth();
   const [guestEmail, setGuestEmail] = useState("");
   const [confirmationData, setConfirmationData] = useState();
   const [serverError, setServerError] = useState("");
-  const payload = token ? JSON.parse(atob(token.split(".")[1])) : undefined;
   const [loading, setLoading] = useState(false);
+
+  const location = useLocation();
+  const { selectedSeats, selectedTickets, data, individual } = location.state;
+
+  const { screeningId } = useParams();
+
+  const token = sessionService.getToken();
+  const isLoggedIn = token !== null;
+
+  const payload = token ? JSON.parse(atob(token.split(".")[1])) : undefined;
 
   const navigate = useNavigate();
 
@@ -81,23 +86,12 @@ export function BookingConfirmationPage() {
     setLoading(false);
   }
 
-  useEffect(() => {
-    function handleResize() {
-      setWindowWidth(window.innerWidth);
-    }
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
   return (
     <div className="bookconfirm-wrapper">
       <h1>Bokningsöversikt</h1>
       <div className="bookconfirm-page">
         <div className="bookconfirm-screenings">
-          {windowWidth >= 801 && (
+          {windowWidth >= 850 && (
             <img
               className="bookconfirm-img"
               src={`/images/${screeningData.id}_w400.webp`}
@@ -139,7 +133,7 @@ export function BookingConfirmationPage() {
                   value={guestEmail}
                   onChange={(e) => setGuestEmail(e.target.value)}
                   onKeyDown={(e) => {
-                    if (e.key === 'Enter') {
+                    if (e.key === "Enter") {
                       handleBooking();
                     }
                   }}
