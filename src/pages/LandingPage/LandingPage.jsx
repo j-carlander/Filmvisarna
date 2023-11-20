@@ -30,7 +30,7 @@ export function LandingPage() {
       <section className="landingpage-card">
         <div className="landingpage-card-info">
           <h4>På bio nu</h4>
-          <Link to="/movies?upcoming=false">
+          <Link to="/filmer?upcoming=false">
             <p className="show-all">Visa alla</p>
           </Link>
         </div>
@@ -39,7 +39,7 @@ export function LandingPage() {
       <section className="landingpage-card">
         <div className="landingpage-card-info">
           <h4>Kommande</h4>
-          <Link to="/movies?upcoming=true">
+          <Link to="/filmer?upcoming=true">
             <p className="show-all">Visa alla</p>
           </Link>
         </div>

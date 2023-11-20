@@ -118,7 +118,7 @@ export function BookingPage() {
             (!individual ? getNonIndividualP() : getIndividualP())}
           <button
             onClick={() => {
-              navigate(`/bookingconfirmation/${screeningid}`, {
+              navigate(`/bokningsbekraftelse/${screeningid}`, {
                 state: { selectedSeats, selectedTickets, data, individual },
               });
             }}
