@@ -59,6 +59,12 @@ export function TicketPicker({ selectedTickets, setSelectedTickets, data }) {
     selectedOrdinarie,
   ]);
 
+  function formattedNumber() {
+    const total = selectedTickets.reduce((acc, current) => current.price + acc, 0);
+    const formattedTotal = total >= 1000 ? `${total.toString().slice(0, 1)} ${total.toString().slice(1)} kr` : `${total} kr`;
+    return formattedTotal;
+  }
+
   return (
     <section className="ticket-picker">
       <h2 className="picker-title">Välj antal biljetter</h2>
@@ -66,7 +72,7 @@ export function TicketPicker({ selectedTickets, setSelectedTickets, data }) {
       <strong className="total-cost-container">
         <span>Total kostnad:</span>
         <span>
-          {selectedTickets.reduce((acc, current) => current.price + acc, 0)} kr
+          {formattedNumber()}
         </span>
       </strong>
     </section>
