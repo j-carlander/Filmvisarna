@@ -1,3 +1,9 @@
+/**
+ * Controller for handling requests to add a movie
+ * sends response status 500 and an Internal server error message in Swedish on fail
+ * sends response status 201 and a message in Swedish that the movie was added on success
+ */
+
 import { addMovieService } from "../service/addMovieService.js";
 
 export async function addMovie(req, res) {
@@ -30,8 +36,8 @@ export async function addMovie(req, res) {
   });
 
   if (result.success) {
-    res.status(201).json({ message: "Movie har lagts till." });
+    res.status(201).json({ message: "Filmen har lagts till." });
   } else {
-    res.status(500).json({ error: "Internal server error" });
+    res.status(500).json({ error: "Internt serverfel!" });
   }
 }

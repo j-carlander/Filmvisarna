@@ -1,3 +1,11 @@
+/**
+ * Controller for handling requests to search for a language
+ * To be used by Admin or Super role only, checked in corresponding middleware
+ * sends response status 400 and a message in Swedish if no query was provided
+ * sends response status 500 and an Internal server error message in Swedish on fail
+ * sends response status 200 and the language information on success
+ */
+
 import { searchLanguage } from "./Language.js";
 
 export async function findLanguage(req, res) {
@@ -13,7 +21,6 @@ export async function findLanguage(req, res) {
       });
     }
   } catch (error) {
-    console.error(error);
-    return res.status(500).json({ error: "Internal server error" });
+    return res.status(500).json({ error: "Internt serverfel!" });
   }
 }
