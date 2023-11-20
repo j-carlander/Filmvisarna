@@ -45,7 +45,7 @@ export function AboutUs() {
         magiska i att gå på bio hos oss!
       </p>
       <img className="theatre-img" src="/movie-theatre.png" />
-      <h2 ref={contactRef} id="kontact">
+      <h2 ref={contactRef} id="kontakt">
         Kontakt
       </h2>
       <p className="contact-info">
