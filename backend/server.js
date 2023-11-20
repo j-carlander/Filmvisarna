@@ -19,10 +19,12 @@ app.get("/api/health", (req, res) => {
 
 app.use("/api", router);
 
+app.use("/images", express.static(join(__dirname, "..", "public", "images")));
+
 app.use(express.static(join(__dirname, "dist")));
 
 app.use("*", serveLimit, (req, res) => {
-  res.sendFile(join(__dirname, "/dist/index.html"));
+  res.sendFile(join(__dirname, "dist", "index.html"));
 });
 
 // Start the server
