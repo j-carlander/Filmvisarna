@@ -14,13 +14,12 @@ export function AdminHandleUserPage() {
 
   async function searchUser(e) {
     e.preventDefault();
+    setSearchResults([]);
     const res = await fetchHelper(`/users?q=${inputValue}`, "GET");
     if (res.status === 200) {
       const resJson = await res.json();
       setSearchResults(resJson);
     }
-    console.log(inputValue);
-    console.log(searchResults);
   }
 
   function resetForm() {
