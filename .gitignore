@@ -11,7 +11,7 @@ node_modules
 dist
 dist-ssr
 *.local
-backend/config/
+backend/config/keys
 public/images/
 public/movie-theatre.png
 

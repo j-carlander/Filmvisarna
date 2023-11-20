@@ -232,7 +232,7 @@ export function AdminAddMoviePage() {
                 required
                 onChange={handleChange}
                 value={movie.ageLimit}>
-                <option value={0}>alla</option>
+                <option value={0}>Barntillåtet</option>
                 <option value={7}>7 +</option>
                 <option value={11}>11 +</option>
                 <option value={15}>15 +</option>
