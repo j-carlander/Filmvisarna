@@ -7,7 +7,6 @@ export async function removeScreeningRoute(req, res) {
   await emailAllBookingsByScreeningService(screeningId);
 
   const result = await removeScreening(screeningId);
-  console.log(result);
   if (result.affectedRows !== 1) {
     return res.status(500).json({ error: "Internt serverfel!" });
   }

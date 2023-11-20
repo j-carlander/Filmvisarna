@@ -20,9 +20,6 @@ export default function UserBooking({ bookingData, setCurrentBookings }) {
     const data = await res.json();
     if (res.status < 400) {
       setCurrentBookings((old) => old.filter((el) => el !== bookingData));
-    } else {
-      console.log(data);
-    }
   }
 
   return (

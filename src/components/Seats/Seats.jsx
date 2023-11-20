@@ -49,7 +49,6 @@ export function Seats({
         }
       }
       if (response.status === 500) {
-        console.log("Abort subscription");
         abortSubscription = true;
       }
 
