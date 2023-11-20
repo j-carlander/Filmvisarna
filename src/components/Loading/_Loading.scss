@@ -9,6 +9,8 @@
 
   animation: rotateLoading infinite 1s linear;
 
+  z-index: 1000;
+
   .loading-inner {
     position: absolute;
     inset: 7px;

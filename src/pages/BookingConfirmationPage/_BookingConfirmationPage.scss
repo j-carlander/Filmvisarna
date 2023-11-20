@@ -12,11 +12,12 @@
   flex-direction: column;
   align-items: center;
 
-  .bookconfirm-interactions {
+  .bookconfirm-interactions,
+  .bookconfirm-form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    // width: 100%;
   }
 
   h1 {
@@ -191,23 +192,23 @@
     text-align: center;
     margin: 1em auto;
   }
-  .loading-screen{
+  .loading-screen {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
 
-  .confirm-button{
+  .confirm-button {
     transition: 0.4s ease;
   }
-  .confirm-button:hover{
+  .confirm-button:hover {
     scale: 1.05;
   }
-  .cancel-button{
+  .cancel-button {
     transition: 0.4s ease;
   }
-  .cancel-button:hover{
+  .cancel-button:hover {
     scale: 1.05;
   }
 }
