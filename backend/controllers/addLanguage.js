@@ -15,7 +15,6 @@ export async function addLanguage(req, res) {
 
     res.status(201).json(insertedLanguage);
   } catch (error) {
-    console.log("Fel vid lägg till språk:", error);
     res.status(500).json({ error: "Internt serverfel" });
   }
 }
