@@ -67,7 +67,7 @@ function htmlBody(title, screeningDate, seats, bookingNumber, cost, email) {
         Bokningsnummer: <span style="${spanStyle}">${bookingNumber}</span>
       </p>
       <p style="${pStyle}">
-      Att betala: <span style="${spanStyle}">${cost}</span>
+      Att betala: <span style="${spanStyle}">${cost} kr</span>
       </p>
       <a href="http://localhost:5173/cancel?bookingNumber=${bookingNumber}&email=${email}" style="${btnStyle}">
         Avboka
