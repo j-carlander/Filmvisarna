@@ -9,7 +9,7 @@ export function Footer() {
           <p>Adressen 8, 123 45</p>
           <p>Tel: 011-111 22 33</p>
           <p className="mail">Filmvisarna@mejl.com</p>
-          <Link to="./aboutus#find-us" className="link-no-style">
+          <Link to="./om-oss#hitta-hit" className="link-no-style">
             Hitta hit
           </Link>
         </div>

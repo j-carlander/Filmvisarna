@@ -1696,6 +1696,7 @@ button {
 .add-screening-page .form-wrapper button {
   padding: 0.5em;
   border-radius: 0.5em;
+  cursor: pointer;
 }
 .add-screening-page .form-wrapper button {
   background-color: #5a8f76;
@@ -2000,6 +2001,7 @@ button {
   border-radius: 0.25em;
   width: 12em;
   height: 2.25em;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 900px) {
@@ -2223,6 +2225,10 @@ h1 {
 .adminmovies-flex {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+}
+
+.adminmoviecard-btn {
+  padding: 0em 1.5em;
 }
 
 .adminscreening-details {

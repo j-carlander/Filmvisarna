@@ -7,9 +7,9 @@ export function AccountIcon() {
 
   const handleClick = () => {
     if (token) {
-      navigate("/myaccount");
+      navigate("/mitt-konto");
     } else {
-      navigate("/login");
+      navigate("/logga-in");
     }
   };
 

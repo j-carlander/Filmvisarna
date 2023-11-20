@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { AdminPromoteDemoteUserBtn } from "../AdminPromoteDemoteUserBtn/AdminPromoteDemoteUserBtn";
 
 export function AdminDisplayUser({ userResult }) {
+  const [currentUser, setCurrentUser] = useState(userResult);
   if (!userResult) return;
 
   if ("error" in userResult) {
@@ -10,14 +12,22 @@ export function AdminDisplayUser({ userResult }) {
       </article>
     );
   }
+
+  function updateUserRole(newRole) {
+    setCurrentUser((prevUser) => ({
+      ...prevUser,
+      role: newRole,
+    }));
+  }
+
   return (
     <article className="admin-display-userinfo">
-      <p>Förnamn: {userResult.fname}</p>
-      <p>Efternamn: {userResult.lname}</p>
-      <p>E-post: {userResult.email}</p>
-      <p>Telefon: {userResult.phone}</p>
-      <p>Roll: {userResult.role}</p>
-      <AdminPromoteDemoteUserBtn role={userResult.role} id={userResult.id} />
+      <p>Förnamn: {currentUser.fname}</p>
+      <p>Efternamn: {currentUser.lname}</p>
+      <p>E-post: {currentUser.email}</p>
+      <p>Telefon: {currentUser.phone}</p>
+      <p>Roll: {currentUser.role}</p>
+      <AdminPromoteDemoteUserBtn role={userResult.role} id={userResult.id} updateUserRole={updateUserRole} />
     </article>
   );
 }
