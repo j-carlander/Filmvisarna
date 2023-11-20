@@ -19,7 +19,7 @@ export function ScreeningDetails({ screening }) {
         <button
           className="screening-book-btn"
           onClick={() => {
-            navigate(`/booking/${screening.id}`);
+            navigate(`/bokning/${screening.id}`);
           }}>
           Boka
         </button>

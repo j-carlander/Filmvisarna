@@ -121,12 +121,12 @@ export function BookingConfirmationPage() {
           {!isLoggedIn && (
             <>
               <div className="login-signup-group">
-                <Link to="/login">
+                <Link to="/logga-in">
                   <button className="login-button">Logga in</button>
                 </Link>
                 <p>
                   Inget konto?{" "}
-                  <Link className="signup-button" to="/register">
+                  <Link className="signup-button" to="/registrera">
                     Bli medlem!
                   </Link>
                 </p>

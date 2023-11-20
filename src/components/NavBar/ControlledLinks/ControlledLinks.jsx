@@ -12,7 +12,7 @@ export function ControlledLinks() {
     <>
       {!token ? (
         <li>
-          <NavLink to={"/register"}>Bli medlem</NavLink>
+          <NavLink to={"/registrera"}>Bli medlem</NavLink>
         </li>
       ) : null}
       {role === "admin"|| role === "super" ? (
