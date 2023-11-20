@@ -11,13 +11,11 @@ export function ConfirmBookingCTA({ seats, screeningId, setConfirmationData }) {
   const token = sessionService.getToken();
   const payload = token ? JSON.parse(atob(token.split(".")[1])) : undefined;
 
-  const isLoggedIn = token !== null;
-
   const navigate = useNavigate();
 
   const bookingData = {
     seats: seats,
-    guestEmail: !isLoggedIn ? guestEmail : "",
+    guestEmail: !token ? guestEmail : "",
   };
 
   async function handleBooking(e) {
@@ -25,7 +23,7 @@ export function ConfirmBookingCTA({ seats, screeningId, setConfirmationData }) {
 
     setServerError("");
 
-    if (!isLoggedIn && guestEmail === "") {
+    if (!token && guestEmail === "") {
       return setServerError("Du måste vara inloggad eller ange din mail!");
     }
 
@@ -45,7 +43,7 @@ export function ConfirmBookingCTA({ seats, screeningId, setConfirmationData }) {
   return (
     <>
       <div className="bookconfirm-interactions">
-        {!isLoggedIn ? (
+        {!token ? (
           <>
             <div className="login-signup-group">
               <Link to="/logga-in">
@@ -62,7 +60,7 @@ export function ConfirmBookingCTA({ seats, screeningId, setConfirmationData }) {
           </>
         ) : null}
         <form onSubmit={handleBooking} className="bookconfirm-form">
-          {!isLoggedIn ? (
+          {!token ? (
             <div className="guest-info-group">
               <input
                 type="email"

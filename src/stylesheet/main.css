@@ -2036,6 +2036,7 @@ button {
   border-radius: 50%;
   background: conic-gradient(transparent 75%, #f7dba7);
   animation: rotateLoading infinite 1s linear;
+  z-index: 1000;
 }
 .loading .loading-inner {
   position: absolute;
