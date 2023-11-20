@@ -14,10 +14,11 @@ const SearchAddLanguage = () => {
       if (data && data.length === 0) {
         // If no languages found, add a new language
         await addLanguage();
+      }
     } catch (error) {
       console.error("Error searching for languages:", error);
     }
-  };
+  }
 
   const addLanguage = async () => {
     try {
