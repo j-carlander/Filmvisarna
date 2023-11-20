@@ -56,6 +56,12 @@ export default function AdminLanguages({
     }
   }
 
+  function onKeyDown(key, callback) {
+    if (key === "Enter") {
+      callback();
+    }
+  }
+
   return (
     <label>
       <h3>Välj språk:</h3>
@@ -67,6 +73,7 @@ export default function AdminLanguages({
               placeholder="Sök språk"
               onChange={(e) => setLangSearch(e.target.value)}
               value={langSearch}
+              onKeyDown={(e) => onKeyDown(e.key, onSearchLanguageClick)}
               maxLength={3}
             />
           </label>
@@ -86,6 +93,7 @@ export default function AdminLanguages({
               placeholder="Lägg till nytt språk"
               onChange={(e) => setAddLangSearch(e.target.value)}
               value={addLangSearch}
+              onKeyDown={(e) => onKeyDown(e.key, onSearchAddLanguageClick)}
               maxLength={3}
             />
           </label>

@@ -34,9 +34,7 @@ export function AdminAddMoviePage() {
     setMovie((movie) => ({ ...movie, [e.target.name]: e.target.value }));
   }
 
-  async function onSubmitMovie(e) {
-    e.preventDefault();
-
+  async function onSubmitMovie() {
     const resp = await fetchHelper("/addmovie", "post", movie);
 
     if (resp.status < 400) {
@@ -47,7 +45,7 @@ export function AdminAddMoviePage() {
   return (
     <article className="admin-add-movie-page-wrapper">
       <h2>Lägg till en ny film</h2>
-      <form className="new-movie-form" onSubmit={onSubmitMovie}>
+      <form className="new-movie-form" onSubmit={(e) => e.preventDefault()}>
         <div className="grid-column">
           <AdminInput
             {...{
@@ -135,7 +133,7 @@ export function AdminAddMoviePage() {
           />
           <AdminImage {...{ movie, setMovie }} />
         </div>
-        <button className="add-movie-btn" type="submit">
+        <button className="add-movie-btn" type="button" onClick={onSubmitMovie}>
           Lägg till film!
         </button>
       </form>

@@ -42,6 +42,12 @@ export default function AdminCategories({
     }
   }
 
+  function onKeyDown(key, callback) {
+    if (key === "Enter") {
+      callback();
+    }
+  }
+
   return (
     <label>
       <h3>Välj kategorier:</h3>
@@ -49,6 +55,7 @@ export default function AdminCategories({
       <input
         placeholder="Sök kategori"
         onChange={(e) => setCatSearch(e.target.value)}
+        onKeyDown={(e) => onKeyDown(e.key, onSearchCategoryClick)}
         value={catSearch}
       />{" "}
       <button
