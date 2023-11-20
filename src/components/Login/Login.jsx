@@ -73,7 +73,7 @@ export default function Login() {
             <span
               className="bli-medlem-underline"
               onClick={() => {
-                navigate("/register");
+                navigate("/registrera");
               }}>
               Bli medlem!
             </span>

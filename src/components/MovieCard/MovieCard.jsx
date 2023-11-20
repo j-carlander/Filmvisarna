@@ -5,7 +5,7 @@ import { ageLimitFormatter } from "../../utils/ageLimitFormatter";
 export function MovieCard({ movie }) {
   const navigate = useNavigate();
   function onMovieClick() {
-    navigate(`/movies/${movie.id}`);
+    navigate(`/filmer/${movie.id}`);
   }
   return (
     <article onClick={onMovieClick} className="movie-card">

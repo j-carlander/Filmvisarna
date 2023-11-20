@@ -24,19 +24,19 @@ import { AdminAddMoviePage } from "./pages/AdminAddMoviePage/AdminAddMoviePage.j
 
 export const pages = [
   { path: "/", element: <LandingPage /> },
-  { path: "/movies", label: "Filmer", element: <MoviesPage /> },
-  { path: "/movies/:movieid", element: <MovieDetailPage /> },
-  { path: "/aboutus#find-us", label: "Hitta hit", element: <AboutUs /> },
-  { path: "/aboutus#contact", label: "Kontakt", element: <AboutUs /> },
-  { path: "/aboutus", label: "Om oss", element: <AboutUs /> },
-  { path: "/booking/:screeningid", element: <BookingPage /> },
-  { path: "/login", element: <LoginPage /> },
-  { path: "/myaccount", element: <MyAccountPage /> },
+  { path: "/filmer", label: "Filmer", element: <MoviesPage /> },
+  { path: "/filmer/:movieid", element: <MovieDetailPage /> },
+  { path: "/om-oss#hitta-hit", label: "Hitta hit", element: <AboutUs /> },
+  { path: "/om-oss#kontakt", label: "Kontakt", element: <AboutUs /> },
+  { path: "/om-oss", label: "Om oss", element: <AboutUs /> },
+  { path: "/bokning/:screeningid", element: <BookingPage /> },
+  { path: "/logga-in", element: <LoginPage /> },
+  { path: "/mitt-konto", element: <MyAccountPage /> },
   {
-    path: "/bookingconfirmation/:screeningId",
+    path: "/bokningsbekraftelse/:screeningId",
     element: <BookingConfirmationPage />,
   },
-  { path: "/register", element: <RegisterPage /> },
+  { path: "/registrera", element: <RegisterPage /> },
   { path: "*", element: <PageNotFound /> },
 ];
 
@@ -47,26 +47,26 @@ export const adminPages = [
     element: <AdminSearchBookingPage />,
   },
   {
-    path: "/admin/addscreening",
+    path: "/admin/lagg-till-visning",
     label: "Lägg till visning",
     element: <AdminAddScreeningPage />,
   },
   {
-    path: "/admin/screenings",
+    path: "/admin/visningar",
     label: "Ta bort visning",
     element: <AdminMoviesPage />,
   },
   {
-    path: "/admin/users",
+    path: "/admin/anvandare",
     label: "Hantera användare",
     element: <AdminHandleUserPage />,
   },
   {
-    path: "/admin/screenings/:movieid",
+    path: "/admin/visningar/:movieid",
     element: <AdminScreeningsPage />,
   },
   {
-    path: "/admin/addmovie",
+    path: "/admin/lagg-till-film",
     label: "Lägg till en film",
     element: <AdminAddMoviePage />,
   },
