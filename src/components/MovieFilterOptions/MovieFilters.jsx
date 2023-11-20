@@ -4,7 +4,7 @@ import { fetchHelper } from "../../utils/fetchHelper";
 export default function MovieFilters({ setMovies, initialUpcoming }) {
   const [filters, setFilters] = useState({
     upcoming: initialUpcoming || "false",
-    age: "Välj ålder",
+    age: "Välj åldersgräns",
     date: "--",
   });
 
@@ -69,8 +69,8 @@ export default function MovieFilters({ setMovies, initialUpcoming }) {
           defaultValue={"--"}
           onChange={onSelectChange}
           className="filter-select">
-          <option value={"Välj ålder"}>Välj ålder</option>
-          <option value={0}>alla</option>
+          <option value={"Välj åldersgräns"}>Välj åldersgräns</option>
+          <option value={0}>Barntillåtet</option>
           <option value={7}>7</option>
           <option value={11}>11</option>
           <option value={15}>15</option>

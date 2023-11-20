@@ -2225,6 +2225,10 @@ h1 {
   grid-template-columns: 1fr 1fr 1fr;
 }
 
+.adminmoviecard-btn {
+  padding: 0em 1.5em;
+}
+
 .adminscreening-details {
   display: flex;
   justify-content: space-between;

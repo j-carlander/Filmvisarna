@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { fetchHelper } from "../../utils/fetchHelper";
 
-export function AdminPromoteDemoteUserBtn({ role, id }) {
+export function AdminPromoteDemoteUserBtn({ role, id, updateUserRole }) {
   const [roleState, setRoleState] = useState(role);
   async function handleClick() {
     const result = await fetchHelper("/users", "PUT", { role: roleState, id });
     if (result.status === 200) {
       setRoleState((role) => (role === "user" ? "admin" : "user"));
+      updateUserRole(roleState === "user" ? "admin" : "user");
     } else {
       const json = result.json();
       alert(json.error);
