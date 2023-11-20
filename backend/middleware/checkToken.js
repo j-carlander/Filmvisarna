@@ -11,7 +11,6 @@ export function checkToken(req, res, next) {
         res.locals.jwtPayload = payload;
       }
     } catch (error) {
-      console.log(error);
       if (error.message === "jwt malformed")
         return res.status(401).json({ error: "Missbildad token!" });
 

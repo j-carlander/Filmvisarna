@@ -19,8 +19,6 @@ export function AdminHandleUserPage() {
       const resJson = await res.json();
       setSearchResults(resJson);
     }
-    console.log(inputValue);
-    console.log(searchResults);
   }
 
   function resetForm() {

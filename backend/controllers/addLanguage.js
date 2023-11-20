@@ -4,8 +4,6 @@ export async function addLanguage(req, res) {
   try {
     const { language } = req.body;
 
-    console.log(language)
-
     if (!language) {
       return res.status(400).json({ error: "Språk är obligatoriskt" });
     }

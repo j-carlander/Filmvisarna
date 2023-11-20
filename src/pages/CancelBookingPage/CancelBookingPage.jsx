@@ -26,8 +26,6 @@ export function CancelBookingPage() {
 
     const json = await response.json();
 
-    console.log(json);
-
     if (response.status < 400) {
       setServerMsg("Din bokning har makulerats!");
     } else if (response.status === 404) {

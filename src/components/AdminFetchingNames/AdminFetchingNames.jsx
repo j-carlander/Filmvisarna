@@ -14,7 +14,6 @@ export function AdminFetchingNames({ onSetName }) {
     const response = await fetchHelper(`/namesearch?q=${inputValue}`, "get");
     if (response.status === 200) {
       const resJson = await response.json();
-      console.log(resJson);
       setNames(resJson);
       setFoundNames(resJson.length > 0);
     }

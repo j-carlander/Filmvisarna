@@ -17,8 +17,6 @@ export function AdminMoviesPage() {
     getAllMovies();
   }, []);
 
-  console.log(movies);
-
   return (
     <div className="adminmovies-wrapper">
       <h2>Välj film för att visa visningar</h2>
