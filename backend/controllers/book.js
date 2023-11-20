@@ -1,3 +1,13 @@
+/**
+ * Controller for handling requests to book seats on a screening of a movie
+ * sends response status 400 and a message in Swedish if the screening date is older than today
+ * sends response status 201 and the booking information on success
+ * 
+ * Controller for handling requests to get all bookings for a signed in user
+ * sends response status 400 and a message in Swedish if no jwt token is sent with the request
+ * sends response status 200 and all bookings for that user on success
+ */
+
 import { bookingNumberService } from "../service/bookingNumberService.js";
 import { bookingTickets } from "../service/bookingTicketsService.js";
 import { tickettypeService } from "../service/tickettypeService.js";

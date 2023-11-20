@@ -1,3 +1,10 @@
+/**
+ * Controller for handling requests to delete a booking by bookingnumber and guestmail or jwt
+ * sends response status 400 and a message in Swedish if no bookingnumber was provided with the request or no email in the case of guestmail
+ * sends response status 404 and a message in Swedish if the booking does not exist
+ * sends response status 200 and the booking information on success
+ */
+
 import {
   deleteBookingGuestService,
   deleteBookingUserService,
