@@ -5,6 +5,7 @@ import BookingConfirmation from "../../components/BookingConfirmation/BookingCon
 import sessionService from "../../utils/sessionService";
 import { Loading } from "../../components/Loading/Loading";
 import { useWindowInnerWidth } from "../../hooks/useWindowInnerWidth";
+import { formatSeatsForBookingConf } from "../../utils/formatSeatsForBookingConf";
 
 export function BookingConfirmationPage() {
   const windowWidth = useWindowInnerWidth();
@@ -30,24 +31,8 @@ export function BookingConfirmationPage() {
     title: data.title,
     date: data.screeningDate,
     price: selectedTickets.reduce((acc, current) => current.price + acc, 0),
+    seats: formatSeatsForBookingConf(individual, selectedSeats),
   };
-
-  if (individual) {
-    screeningData.seats = selectedSeats.map((seat, index) => (
-      <span key={`seat-${index}`}>
-        Rad: {seat.rowNumber} plats: {seat.seatNumber}
-      </span>
-    ));
-  } else {
-    screeningData.seats = ` rad ${selectedSeats[0].rowNumber} plats 
-    ${
-      selectedSeats.length === 1
-        ? selectedSeats[0].seatNumber
-        : `${selectedSeats[selectedSeats.length - 1].seatNumber} - ${
-            selectedSeats[0].seatNumber
-          }`
-    }`;
-  }
 
   const seats = [];
   for (let i = 0; i < selectedSeats.length; i++) {
