@@ -3,6 +3,9 @@ export function validateBookingSearch(req, res, next) {
 
   if (!q) return res.status(400).json({ error: "Queryn q har inget värde!" });
 
+  if (typeof q !== "string")
+    return res.status(400).json({ error: "q är inte en sträng!" });
+
   if (!q.includes("@")) {
     if (!q || q.length != 6) {
       return res.status(400).json({ error: "Ogiltigt bokningsnummer!" });
