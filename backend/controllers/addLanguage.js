@@ -4,8 +4,6 @@ export async function addLanguage(req, res) {
   try {
     const { language } = req.body;
 
-    console.log(language)
-
     if (!language) {
       return res.status(400).json({ error: "Språk är obligatoriskt" });
     }
@@ -17,7 +15,6 @@ export async function addLanguage(req, res) {
 
     res.status(201).json(insertedLanguage);
   } catch (error) {
-    console.log("Fel vid lägg till språk:", error);
     res.status(500).json({ error: "Internt serverfel" });
   }
 }
