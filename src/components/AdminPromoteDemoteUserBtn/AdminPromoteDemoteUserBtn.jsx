@@ -25,11 +25,12 @@ export function AdminPromoteDemoteUserBtn({ role, id, updateUserRole }) {
   return (
     <>
       <button
-        onClick={handleClick}
-        className={roleState === "user" ? "admin-promote-btn" : "admin-demote-btn"}
-      >
-        {roleState === "user" ? "Gör till admin" : "Gör till användare"}
-      </button>
+      onClick={handleClick}
+      className={roleState === "user" ? "admin-promote-btn" : "admin-demote-btn"}
+      disabled={role === "super"}
+    >
+      {roleState === "user" ? "Gör till admin" : "Gör till användare"}
+    </button>
       {showModal && (
         <AdminHandleUserModal
           setModalOpen={setShowModal}
