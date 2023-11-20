@@ -23,7 +23,7 @@ export function Carousel({ movies }) {
         {movies.map((movie, index) => (
           <div className="carousel-card" key={index}>
             <img
-              onClick={() => navigate(`/movies/${movie.id}`)}
+              onClick={() => navigate(`/filmer/${movie.id}`)}
               className="carousel-img"
               src={`/images/${movie.id}_w200.webp`}
               srcSet={`/images/${movie.id}_w200.webp 200w, /images/${movie.id}_w400.webp 400w`}
