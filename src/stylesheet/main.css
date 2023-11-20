@@ -2506,4 +2506,38 @@ h1 {
 }
 .name-search-container .name-container ul li {
   list-style-type: none;
+}
+
+.handleuser-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 100px 200px rgba(12, 12, 12, 0.493);
+}
+
+.confirm-btn {
+  padding: 25px;
+  border-radius: 15px;
+  background-color: #5a8f76;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.confirm-btn:hover {
+  scale: 1.05;
+}
+
+.handleuserclose-btn {
+  padding: 25px;
+  border-radius: 15px;
+  background-color: #837771;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.handleuserclose-btn:hover {
+  scale: 1.05;
 }/*# sourceMappingURL=main.css.map */
