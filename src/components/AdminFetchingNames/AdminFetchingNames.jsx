@@ -5,7 +5,6 @@ export function AdminFetchingNames({ onSetName }) {
   const [inputValue, setInputValue] = useState("");
   const [names, setNames] = useState([]);
   const [newName, setNewName] = useState("");
-  const [selectedName, setSelectedName] = useState("");
   const [foundNames, setFoundNames] = useState(true);
 
   async function searchName() {
@@ -39,9 +38,14 @@ export function AdminFetchingNames({ onSetName }) {
     }
   }
 
-  function handleNameSelect(name) {
-    setSelectedName(name);
+  function handleNameSelect() {
     setInputValue("");
+  }
+
+  function onKeyDown(key, callback) {
+    if (key === "Enter") {
+      callback();
+    }
   }
 
   return (
@@ -53,6 +57,7 @@ export function AdminFetchingNames({ onSetName }) {
             type="text"
             value={inputValue}
             placeholder="Skriv ett namn..."
+            onKeyDown={(e) => onKeyDown(e.key, searchName)}
             onChange={(e) => setInputValue(e.target.value)}
           />
         </label>
@@ -68,6 +73,7 @@ export function AdminFetchingNames({ onSetName }) {
             type="text"
             value={newName}
             placeholder="Skriv ett namn..."
+            onKeyDown={(e) => onKeyDown(e.key, addNewName)}
             onChange={(e) => setNewName(e.target.value)}
           />
         </label>
@@ -90,7 +96,7 @@ export function AdminFetchingNames({ onSetName }) {
                 <button
                   type="button"
                   onClick={() => {
-                    handleNameSelect(nameVal.name);
+                    handleNameSelect();
                     onSetName(nameVal);
                   }}>
                   {nameVal.name}
@@ -100,7 +106,6 @@ export function AdminFetchingNames({ onSetName }) {
           </ul>
         </div>
       )}
-      {/* <div>{selectedName && <p>Valt namn: {selectedName}</p>}</div> */}
     </div>
   );
 }
