@@ -232,7 +232,7 @@ export function AdminAddMoviePage() {
                 required
                 onChange={handleChange}
                 value={movie.ageLimit}>
-                <option value={0}>alla</option>
+                <option value={0}>Barntillåtet</option>
                 <option value={7}>7 +</option>
                 <option value={11}>11 +</option>
                 <option value={15}>15 +</option>
@@ -393,9 +393,22 @@ export function AdminAddMoviePage() {
           </label>
           <div className="img-file-container">
             <label htmlFor="imgFile">Välj filmomslag:</label>
-            <input id="imgFile" type="file" required onChange={handleFiles} />
+            <input
+              id="imgFile"
+              type="file"
+              hidden
+              required
+              onChange={handleFiles}
+            />
           </div>
-          {movie.base64Img ? <img src={movie.base64Img} width={200} /> : null}
+          {movie.base64Img ? (
+            <>
+              <p>Vald bild:</p>
+              <img src={movie.base64Img} width={200} />
+            </>
+          ) : (
+            <p>Ingen bild är vald!</p>
+          )}
         </div>
         <button className="add-movie-btn" type="submit">
           Lägg till film!

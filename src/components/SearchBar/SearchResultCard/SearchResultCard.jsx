@@ -12,7 +12,7 @@ export function SearchResultCard({ movie, clearSearch, setShowMobileSearch }) {
       onClick={() => {
         clearSearch();
         setShowMobileSearch(false);
-        navigate(`/movies/${movie.id}`);
+        navigate(`/filmer/${movie.id}`);
       }}>
       <h3>{movie.title}</h3>
       <p>Regissör: {movie.director}</p>
