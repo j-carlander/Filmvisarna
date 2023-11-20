@@ -1,3 +1,14 @@
+/**
+ * Controller for handling requests to get screening information
+ * sends response status 400 and a message in Swedish if no number is found
+ * sends response status 404 and a message in Swedish if no move was found
+ * sends response status 200 and the result was a success
+ *
+ * Controller for handling requests to get screening by id
+ * sends response status 400 and a message in Swedish if no screening was found or too old
+ * sends response status 200 and the result was a success
+ */
+
 import {
   screeningInfoById,
   screeninginfoService,
