@@ -829,8 +829,8 @@ button {
   height: 300px;
   max-width: 700px;
 }
-.about-us-page #find-us,
-.about-us-page #contact {
+.about-us-page #hitta-hit,
+.about-us-page #kontakt {
   scroll-margin: 3em;
 }
 
