@@ -1,3 +1,9 @@
+/**
+ * Component for adding actors to a new movie
+ * onActorClick removes an actor from the list
+ * handleAddActors adds an actor to the list
+ */
+
 import { AdminFetchingNames } from "../AdminFetchingNames/AdminFetchingNames";
 
 export default function AdminActors({

@@ -1,3 +1,9 @@
+/**
+ * Component for displaying and removing a screening
+ * deleteScreening sends a fetch request to remove a screening from the database
+ * updates front-end on success
+ */
+
 import { formatStringWithFirstCharToUpper } from "../../utils/formatStringWithFirstCharToUpper";
 import { fetchHelper } from "../../utils/fetchHelper";
 import { useRef } from "react";

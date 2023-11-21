@@ -1,3 +1,9 @@
+/**
+ * Component for booking
+ * handleBooking sends a fetch request to add a booking to the database
+ * handleBooking returns error if not logged in or no guest email inputted
+ */
+
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import sessionService from "../../utils/sessionService";

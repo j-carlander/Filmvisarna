@@ -1,3 +1,7 @@
+/**
+ * Component for a modal that confirms movie has been created
+ */
+
 export function AddMovieModal({ modalOpen, setModalOpen }) {
   return (
     <>
