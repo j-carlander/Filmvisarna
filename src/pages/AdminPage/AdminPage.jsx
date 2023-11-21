@@ -1,3 +1,8 @@
+/**
+ * Component that wraps all admin pages. It includes the header, aside and
+ * navigation.
+ */
+
 import { useState } from "react";
 import { adminPages } from "../../main";
 import sessionService from "../../utils/sessionService";

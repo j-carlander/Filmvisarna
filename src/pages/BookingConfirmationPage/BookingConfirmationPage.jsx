@@ -1,3 +1,9 @@
+/**
+ * Page for confirming a booking of a screening a user has picked.
+ * In case no booking state is sent to this page, the user is redirected
+ * to the booking page of the screening in question.
+ */
+
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 

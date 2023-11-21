@@ -1,3 +1,7 @@
+/**
+ * Page for the administrator to add a new screening for a particular movie.
+ */
+
 import { useEffect, useState } from "react";
 import { fetchHelper } from "../../utils/fetchHelper";
 
@@ -10,7 +14,7 @@ export function AdminAddScreeningPage() {
   const [movies, setMovies] = useState([]);
   const [theatre, setTheatre] = useState([]);
   const [language, setLanguage] = useState(mockLanguages);
-  const [subtitle, setSubtitle] = useState([{ id: 1, language: "sv" }]);
+  const subtitle = useState([{ id: 1, language: "sv" }])[0];
   const [values, setValues] = useState({
     date: "",
     movieid: 1,
