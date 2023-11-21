@@ -1,3 +1,7 @@
+/**
+ * Util for checking if a bookingnumber already exists in the database.
+ */
+
 import { runQuery } from "../db.js";
 
 export async function checkBookingNumberExist(bookingNumber) {

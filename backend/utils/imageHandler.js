@@ -1,3 +1,13 @@
+/**
+ * Util for scaling the image sent in add movie route into different sizes.
+ *
+ * Example use:
+ *
+ * resizeImage(31, join(__dirname, "image.jpg"));
+ *
+ * (id of the movie, full path to the image file to resize)
+ */
+
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
 import sharp from "sharp";
@@ -15,10 +25,6 @@ const settings = {
   ],
 };
 
-// Example use:
-// resizeImage(31, join(__dirname, "image.jpg"));
-
-// (id of the movie, full path to the image file to resize)
 export async function resizeImage(insertId, fileToResize) {
   const sharpImage = sharp(fileToResize);
 
