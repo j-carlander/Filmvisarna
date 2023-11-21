@@ -1,3 +1,8 @@
+/**
+ * Util to formating seatinformation to be used in response on successful booking
+ * and booking confirmation mail.
+ */
+
 import { checkSeatsGroupedTogether } from "./checkSeatsGroupedTogether.js";
 import { checkSeatsOnSameRow } from "./checkSeatsOnSameRow.js";
 
