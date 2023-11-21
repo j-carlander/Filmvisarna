@@ -1,5 +1,7 @@
 /*
-These JavaScript functions modify user roles in a database. The setUserRoleToAdmin function updates the role of a user with a specified ID to "admin," while the setUserRoleToUser function sets the role to "user." Both functions use SQL UPDATE queries and the runQuery function to execute the database updates, returning the result.
+These JavaScript functions modify user roles in a database. The setUserRoleToAdmin function updates the role of a user with a specified ID to "admin," while the setUserRoleToUser function sets the role to "user." Both functions use SQL UPDATE queries and the runQuery function to execute the database updates, returning the result
+
+.
 */
 
 import { runQuery } from "../db.js";
