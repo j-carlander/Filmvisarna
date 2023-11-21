@@ -1,3 +1,8 @@
+/**
+ * A middleware for checking that the seats sent with a booking request for a particular screening are available in the salon and of expected type and format
+ * if not, aborts the request and responds with a status 400 and a message in Swedish that the seatnumber don't exist on that row
+ */
+
 import { checkTotalSeatsForRow } from "../service/getTotalSeats.js";
 
 export async function checkSeatExists(req, res, next) {

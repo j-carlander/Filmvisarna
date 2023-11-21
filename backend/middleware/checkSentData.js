@@ -1,4 +1,8 @@
-//fields är en array som containar all inputs så vi kan loopa genom alla.
+/**
+ * A middleware for checking that the data provided with the request is of expected type and format
+ * if not, aborts the request and responds with a status 400 and a message in Swedish that data was in the wrong format
+ */
+
 export async function validateData(req, res, next) {
   const errors = {};
   const fields = req.body;
