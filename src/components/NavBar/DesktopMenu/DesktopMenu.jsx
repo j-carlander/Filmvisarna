@@ -1,3 +1,10 @@
+/**
+ * Component for desktopmenu (desktop view)
+ * links for each page, and it includes additional links 
+ * provided by the ControlledLinks component based on the 
+ * user's authentication status and role.
+ */
+
 import { NavLink } from "react-router-dom";
 import { ControlledLinks } from "../ControlledLinks/ControlledLinks";
 

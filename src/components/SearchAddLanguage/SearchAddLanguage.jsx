@@ -1,3 +1,10 @@
+/**
+ * Component for searching and adding languages
+ * Admin and Super role use only
+ * enter a search query, and if no languages are found, 
+ * the option to add a new language is provided.
+ */
+
 import React, { useState } from "react";
 import { fetchHelper } from "../../utils/fetchHelper";
 

@@ -1,3 +1,9 @@
+/**
+ * Component for controlled links 
+ * If there is no token, it renders a "Bli medlem" link (Become a member). 
+ * If the user has an "admin" or "super" role, it also renders an "Admin" link.
+ */
+
 import { NavLink } from "react-router-dom";
 import sessionService from "../../../utils/sessionService";
 

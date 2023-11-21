@@ -1,3 +1,10 @@
+/**
+ * Component for tickets and different types of tickets
+ * fetching available ticket types from the server
+ * "Ordinarie" is automatically selected as ticket type
+ * calculates and displays the total cost of selected tickets
+ */
+
 import { useState, useEffect } from "react";
 import TicketType from "./TicketType/TicketType";
 import { fetchHelper } from "../../utils/fetchHelper";

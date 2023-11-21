@@ -1,3 +1,9 @@
+/**
+ * Component for navigation bar
+ * Different menu options based on the screen size
+ * (burger menu for smaller screens and a desktop menu for larger screens)
+ */
+
 import { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { pages } from "../../main";

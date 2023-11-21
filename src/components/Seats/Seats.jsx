@@ -1,3 +1,12 @@
+/**
+ * Component for seating arrangement for a theater
+ * allowing users to select seats for a screening
+ * fetching takenseats based on screening id to get which seats are available
+ * fetched layout based on the theater id, and real-time updates 
+ * are received for seat availability. 
+ * Users can choose between selecting individual seats or a group of seats.
+ */
+
 import { useState, useEffect } from "react";
 import Seat from "./Seat/Seat";
 import SeatRow from "./Seatrow/SeatRow";

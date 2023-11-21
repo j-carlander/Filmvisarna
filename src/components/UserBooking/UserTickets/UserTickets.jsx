@@ -1,3 +1,8 @@
+/**
+ * Component for user booked tickets in modal dialog
+ * takes props and renders the information in a card format
+ */
+
 import { useRef, useEffect } from "react";
 
 export default function UserTickets({

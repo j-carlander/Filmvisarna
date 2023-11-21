@@ -1,3 +1,9 @@
+/**
+ * Component for screening details
+ * ScreeningDetails takes a prop and renders the screening 
+ * information in a card format
+ */
+
 import { useNavigate } from "react-router-dom";
 import { formatStringWithFirstCharToUpper } from "../../utils/formatStringWithFirstCharToUpper";
 

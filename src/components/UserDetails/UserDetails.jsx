@@ -1,3 +1,8 @@
+/**
+ * Component for user information details
+ * takes a prop and renders the information in a card format
+ */
+
 export function UserDetails ({ userinfo }) {
 
     return (
