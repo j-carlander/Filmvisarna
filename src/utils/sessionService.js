@@ -1,3 +1,7 @@
+/**
+ * Service for accessing, setting and clearing the token stored in session storage.
+ */
+
 function getToken() {
   return sessionStorage.getItem("token");
 }

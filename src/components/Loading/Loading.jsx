@@ -1,4 +1,6 @@
-
+/**
+ * Component for displayng a loading icon
+ */
 
 export function Loading() {
   return (

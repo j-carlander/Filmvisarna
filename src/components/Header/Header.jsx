@@ -1,3 +1,9 @@
+/**
+ * Component for displaying a header
+ * displays Navbar, Searchbar and AccountIcon components
+ * logo links to landingpage
+ */
+
 import { useLocation } from "react-router-dom";
 import { NavBar } from "../NavBar/NavBar";
 import { SearchBar } from "../SearchBar/SearchBar";

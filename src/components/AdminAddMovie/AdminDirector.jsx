@@ -1,3 +1,8 @@
+/**
+ * Component for linking adding a director to a new movie
+ * handleSetDirector adds a director to the list, and overwrites previous name
+ */
+
 import { AdminFetchingNames } from "../AdminFetchingNames/AdminFetchingNames";
 
 export default function AdminDirector({ director, setDirector, setMovie }) {

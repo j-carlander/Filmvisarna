@@ -1,3 +1,8 @@
+/**
+ * Hook for the seat picker in booking page. It determines wether the seat should show up as
+ * taken, selected or availible.
+ */
+
 import { useEffect, useState } from "react";
 import useSeatHoverHook from "./useSeatHoverHook";
 

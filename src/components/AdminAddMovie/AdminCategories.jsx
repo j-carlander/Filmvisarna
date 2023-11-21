@@ -1,3 +1,10 @@
+/**
+ * Component for adding categories to a new movie
+ * onRemoveCategory removes a category from the list
+* fetchAddCategory adds a new category to the database and the list
+ * onSearchCategoryClick searches for categories using input
+ */
+
 import { useState } from "react";
 import { fetchHelper } from "../../utils/fetchHelper";
 

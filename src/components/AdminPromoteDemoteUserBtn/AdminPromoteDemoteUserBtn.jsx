@@ -1,6 +1,13 @@
+/**
+ * Component for handling the switch between a user's role
+ * confirmRoleChange sends a fetch request to change a user's role
+ * updates user role on status 200
+ * displays error on fail
+ */
+
 import { useState } from "react";
 import { fetchHelper } from "../../utils/fetchHelper";
-import { AdminHandleUserModal } from "../AdminHandleUserModal/AdminHandleUserModal"; // Import the modal component
+import { AdminHandleUserModal } from "../AdminHandleUserModal/AdminHandleUserModal";
 
 export function AdminPromoteDemoteUserBtn({ role, id, updateUserRole }) {
   const [roleState, setRoleState] = useState(role);

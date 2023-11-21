@@ -1,7 +1,11 @@
+/**
+ * Component for a carousel that scrolls movie list to the left or right
+ * scroll function sets offset -200 or +200 depending on pressing left or right arrow button respectively
+ */
+
 import { useEffect } from "react";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { Loading } from "../Loading/Loading";
 
 export function Carousel({ movies }) {
   function scroll(scrollOffset) {

@@ -1,3 +1,9 @@
+/**
+ * A middleware for checking that the all data is provided with the request for adding a new booking and is of expected format
+ * if not, aborts the request and responds with a status 400 and a message in Swedish that the data wasn't provided
+ * or that it was in the wrong format
+ */
+
 export function checkBookingDetails(req, res, next) {
   const { seats, guestEmail } = req.body;
 

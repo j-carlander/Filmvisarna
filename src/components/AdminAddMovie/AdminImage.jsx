@@ -1,3 +1,8 @@
+/**
+ * Component for adding an image to a new movie
+ * handleFiles converts image into base64 and adds it to the movie
+ */
+
 export default function AdminImage({ movie, setMovie }) {
   function handleFiles(e) {
     const file = e.target.files[0];
