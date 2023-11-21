@@ -28,6 +28,8 @@ async function getMovies(filters) {
       checkConditions.push(upQuery);
     }
   }
+  
+  checkConditions.push("movies.ishidden = FALSE");
 
   const sql = `SELECT 
   movies.id,
