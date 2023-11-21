@@ -62,7 +62,7 @@ export function AdminScreeningsPage() {
         <h3>Hantera visningar</h3>
         <button
           onClick={() =>
-            navigate("/admin/lagg-till-visning", {
+            navigate("/admin/filmer/lagg-till-visning", {
               state: { movieid, title },
             })
           }

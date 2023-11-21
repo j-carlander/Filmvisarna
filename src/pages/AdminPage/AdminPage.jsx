@@ -58,14 +58,24 @@ export function AdminPage() {
                 if (!("label" in page)) return null;
                 return (
                   <li key={page.label}>
-                    <NavLink
-                      to={page.path}
-                      end
-                      className={({ isActive }) =>
-                        isActive ? "active-admin-navlink" : "admin-navlink"
-                      }>
-                      {page.label}
-                    </NavLink>
+                    {page.path === "/admin/filmer" ? (
+                      <NavLink
+                        to={page.path}
+                        className={({ isActive }) =>
+                          isActive ? "active-admin-navlink" : "admin-navlink"
+                        }>
+                        {page.label}
+                      </NavLink>
+                    ) : (
+                      <NavLink
+                        to={page.path}
+                        end
+                        className={({ isActive }) =>
+                          isActive ? "active-admin-navlink" : "admin-navlink"
+                        }>
+                        {page.label}
+                      </NavLink>
+                    )}
                   </li>
                 );
               })}

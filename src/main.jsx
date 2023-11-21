@@ -51,7 +51,7 @@ export const adminPages = [
     element: <AdminSearchBookingPage />,
   },
   {
-    path: "/admin/lagg-till-visning",
+    path: "/admin/filmer/lagg-till-visning",
     element: <AdminAddScreeningPage />,
   },
   {
@@ -69,7 +69,7 @@ export const adminPages = [
     element: <AdminScreeningsPage />,
   },
   {
-    path: "/admin/lagg-till-film",
+    path: "/admin/filmer/lagg-till-film",
     element: <AdminAddMoviePage />,
   },
 ];

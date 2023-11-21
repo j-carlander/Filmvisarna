@@ -32,7 +32,7 @@ export function AdminMoviesPage() {
         lägga till och ta bort visningar
       </p>
       <button
-        onClick={() => navigate("/admin/lagg-till-film")}
+        onClick={() => navigate("/admin/filmer/lagg-till-film")}
         className={"adminmovie-add-btn"}>
         Lägg till en film
       </button>
