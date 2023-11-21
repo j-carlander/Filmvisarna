@@ -1,3 +1,9 @@
+/**
+ * Controller for handling requests to handle long-polling for seats in booking process
+ * sends response status 204 when timeout is reached (20s) when no content
+ * sends response status 200 and the updated version on seats for a screening on success
+ */
+
 const subscription = {};
 
 export function updateSubscribers(screeningid, seats, event) {
