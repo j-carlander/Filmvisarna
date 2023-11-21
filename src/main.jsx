@@ -51,13 +51,12 @@ export const adminPages = [
     element: <AdminSearchBookingPage />,
   },
   {
-    path: "/admin/lagg-till-visning",
-    label: "Lägg till visning",
+    path: "/admin/filmer/lagg-till-visning",
     element: <AdminAddScreeningPage />,
   },
   {
-    path: "/admin/visningar",
-    label: "Ta bort visning",
+    path: "/admin/filmer",
+    label: "Hantera filmer och visningar",
     element: <AdminMoviesPage />,
   },
   {
@@ -66,12 +65,11 @@ export const adminPages = [
     element: <AdminHandleUserPage />,
   },
   {
-    path: "/admin/visningar/:movieid",
+    path: "/admin/filmer/:movieid",
     element: <AdminScreeningsPage />,
   },
   {
-    path: "/admin/lagg-till-film",
-    label: "Lägg till en film",
+    path: "/admin/filmer/lagg-till-film",
     element: <AdminAddMoviePage />,
   },
 ];
