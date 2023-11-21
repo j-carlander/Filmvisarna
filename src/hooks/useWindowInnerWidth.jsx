@@ -1,3 +1,8 @@
+/**
+ * Hook for getting the inner width of the window. Used to check if
+ * on desktop or mobile.
+ */
+
 import { useEffect, useState } from "react";
 
 export function useWindowInnerWidth() {

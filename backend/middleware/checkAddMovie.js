@@ -1,4 +1,8 @@
-// middleware/validateAddMovie.js
+/**
+ * A middleware for checking that data for all fields is provided with the request for adding a new movie
+ * if not, aborts the request and responds with a status 400 and a message in Swedish that all fields are required
+ */
+
 export function validateAddMovie(req, res, next) {
   const {
     title,
