@@ -1,3 +1,12 @@
+/**
+ * Controller for handling requests to login
+ * sends response status 403 and a message in Swedish if no email or password was provided
+ * sends response status 404 and a message in Swedish if wrong email or password
+ * sends response status 500 and an Internal server error message in Swedish on fail
+ * sends response status 200 and the email and password matched the registered user on success
+ * sends response status 401 and a message in Swedish if wrong email or password
+ */
+
 import bcrypt from "bcrypt";
 import { runQuery } from "../db.js";
 import jwtUtil from "../utils/jwtUtil.js";
@@ -22,7 +31,6 @@ export async function loginhandler(req, res) {
 
     bcrypt.compare(password, hashedPasswordFromDB, (err, result) => {
       if (err) {
-        console.error("Password comparison error: " + err.message);
         return res.status(500).json({ error: "Internt server fel!" });
       }
 

@@ -1,3 +1,7 @@
+/*
+This JavaScript file contains two functions for retrieving information from a database. The getMovieDetails function fetches details about a specific movie, and the getScreeningsByDateService function obtains information about screenings for a particular movie on a given date.
+*/
+
 import { runQuery } from "../db.js";
 import { getDateQueryArray } from "./moviesService.js";
 
