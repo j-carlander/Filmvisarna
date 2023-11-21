@@ -51,7 +51,7 @@ export function AdminPage() {
               <li>
                 {" "}
                 <NavLink to={"/"} end className={"admin-navlink"}>
-                  Till start
+                  Till Filmvisarna
                 </NavLink>
               </li>
               {adminPages.map((page) => {

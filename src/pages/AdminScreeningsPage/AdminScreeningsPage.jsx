@@ -3,10 +3,11 @@
  */
 
 import { useEffect } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { fetchHelper } from "../../utils/fetchHelper";
 import { useState } from "react";
 import { AdminScreeningCard } from "../../components/AdminScreeningCard/AdminScreeningCard";
+import { AdminPageBackBtn } from "../../components/AdminPageBackBtn/AdminPageBackBtn";
 
 export function AdminScreeningsPage() {
   const [screenings, setScreenings] = useState([]);
@@ -16,6 +17,8 @@ export function AdminScreeningsPage() {
   const { movieid } = useParams();
   const location = useLocation();
   const { title } = location.state;
+  const navigate = useNavigate();
+
   function onMoreScreeningsClick() {
     setPage(page + 3);
   }
@@ -52,27 +55,43 @@ export function AdminScreeningsPage() {
 
   return (
     <div className="adminscreenings-wrapper">
-      <h2>Visningar för: {title}</h2>
-      {screenings.map((screening, index) => (
-        <AdminScreeningCard
-          key={index}
-          screening={screening}
-          onDeleteScreening={handleDeleteScreening}
-          movieTitle={title}
-        />
-      ))}
-      {serverError === "" ? (
-        <button onClick={onMoreScreeningsClick} className="more-screenings-btn">
-          Hämta fler visningar
+      <AdminPageBackBtn text={"Tillbaka till filmer"} />
+      <h2>{title}</h2>
+      {/* button/component hide movie */}
+      <article className="adminscreenings-screenings">
+        <h3>Hantera visningar</h3>
+        <button
+          onClick={() =>
+            navigate("/admin/lagg-till-visning", {
+              state: { movieid, title },
+            })
+          }
+          className={"add-screenings-btn"}>
+          Lägg till en visning
         </button>
-      ) : (
-        serverError !== "" && (
-          <p className="no-more-screenings-text">
-            Det finns inga fler visningar för denna film!
-          </p>
-        )
-      )}
-      {deleteMessage && <div className="delete-message">{deleteMessage}</div>}
+        {screenings.map((screening, index) => (
+          <AdminScreeningCard
+            key={index}
+            screening={screening}
+            onDeleteScreening={handleDeleteScreening}
+            movieTitle={title}
+          />
+        ))}
+        {serverError === "" ? (
+          <button
+            onClick={onMoreScreeningsClick}
+            className="more-screenings-btn">
+            Hämta fler visningar
+          </button>
+        ) : (
+          serverError !== "" && (
+            <p className="no-more-screenings-text">
+              Det finns inga fler visningar för denna film!
+            </p>
+          )
+        )}
+        {deleteMessage && <div className="delete-message">{deleteMessage}</div>}
+      </article>
     </div>
   );
 }
