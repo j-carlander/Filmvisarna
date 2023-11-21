@@ -1,3 +1,7 @@
+/**
+ * Hook for checking if seat is being hovered or not for grouped seats.
+ */
+
 import { useEffect, useState } from "react";
 
 export default function useSeatHoverHook({
