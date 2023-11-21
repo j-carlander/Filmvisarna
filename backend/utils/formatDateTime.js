@@ -1,3 +1,7 @@
+/**
+ * Util for formating the date to swedish standard.
+ */
+
 export function formatDateTimeSwe(datetime) {
   let formatedDate = new Intl.DateTimeFormat("sv-SE", {
     weekday: "long",

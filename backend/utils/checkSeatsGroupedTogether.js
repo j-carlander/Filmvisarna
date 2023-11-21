@@ -1,3 +1,7 @@
+/**
+ * Util for checking if the seats a user is booking are grouped together.
+ */
+
 export function checkSeatsGroupedTogether(seats) {
   let groupedTogether = true;
 
