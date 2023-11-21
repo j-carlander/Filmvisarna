@@ -1,3 +1,7 @@
+/*
+This JavaScript file defines a function getMovies that retrieves movie information from a database based on specified filters. The filters can include criteria such as date, age limit, and whether the movies are upcoming. The function dynamically constructs a SQL query based on the provided filters and executes it using the runQuery function from the "../db.js" module. Additionally, there's a utility function getDateQueryArray that generates an array representing the start and end dates for a given date, formatted according to the "se-SE" locale.
+*/
+
 import { runQuery } from "../db.js";
 
 async function getMovies(filters) {

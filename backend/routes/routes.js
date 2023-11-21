@@ -1,3 +1,7 @@
+/**
+ * Router for all http requests to the /api route.
+ */
+
 import express from "express";
 import { getTakenseats } from "../controllers/getTakenseats.js";
 import {
@@ -80,13 +84,14 @@ router.get(
   getMovieDetailsController
 );
 
+// Route to get screenings for a movie on a specific day
 router.get(
   "/screenings/:movieid/:date",
   checkScreeningFilter,
   getScreeningsByDate
 );
 
-//Route to get all languages
+// Route to get all languages
 router.get("/languages", getLanguages);
 
 // Route to get all tickettypes
@@ -95,15 +100,16 @@ router.get("/tickettypes", getTicketTypes);
 // Route to get theatre layout
 router.get("/theatrerows/:theatreid", theatreLayout);
 
+// Route to subscribe to changes in booked seats for a particular screening
 router.get("/subscribeScreenings/:screeningid", subscribe);
 
 // Get info of a screening by id
 router.get("/screening/:screeningid", checkScreeningId, screeningById);
 
-//Login route
+// Login route
 router.post("/login", validateData, loginhandler);
 
-//Register route
+// Register route
 router.post("/register", validateData, registerHandler);
 
 // All routes below uses the middleware checkToken
@@ -136,23 +142,31 @@ router.delete(
 // Route to get current logged in users bookings
 router.get("/currentUser/bookings", getBookings);
 
+// Route to add a screening for a movie
 router.post("/addscreening", isAdmin, addScreeningCheck, addScreeningRoute);
 
+// Route to get languages for a particular movie
 router.get("/language/:movieid", isAdmin, getLanguagesByMovieId);
 
+// Route to add names for actors and directors
 router.post("/addname", isAdmin, checkName, addName);
 
+// Route for searching a movie genre
 router.get("/searchgenre", isAdmin, searchGenreCheck, searchGenre);
 
+// Route for adding a movie genre
 router.post("/addgenre", isAdmin, addGenreCheck, addGenreController);
 
-//Route to add a language.
+// Route to add a language.
 router.post("/addLanguages", isAdmin, addLanguage);
 
+// Route to get all theatres
 router.get("/theatres", isAdmin, getTheatresController);
 
 // Route to search for a booking by query
 router.get("/bookinginfo", isAdmin, validateBookingSearch, findBooking);
+
+// Route to get users by search query
 router.get("/users", checkIfSuperAdmin, findUser);
 
 // Route to search for actors / directors
@@ -161,8 +175,10 @@ router.get("/namesearch", isAdmin, findName);
 // Route to search for languages
 router.get("/searchlanguages", isAdmin, findLanguage);
 
+// Route for updating a users role
 router.put("/users", checkIfSuperAdmin, updateUserRole);
 
+// Route for adding a movie
 router.post("/addmovie", isAdmin, validateAddMovie, addMovie);
 
 export default router;

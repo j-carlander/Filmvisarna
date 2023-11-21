@@ -1,3 +1,9 @@
+/**
+ * Util for generating a random booking number.
+ *
+ * Booking number example: XP341A
+ */
+
 function randomLetter() {
   return String.fromCharCode(Math.ceil(Math.random() * (90 - 65) + 65));
 }

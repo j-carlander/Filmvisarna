@@ -1,3 +1,14 @@
+/**
+ * Controller for handling requests to register user
+ * sends response status 400 and a message in Swedish if any of the user credentials is missing
+ * or if the password is not complex enough
+ * or the password and confirmed password did not match
+ * sends response status 400 and a message in Swedish if the registration was not completed
+ * sends response status 500 and an Internal server error message in Swedish on fail
+ * sends response status 200 and rthe account was created with hashed password on success
+ * sends response status 201 and the account was created on success
+ */
+
 import bcrypt from "bcrypt";
 import { runQuery } from "../db.js";
 import { isPasswordComplex } from "../utils/checkPasswordComplexity.js";
@@ -35,8 +46,7 @@ export async function registerHandler(req, res) {
 
   bcrypt.hash(password, 10, async (err, hashedPassword) => {
     if (err) {
-      console.error("Password hashing error: " + err.message);
-      return res.status(500).json({ error: "Internt server fel!" });
+      return res.status(500).json({ error: "Internt serverfel!" });
     }
 
     const insertRegisterQuery =
@@ -58,7 +68,6 @@ export async function registerHandler(req, res) {
         res.status(400).json({ error: "Ditt konto skapades inte!" });
       }
     } catch (error) {
-      console.error("Error: " + error.message);
       return res.status(400).json({ error: "Ditt konto skapades inte!" });
     }
   });

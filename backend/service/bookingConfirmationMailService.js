@@ -1,3 +1,10 @@
+/**
+* Service for sending a mail upon successful booking
+* Formatted in html and uses regular CSS
+* MailTransporter returns error if missing field
+*/
+
+
 import { formatDateTimeSwe } from "../utils/formatDateTime.js";
 import { formatSeatInfo } from "../utils/formatSeatsInfoForEmail.js";
 import { mailTransporter } from "../utils/mailtransporter.js";

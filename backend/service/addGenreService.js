@@ -1,3 +1,8 @@
+/**
+* Service for adding genre into database
+*/
+
+
 import { runQuery } from "../db.js";
 
 export async function addGenreService(genre) {

@@ -1,3 +1,11 @@
+/**
+ * Controller for handling requests to search for a movie
+ * (for example: title, actors, genre)
+ * sends response status 404 and a message in Swedish if no query was
+ * found by that searched word
+ * sends response status 200 and the result on success
+ */
+
 import { searchMovieService } from "../service/searchMovieService.js";
 import { formatSearchResult } from "../utils/formatSearchResult.js";
 
