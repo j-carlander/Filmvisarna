@@ -1,3 +1,8 @@
+/**
+ * Page for choosing seats for a screening. When the seats have been
+ * chosen the user can move on to the booking confirmation page.
+ */
+
 import { useParams } from "react-router-dom";
 import { Seats } from "../../components/Seats/Seats";
 import { TicketPicker } from "../../components/TicketPicker/TicketPicker";

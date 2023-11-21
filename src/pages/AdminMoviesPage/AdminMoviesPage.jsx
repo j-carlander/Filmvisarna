@@ -1,3 +1,8 @@
+/**
+ * Page for admin that lists all movies for the admin to pick which movie
+ * they want to remove a screening for.
+ */
+
 import { useEffect } from "react";
 import { fetchHelper } from "../../utils/fetchHelper";
 import { useState } from "react";

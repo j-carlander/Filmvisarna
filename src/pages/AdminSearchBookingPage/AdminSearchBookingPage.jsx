@@ -1,3 +1,7 @@
+/**
+ * Page for admin to search for a booking based on booking number or email.
+ */
+
 import { useState } from "react";
 import { AdminDisplayBooking } from "../../components/AdminDisplayBooking/AdminDisplayBooking";
 import { fetchHelper } from "../../utils/fetchHelper";

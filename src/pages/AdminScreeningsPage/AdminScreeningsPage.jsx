@@ -1,3 +1,7 @@
+/**
+ * Page for admin to add new screenings for a movie.
+ */
+
 import { useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { fetchHelper } from "../../utils/fetchHelper";
