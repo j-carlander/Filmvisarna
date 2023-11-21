@@ -583,6 +583,7 @@ button {
 .movieDetailsPage-container .imgbox {
   background-color: transparent;
   border-style: none;
+  position: absolute;
 }
 .movieDetailsPage-container .imgbox .back-to-previous {
   position: absolute;
