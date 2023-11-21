@@ -1,3 +1,7 @@
+/**
+ * Component for a modal to confirm the switch between a user's role
+ */
+
 export function AdminHandleUserModal({ setModalOpen, confirmRoleChange }) {
     return (
       <div className="handleuser-modal">

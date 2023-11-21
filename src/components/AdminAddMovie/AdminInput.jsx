@@ -1,3 +1,7 @@
+/**
+ * Component for making a new input field
+ */
+
 export default function AdminInput({
   name,
   type,

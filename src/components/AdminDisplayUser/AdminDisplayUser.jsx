@@ -1,3 +1,8 @@
+/**
+ * Component for displaying a user and its info
+ * updateUserRole updates front-end to user's role
+ */
+
 import { useState } from "react";
 import { AdminPromoteDemoteUserBtn } from "../AdminPromoteDemoteUserBtn/AdminPromoteDemoteUserBtn";
 

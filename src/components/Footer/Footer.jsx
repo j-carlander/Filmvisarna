@@ -1,3 +1,8 @@
+/**
+ * Component for displaying a component
+ * hitta hit inks to about us page
+ */
+
 import { Link } from "react-router-dom";
 
 export function Footer() {
