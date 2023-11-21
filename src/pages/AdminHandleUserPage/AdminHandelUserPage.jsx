@@ -1,3 +1,7 @@
+/**
+ * Page for the super user to change the role of users.
+ */
+
 import { useState } from "react";
 import { Navigate, useOutletContext } from "react-router-dom";
 import { fetchHelper } from "../../utils/fetchHelper";

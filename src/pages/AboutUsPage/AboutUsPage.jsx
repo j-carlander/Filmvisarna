@@ -1,3 +1,8 @@
+/**
+ * About us page. For reading information about the cinema and a map for
+ * finding the location of it as well as contact information.
+ */
+
 import { useLocation } from "react-router-dom";
 import { useRef, useEffect } from "react";
 

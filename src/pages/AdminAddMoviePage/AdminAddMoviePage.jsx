@@ -1,3 +1,7 @@
+/**
+ * Add movie page is for the administrator to add a new movie to the database.
+ */
+
 import { useState } from "react";
 import { fetchHelper } from "../../utils/fetchHelper";
 import { AddMovieModal } from "../../components/AddMovieModal/AddMovieModal";
