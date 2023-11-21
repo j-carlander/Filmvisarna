@@ -1,3 +1,8 @@
+/**
+ * The jsx for generating a register page with the form needed to create an account
+ * and the fetch for submitting the form
+ */
+
 import { useState, useEffect } from "react";
 import { Link, useOutletContext, useNavigate } from "react-router-dom";
 import { fetchHelper } from "../../utils/fetchHelper";
