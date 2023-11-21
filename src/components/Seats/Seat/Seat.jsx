@@ -1,3 +1,9 @@
+/**
+ * Component for an individual seat in a theater. 
+ * It handles seat selection logic, considers the total number of tickets, 
+ * the useSeatHook hook managing class names based on different conditions.
+ */
+
 import { useSeatHook } from "../../../hooks/useSeatHook";
 
 export default function Seat({

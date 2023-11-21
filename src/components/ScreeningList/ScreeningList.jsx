@@ -1,3 +1,9 @@
+/**
+ * Component for listing the screening details
+ * ScreeningDetails takes a prop and renders the screening 
+ * information in a card format
+ */
+
 import { ScreeningDetails } from '../ScreeningDetails/ScreeningDetails';
 
 function ScreeningsList({ showScreening }) {

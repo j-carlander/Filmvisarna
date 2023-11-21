@@ -1,3 +1,9 @@
+/**
+ * Component for user bookings (single booking in 
+ * the user's list of current bookings) 
+ * options to show tickets and cancel the booking
+ */
+
 import { useRef, useState } from "react";
 import UserTickets from "../UserTickets/UserTickets";
 import { fetchHelper } from "../../../utils/fetchHelper";
