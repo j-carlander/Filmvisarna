@@ -1,3 +1,8 @@
+/**
+ * Util for formatting seats for booking confirmation based on if the seats selected
+ * are individual or grouped.
+ */
+
 export function formatSeatsForBookingConf(individual, selectedSeats) {
   if (individual) {
     return selectedSeats.map((seat, index) => (

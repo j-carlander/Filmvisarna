@@ -1,3 +1,7 @@
+/**
+ * Main component sets up all the routes on the website. Including admin routes.
+ */
+
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";

@@ -1,3 +1,7 @@
+/**
+ * Hook for short message on found and added languages in add movie.
+ */
+
 import { useEffect, useState } from "react";
 
 export default function useLanguagesHook() {
