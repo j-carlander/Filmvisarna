@@ -1,3 +1,7 @@
+/**
+ * Service for getting all names similiar to query
+ */
+
 import { runQuery } from "../db.js";
 
 export async function getNames(name) {

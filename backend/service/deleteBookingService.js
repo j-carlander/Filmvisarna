@@ -1,3 +1,11 @@
+/**
+ * Service for deleting bookings
+ * deleteBookingGuestService deletes a booking using guestemail
+ * deleteBookingUserService deletes a booking using userid
+ * getSeatsForDeletionService gets the seats in the booking for deletion later
+ * emailAllBookingsByScreeningService uses removeScreeningMailService to send a mail to every user in the deleted booking
+ */
+
 import { runQuery } from "../db.js";
 import { removeScreeningMailService } from "./removeScreeningMailService.js";
 

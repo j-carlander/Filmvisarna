@@ -1,3 +1,10 @@
+/**
+ * Service for adding a booking into the database and finding one by query or userid
+ * bookingservice function inserts booking into database
+ * findBookingByQuery selects bookings using query
+ * findBookingByUserId selects bookings using userid
+ */
+
 import { runQuery } from "../db.js";
 
 export async function bookingservice(
