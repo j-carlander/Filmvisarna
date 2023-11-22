@@ -6,6 +6,7 @@
  */
 
 import { addScreeningDateCheckService } from "../service/addScreeningDateCheckService.js";
+import { checkMovieIsHidden } from "../service/moviesService.js";
 
 const dateErrorMessage =
   "Datumet har fel format! Det ska vara åååå-mm-dd hh:mm";
@@ -61,6 +62,9 @@ export async function addScreeningCheck(req, res, next) {
     return res
       .status(400)
       .json({ error: "Vissa/alla egenskaper har fel datatyp!" });
+
+  const movieHidden = await checkMovieIsHidden(movieid);
+  if (movieHidden) return res.status(400).json({ error: "Filmen är dold" });
 
   const notClashing = await addScreeningDateCheckService(
     splitFormat[0],

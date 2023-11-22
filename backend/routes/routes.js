@@ -10,7 +10,7 @@ import {
 } from "../controllers/getScreeningInfo.js";
 import { checkScreeningId } from "../middleware/checkScreeningId.js";
 import { checkMovieDetails } from "../middleware/checkMovieDetails.js";
-import { getMovies } from "../controllers/movieController.js";
+import { adminGetMovies, getMovies } from "../controllers/movieController.js";
 import { checkBookingDetails } from "../middleware/checkBooking.js";
 import { addBooking, getBookings } from "../controllers/book.js";
 import {
@@ -33,7 +33,10 @@ import { checkSeatExists } from "../middleware/checkSeatExists.js";
 import { searchMovieController } from "../controllers/searchMovieController.js";
 import { checkSearchQuery } from "../middleware/checkSearchQuery.js";
 import { getTicketTypes } from "../controllers/getTicketTypes.js";
-import { validateData } from "../middleware/checkSentData.js";
+import {
+  validateData,
+  validateRegisterData,
+} from "../middleware/checkSentData.js";
 import { subscribe } from "../controllers/polling.js";
 import { checkSeatsForDeletion } from "../middleware/checkSeatsForDeletion.js";
 import { addScreeningCheck } from "../middleware/addScreeningCheck.js";
@@ -111,7 +114,7 @@ router.get("/screening/:screeningid", checkScreeningId, screeningById);
 router.post("/login", validateData, loginhandler);
 
 // Register route
-router.post("/register", validateData, registerHandler);
+router.post("/register", validateRegisterData, registerHandler);
 
 // All routes below uses the middleware checkToken
 router.use(checkToken);
@@ -184,5 +187,8 @@ router.post("/addmovie", isAdmin, validateAddMovie, addMovie);
 
 // Route for ishidden movie
 router.put("/toggleHidden/:movieid", isAdmin, toggleHiddenController);
+
+// Route for Admin to get all movies, id, title, isHidden only
+router.get("/allmovies", isAdmin, adminGetMovies);
 
 export default router;

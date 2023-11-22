@@ -16,14 +16,14 @@ export function AdminMoviesPage() {
 
   useEffect(() => {
     async function getAllMovies() {
-      const url = `/movies`;
+      const url = `/allmovies`;
       const response = await fetchHelper(url, "get");
       const data = await response.json();
       setMovies(data);
     }
     getAllMovies();
   }, []);
-
+  console.log(movies);
   return (
     <div className="adminmovies-wrapper">
       <h2>Hantera filmer och visningar</h2>

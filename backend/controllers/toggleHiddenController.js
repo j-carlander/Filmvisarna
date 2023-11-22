@@ -14,7 +14,7 @@ export async function toggleHiddenController(req, res) {
   try {
     const { movieid } = req.params;
 
-    const screeningCheckSql = `SELECT COUNT(*) as count FROM screenings WHERE movieid = ?`;
+    const screeningCheckSql = `SELECT COUNT(*) as count FROM screenings WHERE movieid = ? AND date > now()`;
     const screeningCheckResult = await runQuery(screeningCheckSql, [movieid]);
 
     if (screeningCheckResult[0].count > 0) {

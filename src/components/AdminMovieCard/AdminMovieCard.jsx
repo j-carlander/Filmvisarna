@@ -8,7 +8,7 @@ export function AdminMovieCard({ movie }) {
   const navigate = useNavigate();
   function navigateToScreenings() {
     navigate(`/admin/filmer/${movie.id}`, {
-      state: { title: movie.title },
+      state: { title: movie.title, ishidden: movie.ishidden },
     });
   }
   return (
@@ -16,6 +16,7 @@ export function AdminMovieCard({ movie }) {
       <button className="adminmoviecard-btn" onClick={navigateToScreenings}>
         {movie.title}
       </button>
+      {movie.ishidden ? <p className="adminmoviecard-hidden">DOLD</p> : null}
     </div>
   );
 }

@@ -28,7 +28,7 @@ async function getMovies(filters) {
       checkConditions.push(upQuery);
     }
   }
-  
+
   checkConditions.push("movies.ishidden = FALSE");
 
   const sql = `SELECT 
@@ -64,4 +64,21 @@ export function getDateQueryArray(date) {
   return [startDateString, nextDayString];
 }
 
-export default { getMovies };
+async function adminGetMovies() {
+  const allMoviesQuery = "SELECT id, title, ishidden FROM movies";
+  const allMoviesRes = await runQuery(allMoviesQuery);
+  const allMovies = allMoviesRes.map((movie) => ({
+    ...movie,
+    ishidden: movie.ishidden === 1 ? true : false,
+  }));
+  return allMovies;
+}
+
+export async function checkMovieIsHidden(id) {
+  const ishiddenQuery = "SELECT ishidden FROM movies WHERE id= ?";
+  const result = await runQuery(ishiddenQuery, [id]);
+
+  return result[0].ishidden === 1 ? true : false;
+}
+
+export default { getMovies, adminGetMovies };

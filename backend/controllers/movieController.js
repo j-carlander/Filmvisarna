@@ -14,3 +14,9 @@ export async function getMovies(req, res) {
 
   res.send(result);
 }
+
+export async function adminGetMovies(req, res) {
+  const result = await moviesService.adminGetMovies();
+
+  res.send(result);
+}
