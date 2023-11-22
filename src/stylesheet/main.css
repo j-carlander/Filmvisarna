@@ -583,6 +583,7 @@ button {
 .movieDetailsPage-container .imgbox {
   background-color: transparent;
   border-style: none;
+  position: absolute;
 }
 .movieDetailsPage-container .imgbox .back-to-previous {
   position: absolute;
@@ -828,8 +829,8 @@ button {
   height: 300px;
   max-width: 700px;
 }
-.about-us-page #find-us,
-.about-us-page #contact {
+.about-us-page #hitta-hit,
+.about-us-page #kontakt {
   scroll-margin: 3em;
 }
 
@@ -1681,6 +1682,12 @@ button {
     position: relative;
   }
 }
+.add-screening-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+}
 .add-screening-page h2 {
   margin-bottom: 2em;
   text-align: center;
@@ -2199,16 +2206,35 @@ h1 {
   background-color: #837771;
 }
 
+.adminscreenings-wrapper {
+  width: 80%;
+}
 .adminscreenings-wrapper h2 {
-  text-align: center;
   margin-bottom: 2em;
+}
+
+.adminscreenings-wrapper,
+.adminscreenings-screenings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add-screenings-btn {
+  align-self: flex-end;
+  background-color: #5a8f76;
+  color: #ededed;
+  padding: 1em 2.7em;
+  margin: 2em 1em;
+  border-radius: 1000px;
+  border: transparent 1px;
+  font-weight: 700;
 }
 
 .more-screenings-btn {
   background-color: #5a8f76;
   color: #ededed;
   width: 50%;
-  margin: 0 auto 3em auto;
   max-width: 260px;
   padding: 1em 2.7em;
   border-radius: 1000px;
@@ -2221,20 +2247,34 @@ h1 {
 }
 
 .adminmovies-wrapper {
-  width: 60vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
 }
 .adminmovies-wrapper h2 {
   text-align: center;
   padding-bottom: 2em;
 }
 
-.adminmovies-flex {
+.adminmovies-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
 
 .adminmoviecard-btn {
   padding: 0em 1.5em;
+}
+
+.adminmovie-add-btn {
+  text-decoration: none;
+  text-align: center;
+  background-color: #5a8f76;
+  color: #ededed;
+  padding: 0.7em 1.4em;
+  border-radius: 1000px;
+  border: transparent 1px;
+  font-weight: 700;
 }
 
 .adminscreening-details {
@@ -2334,6 +2374,7 @@ h1 {
 }
 
 .admin-add-movie-page-wrapper {
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2344,6 +2385,7 @@ h1 {
   display: grid;
   gap: 2em;
   padding-bottom: 3em;
+  max-width: 850px;
 }
 .new-movie-form button {
   font-family: "Montserrat", sans-serif;
@@ -2461,7 +2503,7 @@ h1 {
   color: #f7dba7;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 875px) {
   .new-movie-form {
     width: 180%;
     gap: 1em;
@@ -2545,4 +2587,13 @@ h1 {
 
 .handleuserclose-btn:hover {
   scale: 1.05;
+}
+
+.adminpage-back-btn {
+  display: flex;
+  align-items: center;
+  color: #f7dba7;
+  background-color: transparent;
+  border: none;
+  align-self: flex-start;
 }/*# sourceMappingURL=main.css.map */

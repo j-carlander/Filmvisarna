@@ -1,3 +1,9 @@
+/**
+ * Component for an individual seat in a theater.
+ * It handles seat selection logic, considers the total number of tickets,
+ * the useSeatHook hook managing class names based on different conditions.
+ */
+
 import { useSeatHook } from "../../../hooks/useSeatHook";
 
 export default function Seat({
@@ -26,6 +32,13 @@ export default function Seat({
     clickedSeatNumber,
   });
 
+  function isOtherSeatTaken(seatsArray, condition) {
+    const seat = seatsArray.find((el) => el.seatnumber === condition);
+    if (seat !== undefined) {
+      return true;
+    }
+  }
+
   function isSeatTaken() {
     const row = seats.find((el) => el.rownumber === rowNumber);
 
@@ -33,12 +46,22 @@ export default function Seat({
       (el) => el.seatrow === row.rownumber
     );
     const max = individual ? 1 : totalTickets;
+    let foundRightTakenSeat = false;
     for (let i = 0; i < max; i++) {
-      const seat = filteredTakenSeats.find(
-        (el) => el.seatnumber === seatNumber - i
-      );
-      if (seat !== undefined) {
-        return true;
+      if (seatNumber - i === 0 || foundRightTakenSeat) {
+        for (let j = 0; j < max && j <= max - i; j++) {
+          if (
+            isOtherSeatTaken(filteredTakenSeats, seatNumber + j) ||
+            row.numberofseats < seatNumber + j
+          ) {
+            return true;
+          }
+        }
+        break;
+      }
+      if (isOtherSeatTaken(filteredTakenSeats, seatNumber - i)) {
+        i--;
+        foundRightTakenSeat = true;
       }
     }
 

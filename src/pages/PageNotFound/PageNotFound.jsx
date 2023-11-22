@@ -1,3 +1,6 @@
+/**
+ * The jsx for a 404 page
+ */
 
 export function PageNotFound() {
   return (
@@ -5,5 +8,5 @@ export function PageNotFound() {
       <h2>Sidan hittades inte</h2>
       <p>Sidan du letar efter finns tyvärr inte.</p>
     </div>
-  )
+  );
 }

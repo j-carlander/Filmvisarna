@@ -1,3 +1,13 @@
+/**
+ * Component for burgermenu (mobile view)
+ * Toggled open and close
+ * Changes in the location to automatically close the 
+ * menu when navigating to a new page
+ * links for each page, and it includes additional links 
+ * provided by the ControlledLinks component based on the 
+ * user's authentication status and role.
+ */
+
 import { useEffect } from "react";
 import { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";

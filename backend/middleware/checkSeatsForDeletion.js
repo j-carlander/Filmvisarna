@@ -1,3 +1,9 @@
+/**
+ * A middleware for retrieving the seats for a booking on a request to delete tha booking
+ * if no booking was found, aborts the request and responds with a status 404 and a message in Swedish that the booking was not found
+ * if booking was found, saves the seats in the response.locals variable to be retrieved in next step
+ */
+
 import { getSeatsForDeletionService } from "../service/deleteBookingService.js";
 
 export async function checkSeatsForDeletion(req, res, next) {

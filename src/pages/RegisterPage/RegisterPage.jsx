@@ -1,3 +1,8 @@
+/**
+ * The jsx for generating a register page with the form needed to create an account
+ * and the fetch for submitting the form
+ */
+
 import { useState, useEffect } from "react";
 import { Link, useOutletContext, useNavigate } from "react-router-dom";
 import { fetchHelper } from "../../utils/fetchHelper";
@@ -56,6 +61,9 @@ export function RegisterPage() {
       const loginData = await loginResult.json();
       setToken(loginData.token);
       setServerMessage("Ditt konto har skapats och du är inloggad!");
+      setTimeout(() => {
+        navigate(-1);
+      }, 2000);
       setFormData({ ...standardFormData });
     } else if (result.status >= 400) {
       setServerMessage((await result.json()).error);

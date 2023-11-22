@@ -1,3 +1,7 @@
+/**
+ * Hook for checking if seat is being hovered or not for grouped seats.
+ */
+
 import { useEffect, useState } from "react";
 
 export default function useSeatHoverHook({
@@ -32,15 +36,27 @@ export default function useSeatHoverHook({
       checkHoverCondition(hoveredSeat.seatNumber === seatNumber);
     }
 
+    let reverse = false;
+
     if (!individual && hoveredSeat !== undefined) {
       for (let i = 0; i < totalTickets; i++) {
-        if (hoveredSeat.seatNumber - i === 0) {
+        if (hoveredSeat.seatNumber - i === 0 || reverse) {
           for (let j = 0; j <= totalTickets - i; j++) {
             checkHoverCondition(hoveredSeat.seatNumber + j === seatNumber);
           }
           break;
         } else {
-          checkHoverCondition(hoveredSeat.seatNumber - i === seatNumber);
+          const takenSeatCheck = takenSeats.find(
+            (seat) =>
+              seat.seatrow === rowNumber &&
+              seat.seatnumber === hoveredSeat.seatNumber - i
+          );
+          if (takenSeatCheck !== undefined) {
+            i--;
+            reverse = true;
+          } else {
+            checkHoverCondition(hoveredSeat.seatNumber - i === seatNumber);
+          }
         }
       }
     }

@@ -1,3 +1,8 @@
+/**
+ * Hook for the seat picker in booking page. It determines wether the seat should show up as
+ * taken, selected or availible.
+ */
+
 import { useEffect, useState } from "react";
 import useSeatHoverHook from "./useSeatHoverHook";
 
@@ -31,7 +36,7 @@ export function useSeatHook({
       setSelectedSeats(sortedList);
     }
 
-    function findThisSeat(list) {
+    function findSeatByListAndNumber(list, seatNumber) {
       return list.find(
         (value) =>
           (value.rowNumber === rowNumber && value.seatNumber === seatNumber) ||
@@ -39,20 +44,20 @@ export function useSeatHook({
       );
     }
 
-    const thisTakenSeat = findThisSeat(takenSeats);
+    const thisTakenSeat = findSeatByListAndNumber(takenSeats, seatNumber);
 
-    let selected = findThisSeat(selectedSeats);
+    let selected = findSeatByListAndNumber(selectedSeats, seatNumber);
 
     function checkSelectedCondition(condition) {
       if (selectedSeats[0].rowNumber === rowNumber && condition) {
         selected = true;
-        const foundSeats = findThisSeat(selectedSeats);
+        const foundSeats = findSeatByListAndNumber(selectedSeats);
         if (foundSeats === undefined) {
           addThisSeat();
         }
       }
     }
-
+    let reverse = false;
     if (
       !thisTakenSeat &&
       !selected &&
@@ -60,7 +65,7 @@ export function useSeatHook({
       !individual
     ) {
       for (let i = 0; i < totalTickets; i++) {
-        if (clickedSeatNumber - i === 0) {
+        if (clickedSeatNumber - i === 0 || reverse) {
           for (
             let j = 0;
             j < totalTickets && selectedSeats.length < totalTickets;
@@ -73,11 +78,20 @@ export function useSeatHook({
           }
           break;
         } else {
-          checkSelectedCondition(
-            selectedSeats[0].seatNumber - i === seatNumber &&
-              selectedSeats[selectedSeats.length - 1].seatNumber - 1 ===
-                seatNumber
+          const takenSeatCheck = findSeatByListAndNumber(
+            takenSeats,
+            clickedSeatNumber - i
           );
+          if (takenSeatCheck !== undefined) {
+            reverse = true;
+            i--;
+          } else {
+            checkSelectedCondition(
+              selectedSeats[0].seatNumber - i === seatNumber &&
+                selectedSeats[selectedSeats.length - 1].seatNumber - 1 ===
+                  seatNumber
+            );
+          }
         }
       }
     }

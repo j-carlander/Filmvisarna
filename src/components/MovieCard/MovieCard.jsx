@@ -1,3 +1,9 @@
+/**
+ * Component for movie card
+ * MovieCard takes a prop and renders the movie information 
+ * in a card format
+ */
+
 import { useNavigate } from "react-router-dom";
 import { movieLengthFormatter } from "../../utils/movieLengthFormatter";
 import { ageLimitFormatter } from "../../utils/ageLimitFormatter";

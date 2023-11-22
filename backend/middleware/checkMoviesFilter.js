@@ -1,3 +1,8 @@
+/**
+ * A middleware for checking that if a query is sent with the request for getting movies they are of expected type and format
+ * if not, aborts the request and responds with a status 400 and a message in Swedish that the data provided was in the wrong format
+ */
+
 const dateErrorMessage =
   "Värdet på datumet har fel format! Rätt format: åååå-mm-dd";
 const ageErrorMessage = "Värdet på ålder är inte giltigt!";

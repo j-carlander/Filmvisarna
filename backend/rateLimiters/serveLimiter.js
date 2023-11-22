@@ -1,3 +1,7 @@
+/**
+ * Rate limiter for serving frontend when visiting a url that is not root.
+ */
+
 import rateLimit from "express-rate-limit";
 
 const serveLimit = rateLimit({

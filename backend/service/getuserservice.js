@@ -1,3 +1,7 @@
+/**
+ * Service for fetching basic user info
+ */
+
 import { runQuery } from "../db.js"
 
 export async function getUserInfoDB(uid) {

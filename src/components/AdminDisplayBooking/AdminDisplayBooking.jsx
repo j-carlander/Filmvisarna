@@ -1,3 +1,8 @@
+/**
+ * Component for displaying a booking and its tickets
+ * formatTickets formats a ticket
+ */
+
 import { AdminDisplayTicket } from "../AdminDisplayTicket/AdminDisplayTicket";
 
 export function AdminDisplayBooking({ result }) {

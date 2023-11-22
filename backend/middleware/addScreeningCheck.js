@@ -1,3 +1,10 @@
+/**
+ * A middleware for checking that the data provided with the request for adding a new ascreening is of expected format
+ * and that the date and time of the screening is not colliding with another screening
+ * if tests don't pass, aborts the request and responds with a status 400 and a message in Swedish that some data wasn't provided
+ * or that it was in the wrong format or that the date collides
+ */
+
 import { addScreeningDateCheckService } from "../service/addScreeningDateCheckService.js";
 
 const dateErrorMessage =

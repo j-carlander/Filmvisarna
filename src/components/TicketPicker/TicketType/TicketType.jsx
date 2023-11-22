@@ -1,3 +1,9 @@
+/**
+ * Component for ticket type
+ * Users can increase or decrease the quantity 
+ * of this ticket type
+ */
+
 export default function TicketType({
   ticketType,
   selectedTickets,

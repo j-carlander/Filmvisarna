@@ -1,3 +1,9 @@
+/**
+ * Component for displaying and removing a screening
+ * deleteScreening sends a fetch request to remove a screening from the database
+ * updates front-end on success
+ */
+
 import { formatStringWithFirstCharToUpper } from "../../utils/formatStringWithFirstCharToUpper";
 import { fetchHelper } from "../../utils/fetchHelper";
 import { useRef } from "react";
@@ -18,7 +24,7 @@ export function AdminScreeningCard({
   }
 
   return (
-    <article className="adminscreening-details">
+    <section className="adminscreening-details">
       <div className="adminscreening-left">
         <div className="adminscreening-flex-wrap">
           <h3 className="adminscreening-time">{screening.screeningDate} </h3>
@@ -52,6 +58,6 @@ export function AdminScreeningCard({
           Avbryt
         </button>
       </dialog>
-    </article>
+    </section>
   );
 }

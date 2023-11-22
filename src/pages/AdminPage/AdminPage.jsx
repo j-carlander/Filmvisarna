@@ -1,3 +1,8 @@
+/**
+ * Component that wraps all admin pages. It includes the header, aside and
+ * navigation.
+ */
+
 import { useState } from "react";
 import { adminPages } from "../../main";
 import sessionService from "../../utils/sessionService";
@@ -46,21 +51,31 @@ export function AdminPage() {
               <li>
                 {" "}
                 <NavLink to={"/"} end className={"admin-navlink"}>
-                  Till start
+                  Till Filmvisarna
                 </NavLink>
               </li>
               {adminPages.map((page) => {
                 if (!("label" in page)) return null;
                 return (
                   <li key={page.label}>
-                    <NavLink
-                      to={page.path}
-                      end
-                      className={({ isActive }) =>
-                        isActive ? "active-admin-navlink" : "admin-navlink"
-                      }>
-                      {page.label}
-                    </NavLink>
+                    {page.path === "/admin/filmer" ? (
+                      <NavLink
+                        to={page.path}
+                        className={({ isActive }) =>
+                          isActive ? "active-admin-navlink" : "admin-navlink"
+                        }>
+                        {page.label}
+                      </NavLink>
+                    ) : (
+                      <NavLink
+                        to={page.path}
+                        end
+                        className={({ isActive }) =>
+                          isActive ? "active-admin-navlink" : "admin-navlink"
+                        }>
+                        {page.label}
+                      </NavLink>
+                    )}
                   </li>
                 );
               })}

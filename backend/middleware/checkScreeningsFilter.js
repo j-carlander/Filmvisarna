@@ -1,3 +1,8 @@
+/**
+ * A middleware for checking that parameters for movieid and date(optinal) that is sent with the request for filtering screenings are of expected type and format
+ * if not, aborts the request and responds with a status 400 and a message in Swedish that the data provided was in the wrong format or not provided
+ */
+
 const dateErrorMessage = "Fel format på datum! Rätt format: åååå-mm-dd";
 
 export function checkScreeningFilter(req, res, next) {

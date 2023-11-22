@@ -1,3 +1,9 @@
+/**
+ * Component for user bookings (booked tickets: current and historical)
+ * fetches information from the server and displays it in 
+ * separate sections (currentBookings and oldBookings)
+ */
+
 import { useState, useEffect } from "react";
 import UserBooking from "./UserBooking/UserBooking";
 import { fetchHelper } from "../../utils/fetchHelper";

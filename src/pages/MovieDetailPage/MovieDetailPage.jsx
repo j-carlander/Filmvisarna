@@ -1,3 +1,8 @@
+/**
+ * The jsx for a movie details page holding 2 componets for the moviedetails and screening details
+ * and the fetch for movie details
+ */
+
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { fetchHelper } from "../../utils/fetchHelper";
@@ -8,16 +13,16 @@ import { Loading } from "../../components/Loading/Loading";
 export function MovieDetailPage() {
   const { movieid } = useParams();
   const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     async function getMoviedetails() {
-      setLoading(true)
+      setLoading(true);
       const response = await fetchHelper(`/moviedetails/${movieid}`, "get");
       const data = await response.json();
       setMovies(data);
-      setLoading(false)
+      setLoading(false);
     }
     getMoviedetails();
   }, [movieid]);
@@ -28,17 +33,19 @@ export function MovieDetailPage() {
 
   return (
     <>
-      {loading ? <Loading/> : 
-      <div className="movieDetailsPage-container">
-        <button className="imgbox" onClick={goBackToPreviousPage}>
-          <img className="back-to-previous" src="/back-left-arrow.png" />
-        </button>
-        {movies.map((movie, index) => (
-          <MovieDetailsInfo key={index} movie={movie} />
-        ))}
-        <MovieDetailsScreeningsByDate {...{ setMovies, movieid }} />
-      </div>
-      } 
+      {loading ? (
+        <Loading />
+      ) : (
+        <div className="movieDetailsPage-container">
+          <button className="imgbox" onClick={goBackToPreviousPage}>
+            <img className="back-to-previous" src="/back-left-arrow.png" />
+          </button>
+          {movies.map((movie, index) => (
+            <MovieDetailsInfo key={index} movie={movie} />
+          ))}
+          <MovieDetailsScreeningsByDate {...{ setMovies, movieid }} />
+        </div>
+      )}
     </>
   );
 }

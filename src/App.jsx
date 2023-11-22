@@ -1,3 +1,7 @@
+/**
+ * App is the root component for all pages except for admin pages.
+ */
+
 import { Outlet } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";

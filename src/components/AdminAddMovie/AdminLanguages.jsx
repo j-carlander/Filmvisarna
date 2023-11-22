@@ -1,3 +1,10 @@
+/**
+ * Component for adding languages to a new movie
+ * onSearchLangaugeClick searches for languages using input
+ * onlangClick removes a language from the list
+ * onSearchAddLanguage sends a fetch to add new language to database and movie
+ */
+
 import useLanguagesHook from "../../hooks/useLanguagesHook";
 import { fetchHelper } from "../../utils/fetchHelper";
 import { useState } from "react";

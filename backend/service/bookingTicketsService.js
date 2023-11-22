@@ -1,3 +1,7 @@
+/**
+ * Service for adding tickets into the database
+ */
+
 import { runQuery } from "../db.js";
 
 export async function bookingTickets(

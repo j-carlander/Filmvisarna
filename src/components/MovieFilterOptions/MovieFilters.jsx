@@ -1,3 +1,11 @@
+/**
+ * Component for movie filters (upcoming, age and date)
+ * Makes an API request to fetch movies with the specified filters 
+ * using the fetchMoviesByFilters function. 
+ * Each filter input is associated with an event handler (onChange) 
+ * to update the state when the user interacts with the filters.
+ */
+
 import { useState, useEffect } from "react";
 import { fetchHelper } from "../../utils/fetchHelper";
 

@@ -1,3 +1,7 @@
+/**
+ * Service for getting a user using different info
+ */
+
 import { runQuery } from "../db.js";
 
 export async function getUserWithName(fname, lname) {

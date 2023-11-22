@@ -1,3 +1,7 @@
+/**
+ * Service for checking the number of total seats in each row
+ */
+
 import { runQuery } from "../db.js";
 
 export async function checkTotalSeatsForRow(screeningid, rownumber) {

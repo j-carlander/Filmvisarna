@@ -1,3 +1,9 @@
+/**
+ * Component for fetching or adding names
+ * searchName searches for names using input
+ * addNewName sends a fetch request to add a new name into the database
+ */
+
 import { useState } from "react";
 import { fetchHelper } from "../../utils/fetchHelper";
 

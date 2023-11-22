@@ -1,3 +1,10 @@
+/**
+ * Component for searching on the website
+ * It allows users to search for movies (for example title, genre, 
+ * actors, director) and displays search results. 
+ * adjusts its appearance based on the screen size.
+ */
+
 import { useEffect, useRef } from "react";
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";

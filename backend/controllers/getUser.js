@@ -1,3 +1,9 @@
+/**
+ * Controller for handling requests to get information about a user
+ * sends response status 400 and a message in Swedish if no token was sent
+ * sends response status 200 and the user information on success
+ */
+
 import { getUserInfoDB } from "../service/getuserservice.js";
 
 export async function getUserInfo(req, res) {

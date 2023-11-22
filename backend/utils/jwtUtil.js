@@ -1,3 +1,7 @@
+/**
+ * Util for creating and validating JWT tokens.
+ */
+
 import Jwt from "jsonwebtoken";
 import fs from "fs";
 import path, { dirname } from "path";
