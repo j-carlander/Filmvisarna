@@ -1,3 +1,7 @@
+/*
+  This JavaScript file exports a function called removeScreeningMailService that sends an email notifying about the cancellation of a movie screening. The email subject is dynamically created based on the movie title and screening date. The email content is generated in both plain text and HTML formats using helper functions. The email is then sent using the mailTransporter.
+*/
+
 import { formatDateTimeSwe } from "../utils/formatDateTime.js";
 import { mailTransporter } from "../utils/mailtransporter.js";
 
