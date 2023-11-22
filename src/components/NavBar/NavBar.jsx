@@ -18,9 +18,12 @@ export function NavBar({ matchDesktop }) {
     function onWindowScroll() {
       setScrollY(window.scrollY);
     }
-    if (window.onscroll === null) {
-      window.onscroll = onWindowScroll;
-    }
+
+    window.onscroll = onWindowScroll;
+
+    return () => {
+      window.onscroll = null;
+    };
   }, []);
 
   return (
