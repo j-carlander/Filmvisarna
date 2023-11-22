@@ -61,6 +61,9 @@ export function RegisterPage() {
       const loginData = await loginResult.json();
       setToken(loginData.token);
       setServerMessage("Ditt konto har skapats och du är inloggad!");
+      setTimeout(() => {
+        navigate(-1);
+      }, 2000);
       setFormData({ ...standardFormData });
     } else if (result.status >= 400) {
       setServerMessage((await result.json()).error);
