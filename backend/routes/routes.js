@@ -33,7 +33,10 @@ import { checkSeatExists } from "../middleware/checkSeatExists.js";
 import { searchMovieController } from "../controllers/searchMovieController.js";
 import { checkSearchQuery } from "../middleware/checkSearchQuery.js";
 import { getTicketTypes } from "../controllers/getTicketTypes.js";
-import { validateData } from "../middleware/checkSentData.js";
+import {
+  validateData,
+  validateRegisterData,
+} from "../middleware/checkSentData.js";
 import { subscribe } from "../controllers/polling.js";
 import { checkSeatsForDeletion } from "../middleware/checkSeatsForDeletion.js";
 import { addScreeningCheck } from "../middleware/addScreeningCheck.js";
@@ -111,7 +114,7 @@ router.get("/screening/:screeningid", checkScreeningId, screeningById);
 router.post("/login", validateData, loginhandler);
 
 // Register route
-router.post("/register", validateData, registerHandler);
+router.post("/register", validateRegisterData, registerHandler);
 
 // All routes below uses the middleware checkToken
 router.use(checkToken);
