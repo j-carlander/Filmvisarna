@@ -1,3 +1,6 @@
+/*
+This JavaScript file exports a function called searchMovieService for searching movies in a database. It uses a SQL query to retrieve movie details, including ID, title, actors, director, and categories, by joining relevant tables. The search encompasses movie title, actor names, director names, and category names, with results returned using the runQuery function
+*/
 import { runQuery } from "../db.js";
 
 export async function searchMovieService(q) {
