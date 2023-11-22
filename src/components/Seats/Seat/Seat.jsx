@@ -50,7 +50,10 @@ export default function Seat({
     for (let i = 0; i < max; i++) {
       if (seatNumber - i === 0 || foundRightTakenSeat) {
         for (let j = 0; j < max && j <= max - i; j++) {
-          if (isOtherSeatTaken(filteredTakenSeats, seatNumber + j)) {
+          if (
+            isOtherSeatTaken(filteredTakenSeats, seatNumber + j) ||
+            row.numberofseats < seatNumber + j
+          ) {
             return true;
           }
         }
