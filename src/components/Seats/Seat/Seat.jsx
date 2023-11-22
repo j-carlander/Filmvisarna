@@ -46,17 +46,20 @@ export default function Seat({
       (el) => el.seatrow === row.rownumber
     );
     const max = individual ? 1 : totalTickets;
-
+    let foundRightTakenSeat = false;
     for (let i = 0; i < max; i++) {
-      if (seatNumber - i === 0) {
+      if (seatNumber - i === 0 || foundRightTakenSeat) {
         for (let j = 0; j < max && j <= max - i; j++) {
           if (isOtherSeatTaken(filteredTakenSeats, seatNumber + j)) {
             return true;
           }
         }
+        break;
       }
       if (isOtherSeatTaken(filteredTakenSeats, seatNumber - i)) {
-        return true;
+        i--;
+        foundRightTakenSeat = true;
+        // return true;
       }
     }
 
