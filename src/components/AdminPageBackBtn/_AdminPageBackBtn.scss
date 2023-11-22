@@ -1,0 +1,10 @@
+@use "../../Sass/abstract/variables" as *;
+
+.adminpage-back-btn {
+  display: flex;
+  align-items: center;
+  color: $lightAccent;
+  background-color: transparent;
+  border: none;
+  align-self: flex-start;
+}

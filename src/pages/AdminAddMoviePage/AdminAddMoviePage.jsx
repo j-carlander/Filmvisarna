@@ -11,6 +11,7 @@ import AdminDirector from "../../components/AdminAddMovie/AdminDirector";
 import AdminLanguages from "../../components/AdminAddMovie/AdminLanguages";
 import AdminCategories from "../../components/AdminAddMovie/AdminCategories";
 import AdminImage from "../../components/AdminAddMovie/AdminImage";
+import { AdminPageBackBtn } from "../../components/AdminPageBackBtn/AdminPageBackBtn";
 
 const movieSetup = {
   title: "",
@@ -48,6 +49,7 @@ export function AdminAddMoviePage() {
 
   return (
     <article className="admin-add-movie-page-wrapper">
+      <AdminPageBackBtn text={`Tillbaka till filmer`} />
       <h2>Lägg till en ny film</h2>
       <form className="new-movie-form" onSubmit={(e) => e.preventDefault()}>
         <div className="grid-column">

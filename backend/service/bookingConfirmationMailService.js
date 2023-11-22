@@ -1,13 +1,18 @@
 /**
-* Service for sending a mail upon successful booking
-* Formatted in html and uses regular CSS
-* MailTransporter returns error if missing field
-*/
-
+ * Service for sending a mail upon successful booking
+ * Formatted in html and uses regular CSS
+ * MailTransporter returns error if missing field
+ */
 
 import { formatDateTimeSwe } from "../utils/formatDateTime.js";
 import { formatSeatInfo } from "../utils/formatSeatsInfoForEmail.js";
 import { mailTransporter } from "../utils/mailtransporter.js";
+import { fileURLToPath } from "url";
+import path from "path";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+const homeIconPath = path.join(__dirname, "..", "dist", "logo-mini.png");
 
 export async function bookingConfirmationMailService(
   email,
@@ -23,6 +28,13 @@ export async function bookingConfirmationMailService(
     subject: "Här är din bokning",
     text: textBody(title, screeningDate, seats, bookingNumber, cost, email),
     html: htmlBody(title, screeningDate, seats, bookingNumber, cost, email),
+    attachments: [
+      {
+        filename: "logo-mini.png",
+        path: homeIconPath,
+        cid: "logoimg",
+      },
+    ],
   };
 
   return mailTransporter.sendMail(msg);
@@ -55,9 +67,10 @@ function htmlBody(title, screeningDate, seats, bookingNumber, cost, email) {
   const pStyle = `font-size: 16px; font-weight: bold;`;
   const spanStyle = `font-weight: normal`;
   const btnStyle = `padding: 1em 2em; margin: 2em auto; font-weight: semibold; border-radius: 1000px; background-color: #837771; color: #EDEDED;`;
-
+  const logoStyle = `width: 150px; margin-left: 25%; margin-right: 25%;`;
   return `<body style="${wrapperStyle}">
-    <article style="${innerWrapperStyle}">
+  <article style="${innerWrapperStyle}">
+      <img style="${logoStyle}" src="cid:logoimg" />
       <p style="${greetingStyle}">Hej!</p>
       <h1 style="${titleStyle}">Tack för din bokning!</h1>
       <p style="${pStyle}">Du har bokat</p>
