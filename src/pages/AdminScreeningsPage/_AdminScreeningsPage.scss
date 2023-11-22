@@ -8,21 +8,43 @@
   }
 }
 .adminscreenings-wrapper,
-.adminscreenings-screenings {
+.adminscreenings-screenings,
+.adminscreenings-hide-movie {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+.adminscreenings-hide-movie {
+  flex-direction: row;
+}
+.admin-hide-movie-btn {
+  background-color: $darkAccent;
+
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
+.admin-show-movie-btn,
+.admin-hide-movie-btn,
 .add-screenings-btn {
-  align-self: flex-end;
-  background-color: $mediumAccent;
   color: $whiteAccent;
   padding: 1em 2.7em;
   margin: 2em 1em;
   border-radius: 1000px;
   border: transparent 1px;
   font-weight: 700;
+}
+
+.admin-show-movie-btn,
+.add-screenings-btn {
+  background-color: $mediumAccent;
+  margin-block: 4em;
+
+  &:disabled {
+    opacity: 0.5;
+  }
 }
 
 .more-screenings-btn {

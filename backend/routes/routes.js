@@ -10,7 +10,7 @@ import {
 } from "../controllers/getScreeningInfo.js";
 import { checkScreeningId } from "../middleware/checkScreeningId.js";
 import { checkMovieDetails } from "../middleware/checkMovieDetails.js";
-import { getMovies } from "../controllers/movieController.js";
+import { adminGetMovies, getMovies } from "../controllers/movieController.js";
 import { checkBookingDetails } from "../middleware/checkBooking.js";
 import { addBooking, getBookings } from "../controllers/book.js";
 import {
@@ -184,5 +184,8 @@ router.post("/addmovie", isAdmin, validateAddMovie, addMovie);
 
 // Route for ishidden movie
 router.put("/toggleHidden/:movieid", isAdmin, toggleHiddenController);
+
+// Route for Admin to get all movies, id, title, isHidden only
+router.get("/allmovies", isAdmin, adminGetMovies);
 
 export default router;

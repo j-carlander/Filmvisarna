@@ -16,7 +16,8 @@ export function AdminScreeningsPage() {
   const [page, setPage] = useState(0);
   const { movieid } = useParams();
   const location = useLocation();
-  const { title } = location.state;
+  const { title, ishidden } = location.state;
+  const [movieHidden, setMovieHidden] = useState(ishidden);
   const navigate = useNavigate();
 
   function onMoreScreeningsClick() {
@@ -41,7 +42,7 @@ export function AdminScreeningsPage() {
     getAllScreenings();
   }, [movieid, page]);
 
-  const handleDeleteScreening = (deletedScreeningId) => {
+  function handleDeleteScreening(deletedScreeningId) {
     setScreenings((prevScreenings) =>
       prevScreenings.filter((screening) => screening.id !== deletedScreeningId)
     );
@@ -51,16 +52,40 @@ export function AdminScreeningsPage() {
     setTimeout(() => {
       setDeleteMessage("");
     }, 1500);
-  };
+  }
+
+  async function toggleHideMovie() {
+    const res = await fetchHelper(`/toggleHidden/${movieid}`, "put");
+    if (res.status == 200) {
+      const data = await res.json();
+      setMovieHidden(data.ishidden);
+    }
+  }
 
   return (
     <div className="adminscreenings-wrapper">
       <AdminPageBackBtn text={"Tillbaka till filmer"} />
       <h2>{title}</h2>
-      {/* button/component hide movie */}
+      <div className="adminscreenings-hide-movie">
+        {!movieHidden ? (
+          <p>
+            För att kunna dölja en film får inga framtida visningar vara
+            planerade
+          </p>
+        ) : null}
+        <button
+          className={
+            movieHidden ? "admin-show-movie-btn" : "admin-hide-movie-btn"
+          }
+          disabled={screenings.length != 0}
+          onClick={toggleHideMovie}>
+          {movieHidden ? "Visa film" : "Dölj film"}
+        </button>
+      </div>
       <article className="adminscreenings-screenings">
         <h3>Hantera visningar</h3>
         <button
+          disabled={movieHidden}
           onClick={() =>
             navigate("/admin/filmer/lagg-till-visning", {
               state: { movieid, title },

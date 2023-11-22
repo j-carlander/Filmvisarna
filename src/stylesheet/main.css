@@ -2214,21 +2214,43 @@ h1 {
 }
 
 .adminscreenings-wrapper,
-.adminscreenings-screenings {
+.adminscreenings-screenings,
+.adminscreenings-hide-movie {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+.adminscreenings-hide-movie {
+  flex-direction: row;
+}
+
+.admin-hide-movie-btn {
+  background-color: #837771;
+}
+.admin-hide-movie-btn:disabled {
+  opacity: 0.5;
+}
+
+.admin-show-movie-btn,
+.admin-hide-movie-btn,
 .add-screenings-btn {
-  align-self: flex-end;
-  background-color: #5a8f76;
   color: #ededed;
   padding: 1em 2.7em;
   margin: 2em 1em;
   border-radius: 1000px;
   border: transparent 1px;
   font-weight: 700;
+}
+
+.admin-show-movie-btn,
+.add-screenings-btn {
+  background-color: #5a8f76;
+  margin-block: 4em;
+}
+.admin-show-movie-btn:disabled,
+.add-screenings-btn:disabled {
+  opacity: 0.5;
 }
 
 .more-screenings-btn {
@@ -2355,16 +2377,32 @@ h1 {
 }
 
 .adminmoviecard-wrapper {
-  width: 80%;
   text-align: center;
   margin: 1em;
+  position: relative;
+  background-color: #1e2d2f;
+  border-radius: 20px;
+}
+
+.adminmoviecard-hidden {
+  position: absolute;
+  top: 0.2em;
+  left: 0.2em;
+  rotate: -20deg;
+  color: red;
+  opacity: 0.3;
+  font-size: 2.7rem;
+  font-weight: 600;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 .adminmoviecard-btn {
   width: 12em;
   height: 6em;
   border: none;
-  background-color: #1e2d2f;
+  background-color: transparent;
   color: #f7dba7;
   font-weight: bold;
   border-radius: 20px;
