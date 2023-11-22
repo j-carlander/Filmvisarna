@@ -59,7 +59,6 @@ export default function Seat({
       if (isOtherSeatTaken(filteredTakenSeats, seatNumber - i)) {
         i--;
         foundRightTakenSeat = true;
-        // return true;
       }
     }
 
