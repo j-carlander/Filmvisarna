@@ -62,6 +62,7 @@ import { searchGenreCheck } from "../middleware/genreSearchCheck.js";
 import { searchGenre } from "../controllers/genreSearchController.js";
 import { addGenreCheck } from "../middleware/addGenreCheck.js";
 import { addGenreController } from "../controllers/addGenreController.js";
+import { toggleHiddenController } from "../controllers/toggleHiddenController.js";
 
 const router = express.Router();
 
@@ -180,5 +181,8 @@ router.put("/users", checkIfSuperAdmin, updateUserRole);
 
 // Route for adding a movie
 router.post("/addmovie", isAdmin, validateAddMovie, addMovie);
+
+// Route for ishidden movie
+router.put("/toggleHidden/:movieid", isAdmin, toggleHiddenController);
 
 export default router;
