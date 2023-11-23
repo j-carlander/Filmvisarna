@@ -1,8 +1,13 @@
+/**
+ * Page for admin to add new screenings for a movie.
+ */
+
 import { useEffect } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { fetchHelper } from "../../utils/fetchHelper";
 import { useState } from "react";
 import { AdminScreeningCard } from "../../components/AdminScreeningCard/AdminScreeningCard";
+import { AdminPageBackBtn } from "../../components/AdminPageBackBtn/AdminPageBackBtn";
 
 export function AdminScreeningsPage() {
   const [screenings, setScreenings] = useState([]);
@@ -11,7 +16,10 @@ export function AdminScreeningsPage() {
   const [page, setPage] = useState(0);
   const { movieid } = useParams();
   const location = useLocation();
-  const { title } = location.state;
+  const { title, ishidden } = location.state;
+  const [movieHidden, setMovieHidden] = useState(ishidden);
+  const navigate = useNavigate();
+
   function onMoreScreeningsClick() {
     setPage(page + 3);
   }
@@ -34,7 +42,7 @@ export function AdminScreeningsPage() {
     getAllScreenings();
   }, [movieid, page]);
 
-  const handleDeleteScreening = (deletedScreeningId) => {
+  function handleDeleteScreening(deletedScreeningId) {
     setScreenings((prevScreenings) =>
       prevScreenings.filter((screening) => screening.id !== deletedScreeningId)
     );
@@ -44,31 +52,71 @@ export function AdminScreeningsPage() {
     setTimeout(() => {
       setDeleteMessage("");
     }, 1500);
-  };
+  }
+
+  async function toggleHideMovie() {
+    const res = await fetchHelper(`/toggleHidden/${movieid}`, "put");
+    if (res.status == 200) {
+      const data = await res.json();
+      setMovieHidden(data.ishidden);
+    }
+  }
 
   return (
     <div className="adminscreenings-wrapper">
-      <h2>Visningar för: {title}</h2>
-      {screenings.map((screening, index) => (
-        <AdminScreeningCard
-          key={index}
-          screening={screening}
-          onDeleteScreening={handleDeleteScreening}
-          movieTitle={title}
-        />
-      ))}
-      {serverError === "" ? (
-        <button onClick={onMoreScreeningsClick} className="more-screenings-btn">
-          Hämta fler visningar
-        </button>
-      ) : (
-        serverError !== "" && (
-          <p className="no-more-screenings-text">
-            Det finns inga fler visningar för denna film!
+      <AdminPageBackBtn text={"Tillbaka till filmer"} />
+      <h2>{title}</h2>
+      <div className="adminscreenings-hide-movie">
+        {!movieHidden ? (
+          <p>
+            För att kunna dölja en film får inga framtida visningar vara
+            planerade
           </p>
-        )
-      )}
-      {deleteMessage && <div className="delete-message">{deleteMessage}</div>}
+        ) : null}
+        <button
+          className={
+            movieHidden ? "admin-show-movie-btn" : "admin-hide-movie-btn"
+          }
+          disabled={screenings.length != 0}
+          onClick={toggleHideMovie}>
+          {movieHidden ? "Visa film" : "Dölj film"}
+        </button>
+      </div>
+      <article className="adminscreenings-screenings">
+        <h3>Hantera visningar</h3>
+        <button
+          disabled={movieHidden}
+          onClick={() =>
+            navigate("/admin/filmer/lagg-till-visning", {
+              state: { movieid, title },
+            })
+          }
+          className={"add-screenings-btn"}>
+          Lägg till en visning
+        </button>
+        {screenings.map((screening, index) => (
+          <AdminScreeningCard
+            key={index}
+            screening={screening}
+            onDeleteScreening={handleDeleteScreening}
+            movieTitle={title}
+          />
+        ))}
+        {serverError === "" ? (
+          <button
+            onClick={onMoreScreeningsClick}
+            className="more-screenings-btn">
+            Hämta fler visningar
+          </button>
+        ) : (
+          serverError !== "" && (
+            <p className="no-more-screenings-text">
+              Det finns inga fler visningar för denna film!
+            </p>
+          )
+        )}
+        {deleteMessage && <div className="delete-message">{deleteMessage}</div>}
+      </article>
     </div>
   );
 }

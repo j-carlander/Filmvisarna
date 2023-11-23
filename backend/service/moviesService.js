@@ -1,3 +1,7 @@
+/*
+This JavaScript file defines a function getMovies that retrieves movie information from a database based on specified filters. The filters can include criteria such as date, age limit, and whether the movies are upcoming. The function dynamically constructs a SQL query based on the provided filters and executes it using the runQuery function from the "../db.js" module. Additionally, there's a utility function getDateQueryArray that generates an array representing the start and end dates for a given date, formatted according to the "se-SE" locale.
+*/
+
 import { runQuery } from "../db.js";
 
 async function getMovies(filters) {
@@ -24,6 +28,8 @@ async function getMovies(filters) {
       checkConditions.push(upQuery);
     }
   }
+
+  checkConditions.push("movies.ishidden = FALSE");
 
   const sql = `SELECT 
   movies.id,
@@ -58,4 +64,21 @@ export function getDateQueryArray(date) {
   return [startDateString, nextDayString];
 }
 
-export default { getMovies };
+async function adminGetMovies() {
+  const allMoviesQuery = "SELECT id, title, ishidden FROM movies";
+  const allMoviesRes = await runQuery(allMoviesQuery);
+  const allMovies = allMoviesRes.map((movie) => ({
+    ...movie,
+    ishidden: movie.ishidden === 1 ? true : false,
+  }));
+  return allMovies;
+}
+
+export async function checkMovieIsHidden(id) {
+  const ishiddenQuery = "SELECT ishidden FROM movies WHERE id= ?";
+  const result = await runQuery(ishiddenQuery, [id]);
+
+  return result[0].ishidden === 1 ? true : false;
+}
+
+export default { getMovies, adminGetMovies };

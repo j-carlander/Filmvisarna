@@ -1,3 +1,12 @@
+/**
+* Service for adding movie to database
+* saves image into base64 and returns error if the fs module catches one
+* links categories to movie using moviecategories
+* links actors to movie using movieactors
+* returns a success: true if sucessfully added
+* returns a success: false if catch error
+*/
+
 import { runQuery } from "../db.js";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";

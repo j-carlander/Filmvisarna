@@ -1,3 +1,7 @@
+/**
+ * Service for getting all ticket types
+ */
+
 import { runQuery } from "../db.js";
 
 export async function getTicketTypesService() {

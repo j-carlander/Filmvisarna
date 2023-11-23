@@ -1,7 +1,11 @@
+/**
+ * Component for a carousel that scrolls movie list to the left or right
+ * scroll function sets offset -200 or +200 depending on pressing left or right arrow button respectively
+ */
+
 import { useEffect } from "react";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { Loading } from "../Loading/Loading";
 
 export function Carousel({ movies }) {
   function scroll(scrollOffset) {
@@ -23,7 +27,7 @@ export function Carousel({ movies }) {
         {movies.map((movie, index) => (
           <div className="carousel-card" key={index}>
             <img
-              onClick={() => navigate(`/movies/${movie.id}`)}
+              onClick={() => navigate(`/filmer/${movie.id}`)}
               className="carousel-img"
               src={`/images/${movie.id}_w200.webp`}
               srcSet={`/images/${movie.id}_w200.webp 200w, /images/${movie.id}_w400.webp 400w`}

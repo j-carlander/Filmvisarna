@@ -1,3 +1,11 @@
+/**
+ * Component for user information details
+ * fetch and display user details (for example: 
+ * name, email, phonenumber)
+ * The loading spinner is displayed until the data is fetched.
+ * The actual rendering of user details is done in the UserDetails component
+ */
+
 import { UserDetails } from "../UserDetails/UserDetails";
 import { useEffect, useState } from "react";
 import sessionService from "../../utils/sessionService";

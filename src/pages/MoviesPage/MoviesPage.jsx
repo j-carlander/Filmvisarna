@@ -1,3 +1,9 @@
+/**
+ * The jsx for a movie overview page
+ * movies is set in moviefilters component
+ * maps a moviecard component for each movie
+ */
+
 import { MovieCard } from "../../components/MovieCard/MovieCard";
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";

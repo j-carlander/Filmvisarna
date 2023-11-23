@@ -1,3 +1,10 @@
+/**
+ * Component for searching and adding languages
+ * Admin and Super role use only
+ * enter a search query, and if no languages are found, 
+ * the option to add a new language is provided.
+ */
+
 import React, { useState } from "react";
 import { fetchHelper } from "../../utils/fetchHelper";
 
@@ -14,23 +21,16 @@ const SearchAddLanguage = () => {
       if (data && data.length === 0) {
         // If no languages found, add a new language
         await addLanguage();
-      } else {
-        // Handle the search result
-        // e.g., Display the language or take necessary action
-        console.log("Found languages:", data);
       }
     } catch (error) {
       console.error("Error searching for languages:", error);
     }
-  };
+  }
 
   const addLanguage = async () => {
     try {
       const addResponse = await fetchHelper('/addLanguages', 'POST');
       const addData = await addResponse.json();
-      
-      // Handle the response after adding a language
-      console.log("Language added:", addData);
     } catch (error) {
       console.error("Error adding language:", error);
     }

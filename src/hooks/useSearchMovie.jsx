@@ -1,3 +1,7 @@
+/**
+ * Hook for searching movies in searchbar. User can search on title, genre, actor and director.
+ */
+
 import { useState } from "react";
 import { useEffect } from "react";
 import { fetchHelper } from "../utils/fetchHelper";

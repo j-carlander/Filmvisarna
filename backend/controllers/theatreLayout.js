@@ -1,3 +1,9 @@
+/**
+ * Controller for handling requests to get theatres (Stora och lilla Visaren) by id
+ * sends response status 404 and a message in Swedish if no theatree was found
+ * sends response status 200 and the theatre information on success
+ */
+
 import { theatrelayoutService } from "../service/theatrelayoutService.js";
 
 export async function theatreLayout(req, res) {
@@ -5,10 +11,7 @@ export async function theatreLayout(req, res) {
 
   const result = await theatrelayoutService(theatreid);
   if (!result || result.length === 0) {
-    // If no results were found, return a 404 Not Found response.
     return res.status(404).json({ error: "Salongen hittades inte!" });
   }
-
-  // If results were found, return a 200 OK response with the data.
   res.status(200).json(result);
 }

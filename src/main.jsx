@@ -1,3 +1,7 @@
+/**
+ * Main component sets up all the routes on the website. Including admin routes.
+ */
+
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
@@ -24,19 +28,19 @@ import { AdminAddMoviePage } from "./pages/AdminAddMoviePage/AdminAddMoviePage.j
 
 export const pages = [
   { path: "/", element: <LandingPage /> },
-  { path: "/movies", label: "Filmer", element: <MoviesPage /> },
-  { path: "/movies/:movieid", element: <MovieDetailPage /> },
-  { path: "/aboutus#find-us", label: "Hitta hit", element: <AboutUs /> },
-  { path: "/aboutus#contact", label: "Kontakt", element: <AboutUs /> },
-  { path: "/aboutus", label: "Om oss", element: <AboutUs /> },
-  { path: "/booking/:screeningid", element: <BookingPage /> },
-  { path: "/login", element: <LoginPage /> },
-  { path: "/myaccount", element: <MyAccountPage /> },
+  { path: "/filmer", label: "Filmer", element: <MoviesPage /> },
+  { path: "/filmer/:movieid", element: <MovieDetailPage /> },
+  { path: "/om-oss#hitta-hit", label: "Hitta hit", element: <AboutUs /> },
+  { path: "/om-oss#kontakt", label: "Kontakt", element: <AboutUs /> },
+  { path: "/om-oss", label: "Om oss", element: <AboutUs /> },
+  { path: "/bokning/:screeningid", element: <BookingPage /> },
+  { path: "/logga-in", element: <LoginPage /> },
+  { path: "/mitt-konto", element: <MyAccountPage /> },
   {
-    path: "/bookingconfirmation/:screeningId",
+    path: "/bokningsbekraftelse/:screeningId",
     element: <BookingConfirmationPage />,
   },
-  { path: "/register", element: <RegisterPage /> },
+  { path: "/registrera", element: <RegisterPage /> },
   { path: "*", element: <PageNotFound /> },
 ];
 
@@ -47,27 +51,25 @@ export const adminPages = [
     element: <AdminSearchBookingPage />,
   },
   {
-    path: "/admin/addscreening",
-    label: "Lägg till visning",
+    path: "/admin/filmer/lagg-till-visning",
     element: <AdminAddScreeningPage />,
   },
   {
-    path: "/admin/screenings",
-    label: "Ta bort visning",
+    path: "/admin/filmer",
+    label: "Hantera filmer och visningar",
     element: <AdminMoviesPage />,
   },
   {
-    path: "/admin/users",
+    path: "/admin/anvandare",
     label: "Hantera användare",
     element: <AdminHandleUserPage />,
   },
   {
-    path: "/admin/screenings/:movieid",
+    path: "/admin/filmer/:movieid",
     element: <AdminScreeningsPage />,
   },
   {
-    path: "/admin/addmovie",
-    label: "Lägg till en film",
+    path: "/admin/filmer/lagg-till-film",
     element: <AdminAddMoviePage />,
   },
 ];

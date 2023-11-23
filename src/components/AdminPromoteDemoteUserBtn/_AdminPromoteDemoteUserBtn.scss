@@ -9,6 +9,11 @@
   font-weight: bold;
 }
 
+.admin-demote-btn:disabled {
+  cursor: auto;
+  opacity: .5;
+}
+
 .admin-promote-btn {
   background-color: $mediumAccent;
 }

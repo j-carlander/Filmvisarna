@@ -1,3 +1,8 @@
+/**
+ * Component for user bookings for historical bookings
+ * takes a prop and renders the information in a card format
+ */
+
 export function UserBookingsHistoryCard({ bookingData }) {
   const dateArr = bookingData.date.split(". kl: ");
 

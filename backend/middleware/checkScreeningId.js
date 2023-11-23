@@ -1,3 +1,10 @@
+/**
+ * A middleware for checking that if a screening id is provided as a parameter with a request, it is of expected type
+ * and that it is a valid screening id.
+ * if of wrong type, aborts the request and responds with a status 400 and a message in Swedish that the id should be a number
+ * if the id doesn't exist, aborts the request and responds with a status 404 and a message in Swedish that the screening doesn't exist
+ */
+
 import { screeningsService } from "../service/screeningsService.js";
 
 export async function checkScreeningId(req, res, next) {

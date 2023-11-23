@@ -1,3 +1,9 @@
+/**
+ * Util for fetching to /api routes on backend.
+ *
+ * Adds JWT token to request if availible.
+ */
+
 import sessionService from "./sessionService";
 
 export function fetchHelper(url, method, body) {

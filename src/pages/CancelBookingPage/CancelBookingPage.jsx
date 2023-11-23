@@ -1,3 +1,10 @@
+/**
+ * The jsx for generating a page with a form to cancel a booking
+ * If a link with querys for email and booking number is used to view the page
+ * the form fields will be filled in automatically
+ * When the form is submitted it sends a delete request
+ */
+
 import { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { fetchHelper } from "../../utils/fetchHelper";
@@ -12,7 +19,7 @@ export function CancelBookingPage() {
     const searchParams = new URLSearchParams(location.search);
     const bookingNumber = searchParams.get("bookingNumber");
     const email = searchParams.get("email");
-    
+
     // Populate the input fields with query parameter values
     if (bookingNumber && email) {
       setValues({ guestemail: email, bookingnumber: bookingNumber });
@@ -25,8 +32,6 @@ export function CancelBookingPage() {
     const response = await fetchHelper("/booking", "delete", { ...values });
 
     const json = await response.json();
-
-    console.log(json);
 
     if (response.status < 400) {
       setServerMsg("Din bokning har makulerats!");

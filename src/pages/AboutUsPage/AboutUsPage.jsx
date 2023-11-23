@@ -1,3 +1,8 @@
+/**
+ * About us page. For reading information about the cinema and a map for
+ * finding the location of it as well as contact information.
+ */
+
 import { useLocation } from "react-router-dom";
 import { useRef, useEffect } from "react";
 
@@ -10,9 +15,9 @@ export function AboutUs() {
   useEffect(() => {
     if (findRef.current === undefined) return;
     if (contactRef.current === undefined) return;
-    if (location.hash === "#find-us") {
+    if (location.hash === "#hitta-hit") {
       findRef.current.scrollIntoView();
-    } else if (location.hash === "#contact") {
+    } else if (location.hash === "#kontakt") {
       contactRef.current.scrollIntoView();
     } else {
       window.scrollTo(0, 0);
@@ -45,7 +50,7 @@ export function AboutUs() {
         magiska i att gå på bio hos oss!
       </p>
       <img className="theatre-img" src="/movie-theatre.png" />
-      <h2 ref={contactRef} id="contact">
+      <h2 ref={contactRef} id="kontakt">
         Kontakt
       </h2>
       <p className="contact-info">
@@ -59,7 +64,7 @@ export function AboutUs() {
           Tel: <span>011-111 22 33</span>
         </span>
       </p>
-      <h3 ref={findRef} id="find-us">
+      <h3 ref={findRef} id="hitta-hit">
         <img src="/map-outline.svg" />
         Hitta hit
       </h3>

@@ -1,3 +1,14 @@
+/**
+ * Component for screenings for a movie
+ * fetches and displays movie screenings based on the 
+ * selected date, with an option to load more screenings. 
+ * It also handles and displays error messages from the server.
+ * MovieDetailsScreeningsByDate takes a prop and renders the screening 
+ * information in a card format
+ * fetching moviescreening and screenings from database
+ * Passes the showScreening state to the ScreeningsList component for rendering.
+ */
+
 import { useState, useEffect } from "react";
 import { fetchHelper } from "../../utils/fetchHelper";
 import ScreeningsList from "../ScreeningList/ScreeningList";

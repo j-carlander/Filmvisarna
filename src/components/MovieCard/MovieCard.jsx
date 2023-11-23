@@ -1,3 +1,9 @@
+/**
+ * Component for movie card
+ * MovieCard takes a prop and renders the movie information 
+ * in a card format
+ */
+
 import { useNavigate } from "react-router-dom";
 import { movieLengthFormatter } from "../../utils/movieLengthFormatter";
 import { ageLimitFormatter } from "../../utils/ageLimitFormatter";
@@ -5,7 +11,7 @@ import { ageLimitFormatter } from "../../utils/ageLimitFormatter";
 export function MovieCard({ movie }) {
   const navigate = useNavigate();
   function onMovieClick() {
-    navigate(`/movies/${movie.id}`);
+    navigate(`/filmer/${movie.id}`);
   }
   return (
     <article onClick={onMovieClick} className="movie-card">

@@ -583,6 +583,7 @@ button {
 .movieDetailsPage-container .imgbox {
   background-color: transparent;
   border-style: none;
+  position: absolute;
 }
 .movieDetailsPage-container .imgbox .back-to-previous {
   position: absolute;
@@ -828,8 +829,8 @@ button {
   height: 300px;
   max-width: 700px;
 }
-.about-us-page #find-us,
-.about-us-page #contact {
+.about-us-page #hitta-hit,
+.about-us-page #kontakt {
   scroll-margin: 3em;
 }
 
@@ -1681,6 +1682,12 @@ button {
     position: relative;
   }
 }
+.add-screening-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+}
 .add-screening-page h2 {
   margin-bottom: 2em;
   text-align: center;
@@ -1696,6 +1703,7 @@ button {
 .add-screening-page .form-wrapper button {
   padding: 0.5em;
   border-radius: 0.5em;
+  cursor: pointer;
 }
 .add-screening-page .form-wrapper button {
   background-color: #5a8f76;
@@ -1734,11 +1742,11 @@ button {
   flex-direction: column;
   align-items: center;
 }
-.bookconfirm-wrapper .bookconfirm-interactions {
+.bookconfirm-wrapper .bookconfirm-interactions,
+.bookconfirm-wrapper .bookconfirm-form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
 }
 .bookconfirm-wrapper h1 {
   text-align: center;
@@ -2000,6 +2008,7 @@ button {
   border-radius: 0.25em;
   width: 12em;
   height: 2.25em;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 900px) {
@@ -2034,6 +2043,7 @@ button {
   border-radius: 50%;
   background: conic-gradient(transparent 75%, #f7dba7);
   animation: rotateLoading infinite 1s linear;
+  z-index: 1000;
 }
 .loading .loading-inner {
   position: absolute;
@@ -2183,6 +2193,11 @@ h1 {
   font-weight: bold;
 }
 
+.admin-demote-btn:disabled {
+  cursor: auto;
+  opacity: 0.5;
+}
+
 .admin-promote-btn {
   background-color: #5a8f76;
 }
@@ -2191,16 +2206,57 @@ h1 {
   background-color: #837771;
 }
 
+.adminscreenings-wrapper {
+  width: 80%;
+}
 .adminscreenings-wrapper h2 {
-  text-align: center;
   margin-bottom: 2em;
+}
+
+.adminscreenings-wrapper,
+.adminscreenings-screenings,
+.adminscreenings-hide-movie {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.adminscreenings-hide-movie {
+  flex-direction: row;
+}
+
+.admin-hide-movie-btn {
+  background-color: #837771;
+}
+.admin-hide-movie-btn:disabled {
+  opacity: 0.5;
+}
+
+.admin-show-movie-btn,
+.admin-hide-movie-btn,
+.add-screenings-btn {
+  color: #ededed;
+  padding: 1em 2.7em;
+  margin: 2em 1em;
+  border-radius: 1000px;
+  border: transparent 1px;
+  font-weight: 700;
+}
+
+.admin-show-movie-btn,
+.add-screenings-btn {
+  background-color: #5a8f76;
+  margin-block: 4em;
+}
+.admin-show-movie-btn:disabled,
+.add-screenings-btn:disabled {
+  opacity: 0.5;
 }
 
 .more-screenings-btn {
   background-color: #5a8f76;
   color: #ededed;
   width: 50%;
-  margin: 0 auto 3em auto;
   max-width: 260px;
   padding: 1em 2.7em;
   border-radius: 1000px;
@@ -2213,16 +2269,34 @@ h1 {
 }
 
 .adminmovies-wrapper {
-  width: 60vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
 }
 .adminmovies-wrapper h2 {
   text-align: center;
   padding-bottom: 2em;
 }
 
-.adminmovies-flex {
+.adminmovies-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+}
+
+.adminmoviecard-btn {
+  padding: 0em 1.5em;
+}
+
+.adminmovie-add-btn {
+  text-decoration: none;
+  text-align: center;
+  background-color: #5a8f76;
+  color: #ededed;
+  padding: 0.7em 1.4em;
+  border-radius: 1000px;
+  border: transparent 1px;
+  font-weight: 700;
 }
 
 .adminscreening-details {
@@ -2303,16 +2377,32 @@ h1 {
 }
 
 .adminmoviecard-wrapper {
-  width: 80%;
   text-align: center;
   margin: 1em;
+  position: relative;
+  background-color: #1e2d2f;
+  border-radius: 20px;
+}
+
+.adminmoviecard-hidden {
+  position: absolute;
+  top: 0.2em;
+  left: 0.2em;
+  rotate: -20deg;
+  color: red;
+  opacity: 0.3;
+  font-size: 2.7rem;
+  font-weight: 600;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 .adminmoviecard-btn {
   width: 12em;
   height: 6em;
   border: none;
-  background-color: #1e2d2f;
+  background-color: transparent;
   color: #f7dba7;
   font-weight: bold;
   border-radius: 20px;
@@ -2322,6 +2412,7 @@ h1 {
 }
 
 .admin-add-movie-page-wrapper {
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2332,6 +2423,7 @@ h1 {
   display: grid;
   gap: 2em;
   padding-bottom: 3em;
+  max-width: 850px;
 }
 .new-movie-form button {
   font-family: "Montserrat", sans-serif;
@@ -2449,7 +2541,7 @@ h1 {
   color: #f7dba7;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 875px) {
   .new-movie-form {
     width: 180%;
     gap: 1em;
@@ -2499,4 +2591,47 @@ h1 {
 }
 .name-search-container .name-container ul li {
   list-style-type: none;
+}
+
+.handleuser-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 100px 200px rgba(12, 12, 12, 0.493);
+}
+
+.confirm-btn {
+  padding: 25px;
+  border-radius: 15px;
+  background-color: #5a8f76;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.confirm-btn:hover {
+  scale: 1.05;
+}
+
+.handleuserclose-btn {
+  padding: 25px;
+  border-radius: 15px;
+  background-color: #837771;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.handleuserclose-btn:hover {
+  scale: 1.05;
+}
+
+.adminpage-back-btn {
+  display: flex;
+  align-items: center;
+  color: #f7dba7;
+  background-color: transparent;
+  border: none;
+  align-self: flex-start;
 }/*# sourceMappingURL=main.css.map */

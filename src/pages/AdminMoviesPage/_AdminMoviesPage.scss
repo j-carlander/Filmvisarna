@@ -1,12 +1,34 @@
+@use "../../Sass/abstract/variables" as *;
+
 .adminmovies-wrapper {
-  width: 60vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+  // width: 60vw;
   h2 {
     text-align: center;
     padding-bottom: 2em;
   }
 }
 
-.adminmovies-flex {
+.adminmovies-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+}
+
+.adminmoviecard-btn {
+  padding: 0em 1.5em;
+}
+.adminmovie-add-btn {
+  text-decoration: none;
+  text-align: center;
+  background-color: $mediumAccent;
+  color: $whiteAccent;
+
+  padding: 0.7em 1.4em;
+
+  border-radius: 1000px;
+  border: transparent 1px;
+  font-weight: 700;
 }

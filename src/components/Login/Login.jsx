@@ -1,3 +1,10 @@
+/**
+ * Component for logging in
+ * handleSubmit sends a fetch request to login
+ * handleSubmit sets token and returns to previous page on success
+ * Bli medlem redirects to register page
+ */
+
 import { useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 
@@ -73,7 +80,7 @@ export default function Login() {
             <span
               className="bli-medlem-underline"
               onClick={() => {
-                navigate("/register");
+                navigate("/registrera");
               }}>
               Bli medlem!
             </span>

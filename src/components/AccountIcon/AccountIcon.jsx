@@ -1,3 +1,9 @@
+/**
+ * Component for redirecting to my account or login page
+ * If a guest, redirect to login page
+ * If logged in, redirect to my account page
+ */
+
 import { useNavigate } from "react-router-dom";
 import sessionService from "../../utils/sessionService";
 
@@ -7,9 +13,9 @@ export function AccountIcon() {
 
   const handleClick = () => {
     if (token) {
-      navigate("/myaccount");
+      navigate("/mitt-konto");
     } else {
-      navigate("/login");
+      navigate("/logga-in");
     }
   };
 

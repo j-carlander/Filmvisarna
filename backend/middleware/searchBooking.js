@@ -1,7 +1,15 @@
+/**
+ * A middleware for checking that the booking number provided as a query with a request to get a booking, is of expected format
+ * if not, aborts the request and responds with a status 400 and a message in Swedish that data was in the wrong format
+ */
+
 export function validateBookingSearch(req, res, next) {
   const { q } = req.query;
 
   if (!q) return res.status(400).json({ error: "Queryn q har inget värde!" });
+
+  if (typeof q !== "string")
+    return res.status(400).json({ error: "q är inte en sträng!" });
 
   if (!q.includes("@")) {
     if (!q || q.length != 6) {

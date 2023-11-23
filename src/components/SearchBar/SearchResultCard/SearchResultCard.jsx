@@ -1,3 +1,9 @@
+/**
+ * Component for searchresult in searchbar
+ * SearchResultCard takes props and renders the searchresult 
+ * information in a card format
+ */
+
 import { useNavigate } from "react-router-dom";
 
 export function SearchResultCard({ movie, clearSearch, setShowMobileSearch }) {
@@ -12,7 +18,7 @@ export function SearchResultCard({ movie, clearSearch, setShowMobileSearch }) {
       onClick={() => {
         clearSearch();
         setShowMobileSearch(false);
-        navigate(`/movies/${movie.id}`);
+        navigate(`/filmer/${movie.id}`);
       }}>
       <h3>{movie.title}</h3>
       <p>Regissör: {movie.director}</p>

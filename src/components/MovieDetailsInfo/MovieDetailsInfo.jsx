@@ -1,3 +1,8 @@
+/**
+ * Component for movie details information
+ * MovieDetailsInfo takes a prop and renders the movie information in a card format
+ */
+
 import { movieLengthFormatter } from "../../utils/movieLengthFormatter";
 import { ageLimitFormatter } from "../../utils/ageLimitFormatter";
 

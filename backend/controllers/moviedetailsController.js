@@ -1,3 +1,9 @@
+/**
+ * Controller for handling requests to get movie details by id
+ * and filter movie details by date
+ * sends response status 200 and result on success
+ */
+
 import {
   getMovieDetails,
   getScreeningsByDateService,

@@ -1,5 +1,11 @@
+/**
+ * Page for the administrator to add a new screening for a particular movie.
+ */
+
 import { useEffect, useState } from "react";
 import { fetchHelper } from "../../utils/fetchHelper";
+import { useLocation } from "react-router-dom";
+import { AdminPageBackBtn } from "../../components/AdminPageBackBtn/AdminPageBackBtn";
 
 const mockLanguages = [
   { id: 1, language: "sv" },
@@ -10,10 +16,12 @@ export function AdminAddScreeningPage() {
   const [movies, setMovies] = useState([]);
   const [theatre, setTheatre] = useState([]);
   const [language, setLanguage] = useState(mockLanguages);
-  const [subtitle, setSubtitle] = useState([{ id: 1, language: "sv" }]);
+  const subtitle = useState([{ id: 1, language: "sv" }])[0];
+  const location = useLocation();
+  const { movieid, title } = location.state;
   const [values, setValues] = useState({
     date: "",
-    movieid: 1,
+    movieid,
     theatreid: 1,
     languageid: 1,
     subtitleid: 1,
@@ -75,6 +83,7 @@ export function AdminAddScreeningPage() {
 
   return (
     <div className="add-screening-page">
+      <AdminPageBackBtn text={`Tillbaka till ${title}`} />
       <h2>Lägg till visning</h2>
       <form className="form-wrapper" onSubmit={onSubmit}>
         <label>Datum och tid för visning:</label>
@@ -88,7 +97,10 @@ export function AdminAddScreeningPage() {
         <label>Välj film:</label>
         <select className="select-element" name="movieid" onChange={onChange}>
           {movies.map((movie) => (
-            <option value={movie.id} key={movie.id}>
+            <option
+              value={movie.id}
+              key={movie.id}
+              selected={movie.id == movieid}>
               {movie.title}
             </option>
           ))}

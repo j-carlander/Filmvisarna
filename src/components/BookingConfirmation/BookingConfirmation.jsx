@@ -1,3 +1,7 @@
+/**
+ * Component for a modal that confirms a booking and displays its info
+ */
+
 import { useNavigate } from "react-router-dom";
 import { useRef, useEffect } from "react";
 

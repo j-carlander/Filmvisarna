@@ -1,3 +1,6 @@
+/*
+  This JavaScript file contains two functions. The screeninginfoService function retrieves information about upcoming movie screenings, including details like date, language, and available seats, based on the movie ID and pagination. The screeningInfoById function fetches specific details about a movie screening, such as screening and movie ID, title, age limit, duration, and theatre information, filtered by the screening ID and upcoming dates. Both functions use SQL queries and the runQuery function to interact with the database.
+*/
 import { runQuery } from "../db.js";
 
 export async function screeninginfoService(movieid, page) {

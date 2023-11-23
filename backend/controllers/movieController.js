@@ -1,3 +1,8 @@
+/**
+ * Controller for handling requests get movies and filters for movies (date, age and upcoming)
+ * sends response status 200 and result on success
+ */
+
 import moviesService from "../service/moviesService.js";
 
 export async function getMovies(req, res) {
@@ -6,6 +11,12 @@ export async function getMovies(req, res) {
   const filters = { date, age, upcoming };
 
   const result = await moviesService.getMovies(filters);
+
+  res.send(result);
+}
+
+export async function adminGetMovies(req, res) {
+  const result = await moviesService.adminGetMovies();
 
   res.send(result);
 }

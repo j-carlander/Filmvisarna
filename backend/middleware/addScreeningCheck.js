@@ -1,7 +1,17 @@
+/**
+ * A middleware for checking that the data provided with the request for adding a new ascreening is of expected format
+ * and that the date and time of the screening is not colliding with another screening
+ * if tests don't pass, aborts the request and responds with a status 400 and a message in Swedish that some data wasn't provided
+ * or that it was in the wrong format or that the date collides
+ */
+
+import { addScreeningDateCheckService } from "../service/addScreeningDateCheckService.js";
+import { checkMovieIsHidden } from "../service/moviesService.js";
+
 const dateErrorMessage =
   "Datumet har fel format! Det ska vara åååå-mm-dd hh:mm";
 
-export function addScreeningCheck(req, res, next) {
+export async function addScreeningCheck(req, res, next) {
   const { date, movieid, theatreid, languageid, subtitleid } = req.body;
 
   if (!date || !movieid || !theatreid || !languageid || !subtitleid)
@@ -53,5 +63,20 @@ export function addScreeningCheck(req, res, next) {
       .status(400)
       .json({ error: "Vissa/alla egenskaper har fel datatyp!" });
 
-  next();
+  const movieHidden = await checkMovieIsHidden(movieid);
+  if (movieHidden) return res.status(400).json({ error: "Filmen är dold" });
+
+  const notClashing = await addScreeningDateCheckService(
+    splitFormat[0],
+    date,
+    theatreid,
+    movieid
+  );
+  if (notClashing) {
+    next();
+  } else {
+    res
+      .status(400)
+      .json({ error: "Visningstiden krockar med en annan visning" });
+  }
 }

@@ -1,3 +1,8 @@
+/**
+ * The jsx for a landing page holding 2 movie carousel componets
+ * and the fetches needed to populate the carousels with data
+ */
+
 import { useEffect, useState } from "react";
 import { fetchHelper } from "../../utils/fetchHelper";
 import { Link } from "react-router-dom";
@@ -30,20 +35,24 @@ export function LandingPage() {
       <section className="landingpage-card">
         <div className="landingpage-card-info">
           <h4>På bio nu</h4>
-          <Link to="/movies?upcoming=false">
+          <Link to="/filmer?upcoming=false">
             <p className="show-all">Visa alla</p>
           </Link>
         </div>
-        {movies.length === 0 ? <Loading/> : <Carousel movies={movies} />}
+        {movies.length === 0 ? <Loading /> : <Carousel movies={movies} />}
       </section>
       <section className="landingpage-card">
         <div className="landingpage-card-info">
           <h4>Kommande</h4>
-          <Link to="/movies?upcoming=true">
+          <Link to="/filmer?upcoming=true">
             <p className="show-all">Visa alla</p>
           </Link>
         </div>
-        {upcomingMovies.length === 0 ? <Loading/> :<Carousel movies={upcomingMovies} />}
+        {upcomingMovies.length === 0 ? (
+          <Loading />
+        ) : (
+          <Carousel movies={upcomingMovies} />
+        )}
       </section>
     </div>
   );

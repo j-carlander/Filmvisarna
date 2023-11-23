@@ -1,3 +1,11 @@
+/**
+ * Service for deleting bookings
+ * deleteBookingGuestService deletes a booking using guestemail
+ * deleteBookingUserService deletes a booking using userid
+ * getSeatsForDeletionService gets the seats in the booking for deletion later
+ * emailAllBookingsByScreeningService uses removeScreeningMailService to send a mail to every user in the deleted booking
+ */
+
 import { runQuery } from "../db.js";
 import { removeScreeningMailService } from "./removeScreeningMailService.js";
 
@@ -32,7 +40,7 @@ export async function emailAllBookingsByScreeningService(screeningId) {
   const emailsList = await runQuery(selectEmailFromBookingsByScreeningId, [
     screeningId,
   ]);
-  console.log(emailsList);
+
   if (emailsList.length > 0) {
     emailsList.map(({ email }) =>
       removeScreeningMailService(email, title, date)

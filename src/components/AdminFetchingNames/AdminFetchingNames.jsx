@@ -1,3 +1,9 @@
+/**
+ * Component for fetching or adding names
+ * searchName searches for names using input
+ * addNewName sends a fetch request to add a new name into the database
+ */
+
 import { useState } from "react";
 import { fetchHelper } from "../../utils/fetchHelper";
 
@@ -5,7 +11,6 @@ export function AdminFetchingNames({ onSetName }) {
   const [inputValue, setInputValue] = useState("");
   const [names, setNames] = useState([]);
   const [newName, setNewName] = useState("");
-  const [selectedName, setSelectedName] = useState("");
   const [foundNames, setFoundNames] = useState(true);
 
   async function searchName() {
@@ -14,7 +19,6 @@ export function AdminFetchingNames({ onSetName }) {
     const response = await fetchHelper(`/namesearch?q=${inputValue}`, "get");
     if (response.status === 200) {
       const resJson = await response.json();
-      console.log(resJson);
       setNames(resJson);
       setFoundNames(resJson.length > 0);
     }
@@ -39,9 +43,14 @@ export function AdminFetchingNames({ onSetName }) {
     }
   }
 
-  function handleNameSelect(name) {
-    setSelectedName(name);
+  function handleNameSelect() {
     setInputValue("");
+  }
+
+  function onKeyDown(key, callback) {
+    if (key === "Enter") {
+      callback();
+    }
   }
 
   return (
@@ -53,6 +62,7 @@ export function AdminFetchingNames({ onSetName }) {
             type="text"
             value={inputValue}
             placeholder="Skriv ett namn..."
+            onKeyDown={(e) => onKeyDown(e.key, searchName)}
             onChange={(e) => setInputValue(e.target.value)}
           />
         </label>
@@ -68,6 +78,7 @@ export function AdminFetchingNames({ onSetName }) {
             type="text"
             value={newName}
             placeholder="Skriv ett namn..."
+            onKeyDown={(e) => onKeyDown(e.key, addNewName)}
             onChange={(e) => setNewName(e.target.value)}
           />
         </label>
@@ -90,7 +101,7 @@ export function AdminFetchingNames({ onSetName }) {
                 <button
                   type="button"
                   onClick={() => {
-                    handleNameSelect(nameVal.name);
+                    handleNameSelect();
                     onSetName(nameVal);
                   }}>
                   {nameVal.name}
@@ -100,7 +111,6 @@ export function AdminFetchingNames({ onSetName }) {
           </ul>
         </div>
       )}
-      {/* <div>{selectedName && <p>Valt namn: {selectedName}</p>}</div> */}
     </div>
   );
 }
