@@ -27,7 +27,7 @@ export function MovieDetailsInfo({ movie }) {
         <div className="moviedetail-infobox">
           <h3 className="moviedetail-title">{movie.title}</h3>
           <p className="moviedetail-info">
-            {movie.categories.replaceAll(",", " ")} |{" "}
+            {movie.categories.replaceAll(",", ", ")} |{" "}
             {movieLengthFormatter(movie.durationinminutes)} |{" "}
             {ageLimitFormatter(movie.agelimit)}
           </p>
