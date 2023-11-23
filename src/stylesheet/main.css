@@ -544,7 +544,10 @@ button {
 }
 .main-nav-bar .burger-menu-backdrop {
   position: absolute;
-  inset: 0;
+  width: 100vw;
+  height: calc(100vh + 390px);
+  left: 0;
+  top: -390px;
 }
 .main-nav-bar .burger-menu-container {
   position: relative;
