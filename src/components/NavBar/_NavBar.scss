@@ -27,7 +27,10 @@
 
   .burger-menu-backdrop {
     position: absolute;
-    inset: 0;
+    width: 100vw;
+    height: calc(100vh + 390px);
+    left: 0;
+    top: -390px;
   }
 
   .burger-menu-container {
